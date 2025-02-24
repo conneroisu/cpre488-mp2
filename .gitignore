@@ -1,0 +1,7 @@
+.devenv
+.direnv
+.ccls-cache
+.hdl_checker
+.venv
+.vscode
+__pycache__

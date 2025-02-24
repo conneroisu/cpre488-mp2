@@ -1,0 +1,24 @@
+{
+	"options": {
+		"ghdl_analysis": [
+			"--workdir=work",
+			"--ieee=synopsys",
+			"-fexplicit"
+		]
+	},
+	"files": [
+		{
+			"file": "rtl/core.vhd",
+			"language": "vhdl"
+		},
+		{
+			"file": "assembly/core_fpga.vhd",
+			"language": "vhdl"
+		},
+		{
+			"file": "sim/tb_core.vhd",
+			"library": "sim",
+			"language": "vhdl"
+		}
+	]
+}
