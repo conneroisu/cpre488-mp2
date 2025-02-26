@@ -76,6 +76,10 @@
 
               # C/C++
               ccls
+
+              # Tcl
+              tcl
+              nagelfar
             ]
             ++ (lib.optionals isLinux [
               pkgs.ghdl
