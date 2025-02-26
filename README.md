@@ -1,5 +1,16 @@
 # cpre488-mp2
 
+## Introduction
+
+## Development
+
+Initialize the `Vivado_init.tcl` script to set up your Vivado environment startup script.
+```shell
+python3 init.py
+```
+
+## Report 
+
 Tasks:
 
 - [ ] [detailed system diagram](#detailed-system-diagram)
