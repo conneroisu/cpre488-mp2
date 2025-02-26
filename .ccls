@@ -1,0 +1,8 @@
+clang
+%c -std=c11
+%cpp -std=c++2a
+%h %hpp --include=./eclipse_workspace/Xentendo/src/lib/menu/*.h
+
+-Iinc
+-DMACRO
+-I./eclipse_workspace/Xentendo/src/lib/menu
