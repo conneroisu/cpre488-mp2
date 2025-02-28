@@ -1,0 +1,7 @@
+/*TPG*/
+the_ROM_image:
+{
+  [bootloader]<TPG/boot/fsbl.elf>
+   <bitstream> 
+  <elf,ps7_cortexa9_0>
+}

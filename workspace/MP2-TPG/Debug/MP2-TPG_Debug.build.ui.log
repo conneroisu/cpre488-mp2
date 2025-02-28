@@ -1,0 +1,10 @@
+2025-02-28T11:44:12.075308800255-11:44:12 **** Incremental Build of configuration Debug for project MP2-TPG ****
+000-make all 
+000-make --no-print-directory pre-build
+000-a9-linaro-pre-build-step
+000-' '
+000-make --no-print-directory main-build
+000-make[1]: Nothing to be done for 'main-build'.
+00255-
+11:44:12 Build Finished (took 206ms)
+

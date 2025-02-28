@@ -11,9 +11,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=Z:/Vivado/Xilinx/Vivado/2020.1/ids_lite/ISE/bin/nt64;Z:/Vivado/Xilinx/Vivado/2020.1/ids_lite/ISE/lib/nt64:Z:/Vivado/Xilinx/Vivado/2020.1/bin
+  PATH=C:/Xilinx/Vitis/2020.1/bin;C:/Xilinx/Vivado/2020.1/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2020.1/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2020.1/bin
 else
-  PATH=Z:/Vivado/Xilinx/Vivado/2020.1/ids_lite/ISE/bin/nt64;Z:/Vivado/Xilinx/Vivado/2020.1/ids_lite/ISE/lib/nt64:Z:/Vivado/Xilinx/Vivado/2020.1/bin:$PATH
+  PATH=C:/Xilinx/Vitis/2020.1/bin;C:/Xilinx/Vivado/2020.1/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2020.1/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2020.1/bin:$PATH
 fi
 export PATH
 
@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/synth_1'
+HD_PWD='C:/Users/oparker/cpre488-mp2/project_1/project_1.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

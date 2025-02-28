@@ -1,0 +1,11 @@
+
+
+#ifndef CLAMP_H
+#define CLAMP_H
+
+
+typedef unsigned char Xunit8;
+
+inline uint8 clamp(int value, int min, int max);
+
+#endif

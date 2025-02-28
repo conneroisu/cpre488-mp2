@@ -1,0 +1,959 @@
+09:23:42 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\oparker\workspace\temp_xsdb_launch_script.tcl
+09:23:42 INFO  : Registering command handlers for Vitis TCF services
+09:23:44 INFO  : XSCT server has started successfully.
+09:23:44 INFO  : Successfully done setting XSCT server connection channel  
+09:23:44 INFO  : plnx-install-location is set to ''
+09:23:45 INFO  : Platform repository initialization has completed.
+09:23:46 INFO  : Successfully done setting workspace for the tool. 
+09:23:46 INFO  : Successfully done query RDI_DATADIR 
+09:45:43 INFO  : Result from executing command 'getProjects': TPG
+09:45:43 INFO  : Result from executing command 'getPlatforms': 
+09:46:57 INFO  : Result from executing command 'getProjects': TPG;design_1_wrapper
+09:46:57 INFO  : Result from executing command 'getPlatforms': TPG|C:/Users/oparker/workspace/TPG/export/TPG/TPG.xpfm
+09:46:57 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+09:47:04 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+09:51:39 INFO  : Saving repository preferences.
+09:51:39 INFO  : Reading in cores from local repositories: 
+		 C:\Users\oparker\cpre488-mp2\sw\ip_repo_sw
+09:51:39 INFO  : Cleaning BSP projects in the workspace.
+09:51:43 INFO  : Saving repository preferences.
+09:51:44 INFO  : Saving repository preferences.
+09:53:35 INFO  : Successfully done sdx_reload_mss "C:/Users/oparker/workspace/design_1_wrapper/ps7_cortexa9_0/domain_ps7_cortexa9_0/bsp/system.mss"
+09:55:27 INFO  : (SwPlatform)  Successfully done add_library 
+09:55:31 INFO  : (SwPlatform)  Successfully done add_library 
+09:55:34 INFO  : (SwPlatform)  Successfully done add_library 
+09:55:42 INFO  : (SwPlatform)  Successfully done add_library 
+09:55:48 INFO  : (SwPlatform) Successfully done update_mss 
+09:55:48 INFO  : Successfully done sdx_reload_mss "C:/Users/oparker/workspace/design_1_wrapper/ps7_cortexa9_0/domain_ps7_cortexa9_0/bsp/system.mss"
+09:56:54 INFO  : Result from executing command 'getProjects': TPG;design_1_wrapper
+09:56:54 INFO  : Result from executing command 'getPlatforms': TPG|C:/Users/oparker/workspace/TPG/export/TPG/TPG.xpfm;design_1_wrapper|C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+09:56:54 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+09:56:54 INFO  : Updating application flags with new BSP settings...
+09:56:54 INFO  : Successfully updated application flags for project MP2-TPG.
+09:57:34 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:09:31 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:17:15 INFO  : Result from executing command 'getProjects': TPG;design_1_wrapper
+10:17:15 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+10:18:05 INFO  : Result from executing command 'getProjects': TPG;design_1_wrapper
+10:18:05 INFO  : Result from executing command 'getPlatforms': TPG|C:/Users/oparker/workspace/TPG/export/TPG/TPG.xpfm;design_1_wrapper|C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+10:18:05 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:18:42 INFO  : Result from executing command 'getProjects': TPG;design_1_wrapper
+10:18:42 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+10:19:19 INFO  : Hardware specification for platform project 'design_1_wrapper' is updated.
+10:19:55 INFO  : Result from executing command 'getProjects': TPG;design_1_wrapper
+10:19:55 INFO  : Result from executing command 'getPlatforms': TPG|C:/Users/oparker/workspace/TPG/export/TPG/TPG.xpfm;design_1_wrapper|C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+10:19:55 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:21:37 ERROR : Failed to read platform from project 'MP2-TPG_system'.
+Reason: Failed to execute command 'platform read {C:/Users/oparker/workspace/MP2-TPG_system/platform.spr}'. Click on details for more information.
+10:21:45 ERROR : Failed to read platform from project 'MP2-TPG_system'.
+Reason: Failed to execute command 'platform read {C:/Users/oparker/workspace/MP2-TPG_system/platform.spr}'. Click on details for more information.
+10:22:08 INFO  : Hardware specification for platform project 'TPG' is updated.
+10:22:18 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:22:49 INFO  : Hardware specification for platform project 'design_1_wrapper' is updated.
+10:23:17 INFO  : Result from executing command 'getProjects': TPG;design_1_wrapper
+10:23:17 INFO  : Result from executing command 'getPlatforms': TPG|C:/Users/oparker/workspace/TPG/export/TPG/TPG.xpfm;design_1_wrapper|C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+10:23:17 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:23:19 INFO  : Updating application flags with new BSP settings...
+10:23:19 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+10:23:21 INFO  : The hardware specfication used by project 'MP2-TPG' is out of sync with the platform. Resource files extracted from the hardware specfiication will be updated.
+10:23:21 INFO  : The file 'C:\Users\oparker\workspace\MP2-TPG\_ide\bitstream\design_1_wrapper.bit' stored in project is removed.
+10:23:21 INFO  : The updated bitstream files are copied from platform to folder 'C:\Users\oparker\workspace\MP2-TPG\_ide\bitstream' in project 'MP2-TPG'.
+10:23:21 INFO  : The file 'C:\Users\oparker\workspace\MP2-TPG\_ide\psinit\ps7_init.tcl' stored in project is removed.
+10:23:25 INFO  : The updated ps init files are copied from platform to folder 'C:\Users\oparker\workspace\MP2-TPG\_ide\psinit' in project 'MP2-TPG'.
+10:23:36 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:23:36 INFO  : Updating application flags with new BSP settings...
+10:23:36 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+10:24:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:24:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:24:55 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:24:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:24:59 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+10:24:59 INFO  : 'jtag frequency' command is executed.
+10:24:59 INFO  : Context for 'APU' is selected.
+10:24:59 INFO  : System reset is completed.
+10:25:02 INFO  : 'after 3000' command is executed.
+10:25:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:25:05 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:25:05 INFO  : Context for 'APU' is selected.
+10:25:05 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:25:05 INFO  : 'configparams force-mem-access 1' command is executed.
+10:25:05 INFO  : Context for 'APU' is selected.
+10:25:05 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+10:25:05 INFO  : 'ps7_init' command is executed.
+10:25:05 INFO  : 'ps7_post_config' command is executed.
+10:25:05 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:25:05 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:25:05 INFO  : 'configparams force-mem-access 0' command is executed.
+10:25:05 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:25:05 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:25:05 INFO  : 'con' command is executed.
+10:25:05 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:25:05 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+10:29:54 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:29:54 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:29:57 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:30:11 INFO  : Disconnected from the channel tcfchan#14.
+10:30:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:30:11 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+10:30:11 INFO  : 'jtag frequency' command is executed.
+10:30:11 INFO  : Context for 'APU' is selected.
+10:30:11 INFO  : System reset is completed.
+10:30:14 INFO  : 'after 3000' command is executed.
+10:30:14 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:30:16 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:30:16 INFO  : Context for 'APU' is selected.
+10:30:16 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:30:16 INFO  : 'configparams force-mem-access 1' command is executed.
+10:30:17 INFO  : Context for 'APU' is selected.
+10:30:17 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+10:30:17 INFO  : 'ps7_init' command is executed.
+10:30:17 INFO  : 'ps7_post_config' command is executed.
+10:30:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:30:17 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:30:17 INFO  : 'configparams force-mem-access 0' command is executed.
+10:30:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:30:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:30:17 INFO  : 'con' command is executed.
+10:30:17 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:30:17 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+10:34:41 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:34:41 INFO  : Updating application flags with new BSP settings...
+10:34:41 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+10:35:07 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:35:07 INFO  : Updating application flags with new BSP settings...
+10:35:07 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+10:35:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:35:11 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:35:14 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:35:19 INFO  : Disconnected from the channel tcfchan#15.
+10:35:19 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:35:19 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+10:35:19 INFO  : 'jtag frequency' command is executed.
+10:35:19 INFO  : Context for 'APU' is selected.
+10:35:19 INFO  : System reset is completed.
+10:35:22 INFO  : 'after 3000' command is executed.
+10:35:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:35:24 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:35:24 INFO  : Context for 'APU' is selected.
+10:35:24 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:35:24 INFO  : 'configparams force-mem-access 1' command is executed.
+10:35:24 INFO  : Context for 'APU' is selected.
+10:35:24 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+10:35:24 INFO  : 'ps7_init' command is executed.
+10:35:24 INFO  : 'ps7_post_config' command is executed.
+10:35:24 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:35:25 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:35:25 INFO  : 'configparams force-mem-access 0' command is executed.
+10:35:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:35:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:35:25 INFO  : 'con' command is executed.
+10:35:25 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:35:25 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+10:45:39 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:45:39 INFO  : Updating application flags with new BSP settings...
+10:45:39 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+10:45:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:45:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:45:54 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:48:00 INFO  : Disconnected from the channel tcfchan#16.
+10:48:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:48:00 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+10:48:00 INFO  : 'jtag frequency' command is executed.
+10:48:00 INFO  : Context for 'APU' is selected.
+10:48:00 INFO  : System reset is completed.
+10:48:03 INFO  : 'after 3000' command is executed.
+10:48:03 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:48:06 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:48:06 INFO  : Context for 'APU' is selected.
+10:48:06 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:48:06 INFO  : 'configparams force-mem-access 1' command is executed.
+10:48:06 INFO  : Context for 'APU' is selected.
+10:48:06 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+10:48:06 INFO  : 'ps7_init' command is executed.
+10:48:06 INFO  : 'ps7_post_config' command is executed.
+10:48:06 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:48:06 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:48:06 INFO  : 'configparams force-mem-access 0' command is executed.
+10:48:06 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:48:06 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:48:06 INFO  : 'con' command is executed.
+10:48:06 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:48:06 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+10:48:50 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:48:50 INFO  : Updating application flags with new BSP settings...
+10:48:50 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+10:48:53 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:48:53 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:48:56 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:49:00 INFO  : Disconnected from the channel tcfchan#17.
+10:49:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:49:00 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+10:49:00 INFO  : 'jtag frequency' command is executed.
+10:49:00 INFO  : Context for 'APU' is selected.
+10:49:00 INFO  : System reset is completed.
+10:49:03 INFO  : 'after 3000' command is executed.
+10:49:03 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:49:05 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:49:05 INFO  : Context for 'APU' is selected.
+10:49:05 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:49:05 INFO  : 'configparams force-mem-access 1' command is executed.
+10:49:05 INFO  : Context for 'APU' is selected.
+10:49:05 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+10:49:05 INFO  : 'ps7_init' command is executed.
+10:49:05 INFO  : 'ps7_post_config' command is executed.
+10:49:05 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:49:06 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:49:06 INFO  : 'configparams force-mem-access 0' command is executed.
+10:49:06 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:49:06 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:49:06 INFO  : 'con' command is executed.
+10:49:06 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:49:06 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+10:58:15 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:58:15 INFO  : Updating application flags with new BSP settings...
+10:58:15 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+10:58:22 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:58:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:58:25 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:58:30 INFO  : Disconnected from the channel tcfchan#18.
+10:58:30 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:58:30 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+10:58:30 INFO  : 'jtag frequency' command is executed.
+10:58:30 INFO  : Context for 'APU' is selected.
+10:58:30 INFO  : System reset is completed.
+10:58:33 INFO  : 'after 3000' command is executed.
+10:58:34 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:58:36 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:58:36 INFO  : Context for 'APU' is selected.
+10:58:36 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:58:36 INFO  : 'configparams force-mem-access 1' command is executed.
+10:58:36 INFO  : Context for 'APU' is selected.
+10:58:36 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+10:58:36 INFO  : 'ps7_init' command is executed.
+10:58:36 INFO  : 'ps7_post_config' command is executed.
+10:58:36 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:58:36 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:58:36 INFO  : 'configparams force-mem-access 0' command is executed.
+10:58:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:58:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:58:37 INFO  : 'con' command is executed.
+10:58:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:58:37 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+10:59:30 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+10:59:30 INFO  : Updating application flags with new BSP settings...
+10:59:30 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+10:59:33 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:59:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:59:35 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:59:40 INFO  : Disconnected from the channel tcfchan#20.
+10:59:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:59:41 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+10:59:41 INFO  : 'jtag frequency' command is executed.
+10:59:41 INFO  : Context for 'APU' is selected.
+10:59:41 INFO  : System reset is completed.
+10:59:44 INFO  : 'after 3000' command is executed.
+10:59:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+10:59:46 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+10:59:46 INFO  : Context for 'APU' is selected.
+10:59:46 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:59:46 INFO  : 'configparams force-mem-access 1' command is executed.
+10:59:46 INFO  : Context for 'APU' is selected.
+10:59:46 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+10:59:46 INFO  : 'ps7_init' command is executed.
+10:59:46 INFO  : 'ps7_post_config' command is executed.
+10:59:46 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:59:47 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:59:47 INFO  : 'configparams force-mem-access 0' command is executed.
+10:59:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:59:47 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:59:47 INFO  : 'con' command is executed.
+10:59:47 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:59:47 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+11:03:15 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:03:15 INFO  : Updating application flags with new BSP settings...
+11:03:15 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+11:03:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:03:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:03:20 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:03:26 INFO  : Disconnected from the channel tcfchan#21.
+11:03:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:03:26 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+11:03:26 INFO  : 'jtag frequency' command is executed.
+11:03:26 INFO  : Context for 'APU' is selected.
+11:03:26 INFO  : System reset is completed.
+11:03:29 INFO  : 'after 3000' command is executed.
+11:03:29 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:03:31 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:03:31 INFO  : Context for 'APU' is selected.
+11:03:31 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:03:31 INFO  : 'configparams force-mem-access 1' command is executed.
+11:03:31 INFO  : Context for 'APU' is selected.
+11:03:31 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+11:03:32 INFO  : 'ps7_init' command is executed.
+11:03:32 INFO  : 'ps7_post_config' command is executed.
+11:03:32 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:03:32 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:03:32 INFO  : 'configparams force-mem-access 0' command is executed.
+11:03:32 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:03:32 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:03:32 INFO  : 'con' command is executed.
+11:03:32 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:03:32 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+11:03:46 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:03:46 INFO  : Updating application flags with new BSP settings...
+11:03:46 ERROR : Failed to update application flags from BSP for 'MP2-TPG'. Reason: null
+java.lang.NullPointerException
+	at com.xilinx.sdk.sw.internal.SwDb.getComponentAppCompilerFlags(SwDb.java:762)
+	at com.xilinx.sdx.sw.internal.SDxSwPlatform.getSwPlatformCompilerFlags(SDxSwPlatform.java:1155)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.inferSwPlatformFlags(AppSwBuildOptionsHelper.java:54)
+	at com.xilinx.sdx.sdk.core.build.AppSwBuildOptionsHelper.updateBuildOptions(AppSwBuildOptionsHelper.java:46)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.updateSwBuildOptions(SdkMakefileGenerationListener.java:215)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.syncAppFlags(SdkMakefileGenerationListener.java:99)
+	at com.xilinx.sdx.sdk.core.build.SdkMakefileGenerationListener.preMakefileGeneration(SdkMakefileGenerationListener.java:48)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.notifyPreMakefileGenerationListeners(XilinxGnuMakefileGenerator.java:91)
+	at com.xilinx.sdk.managedbuilder.XilinxGnuMakefileGenerator.generateMakefiles(XilinxGnuMakefileGenerator.java:40)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performMakefileGeneration(CommonBuilder.java:1008)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPrebuildGeneration(CommonBuilder.java:873)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:748)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:510)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:459)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:795)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:216)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:259)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:312)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:315)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:367)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:388)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:501)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:408)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:288)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+11:03:54 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:03:54 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:03:56 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:04:02 INFO  : Disconnected from the channel tcfchan#22.
+11:04:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:04:02 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+11:04:02 INFO  : 'jtag frequency' command is executed.
+11:04:02 INFO  : Context for 'APU' is selected.
+11:04:02 INFO  : System reset is completed.
+11:04:05 INFO  : 'after 3000' command is executed.
+11:04:05 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:04:08 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:04:08 INFO  : Context for 'APU' is selected.
+11:04:08 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:04:08 INFO  : 'configparams force-mem-access 1' command is executed.
+11:04:08 INFO  : Context for 'APU' is selected.
+11:04:08 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+11:04:08 INFO  : 'ps7_init' command is executed.
+11:04:08 INFO  : 'ps7_post_config' command is executed.
+11:04:08 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:04:08 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:04:08 INFO  : 'configparams force-mem-access 0' command is executed.
+11:04:08 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:04:08 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:04:08 INFO  : 'con' command is executed.
+11:04:08 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:04:08 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+11:08:36 INFO  : Hardware specification for platform project 'TPG' is updated.
+11:08:58 INFO  : Hardware specification for platform project 'design_1_wrapper' is updated.
+11:09:21 INFO  : Result from executing command 'getProjects': TPG;design_1_wrapper
+11:09:21 INFO  : Result from executing command 'getPlatforms': TPG|C:/Users/oparker/workspace/TPG/export/TPG/TPG.xpfm;design_1_wrapper|C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+11:09:21 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:09:23 INFO  : Updating application flags with new BSP settings...
+11:09:23 INFO  : Successfully updated application flags for project MP2-TPG.
+11:09:25 INFO  : The hardware specfication used by project 'MP2-TPG' is out of sync with the platform. Resource files extracted from the hardware specfiication will be updated.
+11:09:25 INFO  : The file 'C:\Users\oparker\workspace\MP2-TPG\_ide\bitstream\design_1_wrapper.bit' stored in project is removed.
+11:09:25 INFO  : The updated bitstream files are copied from platform to folder 'C:\Users\oparker\workspace\MP2-TPG\_ide\bitstream' in project 'MP2-TPG'.
+11:09:25 INFO  : The file 'C:\Users\oparker\workspace\MP2-TPG\_ide\psinit\ps7_init.tcl' stored in project is removed.
+11:09:29 INFO  : The updated ps init files are copied from platform to folder 'C:\Users\oparker\workspace\MP2-TPG\_ide\psinit' in project 'MP2-TPG'.
+11:10:13 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:12:44 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:14:54 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:16:07 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:16:40 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:19:59 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:20:31 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:23:36 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:24:14 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:26:07 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:27:40 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:29:03 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:29:22 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:29:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:29:25 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:29:28 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:29:33 INFO  : Disconnected from the channel tcfchan#24.
+11:29:33 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:29:33 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+11:29:33 INFO  : 'jtag frequency' command is executed.
+11:29:33 INFO  : Context for 'APU' is selected.
+11:29:33 INFO  : System reset is completed.
+11:29:36 INFO  : 'after 3000' command is executed.
+11:29:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:29:38 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:29:38 INFO  : Context for 'APU' is selected.
+11:29:39 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:29:39 INFO  : 'configparams force-mem-access 1' command is executed.
+11:29:39 INFO  : Context for 'APU' is selected.
+11:29:39 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+11:29:39 INFO  : 'ps7_init' command is executed.
+11:29:39 INFO  : 'ps7_post_config' command is executed.
+11:29:39 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:29:39 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:29:39 INFO  : 'configparams force-mem-access 0' command is executed.
+11:29:39 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:29:39 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:29:39 INFO  : 'con' command is executed.
+11:29:39 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:29:39 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+11:32:52 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:36:16 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:36:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:36:26 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:36:29 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:37:47 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:40:49 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:40:59 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:41:38 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:42:34 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:43:53 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:44:00 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:44:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:44:03 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:44:05 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:44:12 INFO  : Checking for BSP changes to sync application flags for project 'MP2-TPG'...
+11:44:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:44:15 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:44:17 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:44:20 INFO  : Disconnected from the channel tcfchan#27.
+11:44:20 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:44:20 INFO  : Jtag cable 'Digilent Zed 210248AA38DA' is selected.
+11:44:20 INFO  : 'jtag frequency' command is executed.
+11:44:20 INFO  : Context for 'APU' is selected.
+11:44:20 INFO  : System reset is completed.
+11:44:23 INFO  : 'after 3000' command is executed.
+11:44:24 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}' command is executed.
+11:44:26 INFO  : FPGA configured successfully with bitstream "C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit"
+11:44:26 INFO  : Context for 'APU' is selected.
+11:44:26 INFO  : Hardware design and registers information is loaded from 'C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:44:26 INFO  : 'configparams force-mem-access 1' command is executed.
+11:44:26 INFO  : Context for 'APU' is selected.
+11:44:26 INFO  : Sourcing of 'C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl' is done.
+11:44:26 INFO  : 'ps7_init' command is executed.
+11:44:26 INFO  : 'ps7_post_config' command is executed.
+11:44:26 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:44:26 INFO  : The application 'C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:44:26 INFO  : 'configparams force-mem-access 0' command is executed.
+11:44:26 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}
+fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:44:27 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:44:27 INFO  : 'con' command is executed.
+11:44:27 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:44:27 INFO  : Launch script is exported to file 'C:\Users\oparker\workspace\.sdk\launch_scripts\single_application_debug\systemdebugger_mp2-tpg_system_standalone.tcl'
+11:45:47 INFO  : Disconnected from the channel tcfchan#28.

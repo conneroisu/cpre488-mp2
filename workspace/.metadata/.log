@@ -1,0 +1,1544 @@
+!SESSION 2025-02-28 09:09:51.113 -----------------------------------------------
+eclipse.buildId=2020.1
+java.version=9.0.4
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+This is a continuation of log file C:\Users\oparker\workspace\.metadata\.bak_0.log
+Created Time: 2025-02-28 11:29:33.226
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.226
+!MESSAGE XSCT Command: [::hsi::utils::get_addr_ranges -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.238
+!MESSAGE XSCT command with result: [::hsi::utils::get_addr_ranges -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1], Result: [null, {"fmc_imageon_iic_0_S_AXI": {"name": "fmc_imageon_iic_0",
+"base": "0x41600000",
+"high": "0x4160FFFF",
+"size": "65536",
+"slaveintf": "S_AXI",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"fmc_ipmi_id_eeprom_0_S_AXI": {"name": "fmc_ipmi_id_eeprom_0",
+"base": "0x41610000",
+"high": "0x4161FFFF",
+"size": "65536",
+"slaveintf": "S_AXI",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"axi_vdma_0_S_AXI_LITE": {"name": "axi_vdma_0",
+"base": "0x43000000",
+"high": "0x4300FFFF",
+"size": "65536",
+"slaveintf": "S_AXI_LITE",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"v_tc_0_ctrl": {"name": "v_tc_0",
+"base": "0x43C10000",
+"high": "0x43C1FFFF",
+"size": "65536",
+"slaveintf": "ctrl",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"onsemi_vita_spi_0_S00_AXI": {"name": "onsemi_vita_spi_0",
+"base": "0x43C20000",
+"high": "0x43C2FFFF",
+"size": "65536",
+"slaveintf": "S00_AXI",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"onsemi_vita_cam_0_S00_AXI": {"name": "onsemi_vita_cam_0",
+"base": "0x43C30000",
+"high": "0x43C3FFFF",
+"size": "65536",
+"slaveintf": "S00_AXI",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_afi_0": {"name": "ps7_afi_0",
+"base": "0xF8008000",
+"high": "0xF8008FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_afi_1": {"name": "ps7_afi_1",
+"base": "0xF8009000",
+"high": "0xF8009FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_afi_2": {"name": "ps7_afi_2",
+"base": "0xF800A000",
+"high": "0xF800AFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_afi_3": {"name": "ps7_afi_3",
+"base": "0xF800B000",
+"high": "0xF800BFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_coresight_comp_0": {"name": "ps7_coresight_comp_0",
+"base": "0xF8800000",
+"high": "0xF88FFFFF",
+"size": "1048576",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ddrc_0": {"name": "ps7_ddrc_0",
+"base": "0xF8006000",
+"high": "0xF8006FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_dev_cfg_0": {"name": "ps7_dev_cfg_0",
+"base": "0xF8007000",
+"high": "0xF80070FF",
+"size": "256",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_dma_ns": {"name": "ps7_dma_ns",
+"base": "0xF8004000",
+"high": "0xF8004FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_dma_s": {"name": "ps7_dma_s",
+"base": "0xF8003000",
+"high": "0xF8003FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ethernet_0": {"name": "ps7_ethernet_0",
+"base": "0xE000B000",
+"high": "0xE000BFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_globaltimer_0": {"name": "ps7_globaltimer_0",
+"base": "0xF8F00200",
+"high": "0xF8F002FF",
+"size": "256",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_gpio_0": {"name": "ps7_gpio_0",
+"base": "0xE000A000",
+"high": "0xE000AFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_gpv_0": {"name": "ps7_gpv_0",
+"base": "0xF8900000",
+"high": "0xF89FFFFF",
+"size": "1048576",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_intc_dist_0": {"name": "ps7_intc_dist_0",
+"base": "0xF8F01000",
+"high": "0xF8F01FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_iop_bus_config_0": {"name": "ps7_iop_bus_config_0",
+"base": "0xE0200000",
+"high": "0xE0200FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_l2cachec_0": {"name": "ps7_l2cachec_0",
+"base": "0xF8F02000",
+"high": "0xF8F02FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ocmc_0": {"name": "ps7_ocmc_0",
+"base": "0xF800C000",
+"high": "0xF800CFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_pl310_0": {"name": "ps7_pl310_0",
+"base": "0xF8F02000",
+"high": "0xF8F02FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_pmu_0": {"name": "ps7_pmu_0",
+"base": "0xF8893000",
+"high": "0xF8893FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_qspi_0": {"name": "ps7_qspi_0",
+"base": "0xE000D000",
+"high": "0xE000DFFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_qspi_linear_0": {"name": "ps7_qspi_linear_0",
+"base": "0xFC000000",
+"high": "0xFCFFFFFF",
+"size": "16777216",
+"slaveintf": "",
+"type": "FLASH",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_scuc_0": {"name": "ps7_scuc_0",
+"base": "0xF8F00000",
+"high": "0xF8F000FC",
+"size": "253",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_scugic_0": {"name": "ps7_scugic_0",
+"base": "0xF8F00100",
+"high": "0xF8F001FF",
+"size": "256",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_scutimer_0": {"name": "ps7_scutimer_0",
+"base": "0xF8F00600",
+"high": "0xF8F0061F",
+"size": "32",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_scuwdt_0": {"name": "ps7_scuwdt_0",
+"base": "0xF8F00620",
+"high": "0xF8F006FF",
+"size": "224",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_sd_0": {"name": "ps7_sd_0",
+"base": "0xE0100000",
+"high": "0xE0100FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_slcr_0": {"name": "ps7_slcr_0",
+"base": "0xF8000000",
+"high": "0xF8000FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ttc_0": {"name": "ps7_ttc_0",
+"base": "0xF8001000",
+"high": "0xF8001FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_uart_1": {"name": "ps7_uart_1",
+"base": "0xE0001000",
+"high": "0xE0001FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_usb_0": {"name": "ps7_usb_0",
+"base": "0xE0002000",
+"high": "0xE0002FFF",
+"size": "4096",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_xadc_0": {"name": "ps7_xadc_0",
+"base": "0xF8007100",
+"high": "0xF8007120",
+"size": "33",
+"slaveintf": "",
+"type": "REGISTER",
+"flags": "3",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ddr_0": {"name": "ps7_ddr_0",
+"base": "0x00100000",
+"high": "0x1FFFFFFF",
+"size": "535822336",
+"slaveintf": "",
+"type": "MEMORY",
+"flags": "7",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ram_0": {"name": "ps7_ram_0",
+"base": "0x00000000",
+"high": "0x0002FFFF",
+"size": "196608",
+"slaveintf": "",
+"type": "MEMORY",
+"flags": "7",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+"ps7_ram_1": {"name": "ps7_ram_1",
+"base": "0xFFFF0000",
+"high": "0xFFFFFDFF",
+"size": "65024",
+"slaveintf": "",
+"type": "MEMORY",
+"flags": "7",
+"segment": "",
+"acctype": "",
+"tz": "",
+},
+}]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.239
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_DEBUG_ENABLED], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.240
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_DEBUG_ENABLED], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.241
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_DEBUG_EVENT_COUNTERS], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.242
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_DEBUG_EVENT_COUNTERS], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.242
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_DEBUG_LATENCY_COUNTERS], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.243
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_DEBUG_LATENCY_COUNTERS], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.243
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_DEBUG_COUNTER_WIDTH], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.244
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_DEBUG_COUNTER_WIDTH], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.244
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_FREQ], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.245
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_FREQ], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.245
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_CPU_CLK_FREQ_HZ], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.246
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_param_value C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ps7_cortexa9_1 C_CPU_CLK_FREQ_HZ], Result: [null, 666666687]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.246
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_files_on_hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa bit], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.249
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_files_on_hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa bit], Result: [null, design_1_wrapper.bit]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.249
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.253
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#27]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.253
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.259
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.259
+!MESSAGE XSCT Command: [version -server], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.260
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2020.1]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.260
+!MESSAGE XSCT Command: [version], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.261
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2020.1
+SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.261
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.264
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.266
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.276
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.278
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.281
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.281
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.292
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.292
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.296
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.296
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.307
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.308
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.311
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.311
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.322
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.322
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.326
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.326
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.336
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.336
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.340
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.340
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.350
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.350
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent Zed 210248AA38DA" && level == 0}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.363
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent Zed 210248AA38DA" && level == 0}], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.363
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.364
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.365
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.374
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.375
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.425
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:33.425
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:36.430
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:36.441
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:36.445
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:36.446
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:36.456
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:36.456
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:36.476
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:36.476
+!MESSAGE XSCT Command: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:38.875
+!MESSAGE XSCT command with result: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:38.886
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:38.893
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:38.893
+!MESSAGE XSCT Command: [loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.036
+!MESSAGE XSCT command with result: [loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Result: [null, design_1_wrapper_27]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.036
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.037
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.038
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.043
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.044
+!MESSAGE XSCT Command: [source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.045
+!MESSAGE XSCT command with result: [source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.045
+!MESSAGE XSCT Command: [ps7_init], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.278
+!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.278
+!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.302
+!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.304
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.309
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.310
+!MESSAGE XSCT Command: [dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.582
+!MESSAGE XSCT command with result: [dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.583
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.606
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.635
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.641
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.641
+!MESSAGE XSCT Command: [con], Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:29:39.659
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-43: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:32:52.443
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:32:52.446
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:32:52.446
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:32:52.448
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:32:52.448
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:32:52.449
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:32:52.450
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:16.841
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-46: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:16.843
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-46: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:16.844
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-46: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:16.845
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-46: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:36:16.846
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:16.846
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-46: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:16.847
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-46: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:25.731
+!MESSAGE XSCT Command: [::hsi::utils::get_addr_tag_info -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Thread: main
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:25.733
+!MESSAGE XSCT command with result: [::hsi::utils::get_addr_tag_info -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Result: [null, {"ps7_cortexa9_0": "",
+"ps7_cortexa9_1": "",
+}]. Thread: main
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.950
+!MESSAGE XSCT Command: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.953
+!MESSAGE XSCT command with result: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.953
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.956
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#27]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.956
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.960
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.960
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.964
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.964
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.975
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.975
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.996
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:26.998
+!MESSAGE XSCT Command: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:29.342
+!MESSAGE XSCT command with result: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:30.144
+!MESSAGE XSCT Command: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:36:30.146
+!MESSAGE XSCT command with result: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:37:47.784
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:37:47.787
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:37:47.787
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:37:47.789
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:37:47.790
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:37:47.791
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:37:47.792
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:49.818
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:49.821
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:49.822
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:49.823
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:40:49.824
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:49.825
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:49.826
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-36: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:59.898
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:59.901
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:59.901
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:59.903
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:40:59.903
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:59.904
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:40:59.905
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:41:38.123
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:41:38.126
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:41:38.126
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:41:38.128
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:41:38.128
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:41:38.129
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:41:38.130
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-38: Build Project
+
+!ENTRY org.eclipse.cdt.ui 4 4 2025-02-28 11:42:34.189
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException(/MP2-TPG/src/clamp.h)[368]: java.lang.Exception: Resource '/MP2-TPG/src/clamp.h' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:39)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:35)
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:327)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:201)
+	at org.eclipse.core.internal.resources.Resource.findMarkers(Resource.java:971)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.openErrorInEditor(BuildConsolePage.java:643)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.showError(BuildConsolePage.java:616)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:154)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:136)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:129)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.lambda$0(ConfigurationBuildConsolePage.java:213)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:37)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3906)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3537)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1170)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1059)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:667)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:597)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.xilinx.ide.application.ui.Application.start(Application.java:78)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2025-02-28 11:42:34.189
+!MESSAGE Resource '/MP2-TPG/src/clamp.h' does not exist.
+!STACK 0
+java.lang.Exception: Resource '/MP2-TPG/src/clamp.h' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:39)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:35)
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:327)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:201)
+	at org.eclipse.core.internal.resources.Resource.findMarkers(Resource.java:971)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.openErrorInEditor(BuildConsolePage.java:643)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.showError(BuildConsolePage.java:616)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:154)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:136)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:129)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.lambda$0(ConfigurationBuildConsolePage.java:213)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:37)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3906)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3537)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1170)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1059)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:667)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:597)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.xilinx.ide.application.ui.Application.start(Application.java:78)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:42:34.232
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-37: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:42:34.235
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-37: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:42:34.235
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-37: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:42:34.237
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-37: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:42:34.237
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:42:34.238
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-37: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:42:34.239
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-37: Build Project
+
+!ENTRY org.eclipse.cdt.ui 4 4 2025-02-28 11:42:34.246
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException(/MP2-TPG/src/clamp.h)[368]: java.lang.Exception: Resource '/MP2-TPG/src/clamp.h' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:39)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:35)
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:327)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:201)
+	at org.eclipse.core.internal.resources.Resource.findMarkers(Resource.java:971)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.openErrorInEditor(BuildConsolePage.java:643)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.showError(BuildConsolePage.java:616)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:154)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:136)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:129)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.lambda$0(ConfigurationBuildConsolePage.java:213)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:37)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3906)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3537)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1170)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1059)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:667)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:597)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.xilinx.ide.application.ui.Application.start(Application.java:78)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2025-02-28 11:42:34.247
+!MESSAGE Resource '/MP2-TPG/src/clamp.h' does not exist.
+!STACK 0
+java.lang.Exception: Resource '/MP2-TPG/src/clamp.h' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:39)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:35)
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:327)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:201)
+	at org.eclipse.core.internal.resources.Resource.findMarkers(Resource.java:971)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.openErrorInEditor(BuildConsolePage.java:643)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.showError(BuildConsolePage.java:616)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:154)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:136)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.setDocument(ConfigurationBuildConsolePage.java:129)
+	at com.xilinx.sdx.build.ui.console.ConfigurationBuildConsolePage.lambda$0(ConfigurationBuildConsolePage.java:213)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:37)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3906)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3537)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1170)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1059)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:667)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:597)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.xilinx.ide.application.ui.Application.start(Application.java:78)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:43:53.599
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-45: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:43:53.602
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-45: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:43:53.602
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-45: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:43:53.604
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-45: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:43:53.604
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:43:53.605
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-45: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:43:53.606
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-45: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:00.103
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:00.107
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:00.107
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:00.109
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:44:00.109
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:00.110
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:00.111
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-38: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.045
+!MESSAGE XSCT Command: [::hsi::utils::get_addr_tag_info -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Thread: main
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.047
+!MESSAGE XSCT command with result: [::hsi::utils::get_addr_tag_info -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Result: [null, {"ps7_cortexa9_0": "",
+"ps7_cortexa9_1": "",
+}]. Thread: main
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.984
+!MESSAGE XSCT Command: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.986
+!MESSAGE XSCT command with result: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.987
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.989
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#27]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.989
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.994
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.994
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.998
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:02.998
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:03.009
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:03.010
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:03.032
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:03.033
+!MESSAGE XSCT Command: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:05.402
+!MESSAGE XSCT command with result: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:06.210
+!MESSAGE XSCT Command: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:06.212
+!MESSAGE XSCT command with result: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:12.063
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Thread: Worker-44: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:12.066
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-44: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:12.066
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-44: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:12.068
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.2",
+}]. Thread: Worker-44: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-02-28 11:44:12.068
+!MESSAGE Generating MD5 hash for file: C:\Users\oparker\workspace\design_1_wrapper\export\design_1_wrapper\sw\design_1_wrapper\domain_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:12.069
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Thread: Worker-44: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:12.070
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/domain_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-44: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:14.333
+!MESSAGE XSCT Command: [::hsi::utils::get_addr_tag_info -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Thread: main
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:14.335
+!MESSAGE XSCT command with result: [::hsi::utils::get_addr_tag_info -json C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Result: [null, {"ps7_cortexa9_0": "",
+"ps7_cortexa9_1": "",
+}]. Thread: main
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.352
+!MESSAGE XSCT Command: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.355
+!MESSAGE XSCT command with result: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.355
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.356
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#27]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.357
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.361
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.361
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.364
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.365
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.376
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.376
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.396
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:15.397
+!MESSAGE XSCT Command: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:17.789
+!MESSAGE XSCT command with result: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:18.600
+!MESSAGE XSCT Command: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:18.602
+!MESSAGE XSCT command with result: [::hsi::utils::get_bram_blocks C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa ], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.776
+!MESSAGE XSCT Command: [disconnect tcfchan#27], Thread: Thread-1748
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.779
+!MESSAGE XSCT command with result: [disconnect tcfchan#27], Result: [null, ]. Thread: Thread-1748
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.782
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.785
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#28]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.786
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.793
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.793
+!MESSAGE XSCT Command: [version -server], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.794
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2020.1]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.794
+!MESSAGE XSCT Command: [version], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.794
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2020.1
+SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.795
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.798
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.799
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.809
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.809
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.813
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.813
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.824
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.824
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.828
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.828
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.839
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.839
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.843
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.843
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.853
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.854
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.858
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.859
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.869
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.869
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.874
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.874
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.885
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.886
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent Zed 210248AA38DA" && level == 0}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.897
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent Zed 210248AA38DA" && level == 0}], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.898
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.898
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.899
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.907
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.907
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.962
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:20.963
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:23.979
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:23.989
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:23.993
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zed 210248AA38DA]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:23.993
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:24.003
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:24.003
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:24.030
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248AA38DA" && level==0 && jtag_device_ctx=="jsn-Zed-210248AA38DA-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:24.032
+!MESSAGE XSCT Command: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.402
+!MESSAGE XSCT command with result: [fpga -file C:/Users/oparker/workspace/MP2-TPG/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.417
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.425
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.425
+!MESSAGE XSCT Command: [loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.456
+!MESSAGE XSCT command with result: [loadhw -hw C:/Users/oparker/workspace/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Result: [null, design_1_wrapper_27]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.457
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.458
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.458
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.464
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.465
+!MESSAGE XSCT Command: [source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.466
+!MESSAGE XSCT command with result: [source C:/Users/oparker/workspace/MP2-TPG/_ide/psinit/ps7_init.tcl], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.466
+!MESSAGE XSCT Command: [ps7_init], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.683
+!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.683
+!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.689
+!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.689
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.695
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.695
+!MESSAGE XSCT Command: [dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.956
+!MESSAGE XSCT command with result: [dow C:/Users/oparker/workspace/MP2-TPG/Debug/MP2-TPG.elf], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.956
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:26.980
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:27.022
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:27.030
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:27.030
+!MESSAGE XSCT Command: [con], Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:44:27.061
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-45: Launching SystemDebugger_MP2-TPG_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:45:47.157
+!MESSAGE XSCT Command: [disconnect tcfchan#28], Thread: Thread-1800
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-02-28 11:45:47.159
+!MESSAGE XSCT command with result: [disconnect tcfchan#28], Result: [null, ]. Thread: Thread-1800

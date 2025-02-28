@@ -1,0 +1,72 @@
+#include "camera_app.h"
+
+camera_config_t camera_config;
+
+// Function to configure the TPG directly
+void configure_tpg(camera_config_t *config) {
+    xil_printf("Configuring TPG for Color Bars Pattern\r\n");
+
+    // Set TPG to generate color bars
+    Xil_Out32(config->uBaseAddr_TPG_PatternGenerator + 0x10, 0x00000001); // Enable TPG
+    Xil_Out32(config->uBaseAddr_TPG_PatternGenerator + 0x20, 1920); // Set width
+    Xil_Out32(config->uBaseAddr_TPG_PatternGenerator + 0x24, 1080); // Set height
+    Xil_Out32(config->uBaseAddr_TPG_PatternGenerator + 0x30, 0x00000002); // Set pattern to Color Bars
+}
+
+void camera_config_init(camera_config_t *config) {
+
+    config->uBaseAddr_IIC_FmcIpmi =  XPAR_FMC_IPMI_ID_EEPROM_0_BASEADDR;   // Device for reading HDMI board IPMI EEPROM information
+    config->uBaseAddr_IIC_FmcImageon = XPAR_FMC_IMAGEON_IIC_0_BASEADDR;    // Device for configuring the HDMI board
+
+    // Uncomment when using VITA Camera for Video input
+//    config->uBaseAddr_VITA_SPI = XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR;  // Device for configuring the Camera sensor
+//    config->uBaseAddr_VITA_CAM = XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR;  // Device for receiving Camera sensor data
+
+
+    // Uncomment when using the TPG for Video input
+    config->uBaseAddr_TPG_PatternGenerator = XPAR_V_TPG_0_S_AXI_CTRL_BASEADDR; // TPG Device
+
+    config->uDeviceId_VTC_tpg   = XPAR_V_TC_0_DEVICE_ID;                        // Video Timer Controller (VTC) ID
+    config->uDeviceId_VDMA_HdmiFrameBuffer = XPAR_AXI_VDMA_0_DEVICE_ID;         // VDMA ID
+    config->uBaseAddr_MEM_HdmiFrameBuffer = XPAR_DDR_MEM_BASEADDR + 0x10000000; // VDMA base address for Frame buffers
+    config->uNumFrames_HdmiFrameBuffer = XPAR_AXIVDMA_0_NUM_FSTORES;            // NUmber of VDMA Frame buffers
+
+    return;
+}
+
+
+// Main function
+int main() {
+    camera_config_init(&camera_config);
+
+    // Configure TPG before enabling the camera
+    configure_tpg(&camera_config);
+
+    fmc_imageon_enable(&camera_config);
+    camera_loop(&camera_config);
+    return 0;
+}
+
+// Main processing loop with grayscale effect
+void camera_loop(camera_config_t *config) {
+    xil_printf("Entering main SW processing loop with grayscale effect\r\n");
+
+    volatile Xuint16 *pS2MM_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET);
+    volatile Xuint16 *pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+4);
+
+    for (int j = 0; j < 1000; j++) {
+        for (int i = 0; i < 1920 * 1080; i++) {
+            Xuint16 pixel = pS2MM_Mem[i];
+            Xuint8 r = (pixel >> 11) & 0x1F;
+            Xuint8 g = (pixel >> 5) & 0x3F;
+            Xuint8 b = pixel & 0x1F;
+
+            Xuint8 gray = (r * 30 + g * 59 + b * 11) / 100; // Grayscale conversion
+
+            pMM2S_Mem[i] = (gray << 11) | (gray << 5) | gray; // Apply grayscale effect
+        }
+    }
+    xil_printf("Processing complete!\r\n");
+    sleep(5);
+    fmc_imageon_disable_tpg(config);
+}
