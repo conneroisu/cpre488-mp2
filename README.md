@@ -9,6 +9,12 @@ Initialize the `Vivado_init.tcl` script to set up your Vivado environment startu
 python3 init.py
 ```
 
+Run the `Vivado/gen_src.tcl` script to generate the IP cores and other sources from the Vivado project configuration.
+
+```bat
+cd %userprofile%
+```
+
 ## Report 
 
 Tasks:
