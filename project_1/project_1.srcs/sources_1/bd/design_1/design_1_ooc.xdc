@@ -7,7 +7,10 @@
 # of Vivado)
 ################################################################################
 create_clock -name fmc_imageon_vclk -period 6.734 [get_ports fmc_imageon_vclk]
-create_clock -name processing_system7_0_FCLK_CLK0 -period 10 [get_pins processing_system7_0/FCLK_CLK0]
+create_clock -name IO_VITA_CAM_clk_out_p -period 10 [get_ports IO_VITA_CAM_clk_out_p]
+create_clock -name IO_VITA_CAM_clk_out_n -period 10 [get_ports IO_VITA_CAM_clk_out_n]
+create_clock -name processing_system7_0_FCLK_CLK0 -period 13 [get_pins processing_system7_0/FCLK_CLK0]
 create_clock -name processing_system7_0_FCLK_CLK1 -period 7 [get_pins processing_system7_0/FCLK_CLK1]
+create_clock -name processing_system7_0_FCLK_CLK2 -period 5 [get_pins processing_system7_0/FCLK_CLK2]
 
 ################################################################################

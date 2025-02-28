@@ -84,33 +84,33 @@ set_property IOSTANDARD LVCMOS25 [get_ports IO_HDMIO_spdif]
 # VITA Camera Sensor interface
 
    # SPI for Camera configuration
-#set_property PACKAGE_PIN P20 [get_ports IO_VITA_SPI_spi_sclk]
-#set_property PACKAGE_PIN P21 [get_ports IO_VITA_SPI_spi_ssel_n]
-#set_property PACKAGE_PIN N17 [get_ports IO_VITA_SPI_spi_mosi]
-#set_property PACKAGE_PIN N18 [get_ports IO_VITA_SPI_spi_miso]
+set_property PACKAGE_PIN P20 [get_ports IO_VITA_SPI_spi_sclk]
+set_property PACKAGE_PIN P21 [get_ports IO_VITA_SPI_spi_ssel_n]
+set_property PACKAGE_PIN N17 [get_ports IO_VITA_SPI_spi_mosi]
+set_property PACKAGE_PIN N18 [get_ports IO_VITA_SPI_spi_miso]
 
 
    # Camera data, clocking, reset, trigger, and sync   
-#set_property PACKAGE_PIN L17 [get_ports IO_VITA_CAM_clk_pll]
-#set_property PACKAGE_PIN L19 [get_ports IO_VITA_CAM_reset_n]
-#set_property PACKAGE_PIN M17 [get_ports {IO_VITA_CAM_trigger[2]}]
-#set_property PACKAGE_PIN K19 [get_ports {IO_VITA_CAM_trigger[1]}]
-#set_property PACKAGE_PIN K20 [get_ports {IO_VITA_CAM_trigger[0]}]
-#set_property PACKAGE_PIN J16 [get_ports {IO_VITA_CAM_monitor[0]}]
-#set_property PACKAGE_PIN J17 [get_ports {IO_VITA_CAM_monitor[1]}]
+set_property PACKAGE_PIN L17 [get_ports IO_VITA_CAM_clk_pll]
+set_property PACKAGE_PIN L19 [get_ports IO_VITA_CAM_reset_n]
+set_property PACKAGE_PIN M17 [get_ports {IO_VITA_CAM_trigger[2]}]
+set_property PACKAGE_PIN K19 [get_ports {IO_VITA_CAM_trigger[1]}]
+set_property PACKAGE_PIN K20 [get_ports {IO_VITA_CAM_trigger[0]}]
+set_property PACKAGE_PIN J16 [get_ports {IO_VITA_CAM_monitor[0]}]
+set_property PACKAGE_PIN J17 [get_ports {IO_VITA_CAM_monitor[1]}]
 
-#set_property PACKAGE_PIN M19 [get_ports IO_VITA_CAM_clk_out_p]
-#set_property PACKAGE_PIN M20 [get_ports IO_VITA_CAM_clk_out_n]
-#set_property PACKAGE_PIN R19 [get_ports IO_VITA_CAM_sync_p]
-#set_property PACKAGE_PIN T19 [get_ports IO_VITA_CAM_sync_n]
-#set_property PACKAGE_PIN R20 [get_ports {IO_VITA_CAM_data_p[0]}]
-#set_property PACKAGE_PIN R21 [get_ports {IO_VITA_CAM_data_n[0]}]
-#set_property PACKAGE_PIN T16 [get_ports {IO_VITA_CAM_data_p[1]}]
-#set_property PACKAGE_PIN T17 [get_ports {IO_VITA_CAM_data_n[1]}]
-#set_property PACKAGE_PIN J21 [get_ports {IO_VITA_CAM_data_p[2]}]
-#set_property PACKAGE_PIN J22 [get_ports {IO_VITA_CAM_data_n[2]}]
-#set_property PACKAGE_PIN J18 [get_ports {IO_VITA_CAM_data_p[3]}]
-#set_property PACKAGE_PIN K18 [get_ports {IO_VITA_CAM_data_n[3]}]
+set_property PACKAGE_PIN M19 [get_ports IO_VITA_CAM_clk_out_p]
+set_property PACKAGE_PIN M20 [get_ports IO_VITA_CAM_clk_out_n]
+set_property PACKAGE_PIN R19 [get_ports IO_VITA_CAM_sync_p]
+set_property PACKAGE_PIN T19 [get_ports IO_VITA_CAM_sync_n]
+set_property PACKAGE_PIN R20 [get_ports {IO_VITA_CAM_data_p[0]}]
+set_property PACKAGE_PIN R21 [get_ports {IO_VITA_CAM_data_n[0]}]
+set_property PACKAGE_PIN T16 [get_ports {IO_VITA_CAM_data_p[1]}]
+set_property PACKAGE_PIN T17 [get_ports {IO_VITA_CAM_data_n[1]}]
+set_property PACKAGE_PIN J21 [get_ports {IO_VITA_CAM_data_p[2]}]
+set_property PACKAGE_PIN J22 [get_ports {IO_VITA_CAM_data_n[2]}]
+set_property PACKAGE_PIN J18 [get_ports {IO_VITA_CAM_data_p[3]}]
+set_property PACKAGE_PIN K18 [get_ports {IO_VITA_CAM_data_n[3]}]
 # phjones: NOT USED  set_property PACKAGE_PIN M21 [get_ports {IO_VITA_CAM_data_p[4]}];
 # phjones: NOT USED  set_property PACKAGE_PIN M22 [get_ports {IO_VITA_CAM_data_n[4]}];
 # phjones: NOT USED  set_property PACKAGE_PIN L21 [get_ports {IO_VITA_CAM_data_p[5]}];
@@ -120,19 +120,19 @@ set_property IOSTANDARD LVCMOS25 [get_ports IO_HDMIO_spdif]
 # phjones: NOT USED  set_property PACKAGE_PIN P17 [get_ports {IO_VITA_CAM_data_p[7]}];
 # phjones: NOT USED  set_property PACKAGE_PIN P18 [get_ports {IO_VITA_CAM_data_n[7]}];
 
-#set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_clk_pll]
-#set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_reset_n]
-#set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_trigger*]
-#set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_monitor*]
-#set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_SPI_spi_*]
+set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_clk_pll]
+set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_reset_n]
+set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_trigger*]
+set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_monitor*]
+set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_SPI_spi_*]
 
-#set_property IOSTANDARD LVDS_25 [get_ports IO_VITA_CAM_clk_out_*]
-#set_property IOSTANDARD LVDS_25 [get_ports IO_VITA_CAM_sync_*]
-#set_property IOSTANDARD LVDS_25 [get_ports IO_VITA_CAM_data_*]
+set_property IOSTANDARD LVDS_25 [get_ports IO_VITA_CAM_clk_out_*]
+set_property IOSTANDARD LVDS_25 [get_ports IO_VITA_CAM_sync_*]
+set_property IOSTANDARD LVDS_25 [get_ports IO_VITA_CAM_data_*]
 
-#set_property DIFF_TERM true [get_ports IO_VITA_CAM_clk_out_*]
-#set_property DIFF_TERM true [get_ports IO_VITA_CAM_sync_*]
-#set_property DIFF_TERM true [get_ports IO_VITA_CAM_data_*]
+set_property DIFF_TERM true [get_ports IO_VITA_CAM_clk_out_*]
+set_property DIFF_TERM true [get_ports IO_VITA_CAM_sync_*]
+set_property DIFF_TERM true [get_ports IO_VITA_CAM_data_*]
 
 
 # Video Clock Synthesizer

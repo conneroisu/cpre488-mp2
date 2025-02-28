@@ -1,0 +1,1675 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Fri Feb 28 01:54:22 2025
+# Process ID: 11164
+# Current directory: Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_onsemi_vita_cam_0_0_synth_1
+# Command line: vivado.exe -log design_1_onsemi_vita_cam_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_onsemi_vita_cam_0_0.tcl
+# Log file: Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_onsemi_vita_cam_0_0_synth_1/design_1_onsemi_vita_cam_0_0.vds
+# Journal file: Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_onsemi_vita_cam_0_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_onsemi_vita_cam_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'Z:/Vivado/Xilinx/Vivado/2020.1/data/ip'.
+WARNING: [IP_Flow 19-1663] Duplicate IP found for 'avnet:avnet_hdmi:avnet_hdmi_out:3.1'. The one found in IP location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/avnet_hdmi_out' will take precedence over the same IP in location z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/avnet_hdmi_out
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_ali3:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_ali3.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/avnet_ali3.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_hdmi:2.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_hdmi.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/avnet_hdmi.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_cam:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_cam.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/onsemi_vita_cam.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_spi:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_spi.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/onsemi_vita_spi.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:user:SF_SM_Master_Bus:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/SF_SM_Master_Bus.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/SF_SM_Master_Bus.xml'
+Command: synth_design -top design_1_onsemi_vita_cam_0_0 -part xc7z020clg484-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 17112
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1033.133 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'design_1_onsemi_vita_cam_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_onsemi_vita_cam_0_0/synth/design_1_onsemi_vita_cam_0_0.vhd:107]
+	Parameter C_VIDEO_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter C_VIDEO_DIRECT_OUTPUT bound to: 0 - type: integer 
+	Parameter C_IO_VITA_DATA_WIDTH bound to: 4 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-3491] module 'onsemi_vita_cam_v3_1' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1.vhd:69' bound to instance 'U0' of component 'onsemi_vita_cam_v3_1' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_onsemi_vita_cam_0_0/synth/design_1_onsemi_vita_cam_0_0.vhd:222]
+INFO: [Synth 8-638] synthesizing module 'onsemi_vita_cam_v3_1' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1.vhd:152]
+	Parameter C_VIDEO_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter C_VIDEO_DIRECT_OUTPUT bound to: 0 - type: integer 
+	Parameter C_IO_VITA_DATA_WIDTH bound to: 4 - type: integer 
+	Parameter C_INCLUDE_BLC bound to: 0 - type: integer 
+	Parameter C_INCLUDE_MONITOR bound to: 0 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter C_VIDEO_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter C_VIDEO_DIRECT_OUTPUT bound to: 0 - type: integer 
+	Parameter C_IO_VITA_DATA_WIDTH bound to: 4 - type: integer 
+	Parameter C_INCLUDE_BLC bound to: 0 - type: integer 
+	Parameter C_INCLUDE_MONITOR bound to: 0 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-3491] module 'onsemi_vita_cam_v3_1_S00_AXI' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:192' bound to instance 'onsemi_vita_cam_v3_1_S00_AXI_inst' of component 'onsemi_vita_cam_v3_1_S00_AXI' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1.vhd:231]
+INFO: [Synth 8-638] synthesizing module 'onsemi_vita_cam_v3_1_S00_AXI' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:311]
+	Parameter C_VIDEO_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter C_VIDEO_DIRECT_OUTPUT bound to: 0 - type: integer 
+	Parameter C_IO_VITA_DATA_WIDTH bound to: 4 - type: integer 
+	Parameter C_INCLUDE_BLC bound to: 0 - type: integer 
+	Parameter C_INCLUDE_MONITOR bound to: 0 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 8 - type: integer 
+WARNING: [Synth 8-614] signal 'slv_reg3_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg4_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg14_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg15_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg16_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg17_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg18_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg19_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg20_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg21_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg22_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg29_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg48_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg49_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg50_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+WARNING: [Synth 8-614] signal 'slv_reg51_r1' is read in the process but is not in the sensitivity list [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:1383]
+	Parameter BUFR_DIVIDE bound to: 4 - type: string 
+	Parameter SIM_DEVICE bound to: 7series - type: string 
+INFO: [Synth 8-113] binding component instance 'vita_clk_div4_l' to cell 'BUFR' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:2001]
+	Parameter C_VIDEO_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter C_VIDEO_DIRECT_OUTPUT bound to: 0 - type: integer 
+	Parameter C_IO_VITA_DATA_WIDTH bound to: 4 - type: integer 
+	Parameter C_INCLUDE_BLC bound to: 0 - type: integer 
+	Parameter C_INCLUDE_MONITOR bound to: 0 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+INFO: [Synth 8-3491] module 'onsemi_vita_cam_core' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:113' bound to instance 'onsemi_vita_cam_core_inst' of component 'onsemi_vita_cam_core' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:2017]
+INFO: [Synth 8-638] synthesizing module 'onsemi_vita_cam_core' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:235]
+	Parameter C_VIDEO_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter C_VIDEO_DIRECT_OUTPUT bound to: 0 - type: integer 
+	Parameter C_IO_VITA_DATA_WIDTH bound to: 4 - type: integer 
+	Parameter C_INCLUDE_BLC bound to: 0 - type: integer 
+	Parameter C_INCLUDE_MONITOR bound to: 0 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter SIMULATION bound to: 0 - type: integer 
+	Parameter NROF_CONN bound to: 5 - type: integer 
+	Parameter NROF_CONTR_CONN bound to: 5 - type: integer 
+	Parameter NROF_CLOCKCOMP bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter CLKSPEED bound to: 62 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter NROF_DELAYCTRLS bound to: 1 - type: integer 
+	Parameter IDELAYCLK_MULT bound to: 3 - type: integer 
+	Parameter IDELAYCLK_DIV bound to: 1 - type: integer 
+	Parameter GENIDELAYCLK bound to: 0 - type: bool 
+	Parameter USE_OUTPLL bound to: 0 - type: bool 
+	Parameter USE_INPLL bound to: 0 - type: bool 
+	Parameter USE_HS_EXT_CLK_IN bound to: 1 - type: bool 
+	Parameter USE_LS_EXT_CLK_IN bound to: 0 - type: bool 
+	Parameter USE_DIFF_HS_CLK_IN bound to: 1 - type: bool 
+	Parameter USE_DIFF_LS_CLK_IN bound to: 0 - type: bool 
+	Parameter USE_HS_REGIONAL_CLK bound to: 1 - type: bool 
+	Parameter USE_LS_REGIONAL_CLK bound to: 0 - type: bool 
+	Parameter USE_HS_EXT_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_LS_EXT_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_DIFF_HS_CLK_OUT bound to: 1 - type: bool 
+	Parameter USE_DIFF_LS_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_DATAPATH bound to: 1 - type: bool 
+INFO: [Synth 8-3491] module 'iserdes_interface' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:53' bound to instance 'vita_iserdes' of component 'iserdes_interface' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:951]
+INFO: [Synth 8-638] synthesizing module 'iserdes_interface' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:180]
+	Parameter SIMULATION bound to: 0 - type: integer 
+	Parameter NROF_CONN bound to: 5 - type: integer 
+	Parameter NROF_CONTR_CONN bound to: 5 - type: integer 
+	Parameter NROF_CLOCKCOMP bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter CLKSPEED bound to: 62 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter NROF_DELAYCTRLS bound to: 1 - type: integer 
+	Parameter IDELAYCLK_MULT bound to: 3 - type: integer 
+	Parameter IDELAYCLK_DIV bound to: 1 - type: integer 
+	Parameter GENIDELAYCLK bound to: 0 - type: bool 
+	Parameter USE_OUTPLL bound to: 0 - type: bool 
+	Parameter USE_INPLL bound to: 0 - type: bool 
+	Parameter USE_HS_EXT_CLK_IN bound to: 1 - type: bool 
+	Parameter USE_LS_EXT_CLK_IN bound to: 0 - type: bool 
+	Parameter USE_DIFF_HS_CLK_IN bound to: 1 - type: bool 
+	Parameter USE_DIFF_LS_CLK_IN bound to: 0 - type: bool 
+	Parameter USE_HS_REGIONAL_CLK bound to: 1 - type: bool 
+	Parameter USE_LS_REGIONAL_CLK bound to: 0 - type: bool 
+	Parameter USE_HS_EXT_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_LS_EXT_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_DIFF_HS_CLK_OUT bound to: 1 - type: bool 
+	Parameter USE_DIFF_LS_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_DATAPATH bound to: 1 - type: bool 
+	Parameter NROF_DELAYCTRLS bound to: 1 - type: integer 
+	Parameter IDELAYCLK_MULT bound to: 3 - type: integer 
+	Parameter IDELAYCLK_DIV bound to: 1 - type: integer 
+	Parameter GENIDELAYCLK bound to: 0 - type: bool 
+INFO: [Synth 8-3491] module 'iserdes_idelayctrl' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_idelayctrl.vhd:42' bound to instance 'serdesidelayrefclk' of component 'iserdes_idelayctrl' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:445]
+INFO: [Synth 8-638] synthesizing module 'iserdes_idelayctrl' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_idelayctrl.vhd:57]
+	Parameter NROF_DELAYCTRLS bound to: 1 - type: integer 
+	Parameter IDELAYCLK_MULT bound to: 3 - type: integer 
+	Parameter IDELAYCLK_DIV bound to: 1 - type: integer 
+	Parameter GENIDELAYCLK bound to: 0 - type: bool 
+	Parameter SIM_DEVICE bound to: 7SERIES - type: string 
+INFO: [Synth 8-113] binding component instance 'u_idelayctrl' to cell 'IDELAYCTRL' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_idelayctrl.vhd:171]
+INFO: [Synth 8-256] done synthesizing module 'iserdes_idelayctrl' (1#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_idelayctrl.vhd:57]
+	Parameter NROF_CONN bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'iserdes_compare' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_compare.vhd:46' bound to instance 'co' of component 'iserdes_compare' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:462]
+INFO: [Synth 8-638] synthesizing module 'iserdes_compare' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_compare.vhd:69]
+	Parameter NROF_CONN bound to: 5 - type: integer 
+INFO: [Synth 8-226] default block is never used [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_compare.vhd:123]
+INFO: [Synth 8-256] done synthesizing module 'iserdes_compare' (2#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_compare.vhd:69]
+	Parameter SIMULATION bound to: 0 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter CLKSPEED bound to: 62 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_OUTPLL bound to: 0 - type: bool 
+	Parameter USE_INPLL bound to: 0 - type: bool 
+	Parameter USE_HS_EXT_CLK_IN bound to: 1 - type: bool 
+	Parameter USE_LS_EXT_CLK_IN bound to: 0 - type: bool 
+	Parameter USE_DIFF_HS_CLK_IN bound to: 1 - type: bool 
+	Parameter USE_DIFF_LS_CLK_IN bound to: 0 - type: bool 
+	Parameter USE_HS_REGIONAL_CLK bound to: 1 - type: bool 
+	Parameter USE_LS_REGIONAL_CLK bound to: 0 - type: bool 
+	Parameter USE_HS_EXT_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_LS_EXT_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_DIFF_HS_CLK_OUT bound to: 1 - type: bool 
+	Parameter USE_DIFF_LS_CLK_OUT bound to: 0 - type: bool 
+INFO: [Synth 8-3491] module 'iserdes_clocks' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_clocks.vhd:56' bound to instance 'ic' of component 'iserdes_clocks' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:483]
+INFO: [Synth 8-638] synthesizing module 'iserdes_clocks' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_clocks.vhd:148]
+	Parameter SIMULATION bound to: 0 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter CLKSPEED bound to: 62 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_INPLL bound to: 0 - type: bool 
+	Parameter USE_OUTPLL bound to: 0 - type: bool 
+	Parameter USE_HS_EXT_CLK_IN bound to: 1 - type: bool 
+	Parameter USE_LS_EXT_CLK_IN bound to: 0 - type: bool 
+	Parameter USE_DIFF_HS_CLK_IN bound to: 1 - type: bool 
+	Parameter USE_DIFF_LS_CLK_IN bound to: 0 - type: bool 
+	Parameter USE_HS_REGIONAL_CLK bound to: 1 - type: bool 
+	Parameter USE_LS_REGIONAL_CLK bound to: 0 - type: bool 
+	Parameter USE_HS_EXT_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_LS_EXT_CLK_OUT bound to: 0 - type: bool 
+	Parameter USE_DIFF_HS_CLK_OUT bound to: 1 - type: bool 
+	Parameter USE_DIFF_LS_CLK_OUT bound to: 0 - type: bool 
+INFO: [Synth 8-113] binding component instance 'LSoutput_BUFGMUX_inst' to cell 'BUFGMUX_CTRL' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_clocks.vhd:699]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter DQS_BIAS bound to: FALSE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: 1 - type: bool 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-113] binding component instance 'IBUFDS_inst' to cell 'IBUFDS' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_clocks.vhd:1043]
+INFO: [Synth 8-113] binding component instance 'BUFIO_regional_hs_clk_in' to cell 'BUFIO' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_clocks.vhd:1070]
+	Parameter BUFR_DIVIDE bound to: 5 - type: string 
+	Parameter SIM_DEVICE bound to: 7series - type: string 
+INFO: [Synth 8-113] binding component instance 'BUFR_regional_hs_clk_in' to cell 'BUFR' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_clocks.vhd:1204]
+INFO: [Synth 8-256] done synthesizing module 'iserdes_clocks' (3#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_clocks.vhd:148]
+	Parameter NROF_CONN bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter C_FAMILY bound to: zynq - type: string 
+INFO: [Synth 8-3491] module 'iserdes_datadeser' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:56' bound to instance 'db' of component 'iserdes_datadeser' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:547]
+INFO: [Synth 8-638] synthesizing module 'iserdes_datadeser' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:126]
+	Parameter NROF_CONN bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter C_FAMILY bound to: zynq - type: string 
+WARNING: [Synth 8-5640] Port 'bit_width' is missing in component declaration [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:128]
+	Parameter NROF_CONN bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+INFO: [Synth 8-3491] module 'iserdes_control' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_control.vhd:59' bound to instance 'cb' of component 'iserdes_control' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:381]
+INFO: [Synth 8-638] synthesizing module 'iserdes_control' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_control.vhd:118]
+	Parameter NROF_CONN bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+INFO: [Synth 8-226] default block is never used [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_control.vhd:307]
+INFO: [Synth 8-226] default block is never used [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_control.vhd:414]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_control.vhd:426]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_control.vhd:427]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_control.vhd:428]
+INFO: [Synth 8-256] done synthesizing module 'iserdes_control' (4#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_control.vhd:118]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_CONN bound to: 1 - type: integer 
+INFO: [Synth 8-3491] module 'iserdes_sync' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_sync.vhd:46' bound to instance 'ss' of component 'iserdes_sync' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:436]
+INFO: [Synth 8-638] synthesizing module 'iserdes_sync' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_sync.vhd:103]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_CONN bound to: 1 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'iserdes_sync' (5#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_sync.vhd:103]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_CONN bound to: 1 - type: integer 
+INFO: [Synth 8-3491] module 'iserdes_mux' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_mux.vhd:56' bound to instance 'im' of component 'iserdes_mux' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:490]
+INFO: [Synth 8-638] synthesizing module 'iserdes_mux' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_mux.vhd:96]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_CONN bound to: 1 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'iserdes_mux' (6#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_mux.vhd:96]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter C_FAMILY bound to: zynq - type: string 
+INFO: [Synth 8-3491] module 'iserdes_core' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_core.vhd:93' bound to instance 'ic' of component 'iserdes_core' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:535]
+INFO: [Synth 8-638] synthesizing module 'iserdes_core' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_core.vhd:149]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter DQS_BIAS bound to: FALSE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: 1 - type: bool 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-113] binding component instance 'IBUFDS_inst' to cell 'IBUFDS' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_core.vhd:226]
+	Parameter CINVCTRL_SEL bound to: FALSE - type: string 
+	Parameter DELAY_SRC bound to: IDATAIN - type: string 
+	Parameter HIGH_PERFORMANCE_MODE bound to: TRUE - type: string 
+	Parameter IDELAY_TYPE bound to: VARIABLE - type: string 
+	Parameter IDELAY_VALUE bound to: 0 - type: integer 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_DATAIN_INVERTED bound to: 1'b0 
+	Parameter IS_IDATAIN_INVERTED bound to: 1'b0 
+	Parameter PIPE_SEL bound to: FALSE - type: string 
+	Parameter REFCLK_FREQUENCY bound to: 200.000000 - type: double 
+	Parameter SIGNAL_PATTERN bound to: DATA - type: string 
+INFO: [Synth 8-113] binding component instance 'IDELAYE2_inst' to cell 'IDELAYE2' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_core.vhd:322]
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DATA_WIDTH bound to: 10 - type: integer 
+	Parameter DYN_CLKDIV_INV_EN bound to: FALSE - type: string 
+	Parameter DYN_CLK_INV_EN bound to: FALSE - type: string 
+	Parameter INIT_Q1 bound to: 1'b0 
+	Parameter INIT_Q2 bound to: 1'b0 
+	Parameter INIT_Q3 bound to: 1'b0 
+	Parameter INIT_Q4 bound to: 1'b0 
+	Parameter INTERFACE_TYPE bound to: NETWORKING - type: string 
+	Parameter IOBDELAY bound to: IFD - type: string 
+	Parameter IS_CLKB_INVERTED bound to: 1'b0 
+	Parameter IS_CLKDIVP_INVERTED bound to: 1'b0 
+	Parameter IS_CLKDIV_INVERTED bound to: 1'b0 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_OCLKB_INVERTED bound to: 1'b0 
+	Parameter IS_OCLK_INVERTED bound to: 1'b0 
+	Parameter NUM_CE bound to: 2 - type: integer 
+	Parameter OFB_USED bound to: FALSE - type: string 
+	Parameter SERDES_MODE bound to: MASTER - type: string 
+	Parameter SRVAL_Q1 bound to: 1'b0 
+	Parameter SRVAL_Q2 bound to: 1'b0 
+	Parameter SRVAL_Q3 bound to: 1'b0 
+	Parameter SRVAL_Q4 bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'Master_iserdes' to cell 'ISERDESE2' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_core.vhd:462]
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DATA_WIDTH bound to: 10 - type: integer 
+	Parameter DYN_CLKDIV_INV_EN bound to: FALSE - type: string 
+	Parameter DYN_CLK_INV_EN bound to: FALSE - type: string 
+	Parameter INIT_Q1 bound to: 1'b0 
+	Parameter INIT_Q2 bound to: 1'b0 
+	Parameter INIT_Q3 bound to: 1'b0 
+	Parameter INIT_Q4 bound to: 1'b0 
+	Parameter INTERFACE_TYPE bound to: NETWORKING - type: string 
+	Parameter IOBDELAY bound to: NONE - type: string 
+	Parameter IS_CLKB_INVERTED bound to: 1'b0 
+	Parameter IS_CLKDIVP_INVERTED bound to: 1'b0 
+	Parameter IS_CLKDIV_INVERTED bound to: 1'b0 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_OCLKB_INVERTED bound to: 1'b0 
+	Parameter IS_OCLK_INVERTED bound to: 1'b0 
+	Parameter NUM_CE bound to: 2 - type: integer 
+	Parameter OFB_USED bound to: FALSE - type: string 
+	Parameter SERDES_MODE bound to: SLAVE - type: string 
+	Parameter SRVAL_Q1 bound to: 1'b0 
+	Parameter SRVAL_Q2 bound to: 1'b0 
+	Parameter SRVAL_Q3 bound to: 1'b0 
+	Parameter SRVAL_Q4 bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'Slave_iserdes' to cell 'ISERDESE2' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_core.vhd:687]
+	Parameter ALMOST_EMPTY_OFFSET bound to: 12'b000010000000 
+	Parameter ALMOST_FULL_OFFSET bound to: 12'b000010000000 
+	Parameter DATA_WIDTH bound to: 18 - type: integer 
+	Parameter DO_REG bound to: 1 - type: integer 
+	Parameter EN_SYN bound to: 0 - type: bool 
+	Parameter FIRST_WORD_FALL_THROUGH bound to: 0 - type: bool 
+	Parameter SIM_MODE bound to: SAFE - type: string 
+INFO: [Synth 8-113] binding component instance 'FIFO18_inst' to cell 'FIFO18' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_core.vhd:781]
+INFO: [Synth 8-256] done synthesizing module 'iserdes_core' (7#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_core.vhd:149]
+INFO: [Synth 8-256] done synthesizing module 'iserdes_datadeser' (8#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:126]
+	Parameter NROF_CONN bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter C_FAMILY bound to: zynq - type: string 
+INFO: [Synth 8-3491] module 'iserdes_datadeser' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:56' bound to instance 'db' of component 'iserdes_datadeser' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:547]
+	Parameter NROF_CONN bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter C_FAMILY bound to: zynq - type: string 
+INFO: [Synth 8-3491] module 'iserdes_datadeser' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:56' bound to instance 'db' of component 'iserdes_datadeser' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:547]
+	Parameter NROF_CONN bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter C_FAMILY bound to: zynq - type: string 
+INFO: [Synth 8-3491] module 'iserdes_datadeser' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:56' bound to instance 'db' of component 'iserdes_datadeser' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:547]
+	Parameter NROF_CONN bound to: 1 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter RETRY_MAX bound to: 32767 - type: integer 
+	Parameter STABLE_COUNT bound to: 16 - type: integer 
+	Parameter TAP_COUNT_MAX bound to: 32 - type: integer 
+	Parameter DATA_RATE bound to: DDR - type: string 
+	Parameter DIFF_TERM bound to: 1 - type: bool 
+	Parameter USE_FIFO bound to: 1 - type: bool 
+	Parameter USE_BLOCKRAMFIFO bound to: 1 - type: bool 
+	Parameter INVERT_OUTPUT bound to: 0 - type: bool 
+	Parameter INVERSE_BITORDER bound to: 0 - type: bool 
+	Parameter C_FAMILY bound to: zynq - type: string 
+INFO: [Synth 8-3491] module 'iserdes_datadeser' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_datadeser.vhd:56' bound to instance 'db' of component 'iserdes_datadeser' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:547]
+INFO: [Synth 8-256] done synthesizing module 'iserdes_interface' (9#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/iserdes_interface.vhd:180]
+	Parameter NROF_CONN bound to: 5 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_WINDOWS bound to: 8 - type: integer 
+	Parameter C_INCLUDE_MONITOR bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'syncchanneldecoder' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/syncchanneldecoder.vhd:54' bound to instance 'vita_syncchanneldecoder' of component 'syncchanneldecoder' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1063]
+INFO: [Synth 8-638] synthesizing module 'syncchanneldecoder' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/syncchanneldecoder.vhd:146]
+	Parameter NROF_CONN bound to: 5 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_WINDOWS bound to: 8 - type: integer 
+	Parameter C_INCLUDE_MONITOR bound to: 0 - type: integer 
+INFO: [Synth 8-226] default block is never used [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/syncchanneldecoder.vhd:692]
+INFO: [Synth 8-256] done synthesizing module 'syncchanneldecoder' (10#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/syncchanneldecoder.vhd:146]
+	Parameter NROF_DATACONN bound to: 4 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_WINDOWS bound to: 8 - type: integer 
+	Parameter POLYNOMIAL bound to: 11'b11001001111 
+INFO: [Synth 8-3491] module 'crc_checker' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:55' bound to instance 'vita_crc_checker' of component 'crc_checker' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1156]
+INFO: [Synth 8-638] synthesizing module 'crc_checker' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:104]
+	Parameter NROF_DATACONN bound to: 4 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_WINDOWS bound to: 8 - type: integer 
+	Parameter POLYNOMIAL bound to: 11'b11001001111 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter POLYNOMIAL bound to: 11'b11001001111 
+	Parameter USE_CRC_TOOL bound to: 1 - type: bool 
+INFO: [Synth 8-3491] module 'crc_calc' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_calc.vhd:57' bound to instance 'the_crc_calc' of component 'crc_calc' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:172]
+INFO: [Synth 8-638] synthesizing module 'crc_calc' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_calc.vhd:78]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter POLYNOMIAL bound to: 11'b11001001111 
+	Parameter USE_CRC_TOOL bound to: 1 - type: bool 
+INFO: [Synth 8-256] done synthesizing module 'crc_calc' (11#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_calc.vhd:78]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'crc_comp' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_comp.vhd:50' bound to instance 'the_crc_comp' of component 'crc_comp' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:189]
+INFO: [Synth 8-638] synthesizing module 'crc_comp' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_comp.vhd:71]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-226] default block is never used [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_comp.vhd:121]
+INFO: [Synth 8-256] done synthesizing module 'crc_comp' (12#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_comp.vhd:71]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter POLYNOMIAL bound to: 11'b11001001111 
+	Parameter USE_CRC_TOOL bound to: 1 - type: bool 
+INFO: [Synth 8-3491] module 'crc_calc' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_calc.vhd:57' bound to instance 'the_crc_calc' of component 'crc_calc' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:172]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'crc_comp' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_comp.vhd:50' bound to instance 'the_crc_comp' of component 'crc_comp' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:189]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter POLYNOMIAL bound to: 11'b11001001111 
+	Parameter USE_CRC_TOOL bound to: 1 - type: bool 
+INFO: [Synth 8-3491] module 'crc_calc' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_calc.vhd:57' bound to instance 'the_crc_calc' of component 'crc_calc' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:172]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'crc_comp' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_comp.vhd:50' bound to instance 'the_crc_comp' of component 'crc_comp' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:189]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter POLYNOMIAL bound to: 11'b11001001111 
+	Parameter USE_CRC_TOOL bound to: 1 - type: bool 
+INFO: [Synth 8-3491] module 'crc_calc' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_calc.vhd:57' bound to instance 'the_crc_calc' of component 'crc_calc' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:172]
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'crc_comp' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_comp.vhd:50' bound to instance 'the_crc_comp' of component 'crc_comp' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:189]
+INFO: [Synth 8-226] default block is never used [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:215]
+INFO: [Synth 8-256] done synthesizing module 'crc_checker' (13#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/crc_check.vhd:104]
+	Parameter NROF_DATACONN bound to: 4 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_WINDOWS bound to: 8 - type: integer 
+INFO: [Synth 8-3491] module 'remapper' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/remapper.vhd:54' bound to instance 'vita_remapper' of component 'remapper' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1207]
+INFO: [Synth 8-638] synthesizing module 'remapper' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/remapper.vhd:98]
+	Parameter NROF_DATACONN bound to: 4 - type: integer 
+	Parameter DATAWIDTH bound to: 10 - type: integer 
+	Parameter NROF_WINDOWS bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'remapper' (14#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/remapper.vhd:98]
+INFO: [Synth 8-3491] module 'triggergenerator' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/triggergenerator.vhd:53' bound to instance 'vita_triggergenerator' of component 'triggergenerator' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1307]
+INFO: [Synth 8-638] synthesizing module 'triggergenerator' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/triggergenerator.vhd:81]
+INFO: [Synth 8-256] done synthesizing module 'triggergenerator' (15#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/triggergenerator.vhd:81]
+	Parameter C_FAMILY bound to: zynq - type: string 
+INFO: [Synth 8-3491] module 'pulse_regen' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/pulse_regen.vhd:39' bound to instance 'framestart2_regen_l' of component 'pulse_regen' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1389]
+INFO: [Synth 8-638] synthesizing module 'pulse_regen' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/pulse_regen.vhd:57]
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter FIFO_MEMORY_TYPE bound to: auto - type: string 
+	Parameter FIFO_WRITE_DEPTH bound to: 16 - type: integer 
+	Parameter CASCADE_HEIGHT bound to: 0 - type: integer 
+	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
+	Parameter WRITE_DATA_WIDTH bound to: 1 - type: integer 
+	Parameter READ_MODE bound to: fwft - type: string 
+	Parameter FIFO_READ_LATENCY bound to: 1 - type: integer 
+	Parameter FULL_RESET_VALUE bound to: 0 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 0707 - type: string 
+	Parameter READ_DATA_WIDTH bound to: 1 - type: integer 
+	Parameter CDC_SYNC_STAGES bound to: 2 - type: integer 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 4 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 8 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 4 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 8 - type: integer 
+	Parameter DOUT_RESET_VALUE bound to: 0 - type: string 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'xpm_fifo_async' declared at 'Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037' bound to instance 'pulse_regen_l' of component 'xpm_fifo_async' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/pulse_regen.vhd:65]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_async' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037]
+	Parameter FIFO_MEMORY_TYPE bound to: auto - type: string 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter CASCADE_HEIGHT bound to: 0 - type: integer 
+	Parameter FIFO_WRITE_DEPTH bound to: 16 - type: integer 
+	Parameter WRITE_DATA_WIDTH bound to: 1 - type: integer 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 4 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 8 - type: integer 
+	Parameter FULL_RESET_VALUE bound to: 0 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 0707 - type: string 
+	Parameter READ_MODE bound to: fwft - type: string 
+	Parameter FIFO_READ_LATENCY bound to: 1 - type: integer 
+	Parameter READ_DATA_WIDTH bound to: 1 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 4 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 8 - type: integer 
+	Parameter DOUT_RESET_VALUE bound to: 0 - type: string 
+	Parameter CDC_SYNC_STAGES bound to: 2 - type: integer 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+	Parameter EN_ADV_FEATURE_ASYNC bound to: 16'b0000011100000111 
+	Parameter P_FIFO_MEMORY_TYPE bound to: 0 - type: integer 
+	Parameter P_COMMON_CLOCK bound to: 0 - type: integer 
+	Parameter P_ECC_MODE bound to: 0 - type: integer 
+	Parameter P_READ_MODE bound to: 1 - type: integer 
+	Parameter P_WAKEUP_TIME bound to: 2 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:56]
+	Parameter COMMON_CLOCK bound to: 0 - type: integer 
+	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
+	Parameter FIFO_MEMORY_TYPE bound to: 0 - type: integer 
+	Parameter ECC_MODE bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter CASCADE_HEIGHT bound to: 0 - type: integer 
+	Parameter FIFO_WRITE_DEPTH bound to: 16 - type: integer 
+	Parameter WRITE_DATA_WIDTH bound to: 1 - type: integer 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 4 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 8 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 0707 - type: string 
+	Parameter READ_MODE bound to: 1 - type: integer 
+	Parameter FIFO_READ_LATENCY bound to: 1 - type: integer 
+	Parameter READ_DATA_WIDTH bound to: 1 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 4 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 8 - type: integer 
+	Parameter DOUT_RESET_VALUE bound to: 0 - type: string 
+	Parameter CDC_DEST_SYNC_FF bound to: 2 - type: integer 
+	Parameter FULL_RESET_VALUE bound to: 0 - type: integer 
+	Parameter REMOVE_WR_RD_PROT_LOGIC bound to: 0 - type: integer 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter invalid bound to: 0 - type: integer 
+	Parameter stage1_valid bound to: 2 - type: integer 
+	Parameter stage2_valid bound to: 1 - type: integer 
+	Parameter both_stages_valid bound to: 3 - type: integer 
+	Parameter FIFO_MEM_TYPE bound to: 0 - type: integer 
+	Parameter RD_MODE bound to: 1 - type: integer 
+	Parameter ENABLE_ECC bound to: 0 - type: integer 
+	Parameter FIFO_READ_DEPTH bound to: 16 - type: integer 
+	Parameter FIFO_SIZE bound to: 16 - type: integer 
+	Parameter WR_WIDTH_LOG bound to: 0 - type: integer 
+	Parameter WR_DEPTH_LOG bound to: 4 - type: integer 
+	Parameter WR_PNTR_WIDTH bound to: 4 - type: integer 
+	Parameter RD_PNTR_WIDTH bound to: 4 - type: integer 
+	Parameter FULL_RST_VAL bound to: 1'b0 
+	Parameter WR_RD_RATIO bound to: 0 - type: integer 
+	Parameter PF_THRESH_ADJ bound to: 6 - type: integer 
+	Parameter PE_THRESH_ADJ bound to: 6 - type: integer 
+	Parameter PF_THRESH_MIN bound to: 7 - type: integer 
+	Parameter PF_THRESH_MAX bound to: 11 - type: integer 
+	Parameter PE_THRESH_MIN bound to: 5 - type: integer 
+	Parameter PE_THRESH_MAX bound to: 11 - type: integer 
+	Parameter WR_DC_WIDTH_EXT bound to: 5 - type: integer 
+	Parameter RD_DC_WIDTH_EXT bound to: 5 - type: integer 
+	Parameter RD_LATENCY bound to: 2 - type: integer 
+	Parameter WIDTH_RATIO bound to: 1 - type: integer 
+	Parameter EN_ADV_FEATURE bound to: 16'b0000011100000111 
+	Parameter EN_OF bound to: 1'b1 
+	Parameter EN_PF bound to: 1'b1 
+	Parameter EN_WDC bound to: 1'b1 
+	Parameter EN_AF bound to: 1'b0 
+	Parameter EN_WACK bound to: 1'b0 
+	Parameter FG_EQ_ASYM_DOUT bound to: 1'b0 
+	Parameter EN_UF bound to: 1'b1 
+	Parameter EN_PE bound to: 1'b1 
+	Parameter EN_RDC bound to: 1'b1 
+	Parameter EN_AE bound to: 1'b0 
+	Parameter EN_DVLD bound to: 1'b0 
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+	Parameter MEMORY_TYPE bound to: 1 - type: integer 
+	Parameter MEMORY_SIZE bound to: 16 - type: integer 
+	Parameter MEMORY_PRIMITIVE bound to: 0 - type: integer 
+	Parameter CLOCKING_MODE bound to: 1 - type: integer 
+	Parameter ECC_MODE bound to: 0 - type: integer 
+	Parameter MEMORY_INIT_FILE bound to: none - type: string 
+	Parameter MEMORY_INIT_PARAM bound to: (null) - type: string 
+	Parameter USE_MEM_INIT_MMI bound to: 0 - type: integer 
+	Parameter USE_MEM_INIT bound to: 0 - type: integer 
+	Parameter MEMORY_OPTIMIZATION bound to: true - type: string 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+	Parameter AUTO_SLEEP_TIME bound to: 0 - type: integer 
+	Parameter MESSAGE_CONTROL bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter USE_EMBEDDED_CONSTRAINT bound to: 0 - type: integer 
+	Parameter CASCADE_HEIGHT bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter WRITE_PROTECT bound to: 1 - type: integer 
+	Parameter WRITE_DATA_WIDTH_A bound to: 1 - type: integer 
+	Parameter READ_DATA_WIDTH_A bound to: 1 - type: integer 
+	Parameter BYTE_WRITE_WIDTH_A bound to: 1 - type: integer 
+	Parameter ADDR_WIDTH_A bound to: 4 - type: integer 
+	Parameter READ_RESET_VALUE_A bound to: 0 - type: string 
+	Parameter READ_LATENCY_A bound to: 2 - type: integer 
+	Parameter WRITE_MODE_A bound to: 2 - type: integer 
+	Parameter RST_MODE_A bound to: SYNC - type: string 
+	Parameter WRITE_DATA_WIDTH_B bound to: 1 - type: integer 
+	Parameter READ_DATA_WIDTH_B bound to: 1 - type: integer 
+	Parameter BYTE_WRITE_WIDTH_B bound to: 1 - type: integer 
+	Parameter ADDR_WIDTH_B bound to: 4 - type: integer 
+	Parameter READ_RESET_VALUE_B bound to: 0 - type: string 
+	Parameter READ_LATENCY_B bound to: 2 - type: integer 
+	Parameter WRITE_MODE_B bound to: 2 - type: integer 
+	Parameter RST_MODE_B bound to: SYNC - type: string 
+	Parameter P_MEMORY_PRIMITIVE bound to: auto - type: string 
+	Parameter P_MIN_WIDTH_DATA_A bound to: 1 - type: integer 
+	Parameter P_MIN_WIDTH_DATA_B bound to: 1 - type: integer 
+	Parameter P_MIN_WIDTH_DATA bound to: 1 - type: integer 
+	Parameter P_MIN_WIDTH_DATA_ECC bound to: 1 - type: integer 
+	Parameter P_MAX_DEPTH_DATA bound to: 16 - type: integer 
+	Parameter P_ECC_MODE bound to: no_ecc - type: string 
+	Parameter P_MEMORY_OPT bound to: yes - type: string 
+	Parameter P_WIDTH_COL_WRITE_A bound to: 1 - type: integer 
+	Parameter P_WIDTH_COL_WRITE_B bound to: 1 - type: integer 
+	Parameter P_NUM_COLS_WRITE_A bound to: 1 - type: integer 
+	Parameter P_NUM_COLS_WRITE_B bound to: 1 - type: integer 
+	Parameter P_NUM_ROWS_WRITE_A bound to: 1 - type: integer 
+	Parameter P_NUM_ROWS_WRITE_B bound to: 1 - type: integer 
+	Parameter P_NUM_ROWS_READ_A bound to: 1 - type: integer 
+	Parameter P_NUM_ROWS_READ_B bound to: 1 - type: integer 
+	Parameter P_WIDTH_ADDR_WRITE_A bound to: 4 - type: integer 
+	Parameter P_WIDTH_ADDR_WRITE_B bound to: 4 - type: integer 
+	Parameter P_WIDTH_ADDR_READ_A bound to: 4 - type: integer 
+	Parameter P_WIDTH_ADDR_READ_B bound to: 4 - type: integer 
+	Parameter P_WIDTH_ADDR_LSB_WRITE_A bound to: 0 - type: integer 
+	Parameter P_WIDTH_ADDR_LSB_WRITE_B bound to: 0 - type: integer 
+	Parameter P_WIDTH_ADDR_LSB_READ_A bound to: 0 - type: integer 
+	Parameter P_WIDTH_ADDR_LSB_READ_B bound to: 0 - type: integer 
+	Parameter P_ENABLE_BYTE_WRITE_A bound to: 0 - type: integer 
+	Parameter P_ENABLE_BYTE_WRITE_B bound to: 0 - type: integer 
+	Parameter P_SDP_WRITE_MODE bound to: yes - type: string 
+	Parameter rsta_loop_iter bound to: 4 - type: integer 
+	Parameter rstb_loop_iter bound to: 4 - type: integer 
+	Parameter NUM_CHAR_LOC bound to: 0 - type: integer 
+	Parameter MAX_NUM_CHAR bound to: 0 - type: integer 
+	Parameter P_MIN_WIDTH_DATA_SHFT bound to: 5 - type: integer 
+	Parameter P_MIN_WIDTH_DATA_LDW bound to: 1 - type: integer 
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:488]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (16#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+	Parameter DEST_SYNC_FF bound to: 2 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
+	Parameter REG_OUTPUT bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray' (17#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+	Parameter REG_WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec' (18#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized0' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+	Parameter DEST_SYNC_FF bound to: 4 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
+	Parameter REG_OUTPUT bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized0' (18#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec__parameterized0' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+	Parameter REG_WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec__parameterized0' (18#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized1' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+	Parameter DEST_SYNC_FF bound to: 2 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
+	Parameter REG_OUTPUT bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized1' (18#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_bit' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1798]
+	Parameter RST_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_bit' (19#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1798]
+INFO: [Synth 8-226] default block is never used [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1189]
+INFO: [Synth 8-226] default block is never used [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1235]
+INFO: [Synth 8-226] default block is never used [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1246]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+	Parameter COUNTER_WIDTH bound to: 2 - type: integer 
+	Parameter RESET_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn' (20#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_rst' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1514]
+	Parameter COMMON_CLOCK bound to: 0 - type: integer 
+	Parameter CDC_DEST_SYNC_FF bound to: 2 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_sync_rst' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
+	Parameter DEST_SYNC_FF bound to: 2 - type: integer 
+	Parameter INIT bound to: 32'sb00000000000000000000000000000000 
+	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter DEF_VAL bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_sync_rst' (21#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_rst' (22#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1514]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized0' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+	Parameter COUNTER_WIDTH bound to: 5 - type: integer 
+	Parameter RESET_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized0' (22#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized1' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+	Parameter COUNTER_WIDTH bound to: 4 - type: integer 
+	Parameter RESET_VALUE bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized1' (22#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized2' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+	Parameter COUNTER_WIDTH bound to: 4 - type: integer 
+	Parameter RESET_VALUE bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized2' (22#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base' (23#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:56]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_async' (24#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037]
+INFO: [Synth 8-256] done synthesizing module 'pulse_regen' (25#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/pulse_regen.vhd:57]
+	Parameter HWidth_g bound to: 16 - type: integer 
+	Parameter VWidth_g bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'VideoSyncGen' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/videosyncgen.vhd:59' bound to instance 'syncgen_l' of component 'VideoSyncGen' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1411]
+INFO: [Synth 8-638] synthesizing module 'VideoSyncGen' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/videosyncgen.vhd:98]
+	Parameter HWidth_g bound to: 16 - type: integer 
+	Parameter VWidth_g bound to: 16 - type: integer 
+INFO: [Synth 8-226] default block is never used [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/videosyncgen.vhd:204]
+INFO: [Synth 8-226] default block is never used [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/videosyncgen.vhd:313]
+INFO: [Synth 8-256] done synthesizing module 'VideoSyncGen' (26#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/videosyncgen.vhd:98]
+	Parameter C_FAMILY bound to: zynq - type: string 
+INFO: [Synth 8-3491] module 'afifo_64i_16o' declared at 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/afifo_64i_16o.vhd:39' bound to instance 'demux_fifo_l' of component 'afifo_64i_16o' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1482]
+INFO: [Synth 8-638] synthesizing module 'afifo_64i_16o' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/afifo_64i_16o.vhd:61]
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter FIFO_MEMORY_TYPE bound to: block - type: string 
+	Parameter FIFO_WRITE_DEPTH bound to: 4096 - type: integer 
+	Parameter CASCADE_HEIGHT bound to: 0 - type: integer 
+	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
+	Parameter WRITE_DATA_WIDTH bound to: 64 - type: integer 
+	Parameter READ_MODE bound to: fwft - type: string 
+	Parameter FIFO_READ_LATENCY bound to: 1 - type: integer 
+	Parameter FULL_RESET_VALUE bound to: 0 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 0707 - type: string 
+	Parameter READ_DATA_WIDTH bound to: 16 - type: integer 
+	Parameter CDC_SYNC_STAGES bound to: 2 - type: integer 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 10 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 2048 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 10 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 2048 - type: integer 
+	Parameter DOUT_RESET_VALUE bound to: 0 - type: string 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'xpm_fifo_async' declared at 'Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037' bound to instance 'afifo_64i_16o_l' of component 'xpm_fifo_async' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/afifo_64i_16o.vhd:76]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_async__parameterized1' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037]
+	Parameter FIFO_MEMORY_TYPE bound to: block - type: string 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter CASCADE_HEIGHT bound to: 0 - type: integer 
+	Parameter FIFO_WRITE_DEPTH bound to: 4096 - type: integer 
+	Parameter WRITE_DATA_WIDTH bound to: 64 - type: integer 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 10 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 2048 - type: integer 
+	Parameter FULL_RESET_VALUE bound to: 0 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 0707 - type: string 
+	Parameter READ_MODE bound to: fwft - type: string 
+	Parameter FIFO_READ_LATENCY bound to: 1 - type: integer 
+	Parameter READ_DATA_WIDTH bound to: 16 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 10 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 2048 - type: integer 
+	Parameter DOUT_RESET_VALUE bound to: 0 - type: string 
+	Parameter CDC_SYNC_STAGES bound to: 2 - type: integer 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+	Parameter EN_ADV_FEATURE_ASYNC bound to: 16'b0000011100000111 
+	Parameter P_FIFO_MEMORY_TYPE bound to: 2 - type: integer 
+	Parameter P_COMMON_CLOCK bound to: 0 - type: integer 
+	Parameter P_ECC_MODE bound to: 0 - type: integer 
+	Parameter P_READ_MODE bound to: 1 - type: integer 
+	Parameter P_WAKEUP_TIME bound to: 2 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base__parameterized0' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:56]
+	Parameter COMMON_CLOCK bound to: 0 - type: integer 
+	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
+	Parameter FIFO_MEMORY_TYPE bound to: 2 - type: integer 
+	Parameter ECC_MODE bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter CASCADE_HEIGHT bound to: 0 - type: integer 
+	Parameter FIFO_WRITE_DEPTH bound to: 4096 - type: integer 
+	Parameter WRITE_DATA_WIDTH bound to: 64 - type: integer 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 10 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 2048 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 0707 - type: string 
+	Parameter READ_MODE bound to: 1 - type: integer 
+	Parameter FIFO_READ_LATENCY bound to: 1 - type: integer 
+	Parameter READ_DATA_WIDTH bound to: 16 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 10 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 2048 - type: integer 
+	Parameter DOUT_RESET_VALUE bound to: 0 - type: string 
+	Parameter CDC_DEST_SYNC_FF bound to: 2 - type: integer 
+	Parameter FULL_RESET_VALUE bound to: 0 - type: integer 
+	Parameter REMOVE_WR_RD_PROT_LOGIC bound to: 0 - type: integer 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter invalid bound to: 0 - type: integer 
+	Parameter stage1_valid bound to: 2 - type: integer 
+	Parameter stage2_valid bound to: 1 - type: integer 
+	Parameter both_stages_valid bound to: 3 - type: integer 
+	Parameter FIFO_MEM_TYPE bound to: 2 - type: integer 
+	Parameter RD_MODE bound to: 1 - type: integer 
+	Parameter ENABLE_ECC bound to: 0 - type: integer 
+	Parameter FIFO_READ_DEPTH bound to: 16384 - type: integer 
+	Parameter FIFO_SIZE bound to: 262144 - type: integer 
+	Parameter WR_WIDTH_LOG bound to: 6 - type: integer 
+	Parameter WR_DEPTH_LOG bound to: 12 - type: integer 
+	Parameter WR_PNTR_WIDTH bound to: 12 - type: integer 
+	Parameter RD_PNTR_WIDTH bound to: 14 - type: integer 
+	Parameter FULL_RST_VAL bound to: 1'b0 
+	Parameter WR_RD_RATIO bound to: 0 - type: integer 
+	Parameter PF_THRESH_ADJ bound to: 2046 - type: integer 
+	Parameter PE_THRESH_ADJ bound to: 2046 - type: integer 
+	Parameter PF_THRESH_MIN bound to: 7 - type: integer 
+	Parameter PF_THRESH_MAX bound to: 4091 - type: integer 
+	Parameter PE_THRESH_MIN bound to: 5 - type: integer 
+	Parameter PE_THRESH_MAX bound to: 16379 - type: integer 
+	Parameter WR_DC_WIDTH_EXT bound to: 13 - type: integer 
+	Parameter RD_DC_WIDTH_EXT bound to: 15 - type: integer 
+	Parameter RD_LATENCY bound to: 2 - type: integer 
+	Parameter WIDTH_RATIO bound to: 4 - type: integer 
+	Parameter EN_ADV_FEATURE bound to: 16'b0000011100000111 
+	Parameter EN_OF bound to: 1'b1 
+	Parameter EN_PF bound to: 1'b1 
+	Parameter EN_WDC bound to: 1'b1 
+	Parameter EN_AF bound to: 1'b0 
+	Parameter EN_WACK bound to: 1'b0 
+	Parameter FG_EQ_ASYM_DOUT bound to: 1'b0 
+	Parameter EN_UF bound to: 1'b1 
+	Parameter EN_PE bound to: 1'b1 
+	Parameter EN_RDC bound to: 1'b1 
+	Parameter EN_AE bound to: 1'b0 
+	Parameter EN_DVLD bound to: 1'b0 
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized0' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+	Parameter MEMORY_TYPE bound to: 1 - type: integer 
+	Parameter MEMORY_SIZE bound to: 262144 - type: integer 
+	Parameter MEMORY_PRIMITIVE bound to: 2 - type: integer 
+	Parameter CLOCKING_MODE bound to: 1 - type: integer 
+	Parameter ECC_MODE bound to: 0 - type: integer 
+	Parameter MEMORY_INIT_FILE bound to: none - type: string 
+	Parameter MEMORY_INIT_PARAM bound to: (null) - type: string 
+	Parameter USE_MEM_INIT_MMI bound to: 0 - type: integer 
+	Parameter USE_MEM_INIT bound to: 0 - type: integer 
+	Parameter MEMORY_OPTIMIZATION bound to: true - type: string 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+	Parameter AUTO_SLEEP_TIME bound to: 0 - type: integer 
+	Parameter MESSAGE_CONTROL bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter USE_EMBEDDED_CONSTRAINT bound to: 0 - type: integer 
+	Parameter CASCADE_HEIGHT bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter WRITE_PROTECT bound to: 1 - type: integer 
+	Parameter WRITE_DATA_WIDTH_A bound to: 64 - type: integer 
+	Parameter READ_DATA_WIDTH_A bound to: 64 - type: integer 
+	Parameter BYTE_WRITE_WIDTH_A bound to: 64 - type: integer 
+	Parameter ADDR_WIDTH_A bound to: 12 - type: integer 
+	Parameter READ_RESET_VALUE_A bound to: 0 - type: string 
+	Parameter READ_LATENCY_A bound to: 2 - type: integer 
+	Parameter WRITE_MODE_A bound to: 2 - type: integer 
+	Parameter RST_MODE_A bound to: SYNC - type: string 
+	Parameter WRITE_DATA_WIDTH_B bound to: 16 - type: integer 
+	Parameter READ_DATA_WIDTH_B bound to: 16 - type: integer 
+	Parameter BYTE_WRITE_WIDTH_B bound to: 16 - type: integer 
+	Parameter ADDR_WIDTH_B bound to: 14 - type: integer 
+	Parameter READ_RESET_VALUE_B bound to: 0 - type: string 
+	Parameter READ_LATENCY_B bound to: 2 - type: integer 
+	Parameter WRITE_MODE_B bound to: 2 - type: integer 
+	Parameter RST_MODE_B bound to: SYNC - type: string 
+	Parameter P_MEMORY_PRIMITIVE bound to: block - type: string 
+	Parameter P_MIN_WIDTH_DATA_A bound to: 64 - type: integer 
+	Parameter P_MIN_WIDTH_DATA_B bound to: 16 - type: integer 
+	Parameter P_MIN_WIDTH_DATA bound to: 16 - type: integer 
+	Parameter P_MIN_WIDTH_DATA_ECC bound to: 16 - type: integer 
+	Parameter P_MAX_DEPTH_DATA bound to: 16384 - type: integer 
+	Parameter P_ECC_MODE bound to: no_ecc - type: string 
+	Parameter P_MEMORY_OPT bound to: yes - type: string 
+	Parameter P_WIDTH_COL_WRITE_A bound to: 16 - type: integer 
+	Parameter P_WIDTH_COL_WRITE_B bound to: 16 - type: integer 
+	Parameter P_NUM_COLS_WRITE_A bound to: 1 - type: integer 
+	Parameter P_NUM_COLS_WRITE_B bound to: 1 - type: integer 
+	Parameter P_NUM_ROWS_WRITE_A bound to: 4 - type: integer 
+	Parameter P_NUM_ROWS_WRITE_B bound to: 1 - type: integer 
+	Parameter P_NUM_ROWS_READ_A bound to: 4 - type: integer 
+	Parameter P_NUM_ROWS_READ_B bound to: 1 - type: integer 
+	Parameter P_WIDTH_ADDR_WRITE_A bound to: 12 - type: integer 
+	Parameter P_WIDTH_ADDR_WRITE_B bound to: 14 - type: integer 
+	Parameter P_WIDTH_ADDR_READ_A bound to: 12 - type: integer 
+	Parameter P_WIDTH_ADDR_READ_B bound to: 14 - type: integer 
+	Parameter P_WIDTH_ADDR_LSB_WRITE_A bound to: 2 - type: integer 
+	Parameter P_WIDTH_ADDR_LSB_WRITE_B bound to: 0 - type: integer 
+	Parameter P_WIDTH_ADDR_LSB_READ_A bound to: 2 - type: integer 
+	Parameter P_WIDTH_ADDR_LSB_READ_B bound to: 0 - type: integer 
+	Parameter P_ENABLE_BYTE_WRITE_A bound to: 0 - type: integer 
+	Parameter P_ENABLE_BYTE_WRITE_B bound to: 0 - type: integer 
+	Parameter P_SDP_WRITE_MODE bound to: no - type: string 
+	Parameter rsta_loop_iter bound to: 64 - type: integer 
+	Parameter rstb_loop_iter bound to: 16 - type: integer 
+	Parameter NUM_CHAR_LOC bound to: 0 - type: integer 
+	Parameter MAX_NUM_CHAR bound to: 0 - type: integer 
+	Parameter P_MIN_WIDTH_DATA_SHFT bound to: 16 - type: integer 
+	Parameter P_MIN_WIDTH_DATA_LDW bound to: 4 - type: integer 
+Info : Asymmetric Ram write pattern identified
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized0' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized2' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+	Parameter DEST_SYNC_FF bound to: 2 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
+	Parameter REG_OUTPUT bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter WIDTH bound to: 12 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized2' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec__parameterized1' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+	Parameter REG_WIDTH bound to: 12 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec__parameterized1' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized3' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+	Parameter DEST_SYNC_FF bound to: 4 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
+	Parameter REG_OUTPUT bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter WIDTH bound to: 13 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized3' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec__parameterized2' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+	Parameter REG_WIDTH bound to: 13 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec__parameterized2' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized4' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+	Parameter DEST_SYNC_FF bound to: 2 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
+	Parameter REG_OUTPUT bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter WIDTH bound to: 14 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized4' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec__parameterized3' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+	Parameter REG_WIDTH bound to: 14 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec__parameterized3' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized5' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+	Parameter DEST_SYNC_FF bound to: 2 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
+	Parameter REG_OUTPUT bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
+	Parameter VERSION bound to: 0 - type: integer 
+	Parameter WIDTH bound to: 15 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized5' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec__parameterized4' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+	Parameter REG_WIDTH bound to: 15 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec__parameterized4' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-226] default block is never used [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1189]
+INFO: [Synth 8-226] default block is never used [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1235]
+INFO: [Synth 8-226] default block is never used [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1246]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized3' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+	Parameter COUNTER_WIDTH bound to: 13 - type: integer 
+	Parameter RESET_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized3' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized4' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+	Parameter COUNTER_WIDTH bound to: 12 - type: integer 
+	Parameter RESET_VALUE bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized4' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized5' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+	Parameter COUNTER_WIDTH bound to: 12 - type: integer 
+	Parameter RESET_VALUE bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized5' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized6' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+	Parameter COUNTER_WIDTH bound to: 15 - type: integer 
+	Parameter RESET_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized6' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized7' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+	Parameter COUNTER_WIDTH bound to: 14 - type: integer 
+	Parameter RESET_VALUE bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized7' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base__parameterized0' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:56]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_async__parameterized1' (26#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037]
+INFO: [Synth 8-256] done synthesizing module 'afifo_64i_16o' (27#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/afifo_64i_16o.vhd:61]
+	Parameter DDR_CLK_EDGE bound to: SAME_EDGE - type: string 
+	Parameter INIT bound to: 1'b1 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter SRTYPE bound to: ASYNC - type: string 
+INFO: [Synth 8-113] binding component instance 'ODDR_vita_clk_pll_o' to cell 'ODDR' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1705]
+	Parameter DDR_CLK_EDGE bound to: SAME_EDGE - type: string 
+	Parameter INIT bound to: 1'b1 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter SRTYPE bound to: ASYNC - type: string 
+INFO: [Synth 8-113] binding component instance 'ODDR_vita_clk_pll_t' to cell 'ODDR' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1719]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-113] binding component instance 'OBUFT_vita_reset_n' to cell 'OBUFT' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1741]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-113] binding component instance 'OBUFT_vita_trigger' to cell 'OBUFT' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1749]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-113] binding component instance 'OBUFT_vita_trigger' to cell 'OBUFT' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1749]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-113] binding component instance 'OBUFT_vita_trigger' to cell 'OBUFT' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1749]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-113] binding component instance 'OBUFT_vita_clk_pll' to cell 'OBUFT' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:1757]
+INFO: [Synth 8-256] done synthesizing module 'onsemi_vita_cam_core' (28#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_core.vhd:235]
+INFO: [Synth 8-256] done synthesizing module 'onsemi_vita_cam_v3_1_S00_AXI' (29#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1_S00_AXI.vhd:311]
+INFO: [Synth 8-256] done synthesizing module 'onsemi_vita_cam_v3_1' (30#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/b73f/hdl/onsemi_vita_cam_v3_1.vhd:152]
+INFO: [Synth 8-256] done synthesizing module 'design_1_onsemi_vita_cam_0_0' (31#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_onsemi_vita_cam_0_0/synth/design_1_onsemi_vita_cam_0_0.vhd:107]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 1191.562 ; gain = 158.430
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1192.793 ; gain = 159.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1192.793 ; gain = 159.660
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.312 . Memory (MB): peak = 1204.914 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 31 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_onsemi_vita_cam_0_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_onsemi_vita_cam_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.wrst_rd_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.wrst_rd_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.wrst_rd_inst'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.wrst_rd_inst'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l'
+Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l'
+Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_onsemi_vita_cam_0_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_onsemi_vita_cam_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1312.430 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 6 instances were transformed.
+  BUFGMUX_CTRL => BUFGCTRL (inverted pins: S0): 1 instance 
+  FIFO18 => FIFO18E1: 5 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.117 . Memory (MB): peak = 1317.133 ; gain = 4.703
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.rd_pntr_cdc_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.wr_pntr_cdc_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/\DEMUX_GEN.demux_fifo_l /afifo_64i_16o_l/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.rd_pntr_cdc_dc_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/\DEMUX_GEN.demux_fifo_l /afifo_64i_16o_l/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.rd_pntr_cdc_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/\DEMUX_GEN.demux_fifo_l /afifo_64i_16o_l/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.wr_pntr_cdc_dc_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/\DEMUX_GEN.demux_fifo_l /afifo_64i_16o_l/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.wr_pntr_cdc_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.rd_pntr_cdc_dc_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.wr_pntr_cdc_dc_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/\gnuram_async_fifo.xpm_fifo_base_inst /xpm_fifo_rst_inst/\gen_rst_ic.rrst_wr_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/\DEMUX_GEN.demux_fifo_l /afifo_64i_16o_l/\gnuram_async_fifo.xpm_fifo_base_inst /xpm_fifo_rst_inst/\gen_rst_ic.rrst_wr_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l/\gnuram_async_fifo.xpm_fifo_base_inst /xpm_fifo_rst_inst/\gen_rst_ic.wrst_rd_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/\DEMUX_GEN.demux_fifo_l /afifo_64i_16o_l/\gnuram_async_fifo.xpm_fifo_base_inst /xpm_fifo_rst_inst/\gen_rst_ic.wrst_rd_inst . (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/framestart2_regen_l/pulse_regen_l. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/\DEMUX_GEN.demux_fifo_l /afifo_64i_16o_l. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'lockedmonitorstate_reg' in module 'iserdes_clocks'
+INFO: [Synth 8-802] inferred FSM for state register 'serdesseqstate_reg' in module 'iserdes_control'
+INFO: [Synth 8-802] inferred FSM for state register 'syncstate_reg' in module 'iserdes_sync'
+INFO: [Synth 8-802] inferred FSM for state register 'syncdatastate_reg' in module 'iserdes_sync'
+INFO: [Synth 8-802] inferred FSM for state register 'DecoderEnablerState_reg' in module 'syncchanneldecoder'
+INFO: [Synth 8-802] inferred FSM for state register 'CompareState_reg' in module 'crc_comp'
+INFO: [Synth 8-802] inferred FSM for state register 'TriggerState_reg' in module 'triggergenerator'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst__xdcDup__1'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_rrst_state_reg' in module 'xpm_fifo_rst__xdcDup__1'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base'
+INFO: [Synth 8-802] inferred FSM for state register 'HSyncState_s_reg' in module 'VideoSyncGen'
+INFO: [Synth 8-802] inferred FSM for state register 'VSyncState_s_reg' in module 'VideoSyncGen'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_rrst_state_reg' in module 'xpm_fifo_rst'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base__parameterized0'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                             0000
+            assertreset2 |                              001 |                             0100
+             waitlocked2 |                              010 |                             0101
+            checklocked2 |                              011 |                             0110
+            assertreset3 |                              100 |                             0111
+             waitlocked3 |                              101 |                             1000
+            checklocked3 |                              110 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'lockedmonitorstate_reg' using encoding 'sequential' in module 'iserdes_clocks'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+             trainserdes |                               01 |                               01
+   waittrainserdesbusyon |                               10 |                               10
+  waittrainserdesbusyoff |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'serdesseqstate_reg' using encoding 'sequential' in module 'iserdes_control'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+           waitdatavalid |                               01 |                               01
+              waitreqlow |                               10 |                               10
+                  iSTATE |                               11 |                               11
+*
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'syncstate_reg' using encoding 'sequential' in module 'iserdes_sync'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+              waitreqlow |                               01 |                               10
+                  iSTATE |                               10 |                               11
+*
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'syncdatastate_reg' using encoding 'sequential' in module 'iserdes_sync'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              001 |                               00
+       detectenablestart |                              010 |                               01
+                 enabled |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'DecoderEnablerState_reg' using encoding 'one-hot' in module 'syncchanneldecoder'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+       lookforfirstvalid |                               01 |                               01
+        lookfornextvalid |                               10 |                               10
+                   error |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'CompareState_reg' using encoding 'sequential' in module 'crc_comp'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                              000
+               trig0high |                              001 |                              001
+                trig0low |                              010 |                              010
+               trig1high |                              011 |                              011
+                trig1low |                              100 |                              100
+               trig2high |                              101 |                              101
+                trig2low |                              110 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'TriggerState_reg' using encoding 'sequential' in module 'triggergenerator'
+INFO: [Synth 8-5552] Implemented safe state 'default_state' for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst__xdcDup__1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+               WRST_IDLE |                            00001 |                              000
+                 WRST_IN |                            00010 |                              010
+                WRST_OUT |                            00100 |                              111
+               WRST_EXIT |                            01000 |                              110
+            WRST_GO2IDLE |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_rst_ic.curr_wrst_state_reg' using encoding 'one-hot' in module 'xpm_fifo_rst__xdcDup__1'
+INFO: [Synth 8-5552] Implemented safe state 'default_state' for state register 'gen_rst_ic.curr_rrst_state_reg' in module 'xpm_fifo_rst__xdcDup__1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 |                               00
+                 iSTATE0 |                               01 |                               10
+                 iSTATE1 |                               10 |                               11
+                 iSTATE2 |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_rst_ic.curr_rrst_state_reg' using encoding 'sequential' in module 'xpm_fifo_rst__xdcDup__1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+            frontporch_c |                               00 |                               00
+             syncpulse_c |                               01 |                               01
+             backporch_c |                               10 |                               10
+           activevideo_c |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'VSyncState_s_reg' using encoding 'sequential' in module 'VideoSyncGen'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+            frontporch_c |                               00 |                               00
+             syncpulse_c |                               01 |                               01
+             backporch_c |                               10 |                               10
+           activevideo_c |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'HSyncState_s_reg' using encoding 'sequential' in module 'VideoSyncGen'
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_wide.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5552] Implemented safe state 'default_state' for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+               WRST_IDLE |                            00001 |                              000
+                 WRST_IN |                            00010 |                              010
+                WRST_OUT |                            00100 |                              111
+               WRST_EXIT |                            01000 |                              110
+            WRST_GO2IDLE |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_rst_ic.curr_wrst_state_reg' using encoding 'one-hot' in module 'xpm_fifo_rst'
+INFO: [Synth 8-5552] Implemented safe state 'default_state' for state register 'gen_rst_ic.curr_rrst_state_reg' in module 'xpm_fifo_rst'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 |                               00
+                 iSTATE0 |                               01 |                               10
+                 iSTATE1 |                               10 |                               11
+                 iSTATE2 |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_rst_ic.curr_rrst_state_reg' using encoding 'sequential' in module 'xpm_fifo_rst'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base__parameterized0'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   33 Bit       Adders := 2     
+	   2 Input   32 Bit       Adders := 2     
+	   2 Input   24 Bit       Adders := 1     
+	   2 Input   18 Bit       Adders := 2     
+	   2 Input   16 Bit       Adders := 33    
+	   2 Input   15 Bit       Adders := 2     
+	   4 Input   15 Bit       Adders := 2     
+	   3 Input   15 Bit       Adders := 1     
+	   4 Input   14 Bit       Adders := 1     
+	   3 Input   14 Bit       Adders := 1     
+	   4 Input   13 Bit       Adders := 1     
+	   2 Input   13 Bit       Adders := 1     
+	   3 Input   13 Bit       Adders := 1     
+	   4 Input   12 Bit       Adders := 2     
+	   2 Input   11 Bit       Adders := 10    
+	   2 Input   10 Bit       Adders := 20    
+	   2 Input    6 Bit       Adders := 5     
+	   4 Input    5 Bit       Adders := 3     
+	   2 Input    5 Bit       Adders := 1     
+	   3 Input    5 Bit       Adders := 2     
+	   4 Input    4 Bit       Adders := 3     
+	   3 Input    4 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 5     
+	   4 Input    2 Bit       Adders := 2     
++---XORs : 
+	   2 Input     15 Bit         XORs := 1     
+	   2 Input     14 Bit         XORs := 1     
+	   2 Input     13 Bit         XORs := 1     
+	   2 Input     12 Bit         XORs := 1     
+	   2 Input      5 Bit         XORs := 2     
+	   2 Input      4 Bit         XORs := 2     
+	   2 Input      1 Bit         XORs := 147   
+	   4 Input      1 Bit         XORs := 24    
+	   3 Input      1 Bit         XORs := 8     
+	   5 Input      1 Bit         XORs := 8     
+	  10 Input      1 Bit         XORs := 4     
+	   6 Input      1 Bit         XORs := 8     
++---Registers : 
+	              230 Bit    Registers := 1     
+	              187 Bit    Registers := 1     
+	               80 Bit    Registers := 2     
+	               40 Bit    Registers := 9     
+	               38 Bit    Registers := 1     
+	               33 Bit    Registers := 2     
+	               32 Bit    Registers := 49    
+	               24 Bit    Registers := 1     
+	               18 Bit    Registers := 2     
+	               16 Bit    Registers := 40    
+	               15 Bit    Registers := 6     
+	               14 Bit    Registers := 6     
+	               13 Bit    Registers := 9     
+	               12 Bit    Registers := 6     
+	               11 Bit    Registers := 5     
+	               10 Bit    Registers := 126   
+	                8 Bit    Registers := 3     
+	                6 Bit    Registers := 6     
+	                5 Bit    Registers := 21    
+	                4 Bit    Registers := 18    
+	                3 Bit    Registers := 6     
+	                2 Bit    Registers := 31    
+	                1 Bit    Registers := 339   
++---RAMs : 
+	             256K Bit	(16384 X 16 bit)          RAMs := 1     
+	               16 Bit	(16 X 1 bit)          RAMs := 1     
++---Muxes : 
+	   8 Input   80 Bit        Muxes := 1     
+	   4 Input   80 Bit        Muxes := 2     
+	   2 Input   80 Bit        Muxes := 9     
+	   2 Input   40 Bit        Muxes := 1     
+	   2 Input   33 Bit        Muxes := 8     
+	   7 Input   33 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 33    
+	   2 Input   24 Bit        Muxes := 2     
+	   7 Input   24 Bit        Muxes := 1     
+	   2 Input   18 Bit        Muxes := 9     
+	   4 Input   18 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 42    
+	  16 Input   16 Bit        Muxes := 20    
+	   4 Input   16 Bit        Muxes := 11    
+	  16 Input   11 Bit        Muxes := 5     
+	   2 Input   11 Bit        Muxes := 5     
+	  16 Input   10 Bit        Muxes := 35    
+	   2 Input   10 Bit        Muxes := 43    
+	   6 Input   10 Bit        Muxes := 5     
+	   4 Input    6 Bit        Muxes := 5     
+	   2 Input    6 Bit        Muxes := 15    
+	   6 Input    5 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 16    
+	   2 Input    4 Bit        Muxes := 5     
+	   7 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 24    
+	  16 Input    3 Bit        Muxes := 5     
+	   4 Input    3 Bit        Muxes := 5     
+	   5 Input    2 Bit        Muxes := 6     
+	   2 Input    2 Bit        Muxes := 103   
+	   4 Input    2 Bit        Muxes := 30    
+	   3 Input    2 Bit        Muxes := 5     
+	   6 Input    2 Bit        Muxes := 1     
+	   8 Input    1 Bit        Muxes := 2     
+	   7 Input    1 Bit        Muxes := 14    
+	  16 Input    1 Bit        Muxes := 110   
+	   2 Input    1 Bit        Muxes := 181   
+	   4 Input    1 Bit        Muxes := 147   
+	   3 Input    1 Bit        Muxes := 13    
+	   6 Input    1 Bit        Muxes := 4     
+	   5 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_wide.mem_reg. Setting write mode to NO_CHANGE 
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:56 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_wide.mem_reg. Setting write mode to NO_CHANGE 
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping	Report (see note below)
++---------------------------------+--------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                      | RTL Object                     | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++---------------------------------+--------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|xpm_memory_base__parameterized0: | gen_wr_a.gen_word_wide.mem_reg | 4 K x 64(NO_CHANGE)    | W |   | 16 K x 16(NO_CHANGE)   |   | R | Port A and B     | 0      | 8      | 
++---------------------------------+--------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping	Report (see note below)
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+|Module Name                                                                                                                                                                   | RTL Object                       | Inference | Size (Depth x Width) | Primitives    | 
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+|\U0/onsemi_vita_cam_v3_1_S00_AXI_inst /onsemi_vita_cam_core_inst/\framestart2_regen_l/pulse_regen_l /\gnuram_async_fifo.xpm_fifo_base_inst /\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | Implied   | 16 x 1               | RAM16X1D x 1	 | 
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_wide.mem_reg. Setting write mode to NO_CHANGE 
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:05 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping	Report
++---------------------------------+--------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                      | RTL Object                     | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++---------------------------------+--------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|xpm_memory_base__parameterized0: | gen_wr_a.gen_word_wide.mem_reg | 4 K x 64(NO_CHANGE)    | W |   | 16 K x 16(NO_CHANGE)   |   | R | Port A and B     | 0      | 8      | 
++---------------------------------+--------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping	Report
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+|Module Name                                                                                                                                                                   | RTL Object                       | Inference | Size (Depth x Width) | Primitives    | 
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+|\U0/onsemi_vita_cam_v3_1_S00_AXI_inst /onsemi_vita_cam_core_inst/\framestart2_regen_l/pulse_regen_l /\gnuram_async_fifo.xpm_fifo_base_inst /\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | Implied   | 16 x 1               | RAM16X1D x 1	 | 
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_wide.mem_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_wide.mem_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_wide.mem_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/DEMUX_GEN.demux_fifo_l/afifo_64i_16o_l/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_wide.mem_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:05 ; elapsed = 00:01:09 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:09 ; elapsed = 00:01:13 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:09 ; elapsed = 00:01:13 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++-----------------------------+-----------------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name                  | RTL Name                                                                                                        | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++-----------------------------+-----------------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|design_1_onsemi_vita_cam_0_0 | U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/vita_syncchanneldecoder/DataDelayPipe_reg[3][39] | 4      | 40    | NO           | NO                 | NO                | 40     | 0       | 
+|design_1_onsemi_vita_cam_0_0 | U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/vita_syncchanneldecoder/enpipe_reg[15]           | 11     | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|design_1_onsemi_vita_cam_0_0 | U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/vita_remapper/VIDEO_SYNC_OUT_reg[0]              | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++-----------------------------+-----------------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------------+------+
+|      |Cell         |Count |
++------+-------------+------+
+|1     |BUFGMUX_CTRL |     1|
+|2     |BUFIO        |     1|
+|3     |BUFR         |     2|
+|5     |CARRY4       |   318|
+|6     |FIFO18       |     5|
+|7     |IDELAYCTRL   |     1|
+|8     |IDELAYE2     |     5|
+|9     |ISERDESE2    |    10|
+|11    |LUT1         |   457|
+|12    |LUT2         |   640|
+|13    |LUT3         |   385|
+|14    |LUT4         |   461|
+|15    |LUT5         |   582|
+|16    |LUT6         |  1321|
+|17    |MUXF7        |    75|
+|18    |MUXF8        |    34|
+|19    |ODDR         |     2|
+|20    |RAM16X1D     |     1|
+|21    |RAMB36E1     |     8|
+|23    |SRL16E       |    42|
+|24    |FDCE         |  1162|
+|25    |FDPE         |   443|
+|26    |FDRE         |  2312|
+|27    |FDSE         |    22|
+|28    |IBUFDS       |     6|
+|29    |OBUFT        |     5|
++------+-------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1317.133 ; gain = 284.000
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:52 ; elapsed = 00:01:08 . Memory (MB): peak = 1317.133 ; gain = 159.660
+Synthesis Optimization Complete : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1317.133 ; gain = 284.000
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.135 . Memory (MB): peak = 1322.594 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 467 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 2 inverter(s) to 12 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1327.551 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 7 instances were transformed.
+  BUFGMUX_CTRL => BUFGCTRL (inverted pins: S0): 1 instance 
+  FIFO18 => FIFO18E1: 5 instances
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
+
+INFO: [Common 17-83] Releasing license: Synthesis
+239 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1327.551 ; gain = 294.418
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_onsemi_vita_cam_0_0_synth_1/design_1_onsemi_vita_cam_0_0.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_onsemi_vita_cam_0_0, cache-ID = 8ab7076a7cede980
+INFO: [Coretcl 2-1174] Renamed 89 cell refs.
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_onsemi_vita_cam_0_0_synth_1/design_1_onsemi_vita_cam_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_onsemi_vita_cam_0_0_utilization_synth.rpt -pb design_1_onsemi_vita_cam_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Feb 28 01:55:58 2025...

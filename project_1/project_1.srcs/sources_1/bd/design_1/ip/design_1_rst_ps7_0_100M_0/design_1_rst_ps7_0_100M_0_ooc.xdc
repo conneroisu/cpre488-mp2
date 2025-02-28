@@ -1,4 +1,4 @@
-# (c) Copyright 2012-2021 Xilinx, Inc. All rights reserved.
+# (c) Copyright 2012-2025 Xilinx, Inc. All rights reserved.
 # 
 # This file contains confidential and proprietary information
 # of Xilinx, Inc. and is protected under U.S. and
@@ -52,6 +52,6 @@
 # #########################################################
 
 
-create_clock -period 10 -name slowest_sync_clk [get_ports slowest_sync_clk]
+create_clock -period 13 -name slowest_sync_clk [get_ports slowest_sync_clk]
 
 
