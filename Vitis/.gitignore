@@ -2,10 +2,10 @@
 
 !*
 *.log
-RemoteSystemsTempFiles/**
-.analytics
-.metadata/**
-.sdk/**
+*/RemoteSystemsTempFiles/**
+*/.analytics
+*/.metadata/**
+*/.sdk/**
 *.o
 **/export/**
 *.elf
