@@ -173,7 +173,7 @@ if {[string equal [get_filesets -quiet constrs_1] ""]} {
 set obj [get_filesets constrs_1]
 
 # Add/Import constrs file and set constrs file properties
-set file "[file normalize ${origin_dir}/project_1/project_1.srcs/constrs_1/imports/Constraints/zedboard_fmc_imageon_gs.xdc]"
+set file "[file normalize ${origin_dir}/Constraints/zedboard_fmc_imageon_gs.xdc]"
 set file_imported [import_files -fileset constrs_1 [list $file]]
 set file "Constraints/zedboard_fmc_imageon_gs.xdc"
 set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
