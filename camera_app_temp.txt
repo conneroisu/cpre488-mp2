@@ -283,11 +283,7 @@ void camera_loop(camera_config_t *config) {
          }
      }
  
-     XTime_GetTime(&end_time);
-     double time_spent = (double)(end_time - start_time) / (COUNTS_PER_SECOND);
-     fps = num_frames / time_spent;
      
-     xil_printf("Performance: %.2f frames per second\r\n", fps);
  
      // Free allocated memory
      free(rawBayer);
