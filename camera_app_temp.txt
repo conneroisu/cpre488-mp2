@@ -84,7 +84,7 @@ void camera_loop(camera_config_t *config) {
      int i, j, x, y, num_frames;
      Xuint8 r, g, b;
      Xuint8 y_val, cb_val, cr_val;
-     num_frames = 1;
+     num_frames = 1000;
 
      xil_printf("Entering main SW processing loop\r\n");
 
