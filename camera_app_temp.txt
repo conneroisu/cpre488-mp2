@@ -51,22 +51,21 @@
      return;
  }
  
- // Clamp function ues to make sure values are within valid range
- inline Xuint8 clamp(int value, int min, int max) {
+ Xuint8 clamp(int value, int min, int max) {
      if (value < min) return min;
      if (value > max) return max;
      return value;
- }
+}
  
- // Convert RGB values to YCbCr
- void rgb_to_ycbcr(Xuint8 r, Xuint8 g, Xuint8 b, Xuint8 *y, Xuint8 *cb, Xuint8 *cr) {    
+// Convert RGB values to YCbCr
+void rgb_to_ycbcr(Xuint8 r, Xuint8 g, Xuint8 b, Xuint8 *y, Xuint8 *cb, Xuint8 *cr) {    
      *y  = clamp((int)(0.183 * r + 0.614 * g + 0.062 * b + 16.0), 0, 255);
      *cb = clamp((int)(-0.101 * r - 0.338 * g + 0.439 * b + 128.0), 0, 255);
      *cr = clamp((int)(0.439 * r - 0.399 * g - 0.040 * b + 128.0), 0, 255);
- }
+}
  
- // Pack YCbCr values into 16-bit 4:2:2 format [Y0 Cb Y1 Cr]
- Xuint16 pack_ycbcr422(Xuint8 y, Xuint8 cb_or_cr, int is_cb) {
+// Pack YCbCr values into 16-bit 4:2:2 format [Y0 Cb Y1 Cr]
+Xuint16 pack_ycbcr422(Xuint8 y, Xuint8 cb_or_cr, int is_cb) {
      if (is_cb) {
          // [Y Cb] format
          return (y << 8) | cb_or_cr;
@@ -74,9 +73,10 @@
          // [Y Cr] format
          return (y << 8) | cb_or_cr;
      }
- }
- 
-// Main (SW) processing loop. Recommended to have an explicit exit condition
+}
+
+
+// Main (SW) processing loop. Need to do: have an explicit exit condition
 void camera_loop(camera_config_t *config) {
  
      Xuint32 parkptr;
@@ -117,8 +117,14 @@ void camera_loop(camera_config_t *config) {
      xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
      xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
  
+     XTime start_time, end_time;
+     double fps;
+     int num_frames = 100;
+ 
+     XTime_GetTime(&start_time);
+ 
      // Process frames with Bayer demosaicing
-     for (j = 0; j < 1000; j++) {
+     for (j = 0; j < num_frames; j++) {
          for (i = 0; i < 1920*1080; i++) {
              // The camera data is in the lower byte of each 16-bit value
              rawBayer[i] = pS2MM_Mem[i] & 0xFF;
@@ -182,14 +188,22 @@ void camera_loop(camera_config_t *config) {
                      r = (x > 0) ? rawBayer[idx - 1] : 0;
                      
                      // Blue - bottom neighbor
-                     b = (y + 1 < 1080) ? rawBayer[idx + 1920] : 0;
+                     if (y + 1 < 1080) {
+                         b = rawBayer[idx + 1920];
+                     } else {
+                         b = 0;
+                     }
                  }
                  // Green pixel on blue row (bottom-left in 2x2 grid)
                  else if (is_blue_row && is_red_col) {
                      g = rawBayer[idx]; // Direct green value
                      
                      // Red - top neighbor
-                     r = (y > 0) ? rawBayer[idx - 1920] : 0;
+                     if (y > 0) {
+                         r = rawBayer[idx - 1920];
+                     } else {
+                         r = 0;
+                     }
                      
                      // Blue - right neighbor
                      b = (x + 1 < 1920) ? rawBayer[idx + 1] : 0;
@@ -263,11 +277,17 @@ void camera_loop(camera_config_t *config) {
              }
          }
          
-         // Print a progress indicator every 100 frames
-         if (j % 100 == 0) {
+         // Print a progress indicator every 10 frames
+         if (j % 10 == 0) {
              xil_printf("Processed %d frames\r\n", j);
          }
      }
+ 
+     XTime_GetTime(&end_time);
+     double time_spent = (double)(end_time - start_time) / (COUNTS_PER_SECOND);
+     fps = num_frames / time_spent;
+     
+     xil_printf("Performance: %.2f frames per second\r\n", fps);
  
      // Free allocated memory
      free(rawBayer);
