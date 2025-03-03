@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Fri Feb 28 01:51:31 2025
-// Host        : DESKTOP-V4CC4PR running 64-bit major release  (build 9200)
+// Date        : Sun Mar  2 19:00:44 2025
+// Host        : CO2041-08 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_sim_netlist.v
+//               c:/Users/oparker/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_sim_netlist.v
 // Design      : design_1_axis_subset_converter_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -176,13 +176,14 @@ module design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0
   output sparse_tkeep_removed;
 
   wire \<const0> ;
+  wire \<const1> ;
   wire m_axis_tready;
   wire [7:0]s_axis_tdata;
   wire s_axis_tlast;
   wire [0:0]s_axis_tuser;
   wire s_axis_tvalid;
 
-  assign m_axis_tdata[15] = \<const0> ;
+  assign m_axis_tdata[15] = \<const1> ;
   assign m_axis_tdata[14] = \<const0> ;
   assign m_axis_tdata[13] = \<const0> ;
   assign m_axis_tdata[12] = \<const0> ;
@@ -205,6 +206,8 @@ module design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0
   assign transfer_dropped = \<const0> ;
   GND GND
        (.G(\<const0> ));
+  VCC VCC
+       (.P(\<const1> ));
 endmodule
 `ifndef GLBL
 `define GLBL

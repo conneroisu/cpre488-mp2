@@ -199,7 +199,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.M_TDATA_NUM_BYTES {2} \
    CONFIG.S_TDATA_NUM_BYTES {1} \
-   CONFIG.TDATA_REMAP {8'b00000000,tdata[7:0]} \
+   CONFIG.TDATA_REMAP {8'b10000000,tdata[7:0]} \
    CONFIG.TDEST_REMAP {1'b0} \
    CONFIG.TID_REMAP {1'b0} \
    CONFIG.TKEEP_REMAP {1'b0} \

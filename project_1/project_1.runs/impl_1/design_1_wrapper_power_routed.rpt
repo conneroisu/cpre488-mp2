@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date             : Fri Feb 28 09:29:28 2025
+| Date             : Sun Mar  2 19:04:44 2025
 | Host             : CO2041-08 running 64-bit major release  (build 9200)
 | Command          : report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb -rpx design_1_wrapper_power_routed.rpx
 | Design           : design_1_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 2.023        |
+| Total On-Chip Power (W)  | 2.031        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.868        |
+| Dynamic (W)              | 1.876        |
 | Device Static (W)        | 0.155        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 61.7         |
-| Junction Temperature (C) | 48.3         |
+| Max Ambient (C)          | 61.6         |
+| Junction Temperature (C) | 48.4         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,24 +52,22 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.071 |        9 |       --- |             --- |
-| Slice Logic              |     0.019 |    29754 |       --- |             --- |
-|   LUT as Logic           |     0.016 |     9400 |     53200 |           17.67 |
-|   Register               |     0.001 |    15155 |    106400 |           14.24 |
+| Clocks                   |     0.077 |       11 |       --- |             --- |
+| Slice Logic              |     0.019 |    29756 |       --- |             --- |
+|   LUT as Logic           |     0.016 |     9405 |     53200 |           17.68 |
+|   Register               |     0.001 |    15157 |    106400 |           14.25 |
 |   CARRY4                 |     0.001 |      548 |     13300 |            4.12 |
 |   LUT as Distributed RAM |    <0.001 |      478 |     17400 |            2.75 |
 |   LUT as Shift Register  |    <0.001 |      292 |     17400 |            1.68 |
-|   Others                 |    <0.001 |      999 |       --- |             --- |
 |   F7/F8 Muxes            |    <0.001 |      242 |     53200 |            0.45 |
-|   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
-|   BUFR                   |     0.000 |        1 |        88 |            1.14 |
-| Signals                  |     0.023 |    21244 |       --- |             --- |
+|   Others                 |    <0.001 |     1000 |       --- |             --- |
+| Signals                  |     0.023 |    21243 |       --- |             --- |
 | Block RAM                |     0.014 |     16.5 |       140 |           11.79 |
 | MMCM                     |     0.123 |        1 |         4 |           25.00 |
-| I/O                      |     0.083 |       46 |       200 |           23.00 |
+| I/O                      |     0.085 |       46 |       200 |           23.00 |
 | PS7                      |     1.535 |        1 |       --- |             --- |
 | Static Power             |     0.155 |          |           |                 |
-| Total                    |     2.023 |          |           |                 |
+| Total                    |     2.031 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -79,7 +77,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.149 |       0.131 |      0.018 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.157 |       0.139 |      0.018 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.112 |       0.096 |      0.017 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.013 |       0.012 |      0.001 |       NA    | Unspecified | NA         |
@@ -139,17 +137,19 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+---------------------------------+----------------------------------------------------------------------------+-----------------+
-| Clock                           | Domain                                                                     | Constraint (ns) |
-+---------------------------------+----------------------------------------------------------------------------+-----------------+
-| clk_fpga_0                      | design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]                |            13.0 |
-| clk_fpga_1                      | design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]                |             7.0 |
-| clk_fpga_2                      | design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[2]                |             5.0 |
-| clk_out1_design_1_clk_wiz_0_0_1 | design_1_i/clk_wiz_0/inst/clk_out1_design_1_clk_wiz_0_0                    |             6.7 |
-| clkfbout_design_1_clk_wiz_0_0_1 | design_1_i/clk_wiz_0/inst/clkfbout_design_1_clk_wiz_0_0                    |             6.7 |
-| video_clk                       | fmc_imageon_vclk                                                           |             6.7 |
-| vita_clk_1                      | design_1_i/onsemi_vita_cam_0/U0/onsemi_vita_cam_v3_1_S00_AXI_inst/vita_clk |            26.9 |
-+---------------------------------+----------------------------------------------------------------------------+-----------------+
++---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| Clock                           | Domain                                                                                                                                                   | Constraint (ns) |
++---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| CLKDIV_c_0                      | design_1_i/onsemi_vita_cam_0/U0/onsemi_vita_cam_v3_1_S00_AXI_inst/onsemi_vita_cam_core_inst/vita_iserdes_v5.vita_iserdes/serdesclockgen[0].ic/CLKDIV_c_0 |            13.5 |
+| clk_fpga_0                      | design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]                                                                                              |            13.0 |
+| clk_fpga_1                      | design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[1]                                                                                              |             7.0 |
+| clk_fpga_2                      | design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[2]                                                                                              |             5.0 |
+| clk_out1_design_1_clk_wiz_0_0_1 | design_1_i/clk_wiz_0/inst/clk_out1_design_1_clk_wiz_0_0                                                                                                  |             6.7 |
+| clkfbout_design_1_clk_wiz_0_0_1 | design_1_i/clk_wiz_0/inst/clkfbout_design_1_clk_wiz_0_0                                                                                                  |             6.7 |
+| video_clk                       | fmc_imageon_vclk                                                                                                                                         |             6.7 |
+| vita_clk_1                      | design_1_i/onsemi_vita_cam_0/U0/onsemi_vita_cam_v3_1_S00_AXI_inst/vita_clk                                                                               |            26.9 |
+| vita_ser_clk                    | IO_VITA_CAM_clk_out_p                                                                                                                                    |             2.7 |
++---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -161,32 +161,32 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| design_1_wrapper         |     1.868 |
-|   design_1_i             |     1.868 |
+| design_1_wrapper         |     1.876 |
+|   design_1_i             |     1.876 |
 |     avnet_hdmi_out_0     |     0.013 |
 |       U0                 |     0.013 |
 |     axi_smc              |     0.034 |
 |       inst               |     0.034 |
-|     axi_vdma_0           |     0.025 |
-|       U0                 |     0.025 |
+|     axi_vdma_0           |     0.026 |
+|       U0                 |     0.026 |
 |     clk_wiz_0            |     0.124 |
 |       inst               |     0.124 |
 |     fmc_imageon_iic_0    |     0.001 |
 |       U0                 |     0.001 |
 |     fmc_ipmi_id_eeprom_0 |     0.001 |
 |       U0                 |     0.001 |
-|     onsemi_vita_cam_0    |     0.088 |
-|       U0                 |     0.088 |
+|     onsemi_vita_cam_0    |     0.093 |
+|       U0                 |     0.093 |
 |     onsemi_vita_spi_0    |     0.004 |
 |       U0                 |     0.004 |
 |     processing_system7_0 |     1.537 |
 |       inst               |     1.537 |
 |     ps7_0_axi_periph     |     0.004 |
 |       s00_couplers       |     0.004 |
-|     v_axi4s_vid_out_0    |     0.012 |
-|       inst               |     0.012 |
-|     v_tc_0               |     0.019 |
-|       U0                 |     0.019 |
+|     v_axi4s_vid_out_0    |     0.013 |
+|       inst               |     0.013 |
+|     v_tc_0               |     0.021 |
+|       U0                 |     0.021 |
 |     v_vid_in_axi4s_0     |     0.003 |
 |       inst               |     0.003 |
 +--------------------------+-----------+

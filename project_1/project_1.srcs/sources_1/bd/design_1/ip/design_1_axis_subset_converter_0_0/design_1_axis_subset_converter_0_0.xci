@@ -82,7 +82,7 @@ ribs {resolve_type generated dependency video_data_width format long minimum {} 
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.S_TDEST_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.S_TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.S_TUSER_WIDTH">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.TDATA_REMAP">8&apos;b00000000,tdata[7:0]</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.TDATA_REMAP">8&apos;b10000000,tdata[7:0]</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.TDEST_REMAP">1&apos;b0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.TID_REMAP">1&apos;b0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.TKEEP_REMAP">1&apos;b0</spirit:configurableElementValue>

@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Feb 28 01:51:31 2025
--- Host        : DESKTOP-V4CC4PR running 64-bit major release  (build 9200)
+-- Date        : Sun Mar  2 19:00:44 2025
+-- Host        : CO2041-08 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_sim_netlist.vhdl
+--               c:/Users/oparker/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_sim_netlist.vhdl
 -- Design      : design_1_axis_subset_converter_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -108,6 +108,7 @@ end design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0;
 
 architecture STRUCTURE of design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0 is
   signal \<const0>\ : STD_LOGIC;
+  signal \<const1>\ : STD_LOGIC;
   signal \^m_axis_tready\ : STD_LOGIC;
   signal \^s_axis_tdata\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \^s_axis_tlast\ : STD_LOGIC;
@@ -119,7 +120,7 @@ begin
   \^s_axis_tlast\ <= s_axis_tlast;
   \^s_axis_tuser\(0) <= s_axis_tuser(0);
   \^s_axis_tvalid\ <= s_axis_tvalid;
-  m_axis_tdata(15) <= \<const0>\;
+  m_axis_tdata(15) <= \<const1>\;
   m_axis_tdata(14) <= \<const0>\;
   m_axis_tdata(13) <= \<const0>\;
   m_axis_tdata(12) <= \<const0>\;
@@ -143,6 +144,10 @@ begin
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
+    );
+VCC: unisim.vcomponents.VCC
+     port map (
+      P => \<const1>\
     );
 end STRUCTURE;
 library IEEE;

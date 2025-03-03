@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Fri Feb 28 01:50:02 2025
---Host        : DESKTOP-V4CC4PR running 64-bit major release  (build 9200)
+--Date        : Sun Mar  2 19:00:11 2025
+--Host        : CO2041-08 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
 --Purpose     : IP block netlist
@@ -3375,16 +3375,16 @@ architecture STRUCTURE of design_1 is
   attribute X_INTERFACE_INFO of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
   attribute X_INTERFACE_INFO of IO_HDMIO_clk : signal is "avnet.com:interface:avnet_hdmi:2.0 IO_HDMIO CLK";
   attribute X_INTERFACE_INFO of IO_HDMIO_spdif : signal is "avnet.com:interface:avnet_hdmi:2.0 IO_HDMIO SPDIF";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_clk_out_n : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_clk_out_p : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_clk_pll : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_reset_n : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_sync_n : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_sync_p : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
-  attribute X_INTERFACE_INFO of IO_VITA_SPI_spi_miso : signal is "avnet.com:interface:onsemi_vita_spi:1.0 IO_VITA_SPI ";
-  attribute X_INTERFACE_INFO of IO_VITA_SPI_spi_mosi : signal is "avnet.com:interface:onsemi_vita_spi:1.0 IO_VITA_SPI ";
-  attribute X_INTERFACE_INFO of IO_VITA_SPI_spi_sclk : signal is "avnet.com:interface:onsemi_vita_spi:1.0 IO_VITA_SPI ";
-  attribute X_INTERFACE_INFO of IO_VITA_SPI_spi_ssel_n : signal is "avnet.com:interface:onsemi_vita_spi:1.0 IO_VITA_SPI ";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_clk_out_n : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM clk_out_n";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_clk_out_p : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM clk_out_p";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_clk_pll : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM clk_pll";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_reset_n : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM reset_n";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_sync_n : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM sync_n";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_sync_p : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM sync_p";
+  attribute X_INTERFACE_INFO of IO_VITA_SPI_spi_miso : signal is "avnet.com:interface:onsemi_vita_spi:1.0 IO_VITA_SPI spi_miso";
+  attribute X_INTERFACE_INFO of IO_VITA_SPI_spi_mosi : signal is "avnet.com:interface:onsemi_vita_spi:1.0 IO_VITA_SPI spi_mosi";
+  attribute X_INTERFACE_INFO of IO_VITA_SPI_spi_sclk : signal is "avnet.com:interface:onsemi_vita_spi:1.0 IO_VITA_SPI spi_sclk";
+  attribute X_INTERFACE_INFO of IO_VITA_SPI_spi_ssel_n : signal is "avnet.com:interface:onsemi_vita_spi:1.0 IO_VITA_SPI spi_ssel_n";
   attribute X_INTERFACE_INFO of fmc_imageon_iic_scl_i : signal is "xilinx.com:interface:iic:1.0 fmc_imageon_iic SCL_I";
   attribute X_INTERFACE_INFO of fmc_imageon_iic_scl_o : signal is "xilinx.com:interface:iic:1.0 fmc_imageon_iic SCL_O";
   attribute X_INTERFACE_INFO of fmc_imageon_iic_scl_t : signal is "xilinx.com:interface:iic:1.0 fmc_imageon_iic SCL_T";
@@ -3408,10 +3408,10 @@ architecture STRUCTURE of design_1 is
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
   attribute X_INTERFACE_INFO of IO_HDMIO_data : signal is "avnet.com:interface:avnet_hdmi:2.0 IO_HDMIO DATA";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_data_n : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_data_p : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_monitor : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
-  attribute X_INTERFACE_INFO of IO_VITA_CAM_trigger : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM ";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_data_n : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM data_n";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_data_p : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM data_p";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_monitor : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM monitor";
+  attribute X_INTERFACE_INFO of IO_VITA_CAM_trigger : signal is "avnet.com:interface:onsemi_vita_cam:1.0 IO_VITA_CAM trigger";
 begin
   IIC_FMC_IIC_SCL_I <= fmc_imageon_iic_scl_i;
   IIC_FMC_IIC_SDA_I <= fmc_imageon_iic_sda_i;

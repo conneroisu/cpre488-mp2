@@ -152,7 +152,7 @@ create_clock -period 6.734 -name video_clk [get_ports fmc_imageon_vclk]
 
 # phjones: UNUSED create_clock -period 6.730 -name hdmii_clk [get_ports IO_HDMII_clk]
 
-#create_clock -period 2.692 -name vita_ser_clk [get_ports IO_VITA_CAM_clk_out_p]
+create_clock -period 2.692 -name vita_ser_clk [get_ports IO_VITA_CAM_clk_out_p]
 
 
 # Define asynchronous clock domains

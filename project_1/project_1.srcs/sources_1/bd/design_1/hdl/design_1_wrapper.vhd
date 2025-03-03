@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Fri Feb 28 01:50:02 2025
---Host        : DESKTOP-V4CC4PR running 64-bit major release  (build 9200)
+--Date        : Sun Mar  2 19:00:12 2025
+--Host        : CO2041-08 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
 --Purpose     : IP block netlist
@@ -67,12 +67,6 @@ architecture STRUCTURE of design_1_wrapper is
     fmc_imageon_iic_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     IO_HDMII_spdif : in STD_LOGIC;
     fmc_imageon_vclk : in STD_LOGIC;
-    fmc_ipmi_id_eeprom_scl_i : in STD_LOGIC;
-    fmc_ipmi_id_eeprom_scl_o : out STD_LOGIC;
-    fmc_ipmi_id_eeprom_scl_t : out STD_LOGIC;
-    fmc_ipmi_id_eeprom_sda_i : in STD_LOGIC;
-    fmc_ipmi_id_eeprom_sda_o : out STD_LOGIC;
-    fmc_ipmi_id_eeprom_sda_t : out STD_LOGIC;
     DDR_cas_n : inout STD_LOGIC;
     DDR_cke : inout STD_LOGIC;
     DDR_ck_n : inout STD_LOGIC;
@@ -88,6 +82,12 @@ architecture STRUCTURE of design_1_wrapper is
     DDR_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    fmc_ipmi_id_eeprom_scl_i : in STD_LOGIC;
+    fmc_ipmi_id_eeprom_scl_o : out STD_LOGIC;
+    fmc_ipmi_id_eeprom_scl_t : out STD_LOGIC;
+    fmc_ipmi_id_eeprom_sda_i : in STD_LOGIC;
+    fmc_ipmi_id_eeprom_sda_o : out STD_LOGIC;
+    fmc_ipmi_id_eeprom_sda_t : out STD_LOGIC;
     fmc_imageon_iic_scl_i : in STD_LOGIC;
     fmc_imageon_iic_scl_o : out STD_LOGIC;
     fmc_imageon_iic_scl_t : out STD_LOGIC;
