@@ -111,16 +111,14 @@ set_property PACKAGE_PIN J21 [get_ports {IO_VITA_CAM_data_p[2]}]
 set_property PACKAGE_PIN J22 [get_ports {IO_VITA_CAM_data_n[2]}]
 set_property PACKAGE_PIN J18 [get_ports {IO_VITA_CAM_data_p[3]}]
 set_property PACKAGE_PIN K18 [get_ports {IO_VITA_CAM_data_n[3]}]
-
-# TESGTING UNCOMMENTING THESE
-set_property PACKAGE_PIN M21 [get_ports {IO_VITA_CAM_data_p[4]}];
-set_property PACKAGE_PIN M22 [get_ports {IO_VITA_CAM_data_n[4]}];
-set_property PACKAGE_PIN L21 [get_ports {IO_VITA_CAM_data_p[5]}];
-set_property PACKAGE_PIN L22 [get_ports {IO_VITA_CAM_data_n[5]}];
-set_property PACKAGE_PIN N22 [get_ports {IO_VITA_CAM_data_p[6]}];
-set_property PACKAGE_PIN P22 [get_ports {IO_VITA_CAM_data_n[6]}];
-set_property PACKAGE_PIN P17 [get_ports {IO_VITA_CAM_data_p[7]}];
-set_property PACKAGE_PIN P18 [get_ports {IO_VITA_CAM_data_n[7]}];
+# NOT USED  set_property PACKAGE_PIN M21 [get_ports {IO_VITA_CAM_data_p[4]}];
+# NOT USED  set_property PACKAGE_PIN M22 [get_ports {IO_VITA_CAM_data_n[4]}];
+# NOT USED  set_property PACKAGE_PIN L21 [get_ports {IO_VITA_CAM_data_p[5]}];
+# NOT USED  set_property PACKAGE_PIN L22 [get_ports {IO_VITA_CAM_data_n[5]}];
+# NOT USED  set_property PACKAGE_PIN N22 [get_ports {IO_VITA_CAM_data_p[6]}];
+# NOT USED  set_property PACKAGE_PIN P22 [get_ports {IO_VITA_CAM_data_n[6]}];
+# NOT USED  set_property PACKAGE_PIN P17 [get_ports {IO_VITA_CAM_data_p[7]}];
+# NOT USED  set_property PACKAGE_PIN P18 [get_ports {IO_VITA_CAM_data_n[7]}];
 
 set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_clk_pll]
 set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_reset_n]
