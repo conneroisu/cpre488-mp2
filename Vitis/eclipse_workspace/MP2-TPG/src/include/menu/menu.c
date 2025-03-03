@@ -8,6 +8,13 @@
 #include <xilsd.h>
 #include <xstatus.h>
 
+#define MENU_FONT_WIDTH 8
+#define MENU_FONT_HEIGHT 8
+#define IMAGE_WIDTH 480
+#define IMAGE_HEIGHT 640
+
+typedef u16 t_image_type[IMAGE_HEIGHT][IMAGE_WIDTH];
+
 /*
  * Complete 8x8 font table for the first 128 ASCII characters.
  * (Data derived from the public domain font8x8_basic)
@@ -143,3 +150,37 @@ static const u8 font8x8_basic[128][8] = {
     [0x7E] = {0x76, 0xDC, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // ~
     [0x7F] = {0x00, 0x10, 0x38, 0x6C, 0xC6, 0xC6, 0xFE, 0x00}  // DEL
 };
+
+/*
+ * Draw a single character at (x, y) using the given 16-bit color.
+ */
+void draw_char(t_image_type *fb, int x, int y, char c, u16 color) {
+  if ((unsigned char)c > 127)
+    return;
+  for (int row = 0; row < MENU_FONT_HEIGHT; row++) {
+    u8 row_bits = font8x8_basic[(unsigned char)c][row];
+    for (int col = 0; col < MENU_FONT_WIDTH; col++) {
+      if (row_bits & (1 << (7 - col))) {
+        int px = x + col;
+        int py = y + row;
+        if (px >= 0 && px < IMAGE_WIDTH && py >= 0 && py < IMAGE_HEIGHT) {
+          *fb[py][px] = color;
+        }
+      }
+    }
+  }
+}
+
+/*
+ * Fill a rectangle in the given framebuffer.
+ */
+void fill_rect(t_image_type *fb, int x, int y, int width, int height,
+               u16 color) {
+  for (int j = y; j < y + height; j++) {
+    for (int i = x; i < x + width; i++) {
+      if (i >= 0 && i < IMAGE_WIDTH && j >= 0 && j < IMAGE_HEIGHT) {
+        *fb[j][i] = color;
+      }
+    }
+  }
+}
