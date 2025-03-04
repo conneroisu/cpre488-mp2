@@ -3,13 +3,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <xstatus.h>
+#include <time.h>
+#include <unistd.h> // For sleep function
 
 #define MENU_FONT_WIDTH 8
 #define MENU_FONT_HEIGHT 8
 #define IMAGE_WIDTH 480
 #define IMAGE_HEIGHT 640
 
+typedef uint8_t u8;
+typedef uint16_t u16;
+typedef uint32_t u32;
 typedef u16 t_image_type[IMAGE_HEIGHT][IMAGE_WIDTH];
 
 /*
@@ -151,9 +155,10 @@ static const u8 font8x8_basic[128][8] = {
 /*
  * Draw a single character at (x, y) using the given 16-bit color.
  */
-void draw_char(t_image_type *fb, int x, int y, char c, u16 color) {
-  if ((unsigned char)c > 127)
+void draw_char(t_image_type fb, int x, int y, char c, u16 color) {
+  if ((unsigned char)c > 127) {
     return;
+  }
   for (int row = 0; row < MENU_FONT_HEIGHT; row++) {
     u8 row_bits = font8x8_basic[(unsigned char)c][row];
     for (int col = 0; col < MENU_FONT_WIDTH; col++) {
@@ -161,25 +166,234 @@ void draw_char(t_image_type *fb, int x, int y, char c, u16 color) {
         int px = x + col;
         int py = y + row;
         if (px >= 0 && px < IMAGE_WIDTH && py >= 0 && py < IMAGE_HEIGHT) {
-          *fb[py][px] = color;
+          fb[py][px] = color;
         }
       }
     }
   }
 }
 
-/*
- * Fill a rectangle in the given framebuffer.
+/**
+ * @brief Fill a rectangle in the given framebuffer.
+ *
+ * @param fb is the framebuffer to draw on.
+ * @param x is the x-coordinate of the upper-left corner.
+ * @param y is the y-coordinate of the upper-left corner.
+ * @param width is the width of the rectangle.
+ * @param height is the height of the rectangle.
+ * @param color is the color to fill the rectangle.
  */
-void fill_rect(t_image_type *fb, int x, int y, int width, int height,
-               u16 color) {
+void fill_rect(t_image_type fb,
+               int x,       //
+               int y,       //
+               int width,   //
+               int height,  //
+               u16 color) { //
   for (int j = y; j < y + height; j++) {
     for (int i = x; i < x + width; i++) {
       if (i >= 0 && i < IMAGE_WIDTH && j >= 0 && j < IMAGE_HEIGHT) {
-        *fb[j][i] = color;
+        fb[j][i] = color;
       }
     }
   }
 }
 
-int main() { printf("Hello World\n"); }
+/**
+ * @brief Draw a string at the given coordinates using the given color.
+ *
+ * @param fb the framebuffer to draw on.
+ * @param str the string to draw.
+ * @param x the x-coordinate of the upper-left corner.
+ * @param y the y-coordinate of the upper-left corner.
+ * @param color the color to draw the string.
+ */
+void draw_string(t_image_type fb,
+                 char *str,   //
+                 int x,       //
+                 int y,       //
+                 u16 color) { //
+  for (int i = 0; i < strlen(str); i++) {
+    draw_char(fb, x + i * MENU_FONT_WIDTH, y, str[i], color);
+  }
+}
+
+/**
+ * @brief Draw a rounded rectangle border (outline only) into the given
+ * framebuffer.
+ *
+ * @param fb is the framebuffer to draw on.
+ * @param rect_x is the x-coordinate of the upper-left corner.
+ * @param rect_y is the y-coordinate of the upper-left corner.
+ * @param rect_width is the width of the rectangle.
+ * @param rect_height is the height of the rectangle.
+ * @param radius is the radius of the rounded corners.
+ * @param color is the color of the rectangle.
+ */
+void draw_rounded_rect(u16 fb[IMAGE_HEIGHT][IMAGE_WIDTH], //
+                       int rect_x,                        //
+                       int rect_y,                        //
+                       int rect_width,                    //
+                       int rect_height,                   //
+                       int radius,                        //
+                       u16 color) {
+#define SET_PIXEL(x, y)                                                        \
+  do {                                                                         \
+    if ((x) >= 0 && (x) < IMAGE_WIDTH && (y) >= 0 && (y) < IMAGE_HEIGHT) {     \
+      fb[(y)][(x)] = (color);                                                  \
+    }                                                                          \
+  } while (0)
+
+  // Draw horizontal lines (top and bottom) excluding rounded corners.
+  for (int x = rect_x + radius; x < rect_x + rect_width - radius; x++) {
+    SET_PIXEL(x, rect_y);                   // Top edge
+    SET_PIXEL(x, rect_y + rect_height - 1); // Bottom edge
+  }
+  // Draw vertical lines (left and right) excluding rounded corners.
+  for (int y = rect_y + radius; y < rect_y + rect_height - radius; y++) {
+    SET_PIXEL(rect_x, y);                  // Left edge
+    SET_PIXEL(rect_x + rect_width - 1, y); // Right edge
+  }
+
+  // Midpoint circle algorithm for the corner arcs.
+  int r = radius;
+  int x = 0;
+  int y = r;
+  int d = 1 - r;
+  while (x <= y) {
+    // Top-left corner (arc from 180° to 270°):
+    SET_PIXEL(rect_x + r - x, rect_y + r - y);
+    SET_PIXEL(rect_x + r - y, rect_y + r - x);
+    // Top-right corner (arc from 270° to 360°):
+    SET_PIXEL(rect_x + rect_width - r - 1 + x, rect_y + r - y);
+    SET_PIXEL(rect_x + rect_width - r - 1 + y, rect_y + r - x);
+    // Bottom-left corner (arc from 90° to 180°):
+    SET_PIXEL(rect_x + r - x, rect_y + rect_height - r - 1 + y);
+    SET_PIXEL(rect_x + r - y, rect_y + rect_height - r - 1 + x);
+    // Bottom-right corner (arc from 0° to 90°):
+    SET_PIXEL(rect_x + rect_width - r - 1 + x,
+              rect_y + rect_height - r - 1 + y);
+    SET_PIXEL(rect_x + rect_width - r - 1 + y,
+              rect_y + rect_height - r - 1 + x);
+    x++;
+    if (d < 0) {
+      d += 4 * x + 2;
+    } else {
+      y--;
+      d += 4 * (x - y) + 2;
+    }
+  }
+#undef SET_PIXEL
+}
+
+/**
+ * @brief Draw a percentage bar at the given coordinates using the given color.
+ *
+ * @param fb is the framebuffer to draw on.
+ * @param x is the x-coordinate of the upper-left corner.
+ * @param y is the y-coordinate of the upper-left corner.
+ * @param width is the width of the bar.
+ * @param height is the height of the bar.
+ * @param percent is the percentage of the bar to fill.
+ * @param color is the color of the bar.
+ */
+void draw_bar(t_image_type fb,
+              int x,       // x-coordinate of upper-left corner
+              int y,       // y-coordinate of upper-left corner
+              int width,   // width of bar
+              int height,  // height of bar
+              int percent, // percentage of bar to fill
+              u16 color) { // color of bar
+  // Calculate the width of the filled portion based on percentage
+  int fill_width = (width * percent) / 100;
+  fill_rect(fb, x, y, fill_width, height, color);
+}
+
+/**
+ * @brief Write the framebuffer to a PPM file.
+ *
+ * @param fb is the framebuffer to write.
+ * @param filename is the name of the file to write to.
+ */
+void write_ppm(t_image_type fb, const char *filename) {
+  FILE *f = fopen(filename, "wb");
+  if (!f) {
+    perror("Error opening file for writing");
+    return;
+  }
+
+  // Write PPM header (P6 format, which is the binary format)
+  fprintf(f, "P6\n%d %d\n255\n", IMAGE_WIDTH, IMAGE_HEIGHT);
+
+  // Write pixel data
+  for (int y = 0; y < IMAGE_HEIGHT; y++) {
+    for (int x = 0; x < IMAGE_WIDTH; x++) {
+      // Convert 16-bit color (RGB565) to 24-bit RGB
+      u16 color = fb[y][x];
+      unsigned char r = ((color >> 11) & 0x1F)
+                        << 3; // Extract 5 bits of red and shift to 8 bits
+      unsigned char g = ((color >> 5) & 0x3F)
+                        << 2; // Extract 6 bits of green and shift to 8 bits
+      unsigned char b = (color & 0x1F)
+                        << 3; // Extract 5 bits of blue and shift to 8 bits
+
+      // Write the RGB bytes
+      fputc(r, f);
+      fputc(g, f);
+      fputc(b, f);
+    }
+  }
+
+  fclose(f);
+}
+
+int main() {
+  // Create and initialize the framebuffer
+  t_image_type image;
+  memset(image, 0, sizeof(image)); // Start with a black image
+
+  printf("Starting image generation...\n");
+
+  // Create a constant output filename
+  const char *output_file = "output.ppm";
+
+  // Demo: Draw a progress bar and some text that updates
+  for (int i = 0; i <= 100; i++) {
+    printf("Progress: %d%%\n", i);
+    // Clear the image first (fill with black)
+    fill_rect(image, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT, 0x0000);
+
+    // Set colors (RGB565 format)
+    u16 bar_color = 0x07E0;    // Green
+    u16 text_color = 0xFFFF;   // White
+    u16 border_color = 0xF800; // Red
+
+    // Draw some demo elements
+    draw_rounded_rect(image, 50, 200, IMAGE_WIDTH - 100, 50, 10, border_color);
+    draw_bar(image, 55, 205, IMAGE_WIDTH - 110, 40, i, bar_color);
+
+    // Create a status text
+    char status[50];
+    snprintf(status, sizeof(status), "Progress: %d%%", i);
+    draw_string(image, status, 50, 180, text_color);
+
+    // Add timestamp
+    time_t now = time(NULL);
+    char time_str[50];
+    strftime(time_str, sizeof(time_str), "Time: %H:%M:%S", localtime(&now));
+    draw_string(image, time_str, 50, 160, text_color);
+
+    // Write the current state to a PPM file
+    write_ppm(image, output_file);
+
+    // Sleep briefly to allow external viewers to refresh
+    sleep(100000); // 100ms
+
+    // Print update to console
+    printf("\rFrame %d/100 - Progress: %d%%", i, i);
+    fflush(stdout);
+  }
+
+  printf("\nImage generation complete! Final output saved to %s\n",
+         output_file);
+  return 0;
+}
