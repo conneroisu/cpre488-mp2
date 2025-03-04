@@ -386,11 +386,12 @@ int main() {
     write_ppm(image, output_file);
 
     // Sleep briefly to allow external viewers to refresh
-    sleep(100000); // 100ms
+    printf("wait");
+    sleep(1); // 100ms
+    printf("done");
 
     // Print update to console
     printf("\rFrame %d/100 - Progress: %d%%", i, i);
-    fflush(stdout);
   }
 
   printf("\nImage generation complete! Final output saved to %s\n",
