@@ -16,67 +16,46 @@
  * 02/04/14 by JAZ::Design created.
  *****************************************************************************/
 
- #include "camera_app.h"
-
- camera_config_t camera_config;
-
- int main() {
-
-     camera_config_init(&camera_config);
-     fmc_imageon_enable(&camera_config);
-     camera_loop(&camera_config);
-
-     return 0;
- }
-
- // Initialize the camera configuration data structure
- void camera_config_init(camera_config_t *config) {
-
-     config->uBaseAddr_IIC_FmcIpmi =  XPAR_FMC_IPMI_ID_EEPROM_0_BASEADDR;   // Device for reading HDMI board IPMI EEPROM information
-     config->uBaseAddr_IIC_FmcImageon = XPAR_FMC_IMAGEON_IIC_0_BASEADDR;    // Device for configuring the HDMI board
-
-     // Uncomment when using VITA Camera for Video input
-     config->uBaseAddr_VITA_SPI = XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR;  // Device for configuring the Camera sensor
-     config->uBaseAddr_VITA_CAM = XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR;  // Device for receiving Camera sensor data
+#include "camera_app.h"
 
 
-     // Uncomment when using the TPG for Video input
-     //config->uBaseAddr_TPG_PatternGenerator = XPAR_V_TPG_0_S_AXI_CTRL_BASEADDR; // TPG Device
+camera_config_t camera_config;
 
-     config->uDeviceId_VTC_tpg   = XPAR_V_TC_0_DEVICE_ID;                        // Video Timer Controller (VTC) ID
-     config->uDeviceId_VDMA_HdmiFrameBuffer = XPAR_AXI_VDMA_0_DEVICE_ID;         // VDMA ID
-     config->uBaseAddr_MEM_HdmiFrameBuffer = XPAR_DDR_MEM_BASEADDR + 0x10000000; // VDMA base address for Frame buffers
-     config->uNumFrames_HdmiFrameBuffer = XPAR_AXIVDMA_0_NUM_FSTORES;            // NUmber of VDMA Frame buffers
+// Main function. Initializes the devices and configures VDMA
+int main() {
 
-     return;
- }
+	camera_config_init(&camera_config);
+	fmc_imageon_enable(&camera_config);
+	camera_loop(&camera_config);
 
- Xuint8 clamp(int value, int min, int max) {
-     if (value < min) return min;
-     if (value > max) return max;
-     return value;
-}
-
-// Convert RGB values to YCbCr
-void rgb_to_ycbcr(Xuint8 r, Xuint8 g, Xuint8 b, Xuint8 *y, Xuint8 *cb, Xuint8 *cr) {
-     *y  = clamp((int)(0.183 * r + 0.614 * g + 0.062 * b + 16.0), 0, 255);
-     *cb = clamp((int)(-0.101 * r - 0.338 * g + 0.439 * b + 128.0), 0, 255);
-     *cr = clamp((int)(0.439 * r - 0.399 * g - 0.040 * b + 128.0), 0, 255);
-}
-
-// Pack YCbCr values into 16-bit 4:2:2 format [Y0 Cb Y1 Cr]
-Xuint16 pack_ycbcr422(Xuint8 y, Xuint8 cb_or_cr, int is_cb) {
-     if (is_cb) {
-         // [Y Cb] format
-         return (y << 8) | cb_or_cr;
-     } else {
-         // [Y Cr] format
-         return (y << 8) | cb_or_cr;
-     }
+	return 0;
 }
 
 
-// Main (SW) processing loop. Need to do: have an explicit exit condition
+// Initialize the camera configuration data structure
+void camera_config_init(camera_config_t *config) {
+
+    config->uBaseAddr_IIC_FmcIpmi =  XPAR_FMC_IPMI_ID_EEPROM_0_BASEADDR;   // Device for reading HDMI board IPMI EEPROM information
+    config->uBaseAddr_IIC_FmcImageon = XPAR_FMC_IMAGEON_IIC_0_BASEADDR;    // Device for configuring the HDMI board
+
+    // Uncomment when using VITA Camera for Video input
+    config->uBaseAddr_VITA_SPI = XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR;  // Device for configuring the Camera sensor
+    config->uBaseAddr_VITA_CAM = XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR;  // Device for receiving Camera sensor data
+
+
+    // Uncomment when using the TPG for Video input
+//    config->uBaseAddr_TPG_PatternGenerator = XPAR_V_TPG_0_S_AXI_CTRL_BASEADDR; // TPG Device
+
+    config->uDeviceId_VTC_tpg   = XPAR_V_TC_0_DEVICE_ID;                        // Video Timer Controller (VTC) ID
+    config->uDeviceId_VDMA_HdmiFrameBuffer = XPAR_AXI_VDMA_0_DEVICE_ID;         // VDMA ID
+    config->uBaseAddr_MEM_HdmiFrameBuffer = XPAR_DDR_MEM_BASEADDR + 0x10000000; // VDMA base address for Frame buffers
+    config->uNumFrames_HdmiFrameBuffer = XPAR_AXIVDMA_0_NUM_FSTORES;            // NUmber of VDMA Frame buffers
+
+    return;
+}
+
+
+// Main (SW) processing loop. Recommended to have an explicit exit condition
 void camera_loop(camera_config_t *config) {
     Xuint32 parkptr;
     Xuint32 vdma_S2MM_DMACR, vdma_MM2S_DMACR;
@@ -111,34 +90,34 @@ void camera_loop(camera_config_t *config) {
             // Step 1: Extract valid 8-bit pixel data from the 16-bit input stream
             uint8_t pixel_value = (pS2MM_Mem[i] >> 8) & 0xFF;
 
-            // Step 2: Implement Bayer CFA interpolation
+            // Step 2: Implement Bayer CFA interpolation (BGGR pattern)
             uint8_t R, G, B;
             int x = i % 1920;
             int y = i / 1920;
 
             if (y % 2 == 0) {
                 if (x % 2 == 0) {
-                    // Green pixel in the GR row
-                    G = pixel_value;
-                    R = (pS2MM_Mem[i + 1] >> 8) & 0xFF;
-                    B = (pS2MM_Mem[i + 1920] >> 8) & 0xFF;
-                } else {
-                    // Red pixel in the GR row
-                    R = pixel_value;
-                    G = (pS2MM_Mem[i - 1] >> 8) & 0xFF;
-                    B = (pS2MM_Mem[i + 1920] >> 8) & 0xFF;
-                }
-            } else {
-                if (x % 2 == 0) {
                     // Blue pixel in the BG row
                     B = pixel_value;
-                    G = (pS2MM_Mem[i + 1] >> 8) & 0xFF;
-                    R = (pS2MM_Mem[i - 1920] >> 8) & 0xFF;
+                    G = ((((pS2MM_Mem[i + 1] >> 8) & 0xFF) + ((pS2MM_Mem[i + 1920] >> 8) & 0xFF) / 2));
+                    R = (pS2MM_Mem[i + 1921] >> 8) & 0xFF;
                 } else {
                     // Green pixel in the BG row
                     G = pixel_value;
-                    R = (pS2MM_Mem[i - 1920] >> 8) & 0xFF;
                     B = (pS2MM_Mem[i - 1] >> 8) & 0xFF;
+                    R = (pS2MM_Mem[i + 1920] >> 8) & 0xFF;
+                }
+            } else {
+                if (x % 2 == 0) {
+                    // Green pixel in the GR row
+                    G = pixel_value;
+                    B = (pS2MM_Mem[i - 1920] >> 8) & 0xFF;
+                    R = (pS2MM_Mem[i + 1] >> 8) & 0xFF;
+                } else {
+                    // Red pixel in the GR row
+                    R = pixel_value;
+                    G = ((((pS2MM_Mem[i + 1] >> 8) & 0xFF) + ((pS2MM_Mem[i + 1920] >> 8) & 0xFF) / 2));
+                    B = (pS2MM_Mem[i - 1921] >> 8) & 0xFF;
                 }
             }
 
@@ -146,6 +125,11 @@ void camera_loop(camera_config_t *config) {
             float Y = 0.183f * R + 0.614f * G + 0.062f * B + 16;
             float Cb = -0.101f * R - 0.338f * G + 0.439f * B + 128;
             float Cr = 0.439f * R - 0.399f * G - 0.040f * B + 128;
+
+            // Clamp YCbCr values to valid range
+            Y = (Y < 16) ? 16 : (Y > 235) ? 235 : Y;
+            Cb = (Cb < 16) ? 16 : (Cb > 240) ? 240 : Cb;
+            Cr = (Cr < 16) ? 16 : (Cr > 240) ? 240 : Cr;
 
             // Step 4: Chroma subsampling (4:2:2)
             if (x % 2 == 0) {
@@ -170,10 +154,11 @@ void camera_loop(camera_config_t *config) {
 
     sleep(5);
 
-    // Uncomment when using TPG for Video input
-    //fmc_imageon_disable_tpg(config);
+    // Disable VITA camera
+    //fmc_imageon_disable_vita(config);
 
     sleep(1);
 
     return;
 }
+
