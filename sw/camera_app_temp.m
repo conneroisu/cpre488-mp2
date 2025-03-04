@@ -1,200 +1,117 @@
-function camera_app_temp()
+function pMM2S_Mem = camera_app_temp()
+    % Read a sample color image
+    img = imread('peppers.png');
+    % Optionally resize for testing (e.g., to 256x256 instead of full resolution)
+    img = imresize(img, [1920, 1080]);
+    [height, width, ~] = size(img);
+
+    % Generate a synthetic BGGR Bayer image
+    bayer = zeros(height, width, 'uint8');
+    for y = 1:height
+        for x = 1:width
+            if mod(y,2)==1  % Odd rows: BG row
+                if mod(x,2)==1
+                    % Blue pixel
+                    bayer(y,x) = img(y,x,3);
+                else
+                    % Green pixel
+                    bayer(y,x) = img(y,x,2);
+                end
+            else  % Even rows: GR row
+                if mod(x,2)==1
+                    % Green pixel
+                    bayer(y,x) = img(y,x,2);
+                else
+                    % Red pixel
+                    bayer(y,x) = img(y,x,1);
+                end
+            end
+        end
+    end
+
+    % For compatibility with the processing code, simulate a 16-bit
+    % memory where the Bayer value is stored in the high byte.
+    pS2MM_Mem = uint16(bayer) * 256;
     
+    % Preallocate output memory for the processed YCbCr422 data
+    pMM2S_Mem = zeros(width * height, 1, 'uint16');
+
+    %% Start of camera_app_temp.c translation %%
     % Create arrays for processing
-%     rawBayer = zeros(1920*1080, 1, 'uint8');
     rgbImage = zeros(1920*1080*3, 1, 'uint8');
-    
-    pS2MM_Mem = zeros(1920*1080, 1, 'uint16');  % This would be your output memory
+%     pS2MM_Mem = zeros(1920*1080, 1, 'uint16');
+%     pMM2S_Mem = zeros(1920*1080, 1, 'uint16');
 
     % Process frames with Bayer demosaicing    
     for j = 1:1000
-        rawBayer = bitand(pS2MM_Mem, 255);
+        for i = 1:((1920 - 1) * (1080 - 1))
+            pixel_value = bitand(bitshift(pS2MM_Mem(i), -8), 255);
+            R = 0;
+            G = 0;
+            B = 0;
 
-        % Bayer demosaicing - assuming RGB Bayer pattern
-        for y = 1:1080
-            for x = 1:1920
-                
-                idx = y * (1920 + x);
-                rgb_idx = idx * 3;
+            x = mod(i-1,1920);
+            y = floor((i-1) / 1920);
 
-                is_red_row = mod(y, 2) == 1;
-                is_red_col = mod(x, 2) == 1;
-                is_blue_row = ~is_red_row;
-                is_blue_col = ~is_red_col;
-                
-                r = 0; g = 0; b = 0;
-
-                if is_red_row && is_red_col
-                    r = rawBayer(idx); % Pay attention to this index
-
-                    green_count = 0;
-                    g = 0;
-
-                    % Right neighbor
-                    if x + 1 < 1920
-                        g = g + rawBayer(idx + 1);
-                        green_count = green_count + 1;
-                    end
-
-                    % Bottom neighbor
-                    if y + 1 < 1080
-                        g = g + rawBayer(idx + 1920);
-                        green_count = green_count + 1;
-                    end
-
-                    if green_count > 0
-                        g = g / green_count;
-                    else
-                        g = 0;
-                    end
-                    
-                    % Blue - diagonal neighbor
-                    blue_count = 0;
-                    b = 0;
-
-                    % Bottom-right neighbor
-                    if (x + 1 < 1920) && (y + 1 < 1080)
-                        b = b + rawBayer(idx + 1920 + 1);
-                        blue_count = blue_count + 1;
-                    end
-
-                    if blue_count > 0
-                        b = b;
-                    else
-                        b = 0;
-                    end                  
-                
-                % Green pixel on red row
-                elseif is_red_row && is_blue_col
-                    g = rawBayer(idx); % Direct green value
-                    
-                    % Red - left neighbor
-                    if x > 0
-                        r = rawBayer(idx - 1);
-                    else
-                        r = 0;
-                    end
-
-                    % Blue - bottom neighbor
-                    if y + 1 < 1080
-                        b = rawBayer(idx + 1920);
-                    else
-                        b = 0;
-                    end
-                
-                % Green pixel on blue row (bottom-left in 2x2 grid)
-                elseif is_blue_row && is_red_col
-
-                    if idx > numel(rawBayer)
-                        excess = idx - numel(rawBayer);
-                        fprintf('Index %d exceeds rawBayer length (%d) by %d elements.\n', idx, numel(rawBayer), excess);
-                    end
-                    g = rawBayer(idx); % Direct green value
-                    
-                    % Red - top neighbor
-                    if y > 0
-                        r = rawBayer(idx - 1920);
-                    else
-                        r = 0;
-                    end
-                    
-                    % Blue - right neighbor
-                    if x + 1 < 1920
-                        b = rawBayer(idx + 1);
-                    else
-                        b = 0;
-                    end                    
-
-                % Blue pixel (bottom-right)
-                elseif is_blue_row && is_blue_col
-                    b = rawBayer(idx);
-
-                    % Green - average of horizontal and vertical neighbors
-                    green_count = 0;
-                    g = 0;
-
-                    % Left neighbor
-                    if x > 0
-                        g = g + rawBayer(idx - 1);
-                        green_count = green_count + 1;
-                    end
-
-                    % Top neighbor
-                    if y > 0
-                        g = g + rawBayer(idx - 1920);
-                        green_count = green_count + 1;
-                    end
-                   
-                    if green_count > 0
-                        g = g;
-                    else
-                        g = 0;
-                    end
-
-                    % Red - diagonal neighbor average
-                    red_count = 0;
-                    r = 0;
-
-                    if x > 0 && y > 0
-                        r = r + rawBayer(idx - 1920 - 1);
-                        red_count = red_count + 1;
-                    end
-                    
-                    if red_count > 0
-                        r = r;
-                    else 
-                        r = 0;
-                    end
-
-                end % if is_red_row && is_red_col
-
-            % Store RGB values
-            rgbImage(rgb_idx) = r;
-            rgbImage(rgb_idx + 1) = g;
-            rgbImage(rgb_idx + 2) = b;
-
-            end % x
-        end % y
-    
-        % Convert RGB to YCbCr 4:2:2 format
-        for y = 1:1080 + 1
-            for x = 1:2:1920 + 1
-                idx =  y * 1920 + x + 1;
-                rgb_idx1 = idx * 3;
-                rgb_idx2 = (idx + 1) * 3;
-    
-                % Get RGB values for two adjacent pixels
-                r1 = rgbImage(rgb_idx1);
-                g1 = rgbImage(rgb_idx1 + 1);
-                b1 = rgbImage(rgb_idx1 + 2);
-
-                if x + 1 < 1920
-                    r2 = rgbImage(rgb_idx2);
-                    g2 = rgbImage(rgb_idx2 + 1);
-                    b2 = rgbImage(rgb_idx2 + 2);
+            if (mod(y,2) == 0)
+                if (mod(x,2) == 0)
+                    % Blue pixel in the BG row
+                    B = pixel_value;
+                    G = ((bitand(bitshift(pS2MM_Mem(i + 1), -8), 255) + bitand(bitshift(pS2MM_Mem(i + 1920), -8), 255)) / 2);
+                    R = bitand(bitshift(pS2MM_Mem(i + 1921), -8), 255);
                 else
-                    r2 = 0;
-                    g2 = 0;
-                    b2 = 0;
+                    % Green pixel in the BG row
+                    G = pixel_value;
+                    B = bitand(bitshift(pS2MM_Mem(i - 1), -8), 255);
+                    R = bitand(bitshift(pS2MM_Mem(i + 1920), -8), 255);
                 end
-        
-                % Convert to YCbCr
-                [y1, cb1, cr1] = rgb_to_ycbcr(r1, g1, b1);
-                [y2, cb2, cr2] = rgb_to_ycbcr(r2, g2, b2);
-                
-                % Pack into 4:2:2 format - use the Cb from the first pixel and Cr from the second
-                output_idx = floor(idx/2);
-                pMM2S_Mem(output_idx * 2) = pack_ycbcr422(y1, cb1, 1);      % Y0 Cb
-                pMM2S_Mem(output_idx * 2 + 1) = pack_ycbcr422(y2, cr1, 0);  % Y1 Cr
-            end % x
-        end %y 
+            else
+                if (mod(x,2) == 0)
+                    % Green pixel in the GR row
+                    G = pixel_value;
+                    B = bitand(bitshift(pS2MM_Mem(i - 1920), -8), 255);
+                    R = bitand(bitshift(pS2MM_Mem(i + 1), -8), 255);
+                else 
+                    % Red pixel in the GR row
+                    R = pixel_value;
 
-        % Print a progress indicator every 100 frames
-        if mod(j, 100) == 0
-            fprintf('Processed %d frames\n', j);
-        end
+                    if (i + 1920) >= 2073600
+                        print("Fuck")
+                    end
+                    G = ((bitand(bitshift(pS2MM_Mem(i + 1), -8), 255) + bitand(bitshift(pS2MM_Mem(i + 1920), -8), 255)) / 2);
+                    B = bitand(bitshift(pS2MM_Mem(i - 1920), -8), 255);
+                end
+            end % mod(y,2)
+            
+            % Convert RGB to YCbCr
+            Y = 0.183 * R + 0.614 * G + 0.062 * B + 16;
+            Cb = -0.101 * R - 0.338 * G + 0.439 * B + 128;
+            Cr = 0.439 * R - 0.399 * G - 0.040 * B + 128;
+            
+            % Clamp YCbCr values to valid range
+            Y = max(16, min(235, Y));
+            Cb = max(16, min(240, Cb));
+            Cr = max(16, min(240, Cr));
 
+            % Chroma subsampling
+            if (mod(x,2) == 0)
+                % Store Y for the first pixel and Cb
+                YCbCr = bitor(bitshift(uint16(Y), 8), bitand(uint16(Cb), 255));
+                pMM2S_Mem(i) = YCbCr;
+            else
+                % Store Y for the second pixel and Cr
+                YCbCr = bitor(bitshift(uint16(Y), 8), bitand(uint16(Cr), 255));
+                pMM2S_Mem(i) = YCbCr;
+            end 
+
+        end % i
     end % j
+
+    % Display results for visual verification
+    figure, imshow(bayer), title('Synthetic Bayer Image');
+    % Compare with MATLAB's built-in demosaic for reference:
+    rgb_builtin = demosaic(bayer, 'bggr');
+    figure, imshow(rgb_builtin), title('MATLAB Built-in Demosaic Output');
 end % Function
 
 function result = clamp (value, min, max)

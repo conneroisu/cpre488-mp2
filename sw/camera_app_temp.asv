@@ -1,214 +1,163 @@
-function camera_app_temp()
-    
-    % Create arrays for processing
-%     rawBayer = zeros(1920*1080, 1, 'uint8');
-    rgbImage = zeros(1920*1080*3, 1, 'uint8');
-    
-    pMM2S_Mem = zeros(1920*1080, 1, 'uint16');  % This would be your output memory
+/*****************************************************************************
+ * Joseph Zambreno
+ * Phillip Jones
+ *
+ * Department of Electrical and Computer Engineering
+ * Iowa State University
+ *****************************************************************************/
 
-    % Process frames with Bayer demosaicing    
-    for j = 1:1000
-        rawBayer = bitand(pSMM_Mem, 255);
+/*****************************************************************************
+ * camera_app.c - main camera application code. The camera configures the various
+ * video in and video out peripherals, and (optionally) performs some
+ * image processing on data coming in from the vdma.
+ *
+ *
+ * NOTES:
+ * 02/04/14 by JAZ::Design created.
+ *****************************************************************************/
 
-        % Bayer demosaicing - assuming RGB Bayer pattern
-        for y = 1:1080 + 1
-            for x = 1:1920 + 1
-                
-                idx = y * 1920 + x;
-                rgb_idx = idx * 3;
-
-                is_red_row = mod(y, 2) == 1;
-                is_red_col = mod(x, 2) == 1;
-                is_blue_row = ~is_red_row;
-                is_blue_col = ~is_red_col;
-                
-                r = 0; g = 0; b = 0;
-
-                if is_red_row && is_red_col
-                    r = rawBayer(idx); % Pay attention to this index
-
-                    green_count = 0;
-                    g = 0;
-
-                    % Right neighbor
-                    if x + 1 < 1920
-                        g = g + rawBayer(idx + 1);
-                        green_count = green_count + 1;
-                    end
-
-                    % Bottom neighbor
-                    if y + 1 < 1080
-                        g = g + rawBayer(idx + 1920);
-                        green_count = green_count + 1;
-                    end
-
-                    if green_count > 0
-                        g = g / green_count;
-                    else
-                        g = 0;
-                    end
-                    
-                    % Blue - diagonal neighbor
-                    blue_count = 0;
-                    b = 0;
-
-                    % Bottom-right neighbor
-                    if (x + 1 < 1920) && (y + 1 < 1080)
-                        b = b + rawBayer(idx + 1920 + 1);
-                        blue_count = blue_count + 1;
-                    end
-
-                    if blue_count > 0
-                        b = b / blue_count;
-                    else
-                        b = 0;
-                    end                  
-                
-                % Green pixel on red row
-                elseif is_red_row && is_blue_col
-                    g = rawBayer(idx); % Direct green value
-                    
-                    % Red - left neighbor
-                    if x > 0
-                        r = rawBayer(idx - 1);
-                    else
-                        r = 0;
-                    end
-
-                    % Blue - bottom neighbor
-                    if y + 1 < 1080
-                        b = rawBayer(idx + 1920);
-                    else
-                        b = 0;
-                    end
-                
-                % Green pixel on blue row (bottom-left in 2x2 grid)
-                elseif is_blue_row && is_red_col
-                    g = rawBayer(idx); % Direct green value
-                    
-                    % Red - top neighbor
-                    if y > 0
-                        r = rawBayer(idx - 1920);
-                    else
-                        r = 0;
-                    end
-                    
-                    % Blue - right neighbor
-                    if x + 1 < 1920
-                        b = rawBayer(idx + 1);
-                    else
-                        b = 0;
-                    end                    
-
-                % Blue pixel (bottom-right)
-                elseif is_blue_row && is_blue_col
-                    b = rawBayer(idx);
-
-                    % Green - average of horizontal and vertical neighbors
-                    green_count = 0;
-                    g = 0;
-
-                    % Left neighbor
-                    if x > 0
-                        g = g + rawBayer(idx - 1);
-                        green_count = green_count + 1;
-                    end
-
-                    % Top neighbor
-                    if y > 0
-                        g = g + rawBayer(idx - 1920);
-                        green_count = green_count + 1;
-                    end
-                   
-                    if green_count > 0
-                        g = g / green_count;
-                    else
-                        g = 0;
-                    end
-
-                    % Red - diagonal neighbor average
-                    red_count = 0;
-                    r = 0;
-
-                    if x > 0 && y > 0
-                        r = r + rawBayer(idx - 1920 - 1);
-                        red_count = red_count + 1;
-                    end
-                    
-                    if red_count > 0
-                        r = r
-                    end
-
-                end % if is_red_row && is_red_col
-
-            % Store RGB values
-            rgbImage(rgb_idx) = r;
-            rgbImage(rgb_idx + 1) = g;
-            rgbImage(rgb_idx + 2) = b;
-
-            end % x
-        end % y
-    
-        % Convert RGB to YCbCr 4:2:2 format
-        for y = 1:1080 + 1
-            for x = 1:2:1920 + 1
-                idx =  y * 1920 + x + 1;
-                rgb_idx1 = idx * 3;
-                rgb_idx2 = (idx + 1) * 3;
-    
-                % Get RGB values for two adjacent pixels
-                r1 = rgbImage(rgb_idx1);
-                g1 = rgbImage(rgb_idx1 + 1);
-                b1 = rgbImage(rgb_idx1 + 2);
-
-                if x + 1 < 1920
-                    r2 = rgbImage(rgb_idx2);
-                    g2 = rgbImage(rgb_idx2 + 1);
-                    b2 = rgbImage(rgb_idx2 + 2);
-                else
-                    r2 = 0;
-                    g2 = 0;
-                    b2 = 0;
-                end
-        
-                % Convert to YCbCr
-                [y1, cb1, cr1] = rgb_to_ycbcr(r1, g1, b1);
-                [y2, cb2, cr2] = rgb_to_ycbcr(r2, g2, b2);
-                
-                % Pack into 4:2:2 format - use the Cb from the first pixel and Cr from the second
-                output_idx = floor(idx/2);
-                pMM2S_Mem(output_idx * 2) = pack_ycbcr422(y1, cb1, 1);      % Y0 Cb
-                pMM2S_Mem(output_idx * 2 + 1) = pack_ycbcr422(y2, cr1, 0);  % Y1 Cr
-            end % x
-        end %y 
-
-        % Print a progress indicator every 100 frames
-        if mod(j, 100) == 0
-            fprintf('Processed %d frames\n', j);
-        end
-
-    end % j
-end % Function
-
-function result = clamp (value, min, max)
-    if value < min 
-        result = min;
-    elseif value > max
-        result = max;
-    else
-        result = value;
-    end
-end
-
-function result = rgb_to_ycbcr (r, g, b)
-    y_clamped = clamp((0.183 * r + 0.614 * g + 0.062 * b + 16.0), 0, 255);
-    cb_clamped = clamp((-0.101 * r - 0.338 * g + 0.439 * b + 128.0), 0, 255);
-    cr_clamped = clamp((0.439 * r - 0.399 * g - 0.040 * b + 128.0), 0, 255);
-    result = [y_clamped, cb_clamped, cr_clamped];
-end
-
-function result = pack_ycbcr422(y, cb_or_cr, is_cb)
-    result = uint16(y) * 256 + uint16(cb_or_cr);
-end
+#include "camera_app.h"
 
 
+camera_config_t camera_config;
+
+// Main function. Initializes the devices and configures VDMA
+int main() {
+
+	camera_config_init(&camera_config);
+	fmc_imageon_enable(&camera_config);
+	camera_loop(&camera_config);
+
+	return 0;
+}
+
+
+// Initialize the camera configuration data structure
+void camera_config_init(camera_config_t *config) {
+
+    config->uBaseAddr_IIC_FmcIpmi =  XPAR_FMC_IPMI_ID_EEPROM_0_BASEADDR;   // Device for reading HDMI board IPMI EEPROM information
+    config->uBaseAddr_IIC_FmcImageon = XPAR_FMC_IMAGEON_IIC_0_BASEADDR;    // Device for configuring the HDMI board
+
+    // Uncomment when using VITA Camera for Video input
+    config->uBaseAddr_VITA_SPI = XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR;  // Device for configuring the Camera sensor
+    config->uBaseAddr_VITA_CAM = XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR;  // Device for receiving Camera sensor data
+
+
+    // Uncomment when using the TPG for Video input
+//    config->uBaseAddr_TPG_PatternGenerator = XPAR_V_TPG_0_S_AXI_CTRL_BASEADDR; // TPG Device
+
+    config->uDeviceId_VTC_tpg   = XPAR_V_TC_0_DEVICE_ID;                        // Video Timer Controller (VTC) ID
+    config->uDeviceId_VDMA_HdmiFrameBuffer = XPAR_AXI_VDMA_0_DEVICE_ID;         // VDMA ID
+    config->uBaseAddr_MEM_HdmiFrameBuffer = XPAR_DDR_MEM_BASEADDR + 0x10000000; // VDMA base address for Frame buffers
+    config->uNumFrames_HdmiFrameBuffer = XPAR_AXIVDMA_0_NUM_FSTORES;            // NUmber of VDMA Frame buffers
+
+    return;
+}
+
+
+// Main (SW) processing loop. Recommended to have an explicit exit condition
+void camera_loop(camera_config_t *config) {
+    Xuint32 parkptr;
+    Xuint32 vdma_S2MM_DMACR, vdma_MM2S_DMACR;
+    int i, j;
+
+    xil_printf("Entering main SW processing loop\r\n");
+
+    // Grab the DMA parkptr and update it
+    parkptr = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET);
+    parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
+    parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
+    parkptr |= 0x1;
+    XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET, parkptr);
+
+    // Grab the DMA Control Registers and clear circular park mode
+    vdma_MM2S_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET);
+    XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK);
+    vdma_S2MM_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET);
+    XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK);
+
+    // Pointers to the S2MM memory frame and MM2S memory frame
+    volatile Xuint16 *pS2MM_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_S2MM_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET);
+    volatile Xuint16 *pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET + 4);
+
+    xil_printf("Start processing 1000 frames!\r\n");
+    xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
+    xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
+
+    // Run for 1000 frames before going back to HW mode
+    for (j = 0; j < 1000; j++) {
+        for (i = 0; i < 1920 * 1080; i++) {
+            // Step 1: Extract valid 8-bit pixel data from the 16-bit input stream
+            uint8_t pixel_value = (pS2MM_Mem[i] >> 8) & 0xFF;
+
+            // Step 2: Implement Bayer CFA interpolation (BGGR pattern)
+            uint8_t R, G, B;
+            int x = i % 1920;
+            int y = i / 1920;
+
+            if (y % 2 == 0) {
+                if (x % 2 == 0) {
+                    // Blue pixel in the BG row
+                    B = pixel_value;
+                    G = ((((pS2MM_Mem[i + 1] >> 8) & 0xFF) + ((pS2MM_Mem[i + 1920] >> 8) & 0xFF) / 2));
+                    R = (pS2MM_Mem[i + 1921] >> 8) & 0xFF;
+                } else {
+                    // Green pixel in the BG row
+                    G = pixel_value;
+                    B = (pS2MM_Mem[i - 1] >> 8) & 0xFF;
+                    R = (pS2MM_Mem[i + 1920] >> 8) & 0xFF;
+                }
+            } else {
+                if (x % 2 == 0) {
+                    // Green pixel in the GR row
+                    G = pixel_value;
+                    B = (pS2MM_Mem[i - 1920] >> 8) & 0xFF;
+                    R = (pS2MM_Mem[i + 1] >> 8) & 0xFF;
+                } else {
+                    // Red pixel in the GR row
+                    R = pixel_value;
+                    G = ((((pS2MM_Mem[i + 1] >> 8) & 0xFF) + ((pS2MM_Mem[i + 1920] >> 8) & 0xFF) / 2));
+                    B = (pS2MM_Mem[i - 1921] >> 8) & 0xFF;
+                }
+            }
+
+            // Step 3: Convert RGB to YCbCr
+            float Y = 0.183f * R + 0.614f * G + 0.062f * B + 16;
+            float Cb = -0.101f * R - 0.338f * G + 0.439f * B + 128;
+            float Cr = 0.439f * R - 0.399f * G - 0.040f * B + 128;
+
+            // Clamp YCbCr values to valid range
+            Y = (Y < 16) ? 16 : (Y > 235) ? 235 : Y;
+            Cb = (Cb < 16) ? 16 : (Cb > 240) ? 240 : Cb;
+            Cr = (Cr < 16) ? 16 : (Cr > 240) ? 240 : Cr;
+
+            // Step 4: Chroma subsampling (4:2:2)
+            if (x % 2 == 0) {
+                // Store Y for the first pixel and Cb
+                uint16_t YCbCr = ((uint16_t)Y << 8) | ((uint16_t)Cb & 0xFF);
+                pMM2S_Mem[i] = YCbCr;
+            } else {
+                // Store Y for the second pixel and Cr
+                uint16_t YCbCr = ((uint16_t)Y << 8) | ((uint16_t)Cr & 0xFF);
+                pMM2S_Mem[i] = YCbCr;
+            }
+        }
+    }
+
+    // Re-enable circular park mode
+    vdma_MM2S_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET);
+    XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
+    vdma_S2MM_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET);
+    XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
+
+    xil_printf("Main SW processing loop complete!\r\n");
+
+    sleep(5);
+
+    // Disable VITA camera
+    //fmc_imageon_disable_vita(config);
+
+    sleep(1);
+
+    return;
+}
