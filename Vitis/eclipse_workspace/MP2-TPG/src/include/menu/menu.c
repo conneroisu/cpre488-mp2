@@ -1,11 +1,8 @@
-#include "mmap.h"
 #include <ctype.h>
-#include <ff.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <xilsd.h>
 #include <xstatus.h>
 
 #define MENU_FONT_WIDTH 8
@@ -184,3 +181,5 @@ void fill_rect(t_image_type *fb, int x, int y, int width, int height,
     }
   }
 }
+
+int main() { printf("Hello World\n"); }
