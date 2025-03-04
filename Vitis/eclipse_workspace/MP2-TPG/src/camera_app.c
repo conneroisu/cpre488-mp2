@@ -17,6 +17,7 @@
  *****************************************************************************/
 
 #include "camera_app.h"
+#include "xil_types.h"
 
 
 camera_config_t camera_config;
@@ -39,8 +40,8 @@ void camera_config_init(camera_config_t *config) {
     config->uBaseAddr_IIC_FmcImageon = XPAR_FMC_IMAGEON_IIC_0_BASEADDR;    // Device for configuring the HDMI board
 
     // Uncomment when using VITA Camera for Video input
-    config->uBaseAddr_VITA_SPI = XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR;  // Device for configuring the Camera sensor
-    config->uBaseAddr_VITA_CAM = XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR;  // Device for receiving Camera sensor data
+    // config->uBaseAddr_VITA_SPI = XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR;  // Device for configuring the Camera sensor
+    // config->uBaseAddr_VITA_CAM = XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR;  // Device for receiving Camera sensor data
 
 
     // Uncomment when using the TPG for Video input
@@ -64,7 +65,6 @@ void camera_loop(camera_config_t *config) {
 
 
 	xil_printf("Entering main SW processing loop\r\n");
-
 
 	// Grab the DMA parkptr, and update it to ensure that when parked, the S2MM side is on frame 0, and the MM2S side on frame 1
 	parkptr = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET);
@@ -91,9 +91,23 @@ void camera_loop(camera_config_t *config) {
 	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
 
 	// Run for 1000 frames before going back to HW mode
-	for (j = 0; j < 1000; j++) {
-		for (i = 0; i < 1920*1080; i++) {
-	       pMM2S_Mem[i] = pS2MM_Mem[1920*1080-i-1];
+	for (j = 0; j < 1000; j++)
+	{
+		for (i = 0; i < 1920*1080; i += 2)
+		{
+		   uint8_t u, v = 0;
+		   uint16_t y = 0;
+
+		   u = (pS2MM_Mem[i] & 0xFF00) >> 8;
+		   v = (pS2MM_Mem[i + 1] & 0xFF00) >> 8;
+		   y = (pS2MM_Mem[i] & 0xFF) | ((pS2MM_Mem[i + 1] & 0xFF) << 8);
+
+		   // Half luminance
+		   y /= 2;
+
+		   // Set from YUV values.
+	       pMM2S_Mem[i] = (u << 8) | (y & 0xFF);
+	       pMM2S_Mem[i + 1] = (v << 8) | ((y & 0xFF00) >> 8);
 		}
 	}
 
@@ -109,7 +123,6 @@ void camera_loop(camera_config_t *config) {
 
 	sleep(5);
 
-	// Uncomment when using TPG for Video input
 	fmc_imageon_disable_tpg(config);
 
 	sleep(1);
