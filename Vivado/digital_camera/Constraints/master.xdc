@@ -32,27 +32,27 @@ set_property DRIVE 8 [get_ports fmc_ipmi_id_eeprom_sda_io]
 
 
 # HDMI Input (ADV7611) on FMC-IMAGEON
-# NOT USED set_property PACKAGE_PIN D18 [get_ports IO_HDMII_clk]
-# NOT USED  set_property PACKAGE_PIN A17  [get_ports {IO_HDMII_data[0]}]
-# NOT USED  set_property PACKAGE_PIN A16  [get_ports {IO_HDMII_data[1]}]
-# NOT USED  set_property PACKAGE_PIN C18 [get_ports {IO_HDMII_data[2]}]
-# NOT USED  set_property PACKAGE_PIN D21  [get_ports {IO_HDMII_data[3]}]
-# NOT USED  set_property PACKAGE_PIN E18  [get_ports {IO_HDMII_data[4]}]
-# NOT USED  set_property PACKAGE_PIN C17 [get_ports {IO_HDMII_data[5]}]
-# NOT USED  set_property PACKAGE_PIN E21  [get_ports {IO_HDMII_data[6]}]
-# NOT USED  set_property PACKAGE_PIN F18  [get_ports {IO_HDMII_data[7]}]
-# NOT USED  set_property PACKAGE_PIN A22  [get_ports {IO_HDMII_data[8]}]
-# NOT USED  set_property PACKAGE_PIN A21  [get_ports {IO_HDMII_data[9]}]
-# NOT USED  set_property PACKAGE_PIN B22  [get_ports {IO_HDMII_data[10]}]
-# NOT USED  set_property PACKAGE_PIN B21  [get_ports {IO_HDMII_data[11]}]
-# NOT USED  set_property PACKAGE_PIN B15  [get_ports {IO_HDMII_data[12]}]
-# NOT USED  set_property PACKAGE_PIN C15  [get_ports {IO_HDMII_data[13]}]
-# NOT USED  set_property PACKAGE_PIN B17  [get_ports {IO_HDMII_data[14]}]
-# NOT USED  set_property PACKAGE_PIN B16 [get_ports {IO_HDMII_data[15]}]
+# phjones: NOT USED set_property PACKAGE_PIN D18 [get_ports IO_HDMII_clk]
+# phjones: NOT USED  set_property PACKAGE_PIN A17  [get_ports {IO_HDMII_data[0]}]
+# phjones: NOT USED  set_property PACKAGE_PIN A16  [get_ports {IO_HDMII_data[1]}]
+# phjones: NOT USED  set_property PACKAGE_PIN C18 [get_ports {IO_HDMII_data[2]}]
+# phjones: NOT USED  set_property PACKAGE_PIN D21  [get_ports {IO_HDMII_data[3]}]
+# phjones: NOT USED  set_property PACKAGE_PIN E18  [get_ports {IO_HDMII_data[4]}]
+# phjones: NOT USED  set_property PACKAGE_PIN C17 [get_ports {IO_HDMII_data[5]}]
+# phjones: NOT USED  set_property PACKAGE_PIN E21  [get_ports {IO_HDMII_data[6]}]
+# phjones: NOT USED  set_property PACKAGE_PIN F18  [get_ports {IO_HDMII_data[7]}]
+# phjones: NOT USED  set_property PACKAGE_PIN A22  [get_ports {IO_HDMII_data[8]}]
+# phjones: NOT USED  set_property PACKAGE_PIN A21  [get_ports {IO_HDMII_data[9]}]
+# phjones: NOT USED  set_property PACKAGE_PIN B22  [get_ports {IO_HDMII_data[10]}]
+# phjones: NOT USED  set_property PACKAGE_PIN B21  [get_ports {IO_HDMII_data[11]}]
+# phjones: NOT USED  set_property PACKAGE_PIN B15  [get_ports {IO_HDMII_data[12]}]
+# phjones: NOT USED  set_property PACKAGE_PIN C15  [get_ports {IO_HDMII_data[13]}]
+# phjones: NOT USED  set_property PACKAGE_PIN B17  [get_ports {IO_HDMII_data[14]}]
+# phjones: NOT USED  set_property PACKAGE_PIN B16 [get_ports {IO_HDMII_data[15]}]
 set_property PACKAGE_PIN A19 [get_ports {IO_HDMII_spdif}]
 
-# NOT USED  set_property IOSTANDARD LVCMOS25 [get_ports IO_HDMII_clk]
-# NOT USED  set_property IOSTANDARD LVCMOS25 [get_ports {IO_HDMII_data*}]
+# phjones: NOT USED  set_property IOSTANDARD LVCMOS25 [get_ports IO_HDMII_clk]
+# phjones: NOT USED  set_property IOSTANDARD LVCMOS25 [get_ports {IO_HDMII_data*}]
 set_property IOSTANDARD LVCMOS25 [get_ports {IO_HDMII_spdif}]
 
 # HDMI Output (ADV7511) on FMC-IMAGEON
@@ -111,14 +111,14 @@ set_property PACKAGE_PIN J21 [get_ports {IO_VITA_CAM_data_p[2]}]
 set_property PACKAGE_PIN J22 [get_ports {IO_VITA_CAM_data_n[2]}]
 set_property PACKAGE_PIN J18 [get_ports {IO_VITA_CAM_data_p[3]}]
 set_property PACKAGE_PIN K18 [get_ports {IO_VITA_CAM_data_n[3]}]
-# NOT USED  set_property PACKAGE_PIN M21 [get_ports {IO_VITA_CAM_data_p[4]}];
-# NOT USED  set_property PACKAGE_PIN M22 [get_ports {IO_VITA_CAM_data_n[4]}];
-# NOT USED  set_property PACKAGE_PIN L21 [get_ports {IO_VITA_CAM_data_p[5]}];
-# NOT USED  set_property PACKAGE_PIN L22 [get_ports {IO_VITA_CAM_data_n[5]}];
-# NOT USED  set_property PACKAGE_PIN N22 [get_ports {IO_VITA_CAM_data_p[6]}];
-# NOT USED  set_property PACKAGE_PIN P22 [get_ports {IO_VITA_CAM_data_n[6]}];
-# NOT USED  set_property PACKAGE_PIN P17 [get_ports {IO_VITA_CAM_data_p[7]}];
-# NOT USED  set_property PACKAGE_PIN P18 [get_ports {IO_VITA_CAM_data_n[7]}];
+# phjones: NOT USED  set_property PACKAGE_PIN M21 [get_ports {IO_VITA_CAM_data_p[4]}];
+# phjones: NOT USED  set_property PACKAGE_PIN M22 [get_ports {IO_VITA_CAM_data_n[4]}];
+# phjones: NOT USED  set_property PACKAGE_PIN L21 [get_ports {IO_VITA_CAM_data_p[5]}];
+# phjones: NOT USED  set_property PACKAGE_PIN L22 [get_ports {IO_VITA_CAM_data_n[5]}];
+# phjones: NOT USED  set_property PACKAGE_PIN N22 [get_ports {IO_VITA_CAM_data_p[6]}];
+# phjones: NOT USED  set_property PACKAGE_PIN P22 [get_ports {IO_VITA_CAM_data_n[6]}];
+# phjones: NOT USED  set_property PACKAGE_PIN P17 [get_ports {IO_VITA_CAM_data_p[7]}];
+# phjones: NOT USED  set_property PACKAGE_PIN P18 [get_ports {IO_VITA_CAM_data_n[7]}];
 
 set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_clk_pll]
 set_property IOSTANDARD LVCMOS25 [get_ports IO_VITA_CAM_reset_n]
@@ -144,21 +144,21 @@ set_property IOSTANDARD LVCMOS25 [get_ports fmc_imageon_vclk]
 ######################
 
 # The following constraints are already created by the "ZYNQ7 Processing System" core
-# UNUSED create_clock -period 13.333 -name clk_fpga_0 [get_nets -hierarchical FCLK_CLK0]
-# UNUSED create_clock -period  6.667 -name clk_fpga_1 [get_nets -hierarchical FCLK_CLK1]
-# UNUSED create_clock -period  5.000 -name clk_fpga_2 [get_nets -hierarchical FCLK_CLK2]
+# phjones: UNUSED create_clock -period 13.333 -name clk_fpga_0 [get_nets -hierarchical FCLK_CLK0]
+# phjones: UNUSED create_clock -period  6.667 -name clk_fpga_1 [get_nets -hierarchical FCLK_CLK1]
+# phjones: UNUSED create_clock -period  5.000 -name clk_fpga_2 [get_nets -hierarchical FCLK_CLK2]
 
 create_clock -period 6.734 -name video_clk [get_ports fmc_imageon_vclk]
 
-# UNUSED create_clock -period 6.730 -name hdmii_clk [get_ports IO_HDMII_clk]
+# phjones: UNUSED create_clock -period 6.730 -name hdmii_clk [get_ports IO_HDMII_clk]
 
-#create_clock -period 2.692 -name vita_ser_clk [get_ports IO_VITA_CAM_clk_out_p]
+create_clock -period 2.692 -name vita_ser_clk [get_ports IO_VITA_CAM_clk_out_p]
 
 
 # Define asynchronous clock domains
 set_clock_groups -asynchronous  -group [get_clocks clk_fpga_0] \
                                 -group [get_clocks clk_fpga_1] \
                                 -group [get_clocks video_clk]
-                                # UNUSED -group [get_clocks hdmii_clk] \
-                                # UNUSED -group [get_clocks CLKDIV_c_0] \
-                                # UNUSED -group [get_clocks vita_clk_div4_l_n_0]
+                                # phjones: UNUSED -group [get_clocks hdmii_clk] \
+                                # phjones: UNUSED -group [get_clocks CLKDIV_c_0] \
+                                # phjones: UNUSED -group [get_clocks vita_clk_div4_l_n_0]
