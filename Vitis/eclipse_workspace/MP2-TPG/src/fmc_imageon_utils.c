@@ -194,15 +194,15 @@ int fmc_imageon_enable( camera_config_t *config )
    // Choose Video Source  ( 1. TPG or 2. onsemi VITA Camera)
 
    // 1. Uncomment for TPG
-   fmc_imageon_enable_tpg(config);
+   //fmc_imageon_enable_tpg(config);
 
    // 2. Uncomment for onsemi VITA Camera
-//   int vita_enabled_error = 0;
-//   int vita_enable_attempt=1;
-//   do {
-//	   xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
-//	   vita_enabled_error = fmc_imageon_enable_vita(config);
-//   } while(vita_enabled_error != 0);
+   int vita_enabled_error = 0;
+   int vita_enable_attempt=1;
+   do {
+	   xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
+	   vita_enabled_error = fmc_imageon_enable_vita(config);
+   } while(vita_enabled_error != 0);
 
 
      // Uncomment to enable HW Video processing pipeling (last part of lab)

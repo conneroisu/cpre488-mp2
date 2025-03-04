@@ -213,6 +213,16 @@
 /******************************************************************/
 
 
+/* Definitions for peripheral ONSEMI_VITA_CAM_0 */
+#define XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR 0x43C00000
+#define XPAR_ONSEMI_VITA_CAM_0_S00_AXI_HIGHADDR 0x43C0FFFF
+
+
+/* Definitions for peripheral ONSEMI_VITA_SPI_0 */
+#define XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR 0x43C10000
+#define XPAR_ONSEMI_VITA_SPI_0_S00_AXI_HIGHADDR 0x43C1FFFF
+
+
 /* Definitions for peripheral PS7_AFI_0 */
 #define XPAR_PS7_AFI_0_S_AXI_BASEADDR 0xF8008000
 #define XPAR_PS7_AFI_0_S_AXI_HIGHADDR 0xF8008FFF
@@ -563,58 +573,13 @@
 
 /******************************************************************/
 
-/* Definitions for driver V_TPG */
-#define XPAR_XV_TPG_NUM_INSTANCES 1
-
-/* Definitions for peripheral V_TPG_0 */
-#define XPAR_V_TPG_0_DEVICE_ID 0
-#define XPAR_V_TPG_0_S_AXI_CTRL_BASEADDR 0x43C10000
-#define XPAR_V_TPG_0_S_AXI_CTRL_HIGHADDR 0x43C1FFFF
-#define XPAR_V_TPG_0_HAS_AXI4S_SLAVE 0
-#define XPAR_V_TPG_0_SAMPLES_PER_CLOCK 1
-#define XPAR_V_TPG_0_NUM_VIDEO_COMPONENTS 3
-#define XPAR_V_TPG_0_MAX_COLS 4096
-#define XPAR_V_TPG_0_MAX_ROWS 2160
-#define XPAR_V_TPG_0_MAX_DATA_WIDTH 8
-#define XPAR_V_TPG_0_SOLID_COLOR 1
-#define XPAR_V_TPG_0_RAMP 1
-#define XPAR_V_TPG_0_COLOR_BAR 1
-#define XPAR_V_TPG_0_DISPLAY_PORT 1
-#define XPAR_V_TPG_0_COLOR_SWEEP 1
-#define XPAR_V_TPG_0_ZONE_PLATE 1
-#define XPAR_V_TPG_0_FOREGROUND 1
-
-
-/******************************************************************/
-
-/* Canonical definitions for peripheral V_TPG_0 */
-#define XPAR_XV_TPG_0_DEVICE_ID XPAR_V_TPG_0_DEVICE_ID
-#define XPAR_XV_TPG_0_S_AXI_CTRL_BASEADDR 0x43C10000
-#define XPAR_XV_TPG_0_S_AXI_CTRL_HIGHADDR 0x43C1FFFF
-#define XPAR_XV_TPG_0_HAS_AXI4S_SLAVE 0
-#define XPAR_XV_TPG_0_SAMPLES_PER_CLOCK 1
-#define XPAR_XV_TPG_0_NUM_VIDEO_COMPONENTS 3
-#define XPAR_XV_TPG_0_MAX_COLS 4096
-#define XPAR_XV_TPG_0_MAX_ROWS 2160
-#define XPAR_XV_TPG_0_MAX_DATA_WIDTH 8
-#define XPAR_XV_TPG_0_SOLID_COLOR 1
-#define XPAR_XV_TPG_0_RAMP 1
-#define XPAR_XV_TPG_0_COLOR_BAR 1
-#define XPAR_XV_TPG_0_DISPLAY_PORT 1
-#define XPAR_XV_TPG_0_COLOR_SWEEP 1
-#define XPAR_XV_TPG_0_ZONE_PLATE 1
-#define XPAR_XV_TPG_0_FOREGROUND 1
-
-
-/******************************************************************/
-
 /* Definitions for driver VTC */
 #define XPAR_XVTC_NUM_INSTANCES 1
 
 /* Definitions for peripheral V_TC_0 */
 #define XPAR_V_TC_0_DEVICE_ID 0
-#define XPAR_V_TC_0_BASEADDR 0x43C00000
-#define XPAR_V_TC_0_HIGHADDR 0x43C0FFFF
+#define XPAR_V_TC_0_BASEADDR 0x43C20000
+#define XPAR_V_TC_0_HIGHADDR 0x43C2FFFF
 #define XPAR_V_TC_0_GENERATE_EN 1
 #define XPAR_V_TC_0_DETECT_EN 0
 #define XPAR_V_TC_0_DET_HSYNC_EN 1
@@ -629,8 +594,8 @@
 
 /* Canonical definitions for peripheral V_TC_0 */
 #define XPAR_VTC_0_DEVICE_ID XPAR_V_TC_0_DEVICE_ID
-#define XPAR_VTC_0_BASEADDR 0x43C00000
-#define XPAR_VTC_0_HIGHADDR 0x43C0FFFF
+#define XPAR_VTC_0_BASEADDR 0x43C20000
+#define XPAR_VTC_0_HIGHADDR 0x43C2FFFF
 #define XPAR_VTC_0_GENERATE_EN 1
 #define XPAR_VTC_0_DETECT_EN 0
 #define XPAR_VTC_0_DET_HSYNC_EN 1
