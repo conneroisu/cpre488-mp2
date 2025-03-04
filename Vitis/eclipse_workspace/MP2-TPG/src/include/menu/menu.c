@@ -183,7 +183,7 @@ void draw_char(t_image_type fb, int x, int y, char c, u16 color) {
  * @param height is the height of the rectangle.
  * @param color is the color to fill the rectangle.
  */
-void fill_rect(t_image_type fb,
+void fill_rect(u16 fb[IMAGE_HEIGHT][IMAGE_WIDTH],
                int x,       //
                int y,       //
                int width,   //
@@ -207,7 +207,7 @@ void fill_rect(t_image_type fb,
  * @param y the y-coordinate of the upper-left corner.
  * @param color the color to draw the string.
  */
-void draw_string(t_image_type fb,
+void draw_string(u16 fb[IMAGE_HEIGHT][IMAGE_WIDTH],
                  char *str,   //
                  int x,       //
                  int y,       //
@@ -286,6 +286,95 @@ void draw_rounded_rect(u16 fb[IMAGE_HEIGHT][IMAGE_WIDTH], //
 }
 
 /**
+ * @brief Draw a filled rounded rectangle into the given framebuffer.
+ *
+ * @param fb is the framebuffer to draw on.
+ * @param rect_x is the x-coordinate of the upper-left corner.
+ * @param rect_y is the y-coordinate of the upper-left corner.
+ * @param rect_width is the width of the rectangle.
+ * @param rect_height is the height of the rectangle.
+ * @param radius is the radius of the rounded corners.
+ * @param color is the color of the rectangle.
+ */
+void draw_rounded_filled_rect(u16 fb[IMAGE_HEIGHT][IMAGE_WIDTH], int rect_x,
+                              int rect_y, int rect_width, int rect_height,
+                              int radius, u16 color) {
+// Helper macro to set a pixel at (x,y) with bounds checking
+#define SET_PIXEL(x, y)                                                        \
+  do {                                                                         \
+    if ((x) >= 0 && (x) < IMAGE_WIDTH && (y) >= 0 && (y) < IMAGE_HEIGHT) {     \
+      fb[(y)][(x)] = (color);                                                  \
+    }                                                                          \
+  } while (0)
+
+  // Fill the center rectangle (excluding corners)
+  for (int y = rect_y + radius; y < rect_y + rect_height - radius; y++) {
+    for (int x = rect_x; x < rect_x + rect_width; x++) {
+      SET_PIXEL(x, y);
+    }
+  }
+
+  // Fill the top and bottom rectangles (excluding corners)
+  for (int y = rect_y; y < rect_y + radius; y++) {
+    for (int x = rect_x + radius; x < rect_x + rect_width - radius; x++) {
+      SET_PIXEL(x, y);                                       // Top part
+      SET_PIXEL(x, rect_y + rect_height - 1 - (y - rect_y)); // Bottom part
+    }
+  }
+
+  // Draw the four corner quadrants using a variation of the midpoint circle
+  // algorithm
+  for (int corner = 0; corner < 4; corner++) {
+    // Determine the center of the circle for each corner
+    int center_x, center_y;
+
+    switch (corner) {
+    case 0: // Top-left
+      center_x = rect_x + radius;
+      center_y = rect_y + radius;
+      break;
+    case 1: // Top-right
+      center_x = rect_x + rect_width - radius - 1;
+      center_y = rect_y + radius;
+      break;
+    case 2: // Bottom-left
+      center_x = rect_x + radius;
+      center_y = rect_y + rect_height - radius - 1;
+      break;
+    case 3: // Bottom-right
+      center_x = rect_x + rect_width - radius - 1;
+      center_y = rect_y + rect_height - radius - 1;
+      break;
+    }
+
+    // Draw filled quarter circles for each corner
+    for (int y = 0; y <= radius; y++) {
+      for (int x = 0; x <= radius; x++) {
+        // Check if the point is inside the circle
+        if (x * x + y * y <= radius * radius) {
+          switch (corner) {
+          case 0: // Top-left
+            SET_PIXEL(center_x - x, center_y - y);
+            break;
+          case 1: // Top-right
+            SET_PIXEL(center_x + x, center_y - y);
+            break;
+          case 2: // Bottom-left
+            SET_PIXEL(center_x - x, center_y + y);
+            break;
+          case 3: // Bottom-right
+            SET_PIXEL(center_x + x, center_y + y);
+            break;
+          }
+        }
+      }
+    }
+  }
+
+#undef SET_PIXEL
+}
+
+/**
  * @brief Draw a percentage bar at the given coordinates using the given color.
  *
  * @param fb is the framebuffer to draw on.
@@ -297,15 +386,24 @@ void draw_rounded_rect(u16 fb[IMAGE_HEIGHT][IMAGE_WIDTH], //
  * @param color is the color of the bar.
  */
 void draw_bar(t_image_type fb,
-              int x,       // x-coordinate of upper-left corner
-              int y,       // y-coordinate of upper-left corner
-              int width,   // width of bar
-              int height,  // height of bar
-              int percent, // percentage of bar to fill
-              u16 color) { // color of bar
+              int x,       //
+              int y,       //
+              int width,   //
+              int height,  //
+              int percent, //
+              u16 color) { //
+  if (percent > 100) {
+    percent = 100;
+  }
+  if (percent < 5) {
+    percent = 5;
+  }
   // Calculate the width of the filled portion based on percentage
   int fill_width = (width * percent) / 100;
-  fill_rect(fb, x, y, fill_width, height, color);
+
+  draw_rounded_rect(fb, x - 5, y - 5, width + 10, height + 10, 10, color);
+  /*fill_rect(fb, x, y, fill_width, height, color);*/
+  draw_rounded_filled_rect(fb, x, y, fill_width, height, 10, color);
 }
 
 /**
@@ -368,7 +466,6 @@ int main() {
     u16 border_color = 0xF800; // Red
 
     // Draw some demo elements
-    draw_rounded_rect(image, 50, 200, IMAGE_WIDTH - 100, 50, 10, border_color);
     draw_bar(image, 55, 205, IMAGE_WIDTH - 110, 40, i, bar_color);
 
     // Create a status text
