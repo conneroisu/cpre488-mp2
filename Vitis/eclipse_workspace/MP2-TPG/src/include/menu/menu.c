@@ -451,11 +451,11 @@ int main() {
 
   printf("Starting image generation...\n");
 
-  // Create a constant output filename
-  const char *output_file = "output.ppm";
-
+  char filename[50];
   // Demo: Draw a progress bar and some text that updates
   for (int i = 0; i <= 100; i++) {
+    // Create a constant output filename
+    sprintf(filename, "output_%03d.ppm", i);
     printf("Progress: %d%%\n", i);
     // Clear the image first (fill with black)
     fill_rect(image, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT, 0x0000);
@@ -480,18 +480,17 @@ int main() {
     draw_string(image, time_str, 50, 160, text_color);
 
     // Write the current state to a PPM file
-    write_ppm(image, output_file);
+    write_ppm(image, filename);
 
     // Sleep briefly to allow external viewers to refresh
     printf("wait");
-    sleep(1); // 100ms
+    /*sleep(1); // 100ms*/
     printf("done");
 
     // Print update to console
     printf("\rFrame %d/100 - Progress: %d%%", i, i);
   }
 
-  printf("\nImage generation complete! Final output saved to %s\n",
-         output_file);
+  printf("\nImage generation complete! Final output saved to %s\n", ".");
   return 0;
 }
