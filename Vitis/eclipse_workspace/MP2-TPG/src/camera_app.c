@@ -16,7 +16,6 @@
  * 02/04/14 by JAZ::Design created.
  *****************************************************************************/
 
-#include <stdlib.h>
 #include "camera_app.h"
 #include "xil_types.h"
 #include "include/demosaicing.h"
@@ -92,36 +91,11 @@ void camera_loop(camera_config_t *config) {
 	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
 	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
 
-	t_color_24_bit* colors = (t_color_24_bit*) calloc(PIXELS, sizeof(t_color_24_bit));
-
-	xil_printf("Start of light intensity data:\n");
-	for(int i = 0; i < PIXELS; ++i)
-	{
-		xil_printf("%c", pS2MM_Mem[i] & 0xFF);
-	}
-
-
 	// Run for 100 frames before going back to HW mode
 	for (j = 0; j < 100; j++)
 	{
 		// Apply CFA
-		write_24_bit_colors((uint16_t*)pS2MM_Mem, colors);
-
-		for (i = 0; i < PIXELS; i+=2)
-		{
-
-			// Convert to YUV 4:2:2
-			uint8_t u, v = 0;
-			uint16_t y = 0;
-
-			y = (((uint16_t) colors[i].red) * 0.183f) + (((uint16_t) colors[i].green) * 0.614f) + (((uint16_t) colors[i].blue) * 0.062f) + 16;
-			v = (colors[i].red * -0.101f) + (colors[i].green * -0.338f) + (colors[i].blue * 0.439f) + 128;
-			u = (colors[i].red * 0.439f) + (colors[i].green * -0.399f) + (colors[i].blue * -0.04f) + 128;
-
-			// Set from YUV values.
-			pMM2S_Mem[i] = (u << 8) | (y & 0xFF);
-			pMM2S_Mem[i + 1] = (v << 8) | ((y & 0xFF00) >> 8);
-		}
+		run_demosaicing((uint16_t*)pS2MM_Mem, (uint16_t*)pMM2S_Mem);
 	}
 
 
@@ -137,7 +111,6 @@ void camera_loop(camera_config_t *config) {
 	sleep(5);
 
 	//fmc_imageon_disable_tpg(config);
-	free(colors);
 
 	sleep(1);
 

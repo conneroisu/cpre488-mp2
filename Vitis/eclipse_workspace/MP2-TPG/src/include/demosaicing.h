@@ -35,6 +35,7 @@ typedef struct neighbors
 
 t_colors get_filter_color(t_location location);
 void get_neighbors(t_location location, t_neighbors* neighbors);
-void write_24_bit_colors(uint16_t* intensities, t_color_24_bit* colors);
+void run_demosaicing(uint16_t* intensities, uint16_t* yuv_out);
 int location_valid(t_location location);
 void write_ppm(const char* file_name, t_color_24_bit* image_colors);
+uint32_t rgb_to_yuv(t_color_24_bit rgb);

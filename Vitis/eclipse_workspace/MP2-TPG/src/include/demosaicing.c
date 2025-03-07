@@ -45,7 +45,7 @@ t_colors get_filter_color(t_location location)
     return location.row % 2 ? location.col % 2 ? RED : GREEN : location.col % 2 ? GREEN : BLUE;
 }
 
-void write_24_bit_colors(uint16_t* intensities, t_color_24_bit* colors)
+void run_demosaicing(uint16_t* intensities, uint16_t* yuv_out)
 {
     t_location location;
     t_neighbors neighbors;
@@ -55,7 +55,9 @@ void write_24_bit_colors(uint16_t* intensities, t_color_24_bit* colors)
     // Iterate through all the intensities.
     for(int i = 0; i < HEIGHT; ++i)
     {
-        for(int j = 0; j < WIDTH; ++j)
+    	// Take RGB data only from left pixel currently.
+    	// 32-bits = 2 pixels of data.
+        for(int j = 0; j < WIDTH; j+=2)
         {
             index = (i * WIDTH) + j;
             red_count = 0;
@@ -127,9 +129,35 @@ void write_24_bit_colors(uint16_t* intensities, t_color_24_bit* colors)
                 }
             }
 
+            t_color_24_bit rgb = (t_color_24_bit) {.red = !red_count ? 0 : red_total / red_count, .green = !green_count ? 0 : green_total / green_count, .blue = !blue_count ? 0 : blue_total / blue_count};
+
+            uint32_t yuv = rgb_to_yuv(rgb);
+
             // Record colors
-            colors[index] = (t_color_24_bit) {.red = !red_count ? 0 : red_total / red_count, .green = !green_count ? 0 : green_total / green_count, .blue = !blue_count ? 0 : blue_total / blue_count};
+            yuv_out[index] = (uint16_t) (yuv & 0xFFFF);
+            yuv_out[index + 1] = (uint16_t) ((yuv & 0xFFFF0000) >> 16);
         }
     }
+}
+
+// 32-bit output
+// Ordering: 0  1  2  3
+//           U0 Y0 V0 Y1
+uint32_t rgb_to_yuv(t_color_24_bit rgb)
+{
+	uint32_t result = 0;
+
+	// Convert to YUV 4:2:2
+	uint8_t u, v = 0;
+	uint16_t y = 0;
+
+	y = (((uint16_t) rgb.red) * 0.183f) + (((uint16_t) rgb.green) * 0.614f) + (((uint16_t) rgb.blue) * 0.062f) + 16;
+	v = (rgb.red * -0.101f) + (rgb.green * -0.338f) + (rgb.blue * 0.439f) + 128;
+	u = (rgb.red * 0.439f) + (rgb.green * -0.399f) + (rgb.blue * -0.04f) + 128;
+
+	// Set from YUV values.
+	result = (uint32_t)((u << 8) | (y & 0xFF)) | ((uint32_t)((v << 8) | ((y & 0xFF00) >> 8)) << 16);
+
+	return result;
 }
 
