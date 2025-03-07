@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Sun Mar  2 19:04:39 2025
+| Date         : Fri Mar  7 09:42:34 2025
 | Host         : CO2041-08 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file design_1_wrapper_methodology_drc_routed.rpt -pb design_1_wrapper_methodology_drc_routed.pb -rpx design_1_wrapper_methodology_drc_routed.rpx
 | Design       : design_1_wrapper
@@ -5344,8 +5344,8 @@ Related violations: <none>
 XDCC-7#1 Warning
 Scoped Clock constraint overwritten on the same source  
 A new clock constraint create_clock overrides a previous scoped clock constraint defined on the same source. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
-New: create_clock -period 6.734 -name video_clk [get_ports fmc_imageon_vclk] (Source: C:/Users/oparker/cpre488-mp2/project_1/project_1.srcs/constrs_1/imports/fmc_imageon_gs/zedboard_fmc_imageon_gs.xdc (Line: 151))
-Previous: create_clock -period 6.734 [get_ports fmc_imageon_vclk] (Source: c:/Users/oparker/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc (Line: 56))
+New: create_clock -period 6.734 -name video_clk [get_ports fmc_imageon_vclk] (Source: C:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/constrs_1/imports/fmc_imageon_gs/zedboard_fmc_imageon_gs.xdc (Line: 151))
+Previous: create_clock -period 6.734 [get_ports fmc_imageon_vclk] (Source: c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc (Line: 56))
 Related violations: <none>
 
 

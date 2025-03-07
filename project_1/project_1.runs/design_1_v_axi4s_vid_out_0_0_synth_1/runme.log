@@ -11,15 +11,15 @@
 
 source design_1_v_axi4s_vid_out_0_0.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0'.
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP'.
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'Z:/Vivado/Xilinx/Vivado/2020.1/data/ip'.
-WARNING: [IP_Flow 19-1663] Duplicate IP found for 'avnet:avnet_hdmi:avnet_hdmi_out:3.1'. The one found in IP location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/avnet_hdmi_out' will take precedence over the same IP in location z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/avnet_hdmi_out
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_ali3:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_ali3.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/avnet_ali3.xml'
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_hdmi:2.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_hdmi.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/avnet_hdmi.xml'
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_cam:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_cam.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/onsemi_vita_cam.xml'
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_spi:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_spi.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/onsemi_vita_spi.xml'
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:user:SF_SM_Master_Bus:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/SF_SM_Master_Bus.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/SF_SM_Master_Bus.xml'
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jaxie963/temp/cpre488-mp2/hw/IP'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.1/data/ip'.
+WARNING: [IP_Flow 19-1663] Duplicate IP found for 'avnet:avnet_hdmi:avnet_hdmi_out:3.1'. The one found in IP location 'c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/avnet_hdmi_out' will take precedence over the same IP in location c:/Users/jaxie963/temp/cpre488-mp2/hw/IP/avnet_hdmi_out
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_ali3:1.0'. The one found in location 'c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_ali3.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/temp/cpre488-mp2/hw/IP/interfaces/avnet_ali3.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_hdmi:2.0'. The one found in location 'c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_hdmi.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/temp/cpre488-mp2/hw/IP/interfaces/avnet_hdmi.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_cam:1.0'. The one found in location 'c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_cam.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/temp/cpre488-mp2/hw/IP/interfaces/onsemi_vita_cam.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_spi:1.0'. The one found in location 'c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_spi.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/temp/cpre488-mp2/hw/IP/interfaces/onsemi_vita_spi.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:user:SF_SM_Master_Bus:1.0'. The one found in location 'c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/SF_SM_Master_Bus.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/temp/cpre488-mp2/hw/IP/interfaces/SF_SM_Master_Bus.xml'
 Command: synth_design -top design_1_v_axi4s_vid_out_0_0 -part xc7z020clg484-1 -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
@@ -27,12 +27,12 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 1912
+INFO: [Synth 8-7075] Helper process launched with PID 3068
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1033.879 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 1013.281 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'design_1_v_axi4s_vid_out_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/synth/design_1_v_axi4s_vid_out_0_0.v:58]
-INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:2107]
+INFO: [Synth 8-6157] synthesizing module 'design_1_v_axi4s_vid_out_0_0' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/synth/design_1_v_axi4s_vid_out_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:2107]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_PIXELS_PER_CLOCK bound to: 1 - type: integer 
 	Parameter C_COMPONENTS_PER_PIXEL bound to: 2 - type: integer 
@@ -48,17 +48,17 @@ INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10' [z:/Vivado/CP
 	Parameter C_INCLUDE_PIXEL_REPEAT bound to: 0 - type: integer 
 	Parameter C_INCLUDE_PIXEL_REMAP_420 bound to: 0 - type: integer 
 	Parameter C_ADDR_WIDTH_PIXEL_REMAP_420 bound to: 10 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_cdc_single' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:207]
+INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_cdc_single' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:207]
 	Parameter C_SYNC_FF bound to: 4 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_single' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:153]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_single' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:153]
 	Parameter DEST_SYNC_FF bound to: 4 - type: integer 
 	Parameter INIT_SYNC_FF bound to: 0 - type: integer 
 	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
 	Parameter SRC_INPUT_REG bound to: 0 - type: integer 
 	Parameter VERSION bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_single' (1#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:153]
-INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_cdc_single' (2#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:207]
-INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_coupler' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:294]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_single' (1#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:153]
+INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_cdc_single' (2#1) [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:207]
+INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_coupler' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:294]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_HAS_ASYNC_CLK bound to: 1 - type: integer 
 	Parameter C_ADDR_WIDTH bound to: 12 - type: integer 
@@ -73,10 +73,10 @@ INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_coupler' [z:/V
 	Parameter C_DO_PAD bound to: 1'b0 
 	Parameter C_DATA_WIDTH bound to: 19 - type: integer 
 	Parameter C_DIFF_COMPONENT_WIDTH bound to: 0 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_fifo_async' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:59]
+INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_fifo_async' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:59]
 	Parameter C_ADDR_WIDTH bound to: 12 - type: integer 
 	Parameter C_DATA_WIDTH bound to: 19 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_async' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_async' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037]
 	Parameter FIFO_MEMORY_TYPE bound to: auto - type: string 
 	Parameter ECC_MODE bound to: no_ecc - type: string 
 	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
@@ -102,7 +102,7 @@ INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_async' [Z:/Vivado/Xilinx/Viva
 	Parameter P_ECC_MODE bound to: 0 - type: integer 
 	Parameter P_READ_MODE bound to: 1 - type: integer 
 	Parameter P_WAKEUP_TIME bound to: 2 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:56]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:56]
 	Parameter COMMON_CLOCK bound to: 0 - type: integer 
 	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
 	Parameter FIFO_MEMORY_TYPE bound to: 0 - type: integer 
@@ -162,7 +162,7 @@ INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base' [Z:/Vivado/Xilinx/Vivad
 	Parameter EN_RDC bound to: 1'b1 
 	Parameter EN_AE bound to: 1'b0 
 	Parameter EN_DVLD bound to: 1'b0 
-INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
 	Parameter MEMORY_TYPE bound to: 1 - type: integer 
 	Parameter MEMORY_SIZE bound to: 77824 - type: integer 
 	Parameter MEMORY_PRIMITIVE bound to: 0 - type: integer 
@@ -230,9 +230,9 @@ INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [Z:/Vivado/Xilinx/Viv
 	Parameter MAX_NUM_CHAR bound to: 0 - type: integer 
 	Parameter P_MIN_WIDTH_DATA_SHFT bound to: 19 - type: integer 
 	Parameter P_MIN_WIDTH_DATA_LDW bound to: 4 - type: integer 
-INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:488]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (3#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
-INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:488]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (3#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
 	Parameter DEST_SYNC_FF bound to: 4 - type: integer 
 	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
 	Parameter REG_OUTPUT bound to: 0 - type: integer 
@@ -240,11 +240,11 @@ INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray' [Z:/Vivado/Xilinx/Vivado
 	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
 	Parameter VERSION bound to: 0 - type: integer 
 	Parameter WIDTH bound to: 12 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray' (4#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray' (4#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
 	Parameter REG_WIDTH bound to: 12 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec' (5#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
-INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized0' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec' (5#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized0' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
 	Parameter DEST_SYNC_FF bound to: 6 - type: integer 
 	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
 	Parameter REG_OUTPUT bound to: 0 - type: integer 
@@ -252,11 +252,11 @@ INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized0' [Z:/Viva
 	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
 	Parameter VERSION bound to: 0 - type: integer 
 	Parameter WIDTH bound to: 13 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized0' (5#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec__parameterized0' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized0' (5#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec__parameterized0' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
 	Parameter REG_WIDTH bound to: 13 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec__parameterized0' (5#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
-INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized1' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec__parameterized0' (5#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1776]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized1' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
 	Parameter DEST_SYNC_FF bound to: 4 - type: integer 
 	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
 	Parameter REG_OUTPUT bound to: 0 - type: integer 
@@ -264,52 +264,52 @@ INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized1' [Z:/Viva
 	Parameter SIM_LOSSLESS_GRAY_CHK bound to: 0 - type: integer 
 	Parameter VERSION bound to: 0 - type: integer 
 	Parameter WIDTH bound to: 13 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized1' (5#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_bit' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1798]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized1' (5#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:284]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_bit' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1798]
 	Parameter RST_VALUE bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_bit' (6#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1798]
-INFO: [Synth 8-226] default block is never used [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1189]
-INFO: [Synth 8-226] default block is never used [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1235]
-INFO: [Synth 8-226] default block is never used [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1246]
-INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_bit' (6#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1798]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1189]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1235]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1246]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
 	Parameter COUNTER_WIDTH bound to: 2 - type: integer 
 	Parameter RESET_VALUE bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn' (7#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
-INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_rst' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1514]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn' (7#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_rst' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1514]
 	Parameter COMMON_CLOCK bound to: 0 - type: integer 
 	Parameter CDC_DEST_SYNC_FF bound to: 4 - type: integer 
 	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_sync_rst' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_sync_rst' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
 	Parameter DEST_SYNC_FF bound to: 4 - type: integer 
 	Parameter INIT bound to: 32'sb00000000000000000000000000000000 
 	Parameter INIT_SYNC_FF bound to: 1 - type: integer 
 	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
 	Parameter VERSION bound to: 0 - type: integer 
 	Parameter DEF_VAL bound to: 1'b0 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_sync_rst' (8#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_rst' (9#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1514]
-INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized0' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_sync_rst' (8#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1059]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_rst' (9#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1514]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized0' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
 	Parameter COUNTER_WIDTH bound to: 13 - type: integer 
 	Parameter RESET_VALUE bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized0' (9#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
-INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized1' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized0' (9#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized1' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
 	Parameter COUNTER_WIDTH bound to: 12 - type: integer 
 	Parameter RESET_VALUE bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized1' (9#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
-INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized2' [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized1' (9#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized2' [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
 	Parameter COUNTER_WIDTH bound to: 12 - type: integer 
 	Parameter RESET_VALUE bound to: 2 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized2' (9#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base' (10#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:56]
-INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_async' (11#1) [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037]
-WARNING: [Synth 8-7071] port 'almost_full' of module 'xpm_fifo_async' is unconnected for instance 'XPM_FIFO_ASYNC_INST' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
-WARNING: [Synth 8-7071] port 'wr_ack' of module 'xpm_fifo_async' is unconnected for instance 'XPM_FIFO_ASYNC_INST' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
-WARNING: [Synth 8-7071] port 'almost_empty' of module 'xpm_fifo_async' is unconnected for instance 'XPM_FIFO_ASYNC_INST' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
-WARNING: [Synth 8-7071] port 'data_valid' of module 'xpm_fifo_async' is unconnected for instance 'XPM_FIFO_ASYNC_INST' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
-WARNING: [Synth 8-7023] instance 'XPM_FIFO_ASYNC_INST' of module 'xpm_fifo_async' has 26 connections declared, but only 22 given [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
-INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_fifo_async' (12#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:59]
-INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_coupler' (13#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:294]
-INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_sync' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:506]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized2' (9#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1750]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base' (10#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:56]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_async' (11#1) [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2037]
+WARNING: [Synth 8-7071] port 'almost_full' of module 'xpm_fifo_async' is unconnected for instance 'XPM_FIFO_ASYNC_INST' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
+WARNING: [Synth 8-7071] port 'wr_ack' of module 'xpm_fifo_async' is unconnected for instance 'XPM_FIFO_ASYNC_INST' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
+WARNING: [Synth 8-7071] port 'almost_empty' of module 'xpm_fifo_async' is unconnected for instance 'XPM_FIFO_ASYNC_INST' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
+WARNING: [Synth 8-7071] port 'data_valid' of module 'xpm_fifo_async' is unconnected for instance 'XPM_FIFO_ASYNC_INST' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
+WARNING: [Synth 8-7023] instance 'XPM_FIFO_ASYNC_INST' of module 'xpm_fifo_async' has 26 connections declared, but only 22 given [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:108]
+INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_fifo_async' (12#1) [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_coupler' (13#1) [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:294]
+INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_sync' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:506]
 	Parameter C_ADDR_WIDTH bound to: 12 - type: integer 
 	Parameter C_VTG_MASTER_SLAVE bound to: 1 - type: integer 
 	Parameter C_HYSTERESIS_LEVEL bound to: 12 - type: integer 
@@ -328,82 +328,82 @@ INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_sync' [z:/Viva
 	Parameter C_SYNC_LALN_EOL_LAGGING bound to: 4'b1010 
 	Parameter C_SYNC_LALN_SOF_LEADING bound to: 4'b1011 
 	Parameter C_SYNC_LALN_SOF_LAGGING bound to: 4'b1100 
-INFO: [Synth 8-155] case statement is not full and has no default [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:950]
-INFO: [Synth 8-155] case statement is not full and has no default [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:648]
-INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_sync' (14#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:506]
-INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_formatter' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:1142]
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:950]
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:648]
+INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_sync' (14#1) [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:506]
+INFO: [Synth 8-6157] synthesizing module 'v_axi4s_vid_out_v4_0_10_formatter' [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:1142]
 	Parameter C_NATIVE_DATA_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_formatter' (15#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:1142]
-INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10' (16#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:2107]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_v_axi4s_vid_out_0_0' (17#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/synth/design_1_v_axi4s_vid_out_0_0.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10_formatter' (15#1) [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:1142]
+INFO: [Synth 8-6155] done synthesizing module 'v_axi4s_vid_out_v4_0_10' (16#1) [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/a87e/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:2107]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_v_axi4s_vid_out_0_0' (17#1) [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/synth/design_1_v_axi4s_vid_out_0_0.v:58]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1089.824 ; gain = 55.945
+Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1013.281 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1091.598 ; gain = 57.719
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1013.281 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1091.598 ; gain = 57.719
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1013.281 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1091.598 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1013.281 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_ooc.xdc] for cell 'inst'
-Finished Parsing XDC File [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_ooc.xdc] for cell 'inst'
-Parsing XDC File [Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/dont_touch.xdc]
-Parsing XDC File [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_clocks.xdc] for cell 'inst'
-Finished Parsing XDC File [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_clocks.xdc] for cell 'inst'
-Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
-Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
-Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst'
-Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst'
-Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst'
-Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst'
-Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
-Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_v_axi4s_vid_out_0_0_propImpl.xdc].
+Parsing XDC File [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [C:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/dont_touch.xdc]
+Parsing XDC File [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_clocks.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_clocks.xdc] for cell 'inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_v_axi4s_vid_out_0_0_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_v_axi4s_vid_out_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'inst/CDC_SINGLE_LOCKED_INST/xpm_cdc_single_inst'
-Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'inst/CDC_SINGLE_LOCKED_INST/xpm_cdc_single_inst'
-Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'inst/CDC_SINGLE_REMAP_UNDERFLOW_INST/xpm_cdc_single_inst'
-Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'inst/CDC_SINGLE_REMAP_UNDERFLOW_INST/xpm_cdc_single_inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_v_axi4s_vid_out_0_0_propImpl.xdc].
+Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'inst/CDC_SINGLE_LOCKED_INST/xpm_cdc_single_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'inst/CDC_SINGLE_LOCKED_INST/xpm_cdc_single_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'inst/CDC_SINGLE_REMAP_UNDERFLOW_INST/xpm_cdc_single_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'inst/CDC_SINGLE_REMAP_UNDERFLOW_INST/xpm_cdc_single_inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_v_axi4s_vid_out_0_0_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_v_axi4s_vid_out_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
-Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
-Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.wrst_rd_inst'
-Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.wrst_rd_inst'
-Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST'
-Finished Sourcing Tcl File [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [Z:/Vivado/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_v_axi4s_vid_out_0_0_propImpl.xdc].
+Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.wrst_rd_inst'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.wrst_rd_inst'
+Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST'
+Finished Sourcing Tcl File [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_v_axi4s_vid_out_0_0_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_v_axi4s_vid_out_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1226.734 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1026.781 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 1228.148 ; gain = 1.414
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1029.949 ; gain = 3.168
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1029.949 ; gain = 16.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1029.949 ; gain = 16.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for inst. (constraint file  Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/dont_touch.xdc, line 9).
+Applied set_property DONT_TOUCH = true for inst. (constraint file  C:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/dont_touch.xdc, line 9).
 Applied set_property DONT_TOUCH = true for inst/COUPLER_INST/\generate_async_fifo.FIFO_INST /XPM_FIFO_ASYNC_INST/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.rd_pntr_cdc_inst . (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for inst/COUPLER_INST/\generate_async_fifo.FIFO_INST /XPM_FIFO_ASYNC_INST/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.wr_pntr_cdc_inst . (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for inst/COUPLER_INST/\generate_async_fifo.FIFO_INST /XPM_FIFO_ASYNC_INST/\gnuram_async_fifo.xpm_fifo_base_inst /\gen_cdc_pntr.rd_pntr_cdc_dc_inst . (constraint file  auto generated constraint, line ).
@@ -414,7 +414,7 @@ Applied set_property DONT_TOUCH = true for inst/COUPLER_INST/\generate_async_fif
 Applied set_property DONT_TOUCH = true for inst/COUPLER_INST/\generate_async_fifo.FIFO_INST /XPM_FIFO_ASYNC_INST/\gnuram_async_fifo.xpm_fifo_base_inst /xpm_fifo_rst_inst/\gen_rst_ic.wrst_rd_inst . (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for inst/COUPLER_INST/\generate_async_fifo.FIFO_INST /XPM_FIFO_ASYNC_INST. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1029.949 ; gain = 16.668
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst'
 INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_rrst_state_reg' in module 'xpm_fifo_rst'
@@ -470,7 +470,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_r
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'v_axi4s_vid_out_v4_0_10_sync'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:09 . Memory (MB): peak = 1029.949 ; gain = 16.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -531,7 +531,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:11 . Memory (MB): peak = 1029.949 ; gain = 16.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -552,13 +552,13 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:02 ; elapsed = 00:00:16 . Memory (MB): peak = 1029.949 ; gain = 16.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Timing Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:16 . Memory (MB): peak = 1029.949 ; gain = 16.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -578,7 +578,7 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Technology Mapping : Time (s): cpu = 00:00:02 ; elapsed = 00:00:16 . Memory (MB): peak = 1039.590 ; gain = 26.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -597,37 +597,37 @@ Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-3295] tying undriven pin CDC_SINGLE_REMAP_UNDERFLOW_INST/xpm_cdc_single_inst:src_in to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished IO Insertion : Time (s): cpu = 00:00:02 ; elapsed = 00:00:18 . Memory (MB): peak = 1039.590 ; gain = 26.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:02 ; elapsed = 00:00:18 . Memory (MB): peak = 1039.590 ; gain = 26.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:02 ; elapsed = 00:00:18 . Memory (MB): peak = 1039.590 ; gain = 26.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:02 ; elapsed = 00:00:18 . Memory (MB): peak = 1039.590 ; gain = 26.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:18 . Memory (MB): peak = 1039.590 ; gain = 26.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:02 ; elapsed = 00:00:18 . Memory (MB): peak = 1039.590 ; gain = 26.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -656,29 +656,29 @@ Report Cell Usage:
 |11    |FDSE     |    11|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:02 ; elapsed = 00:00:18 . Memory (MB): peak = 1039.590 ; gain = 26.309
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:34 . Memory (MB): peak = 1228.148 ; gain = 57.719
-Synthesis Optimization Complete : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1228.148 ; gain = 194.270
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:17 . Memory (MB): peak = 1039.590 ; gain = 9.641
+Synthesis Optimization Complete : Time (s): cpu = 00:00:02 ; elapsed = 00:00:18 . Memory (MB): peak = 1039.590 ; gain = 26.309
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1232.449 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1047.125 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 62 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1232.449 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1048.582 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
 84 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 1232.449 ; gain = 198.570
-INFO: [Common 17-1381] The checkpoint 'Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/design_1_v_axi4s_vid_out_0_0.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:03 ; elapsed = 00:00:24 . Memory (MB): peak = 1048.582 ; gain = 35.301
+INFO: [Common 17-1381] The checkpoint 'C:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/design_1_v_axi4s_vid_out_0_0.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_v_axi4s_vid_out_0_0, cache-ID = 1a587a12bae783f3
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_v_axi4s_vid_out_0_0, cache-ID = fdcd810b9c51b880
 INFO: [Coretcl 2-1174] Renamed 30 cell refs.
-INFO: [Common 17-1381] The checkpoint 'Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/design_1_v_axi4s_vid_out_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.runs/design_1_v_axi4s_vid_out_0_0_synth_1/design_1_v_axi4s_vid_out_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_v_axi4s_vid_out_0_0_utilization_synth.rpt -pb design_1_v_axi4s_vid_out_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Feb 28 01:53:41 2025...
+INFO: [Common 17-206] Exiting Vivado at Fri Mar  7 09:38:19 2025...

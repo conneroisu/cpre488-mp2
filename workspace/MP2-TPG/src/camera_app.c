@@ -132,7 +132,7 @@ void camera_loop(camera_config_t *config) {
 //	uint8_t cfa[ROW_SIZE][COL_SIZE];
 //    Xuint16 fullColor[ROW_SIZE][COL_SIZE];
 
-	uint16_t tempValue;
+	uint32_t tempValue;
 
     xil_printf("Start processing frames!\r\n");
 
@@ -152,96 +152,113 @@ void camera_loop(camera_config_t *config) {
 
 //         2. Perform demosaicing (Bayer to RGB conversion)
 //		        demosaicing(pS2MM_Mem, fullColor, ROW_SIZE, COL_SIZE);
-		        for (int r = 1; r < ROW_SIZE - 1; r++) {
-		            for (int c = 1; c < COL_SIZE - 1; c++) {
-		                bool isBlueRow = (r % 2 != 0);
-		                bool isGreenPixel = isBlueRow ? (c % 2 == 0) : (c % 2 != 0);
+		        for (int r = 0; r < ROW_SIZE - 1; r++) {
+		            for (int c = 0; c < COL_SIZE - 1; c++) {
+						tempValue = 0x00000000;
 
-
-//		                if (isBlueRow && isGreenPixel) {
-//		                	tempValue |= (((pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF)) / 2) << 16;
-//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 5) << 8;
-//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF)) / 2);
-//		                } else if (isBlueRow && !isGreenPixel) {
-//		                	tempValue |= (((pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 4) << 16;
-//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF)) / 4) << 8;
-//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] & 0xFF);
-//		                } else if (!isBlueRow && isGreenPixel) {
-//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF)) / 2) << 16;
-//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 5) << 8;
-//		                	tempValue |= (((pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF)) / 2);
-//		                } else {
-//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] & 0xFF) << 16;
-//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF)) / 4) << 8;
-//		                	tempValue |= (((pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 4);
-//		                }
-
-
-		                //// rggb
-		                // Green Pixels eve, odd || odd, even
-		                if (((r % 2 == 0) && (c % 2 == 1)) || ((r % 2 == 0) && (c % 2 == 0)) ) {
-		                	// Average red neighbors in 3x3
-		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 16) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 16) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 16)) / 4;
-							// Green stays same
-		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 8);
-							// Average blue neighbors in 3x3
-							tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)])) / 4;
-		                } else if ((r % 2 == 1) && (c % 2 == 1)) {
-		                	// Red stays the same
-		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 16);
-							// Average green neighbors
-		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
-							// Average blue neighbors in 3x3
-							tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)])) / 4;
-		                } else {
-		                	// Average red neighbors in 3x3
-		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)] << 16)) / 4;
-							// Average green neighbors
-		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
-							// Average blue neighbors in 3x3
-							tempValue |= (pS2MM_Mem[r * COL_SIZE + c]);
-		                }
-
-		                ///// bggr
-//		                // Green Pixels eve, odd || odd, even
-//		                if (((r % 2 == 0) && (c % 2 == 1)) || ((r % 2 == 0) && (c % 2 == 0)) ) {
-//		                	// Average blue neighbors
-//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c]) + (pS2MM_Mem[(r+1) * COL_SIZE + c]) + (pS2MM_Mem[r * COL_SIZE + (c - 1)]) + (pS2MM_Mem[r * COL_SIZE + (c+1)])) / 4;
-//							// Green stays same
-//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 8);
-//							// Average red neighbors
-//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)] << 16)) / 4;
-//		                } else if ((r % 2 == 1) && (c % 2 == 1)) {
-//		                	// blue stays the same
-//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c]);
-//							// Average green neighbors
-//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
-//							// Average red neighbors
-//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)] << 16)) / 4;
-//		                } else {
-//		                	// Average blue neighbors
-//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)])) / 4;
-//							// Average green neighbors
-//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
-//							// red stays the same
-//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c]);
-//		                }
-
-						uint8_t red = (tempValue >> 16);
-						uint8_t green = (tempValue >> 8);
-						uint8_t blue = tempValue;
-						uint8_t Y = (uint8_t)((0.183 * red) + (0.614 * green) + (0.062 * blue) + 16);
-						uint8_t Cb = (uint8_t)((-0.101 * red) + (-0.338 * green) + (0.439 * blue) + 128);
-						uint8_t Cr = (uint8_t)((0.439 * red) + (-0.399 * green) + (-0.040 * blue) + 128);
-						tempValue = (Y << 16) | (Cb << 8) | Cr;
-
-						Y = (tempValue >> 16);
-						Cb = (tempValue >> 8);
-						Cr = tempValue;
-						pMM2S_Mem[r *COL_SIZE + c] = (Cr << 24) | (Y << 16) | (Cb << 8) | Y;
+		            	if(r < 2 || r > (ROW_SIZE - 2) || c < 2 || c > (COL_SIZE-2)){
+		            		pMM2S_Mem[r *COL_SIZE + c] = 0x00000000;
+		            	}
+		            	else{
 
 
 
+//			                bool isBlueRow = (r % 2 != 0);
+//			                bool isGreenPixel = isBlueRow ? (c % 2 == 0) : (c % 2 != 0);
+//
+//
+//
+//
+//			                if (isBlueRow && isGreenPixel) {
+//			                	tempValue |= (((pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF)) / 2) << 16;
+//			                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 5) << 8;
+//			                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF)) / 2);
+//			                } else if (isBlueRow && !isGreenPixel) {
+//			                	tempValue |= (((pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 4) << 16;
+//			                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF)) / 4) << 8;
+//			                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] & 0xFF);
+//			                } else if (!isBlueRow && isGreenPixel) {
+//			                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF)) / 2) << 16;
+//			                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 5) << 8;
+//			                	tempValue |= (((pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF)) / 2);
+//			                } else {
+//			                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] & 0xFF) << 16;
+//			                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF)) / 4) << 8;
+//			                	tempValue |= (((pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 4);
+//			                }
+
+
+							//// rggb
+							// Green Pixels eve, odd || odd, even
+	//		                if (((r % 2 == 0) && (c % 2 == 1)) || ((r % 2 == 0) && (c % 2 == 0)) ) {
+	//		                	// Average red neighbors in 3x3
+	//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 16) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 16) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 16)) / 4;
+	//							// Green stays same
+	//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 8);
+	//							// Average blue neighbors in 3x3
+	//							tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)])) / 4;
+	//		                } else if ((r % 2 == 1) && (c % 2 == 1)) {
+	//		                	// Red stays the same
+	//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 16);
+	//							// Average green neighbors
+	//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
+	//							// Average blue neighbors in 3x3
+	//							tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)])) / 4;
+	//		                } else {
+	//		                	// Average red neighbors in 3x3
+	//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)] << 16)) / 4;
+	//							// Average green neighbors
+	//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
+	//							// Average blue neighbors in 3x3
+	//							tempValue |= (pS2MM_Mem[r * COL_SIZE + c]);
+	//		                }
+
+							///// bggr
+	//		                // Red pixels
+							if ((r % 2 == 0) && (c % 2 == 0)) {
+								// Average blue neighbors (Diagonal)
+								tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)])) / 4;
+								// Average green neighbors (Cardinal)
+								tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
+								// red stays the same
+								tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 16);
+
+							// Blue pixels
+							} else if ((r % 2 == 1) && (c % 2 == 1)) {
+								// blue stays the same
+								tempValue |= (pS2MM_Mem[r * COL_SIZE + c]);
+								// Average green neighbors (Diagonal)
+								tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 186) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
+								// Average red neighbors (Cardinal)
+								tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)] << 16)) / 4;
+							} else {
+									// Green stays same
+									tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 8);
+									if ((r % 2 == 0) && (c % 2 == 1)) {
+										// Average blue neighbors
+										tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c]) + (pS2MM_Mem[(r+1) * COL_SIZE + c])) / 2;
+										// Average red neighbors
+										tempValue |= ((pS2MM_Mem[r * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 16)) / 2;
+									} else {
+										// Average red neighbors
+										tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 16)) / 2;
+										// Average blue neighbors
+										tempValue |= ((pS2MM_Mem[r * COL_SIZE + (c-1)]) + (pS2MM_Mem[r * COL_SIZE + (c+1)])) / 2;
+									}
+							}
+							uint8_t red = (tempValue >> 16);
+							uint8_t green = (tempValue >> 8);
+							uint8_t blue = tempValue;
+							uint8_t Y = (uint8_t)((0.183 * red) + (0.614 * green) + (0.062 * blue) + 16);
+							uint8_t Cb = (uint8_t)((-0.101 * red) + (-0.338 * green) + (0.439 * blue) + 128);
+							uint8_t Cr = (uint8_t)((0.439 * red) + (-0.399 * green) + (-0.040 * blue) + 128);
+							pMM2S_Mem[r *COL_SIZE + c] = (Y << 16) | (Cb << 8) | Cr;
+
+							Y = (tempValue >> 16);
+							Cb = (tempValue >> 8);
+							Cr = (tempValue);
+							pMM2S_Mem[r *COL_SIZE + c] = (Cr << 24) | (Y << 16) | (Cb << 8) | Y;
+		            	}
 
 		            }
 		        }

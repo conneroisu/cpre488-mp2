@@ -16,85 +16,97 @@ clc;
 % figure,imshow(uint8(J));
 
 %% For Bayer Filtered images
-J = imread('bayer_image.tif');
-[M,N] = size(J);
+Ja = imread('mandi.tif');
+[M,N,~] = size(Ja);
 T = zeros(M,N,3, "uint8");
-
-J = double(J); % Prevents overflow during interpolation
+J = padarray(double(Ja), [2, 2], 'replicate', 'both');
 
 %% Reconstruct Bayer Filtered Image
-% Interpolate by averaging over 3x3 kernel
-for i = 2:M-1
-    for j = 2:N-1
-        % Green Pixels even, odd || odd, even
-        if (mod(i,2) == 0 && mod(j,2) == 1) || (mod(i,2) == 1 && mod(j,2) == 0)
-            % Green remains the same
-            T(i,j,2) = J(i,j);
-            % Average red neighbors in 3x3
-            T(i,j,1) = round((J(i-1, j) + J(i+1, j) + J(i, j-1) + J(i, j+1)) / 4);
-            % Average blue neighbors in 3x3
-            T(i,j,3) = round((J(i-1, j-1) + J(i-1, j+1) + J(i+1, j-1) + J(i+1, j+1)) / 4);
+% Interpolate by averaging over 3x3 kernel - assuming rggb
+for i = 1:M
+    for j = 1:N
 
+        ip = i + 2;
+        jp = j + 2;
+  
         % Red Pixels - odd, odd
-        elseif mod(i,2) == 1 && mod(j,2) == 1
+        if mod(i,2) == 0 && mod(j,2) == 0
             % Red remains the same
-            T(i,j,1) = J(i,j);
-            % Average green neighbors in 3x3
-            T(i,j,2) = round((J(i-1, j) + J(i+1, j) + J(i, j-1) + J(i, j+1)) / 4);
-            % Average blue neighbors in 3x3
-            T(i,j,3) = round((J(i-1, j-1) + J(i-1, j+1) + J(i+1, j-1) + J(i+1, j+1)) / 4);
+            T(i,j,1) = J(ip,jp);
+            % Average green neighbors (cardinal)
+            T(i,j,2) = uint8(round((J(ip-1, jp) + J(ip+1, jp) + J(ip, jp-1) + J(ip, jp+1)) / 4));
+            % Average blue neighbors (diagonal)
+            T(i,j,3) = uint8(round((J(ip-1, jp-1) + J(ip-1, jp+1) + J(ip+1, jp-1) + J(ip+1, jp+1)) / 4));
+
 
         % Blue Pixels - even, even
-        else
-            % Average red neighbors in 3x3
-            T(i,j,1) = round((J(i-1, j-1) + J(i-1, j+1) + J(i+1, j-1) + J(i+1, j+1)) / 4);
-            % Average green neighbors in 3x3
-            T(i,j,2) = round((J(i-1, j) + J(i+1, j) + J(i, j-1) + J(i, j+1)) / 4);
+        elseif mod(i,2) == 1 && mod(j,2) == 1
+            % Average red neighbors (diagonal)
+            T(i,j,1) = uint8(round((J(ip-1, jp-1) + J(ip-1, jp+1) + J(ip+1, jp-1) + J(ip+1, jp+1)) / 4));
+            % Average green neighbors (cardinal)
+            T(i,j,2) = uint8(round((J(ip-1, jp) + J(ip+1, jp) + J(ip, jp-1) + J(ip, jp+1)) / 4));
             % Blue remains the same
-            T(i,j,3) = J(i,j);
+            T(i,j,3) = J(ip,jp);
+        
+        % Green Pixels
+        else 
+            % Green remains the same
+            T(i,j,2) = J(ip,jp);
+
+            % Blue col: odd, even
+            if (mod(i,2) == 0 && mod(j,2) == 1) 
+                % Average red neighbors (left and right)
+                T(i,j,1) = uint8(round((J(ip, jp+1) + J(ip, jp-1)) / 2));
+                % Average blue neighbors (up and down)
+                T(i,j,3) = uint8(round((J(ip+1, jp) + J(ip-1, jp)) / 2));
+
+            % Red col: Even, odd
+            else 
+                % Average red neighbors (up and down)
+                T(i,j,1) = uint8(round((J(ip+1, jp) + J(ip-1, jp)) / 2)); 
+                % Average blue neighbors (left and right)
+                T(i,j,3) = uint8(round((J(ip, jp-1) + J(ip, jp+1)) / 2));
+
+            end
         end
     end
 end
 
-
-%% YCbCr 4:2:2 downsample
-m_const_YCbCr = [0.183 0.614 0.062; -0.101 -0.338 0.439; 0.439 -0.399 -0.040];
-a_const_YCbCr = [16; 128; 128];
+%% YCbCr 4:2:2
 
 R = T(:,:,1);
-B = T(:,:,2);
-G = T(:,:,3);
+G = T(:,:,2);
+B = T(:,:,3);
 
-T_mat = {R;G;B};
-YCbCr_mat = cell(3,1);
+Y = ((0.183 * R) + (0.614 * G) + (0.062 * B)) + 16;
+U = ((-0.101 * R) + (-0.338 * G) + (0.439 * B)) + 128;
+V = ((0.439 * R) + (-0.399 * G) + (-0.040 * B)) + 128; 
 
-for i = 1:3
-    temp = zeros(3000,4000,'double');
-    for j = 1:3
-        temp = temp + double(m_const_YCbCr(i,j)) * double(T_mat{j});
-    end
-
-    YCbCr_mat{i} = temp + a_const_YCbCr(i);
-end
-
-[m, n] = size(YCbCr_mat{1});
-YCbCr_img = zeros(m, n, 3, "uint8");
-for i = 1:3
-    YCbCr_img(:,:,i) = YCbCr_mat{i};
-end
+YCbCr_img = cat(3, uint8(Y),uint8(U),uint8(V));
 
 %% Display shit
-J = uint8(J); % Output should be 8 bit 
+Ja = uint8(Ja); % Output should be 8 bit 
 % T = uint8(T);
-figure,imshow(J), title("Bayer encoded tif");
+figure,imshow(Ja), title("Bayer encoded tif");
 figure,imshow(T), title("Reconstructed Bayer");
 figure,imshow(YCbCr_img), title("Reconstructed Bayer - YCbCr");
-% YCbCr_given = rgb2ycbcr(T);
-% figure,imshow(YCbCr_given), title("Reconstructed Bayer - YCbCr given");
-given = demosaic(uint8(J), 'rggb');
+RGB_reconstruct = ycbcr2rgb(YCbCr_img);
+figure,imshow(RGB_reconstruct), title("Reconstructed RGB from YUV");
+%% Use given functions
+given = demosaic(uint8(Ja), 'rggb');
 figure,imshow(given), title("Reconstructed Bayer with built-in function - uint8");
 YCbCr_given = rgb2ycbcr(given);
 figure,imshow(YCbCr_given), title("Reconstructed Bayer - YCbCr given");
+RGB_recon_given = ycbcr2rgb(YCbCr_given);
+figure,imshow(RGB_recon_given), title("Reconstructed RGB from YUV given");
+
+% R = T(200:250, 200:250, 1); % Red
+% G = T(200:250, 200:250, 2); % Green
+% B = T(200:250, 200:250, 3); % Blue
+% 
+% Ra = given(200:250, 200:250, 1); % Red
+% Ga = given(200:250, 200:250, 2); % Green
+% Ba = given(200:250, 200:250, 3); % Blue
 
 
 %% RGB iamge into Beyer-encoded image

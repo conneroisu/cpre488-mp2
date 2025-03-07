@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="C:/Users/oparker/cpre488-mp2/project_1/project_1.xpr">
+<Project Version="7" Minor="49" Path="C:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="68aefacb47dc4167a3d3c71b8f128fae"/>
@@ -77,17 +77,23 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_v_tc_0_0/design_1_v_tc_0_0.xci">
-          <Proxy FileSetName="design_1_v_tc_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xbar_0/design_1_xbar_0.xci">
+          <Proxy FileSetName="design_1_xbar_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xci">
-          <Proxy FileSetName="design_1_clk_wiz_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_onsemi_vita_spi_0_0/design_1_onsemi_vita_spi_0_0.xci">
+          <Proxy FileSetName="design_1_onsemi_vita_spi_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_avnet_hdmi_out_0_0/design_1_avnet_hdmi_out_0_0.xci">
+          <Proxy FileSetName="design_1_avnet_hdmi_out_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.xci">
+          <Proxy FileSetName="design_1_rst_ps7_0_100M_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xci">
           <Proxy FileSetName="design_1_processing_system7_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_avnet_hdmi_out_0_0/design_1_avnet_hdmi_out_0_0.xci">
-          <Proxy FileSetName="design_1_avnet_hdmi_out_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0.xci">
+          <Proxy FileSetName="design_1_axis_subset_converter_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_fmc_ipmi_id_eeprom_0_0/design_1_fmc_ipmi_id_eeprom_0_0.xci">
           <Proxy FileSetName="design_1_fmc_ipmi_id_eeprom_0_0"/>
@@ -95,32 +101,26 @@
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_rst_clk_wiz_0_148M_0/design_1_rst_clk_wiz_0_148M_0.xci">
           <Proxy FileSetName="design_1_rst_clk_wiz_0_148M_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0.xci">
-          <Proxy FileSetName="design_1_v_axi4s_vid_out_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_vdma_0_0/design_1_axi_vdma_0_0.xci">
           <Proxy FileSetName="design_1_axi_vdma_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0.xci">
-          <Proxy FileSetName="design_1_axis_subset_converter_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xci">
+          <Proxy FileSetName="design_1_clk_wiz_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xbar_0/design_1_xbar_0.xci">
-          <Proxy FileSetName="design_1_xbar_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_fmc_imageon_iic_0_0/design_1_fmc_imageon_iic_0_0.xci">
+          <Proxy FileSetName="design_1_fmc_imageon_iic_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.xci">
-          <Proxy FileSetName="design_1_rst_ps7_0_100M_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0.xci">
+          <Proxy FileSetName="design_1_v_axi4s_vid_out_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_onsemi_vita_spi_0_0/design_1_onsemi_vita_spi_0_0.xci">
-          <Proxy FileSetName="design_1_onsemi_vita_spi_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_onsemi_vita_cam_0_0/design_1_onsemi_vita_cam_0_0.xci">
-          <Proxy FileSetName="design_1_onsemi_vita_cam_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_v_tc_0_0/design_1_v_tc_0_0.xci">
+          <Proxy FileSetName="design_1_v_tc_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_v_vid_in_axi4s_0_0/design_1_v_vid_in_axi4s_0_0.xci">
           <Proxy FileSetName="design_1_v_vid_in_axi4s_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_fmc_imageon_iic_0_0/design_1_fmc_imageon_iic_0_0.xci">
-          <Proxy FileSetName="design_1_fmc_imageon_iic_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_onsemi_vita_cam_0_0/design_1_onsemi_vita_cam_0_0.xci">
+          <Proxy FileSetName="design_1_onsemi_vita_cam_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/design_1/hdl/design_1_wrapper.vhd">

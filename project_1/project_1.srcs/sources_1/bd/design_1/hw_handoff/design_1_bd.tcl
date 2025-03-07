@@ -668,7 +668,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_ADDR_WIDTH {12} \
    CONFIG.C_HAS_ASYNC_CLK {1} \
-   CONFIG.C_S_AXIS_VIDEO_FORMAT {3} \
+   CONFIG.C_S_AXIS_VIDEO_FORMAT {0} \
    CONFIG.C_VTG_MASTER_SLAVE {1} \
  ] $v_axi4s_vid_out_0
 

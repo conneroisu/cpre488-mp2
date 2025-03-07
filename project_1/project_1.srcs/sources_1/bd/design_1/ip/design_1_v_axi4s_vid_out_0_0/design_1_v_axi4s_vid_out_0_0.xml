@@ -562,11 +562,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Mar 04 16:52:56 UTC 2021</spirit:value>
+            <spirit:value>Fri Mar 07 15:03:45 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ec84c577</spirit:value>
+            <spirit:value>9:ad5cac35</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -580,11 +580,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Mar 04 16:52:56 UTC 2021</spirit:value>
+            <spirit:value>Fri Mar 07 15:37:44 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ec84c577</spirit:value>
+            <spirit:value>9:ad5cac35</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -600,11 +600,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Mar 04 16:52:56 UTC 2021</spirit:value>
+            <spirit:value>Fri Mar 07 15:37:44 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ec84c577</spirit:value>
+            <spirit:value>9:ad5cac35</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -629,11 +629,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Mar 04 16:52:56 UTC 2021</spirit:value>
+            <spirit:value>Fri Mar 07 15:03:45 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:655ee7a5</spirit:value>
+            <spirit:value>9:ebbe514c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -649,11 +649,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Mar 04 16:52:56 UTC 2021</spirit:value>
+            <spirit:value>Fri Mar 07 15:37:44 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:655ee7a5</spirit:value>
+            <spirit:value>9:ebbe514c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -667,11 +667,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 28 07:53:41 UTC 2025</spirit:value>
+            <spirit:value>Fri Mar 07 15:38:19 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ec84c577</spirit:value>
+            <spirit:value>9:ad5cac35</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1483,7 +1483,7 @@
     <spirit:parameter>
       <spirit:name>C_S_AXIS_VIDEO_FORMAT</spirit:name>
       <spirit:displayName>Video Format</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S_AXIS_VIDEO_FORMAT" spirit:choiceRef="choice_pairs_702fcbbd" spirit:order="4" spirit:configGroups="1 NoDisplay">3</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S_AXIS_VIDEO_FORMAT" spirit:choiceRef="choice_pairs_702fcbbd" spirit:order="4" spirit:configGroups="1 NoDisplay">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>

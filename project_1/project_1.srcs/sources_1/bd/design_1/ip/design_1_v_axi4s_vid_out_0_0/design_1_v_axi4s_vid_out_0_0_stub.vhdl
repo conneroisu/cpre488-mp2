@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Feb 28 01:53:41 2025
--- Host        : DESKTOP-V4CC4PR running 64-bit major release  (build 9200)
+-- Date        : Fri Mar  7 09:38:19 2025
+-- Host        : CO2041-08 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_stub.vhdl
+--               c:/Users/jaxie963/temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_axi4s_vid_out_0_0/design_1_v_axi4s_vid_out_0_0_stub.vhdl
 -- Design      : design_1_v_axi4s_vid_out_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1
