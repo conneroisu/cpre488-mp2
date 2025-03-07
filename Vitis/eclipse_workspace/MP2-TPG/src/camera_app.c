@@ -94,6 +94,12 @@ void camera_loop(camera_config_t *config) {
 
 	t_color_24_bit* colors = (t_color_24_bit*) calloc(PIXELS, sizeof(t_color_24_bit));
 
+	xil_printf("Start of light intensity data:\n");
+	for(int i = 0; i < PIXELS; ++i)
+	{
+		xil_printf("%c", pS2MM_Mem[i] & 0xFF);
+	}
+
 
 	// Run for 100 frames before going back to HW mode
 	for (j = 0; j < 100; j++)
