@@ -1,298 +1,324 @@
-/*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
- * camera_app.c - main camera application code. The camera configures the various
- * video in and video out peripherals, and (optionally) performs some
- * image processing on data coming in from the vdma.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
- *****************************************************************************/
-
- #include "camera_app.h"
-
+#include "camera_app.h"
+#include <stdint.h>
+#include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
- camera_config_t camera_config;
+camera_config_t camera_config;
+#define ROW_SIZE 1080
+#define COL_SIZE 1920
 
- int main() {
+// Main function. Initializes the devices and configures VDMA
+int main() {
+    xil_printf("Initializing camera configuration...\r\n");
+    camera_config_init(&camera_config);
+    xil_printf("Camera configuration initialized.\r\n");
 
-     camera_config_init(&camera_config);
-     fmc_imageon_enable(&camera_config);
-     camera_loop(&camera_config);
+    xil_printf("Enabling FMC-IMAGEON...\r\n");
+    if (fmc_imageon_enable(&camera_config) != 0) {
+        xil_printf("ERROR: fmc_imageon_enable failed. Exiting.\r\n");
+        return -1;
+    }
+    xil_printf("FMC-IMAGEON enabled successfully.\r\n");
 
-     return 0;
- }
+    xil_printf("Starting camera loop...\r\n");
+    camera_loop(&camera_config);
 
- // Initialize the camera configuration data structure
- void camera_config_init(camera_config_t *config) {
+    xil_printf("Program completed successfully.\r\n");
+    return 0;
+}
 
-     config->uBaseAddr_IIC_FmcIpmi =  XPAR_FMC_IPMI_ID_EEPROM_0_BASEADDR;   // Device for reading HDMI board IPMI EEPROM information
-     config->uBaseAddr_IIC_FmcImageon = XPAR_FMC_IMAGEON_IIC_0_BASEADDR;    // Device for configuring the HDMI board
+void demosaicing(uint8_t bw[ROW_SIZE][COL_SIZE], uint32_t color[ROW_SIZE][COL_SIZE], int rowSize, int colSize) {
+    for (int r = 1; r < rowSize - 1; r++) {
+        for (int c = 1; c < colSize - 1; c++) {
+            bool isBlueRow = (r % 2 != 0);
+            bool isGreenPixel = isBlueRow ? (c % 2 == 0) : (c % 2 != 0);
+            color[r][c] = 0;
 
-     // Uncomment when using VITA Camera for Video input
-     config->uBaseAddr_VITA_SPI = XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR;  // Device for configuring the Camera sensor
-     config->uBaseAddr_VITA_CAM = XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR;  // Device for receiving Camera sensor data
+            if (isBlueRow && isGreenPixel) {
+                color[r][c] |= ((bw[r + 1][c] + bw[r - 1][c]) / 2) << 16;
+                color[r][c] |= ((bw[r][c] + bw[r - 1][c - 1] + bw[r + 1][c + 1] + bw[r + 1][c - 1] + bw[r - 1][c + 1]) / 5) << 8;
+                color[r][c] |= ((bw[r][c - 1] + bw[r][c + 1]) / 2);
+            } else if (isBlueRow && !isGreenPixel) {
+                color[r][c] |= ((bw[r - 1][c - 1] + bw[r + 1][c + 1] + bw[r + 1][c - 1] + bw[r - 1][c + 1]) / 4) << 16;
+                color[r][c] |= ((bw[r][c - 1] + bw[r][c + 1] + bw[r - 1][c] + bw[r + 1][c]) / 4) << 8;
+                color[r][c] |= bw[r][c];
+            } else if (!isBlueRow && isGreenPixel) {
+                color[r][c] |= ((bw[r][c + 1] + bw[r][c - 1]) / 2) << 16;
+                color[r][c] |= ((bw[r][c] + bw[r - 1][c - 1] + bw[r + 1][c + 1] + bw[r + 1][c - 1] + bw[r - 1][c + 1]) / 5) << 8;
+                color[r][c] |= ((bw[r - 1][c] + bw[r + 1][c]) / 2);
+            } else {
+                color[r][c] |= bw[r][c] << 16;
+                color[r][c] |= ((bw[r][c - 1] + bw[r][c + 1] + bw[r - 1][c] + bw[r + 1][c]) / 4) << 8;
+                color[r][c] |= ((bw[r - 1][c - 1] + bw[r + 1][c + 1] + bw[r + 1][c - 1] + bw[r - 1][c + 1]) / 4);
+            }
+        }
+    }
+}
+
+void rgbToYCbCr444(uint32_t data[ROW_SIZE][COL_SIZE], int rowSize, int colSize) {
+    for (int r = 0; r < rowSize; r++) {
+        for (int c = 0; c < colSize; c++) {
+            uint8_t red = (data[r][c] >> 16) & 0xFF;
+            uint8_t green = (data[r][c] >> 8) & 0xFF;
+            uint8_t blue = data[r][c] & 0xFF;
+            uint8_t Y = (uint8_t)((0.183 * red) + (0.614 * green) + (0.062 * blue) + 16);
+            uint8_t Cb = (uint8_t)((-0.101 * red) + (-0.338 * green) + (0.439 * blue) + 128);
+            uint8_t Cr = (uint8_t)((0.439 * red) + (-0.399 * green) + (-0.040 * blue) + 128);
+            data[r][c] = (Y << 16) | (Cb << 8) | Cr;
+        }
+    }
+}
+
+void YCbCr444to422(uint32_t data[ROW_SIZE][COL_SIZE], int rowSize, int colSize) {
+    for (int r = 0; r < rowSize; r++) {
+        for (int c = 0; c < colSize; c++) {
+            uint8_t Y = (data[r][c] >> 16) & 0xFF;
+            uint8_t Cb = (data[r][c] >> 8) & 0xFF;
+            uint8_t Cr = data[r][c] & 0xFF;
+            data[r][c] = (Cr << 24) | (Y << 16) | (Cb << 8) | Y;
+        }
+    }
+}
+
+// Initialize the camera configuration data structure
+void camera_config_init(camera_config_t *config) {
+    config->uBaseAddr_IIC_FmcIpmi =  XPAR_FMC_IPMI_ID_EEPROM_0_BASEADDR;   // Device for reading HDMI board IPMI EEPROM information
+    config->uBaseAddr_IIC_FmcImageon = XPAR_FMC_IMAGEON_IIC_0_BASEADDR;    // Device for configuring the HDMI board
+
+    // Uncomment when using VITA Camera for Video input
+    config->uBaseAddr_VITA_SPI = XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR;  // Device for configuring the Camera sensor
+    config->uBaseAddr_VITA_CAM = XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR;  // Device for receiving Camera sensor data
 
 
-     // Uncomment when using the TPG for Video input
-     //config->uBaseAddr_TPG_PatternGenerator = XPAR_V_TPG_0_S_AXI_CTRL_BASEADDR; // TPG Device
+    // Uncomment when using the TPG for Video input
+//    config->uBaseAddr_TPG_PatternGenerator = XPAR_V_TPG_0_S_AXI_CTRL_BASEADDR; // TPG Device
 
-     config->uDeviceId_VTC_tpg   = XPAR_V_TC_0_DEVICE_ID;                        // Video Timer Controller (VTC) ID
-     config->uDeviceId_VDMA_HdmiFrameBuffer = XPAR_AXI_VDMA_0_DEVICE_ID;         // VDMA ID
-     config->uBaseAddr_MEM_HdmiFrameBuffer = XPAR_DDR_MEM_BASEADDR + 0x10000000; // VDMA base address for Frame buffers
-     config->uNumFrames_HdmiFrameBuffer = XPAR_AXIVDMA_0_NUM_FSTORES;            // NUmber of VDMA Frame buffers
+    config->uDeviceId_VTC_tpg   = XPAR_V_TC_0_DEVICE_ID;                        // Video Timer Controller (VTC) ID
+    config->uDeviceId_VDMA_HdmiFrameBuffer = XPAR_AXI_VDMA_0_DEVICE_ID;         // VDMA ID
+    config->uBaseAddr_MEM_HdmiFrameBuffer = XPAR_DDR_MEM_BASEADDR + 0x10000000; // VDMA base address for Frame buffers
+    config->uNumFrames_HdmiFrameBuffer = XPAR_AXIVDMA_0_NUM_FSTORES;            // NUmber of VDMA Frame buffers
+    return;
+}
 
-     return;s
- }
-
- // Clamp function use to make sure values are within valid range
- Xuint8 clamp(int value, int min, int max) {
-      if (value < min) return min;
-      if (value > max) return max;
-      return value;
-  }
-
-
- // Convert RGB values to YCbCr
- void rgb_to_ycbcr(Xuint8 r, Xuint8 g, Xuint8 b, Xuint8 *y, Xuint8 *cb, Xuint8 *cr) {
-     *y  = clamp((int)(0.183 * r + 0.614 * g + 0.062 * b + 16.0), 0, 255);
-     *cb = clamp((int)(-0.101 * r - 0.338 * g + 0.439 * b + 128.0), 0, 255);
-     *cr = clamp((int)(0.439 * r - 0.399 * g - 0.040 * b + 128.0), 0, 255);
- }
-
- // Pack YCbCr values into 16-bit 4:2:2 format [Y0 Cb Y1 Cr]
- Xuint16 pack_ycbcr422(Xuint8 y, Xuint8 cb_or_cr, int is_cb) {
-     if (is_cb) {
-         // [Y Cb] format
-         return (y << 8) | cb_or_cr;
-     } else {
-         // [Y Cr] format
-         return (y << 8) | cb_or_cr;
-     }
- }
-
-// Main (SW) processing loop. Recommended to have an explicit exit condition
 void camera_loop(camera_config_t *config) {
+	Xuint32 parkptr;
+	Xuint32 vdma_S2MM_DMACR, vdma_MM2S_DMACR;
+	int i, j;
 
-     Xuint32 parkptr;
-     Xuint32 vdma_S2MM_DMACR, vdma_MM2S_DMACR;
-     int i, j, x, y;
-     Xuint8 r, g, b;
-     Xuint8 y_val, cb_val, cr_val;
+	xil_printf("Entering main SW processing loop\r\n");
 
-     xil_printf("Entering main SW processing loop\r\n");
 
-     // Grab the DMA parkptr, and update it to ensure that when parked, the S2MM side is on frame 0, and the MM2S side on frame 1
-     parkptr = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET);
-     parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
-     parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
-     parkptr |= 0x1;
-     XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET, parkptr);
+	// Grab the DMA parkptr, and update it to ensure that when parked, the S2MM side is on frame 0, and the MM2S side on frame 1
+	parkptr = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET);
+	parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
+	parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
+	parkptr |= 0x1;
+	XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET, parkptr);
 
-     // Grab the DMA Control Registers, and clear circular park mode.
-     vdma_MM2S_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET);
-     XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK);
-     vdma_S2MM_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET);
-     XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK);
 
-     // Pointers to the S2MM memory frame and M2SS memory frame
-     volatile Xuint16 *pS2MM_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET);
-     volatile Xuint16 *pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+4);
+	// Grab the DMA Control Registers, and clear circular park mode.
+	vdma_MM2S_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET);
+	XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK);
+	vdma_S2MM_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET);
+	XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK);
 
-     // Create a temporary buffer for RGB values during Bayer demosaicing
-     Xuint8 *rawBayer = (Xuint8 *)malloc(1920 * 1080 * sizeof(Xuint8));
-     Xuint8 *rgbImage = (Xuint8 *)malloc(1920 * 1080 * 3 * sizeof(Xuint8));
 
-     if (!rawBayer || !rgbImage) {
-         xil_printf("Error: Memory allocation failed for Bayer processing\r\n");
-         return;
-     }
+	// Pointers to the S2MM memory frame and M2SS memory frame
+	volatile Xuint16 *pS2MM_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET);
+	volatile Xuint16 *pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+4);
 
-     xil_printf("Start processing frames with Bayer demosaicing!\r\n");
-     xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
-     xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
+//	uint8_t cfa[ROW_SIZE][COL_SIZE];
+//    Xuint16 fullColor[ROW_SIZE][COL_SIZE];
 
-     // Process frames with Bayer demosaicing
-     for (j = 0; j < 1000; j++) {
-         for (i = 0; i < 1920*1080; i++) {
-             // The camera data is in the lower byte of each 16-bit value
-             rawBayer[i] = pS2MM_Mem[i] & 0xFF;
-         }
+	uint16_t tempValue;
 
-         // Bayer demosaicing - assuming RGGB Bayer pattern
-         for (y = 0; y < 1080; y++) {
-             for (x = 0; x < 1920; x++) {
-                 int idx = y * 1920 + x;
-                 int rgb_idx = idx * 3;
+    xil_printf("Start processing frames!\r\n");
 
-                 // Determine the pixel's position in the Bayer pattern (RGGB)
-                 int is_red_row = (y % 2 == 0);
-                 int is_red_col = (x % 2 == 0);
-                 int is_blue_row = !is_red_row;
-                 int is_blue_col = !is_red_col;
+    for (int j = 0; j < 1000; j++) {
+		xil_printf("Fuck");
+        // 1. Load CFA data from DMA memory (Bayer pattern)
+//        for (int r = 0; r < ROW_SIZE-1; r++) {
+//            for (int c = 0; c < COL_SIZE-1; c++) {
+//        		xil_printf("Shit");
+//                cfa[r][c] = 200;
+//        		xil_printf("Damn");
+//                		//pS2MM_Mem[r * COL_SIZE + c] & 0xFF;
+////                cfa[r][c] = pS2MM_Mem[r * COL_SIZE + c];
+//            }
+//        }
+		xil_printf("FuckYou");
 
-                 r = 0;
-                 g = 0;
-                 b = 0;
+//         2. Perform demosaicing (Bayer to RGB conversion)
+//		        demosaicing(pS2MM_Mem, fullColor, ROW_SIZE, COL_SIZE);
+		        for (int r = 1; r < ROW_SIZE - 1; r++) {
+		            for (int c = 1; c < COL_SIZE - 1; c++) {
+		                bool isBlueRow = (r % 2 != 0);
+		                bool isGreenPixel = isBlueRow ? (c % 2 == 0) : (c % 2 != 0);
 
-                 // Red pixel (top-left in 2x2 grid)
-                 if (is_red_row && is_red_col) {
-                     r = rawBayer[idx]; // Direct red value
 
-                     // Green - average of horizontal and vertical neighbors
-                     int green_count = 0;
-                     g = 0;
+//		                if (isBlueRow && isGreenPixel) {
+//		                	tempValue |= (((pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF)) / 2) << 16;
+//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 5) << 8;
+//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF)) / 2);
+//		                } else if (isBlueRow && !isGreenPixel) {
+//		                	tempValue |= (((pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 4) << 16;
+//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF)) / 4) << 8;
+//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] & 0xFF);
+//		                } else if (!isBlueRow && isGreenPixel) {
+//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF)) / 2) << 16;
+//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 5) << 8;
+//		                	tempValue |= (((pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF)) / 2);
+//		                } else {
+//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] & 0xFF) << 16;
+//		                	tempValue |= (((pS2MM_Mem[r * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[r * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c] & 0xFF)) / 4) << 8;
+//		                	tempValue |= (((pS2MM_Mem[(r-1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c + 1] & 0xFF) + (pS2MM_Mem[(r+1) * COL_SIZE + c - 1] & 0xFF) + (pS2MM_Mem[(r-1) * COL_SIZE + c + 1] & 0xFF)) / 4);
+//		                }
 
-                     // Right neighbor
-                     if (x + 1 < 1920) {
-                         g += rawBayer[idx + 1];
-                         green_count++;
-                     }
 
-                     // Bottom neighbor
-                     if (y + 1 < 1080) {
-                         g += rawBayer[idx + 1920];
-                         green_count++;
-                     }
+		                //// rggb
+		                // Green Pixels eve, odd || odd, even
+		                if (((r % 2 == 0) && (c % 2 == 1)) || ((r % 2 == 0) && (c % 2 == 0)) ) {
+		                	// Average red neighbors in 3x3
+		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 16) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 16) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 16)) / 4;
+							// Green stays same
+		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 8);
+							// Average blue neighbors in 3x3
+							tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)])) / 4;
+		                } else if ((r % 2 == 1) && (c % 2 == 1)) {
+		                	// Red stays the same
+		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 16);
+							// Average green neighbors
+		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
+							// Average blue neighbors in 3x3
+							tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)])) / 4;
+		                } else {
+		                	// Average red neighbors in 3x3
+		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)] << 16)) / 4;
+							// Average green neighbors
+		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
+							// Average blue neighbors in 3x3
+							tempValue |= (pS2MM_Mem[r * COL_SIZE + c]);
+		                }
 
-                     g = (green_count > 0) ? (g / green_count) : 0;
+		                ///// bggr
+//		                // Green Pixels eve, odd || odd, even
+//		                if (((r % 2 == 0) && (c % 2 == 1)) || ((r % 2 == 0) && (c % 2 == 0)) ) {
+//		                	// Average blue neighbors
+//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c]) + (pS2MM_Mem[(r+1) * COL_SIZE + c]) + (pS2MM_Mem[r * COL_SIZE + (c - 1)]) + (pS2MM_Mem[r * COL_SIZE + (c+1)])) / 4;
+//							// Green stays same
+//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c] << 8);
+//							// Average red neighbors
+//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)] << 16)) / 4;
+//		                } else if ((r % 2 == 1) && (c % 2 == 1)) {
+//		                	// blue stays the same
+//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c]);
+//							// Average green neighbors
+//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
+//							// Average red neighbors
+//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)] << 16) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)] << 16)) / 4;
+//		                } else {
+//		                	// Average blue neighbors
+//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r-1) * COL_SIZE + (c+1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c-1)]) + (pS2MM_Mem[(r+1) * COL_SIZE + (c+1)])) / 4;
+//							// Average green neighbors
+//		                	tempValue |= ((pS2MM_Mem[(r-1) * COL_SIZE + c] << 8) + (pS2MM_Mem[(r+1) * COL_SIZE + c] << 8) + (pS2MM_Mem[r * COL_SIZE + (c - 1)] << 8) + (pS2MM_Mem[r * COL_SIZE + (c+1)] << 8)) / 4;
+//							// red stays the same
+//		                	tempValue |= (pS2MM_Mem[r * COL_SIZE + c]);
+//		                }
 
-                     // Blue - diagonal neighbor
-                     int blue_count = 0;
-                     b = 0;
+						uint8_t red = (tempValue >> 16);
+						uint8_t green = (tempValue >> 8);
+						uint8_t blue = tempValue;
+						uint8_t Y = (uint8_t)((0.183 * red) + (0.614 * green) + (0.062 * blue) + 16);
+						uint8_t Cb = (uint8_t)((-0.101 * red) + (-0.338 * green) + (0.439 * blue) + 128);
+						uint8_t Cr = (uint8_t)((0.439 * red) + (-0.399 * green) + (-0.040 * blue) + 128);
+						tempValue = (Y << 16) | (Cb << 8) | Cr;
 
-                     // Bottom-right neighbor
-                     if (x + 1 < 1920 && y + 1 < 1080) {
-                         b += rawBayer[idx + 1920 + 1];
-                         blue_count++;
-                     }
+						Y = (tempValue >> 16);
+						Cb = (tempValue >> 8);
+						Cr = tempValue;
+						pMM2S_Mem[r *COL_SIZE + c] = (Cr << 24) | (Y << 16) | (Cb << 8) | Y;
 
-                     b = (blue_count > 0) ? b : 0;
-                 }
-                 // Green pixel on red row
-                 else if (is_red_row && is_blue_col) {
-                     g = rawBayer[idx]; // Direct green value
 
-                     // Red - left neighbor
-                     r = (x > 0) ? rawBayer[idx - 1] : 0;
 
-                     // Blue - bottom neighbor
-                     b = (y + 1 < 1080) ? rawBayer[idx + 1920] : 0;
-                 }
-                 // Green pixel on blue row (bottom-left in 2x2 grid)
-                 else if (is_blue_row && is_red_col) {
-                     g = rawBayer[idx]; // Direct green value
 
-                     // Red - top neighbor
-                     r = (y > 0) ? rawBayer[idx - 1920] : 0;
+		            }
+		        }
 
-                     // Blue - right neighbor
-                     b = (x + 1 < 1920) ? rawBayer[idx + 1] : 0;
-                 }
-                 // Blue pixel (bottom-right in 2x2 grid)
-                 else if (is_blue_row && is_blue_col) {
-                     b = rawBayer[idx]; // Direct blue value
 
-                     // Green - average of horizontal and vertical neighbors
-                     int green_count = 0;
-                     g = 0;
 
-                     // Left neighbor
-                     if (x > 0) {
-                         g += rawBayer[idx - 1];
-                         green_count++;
-                     }
+//				for (int r = 0; r < ROW_SIZE; r++) {
+//					for (int c = 0; c < COL_SIZE; c++) {
+//						uint8_t red = (pMM2S_Mem[r *COL_SIZE + c] >> 16) & 0xFF;
+//						uint8_t green = (pMM2S_Mem[r *COL_SIZE + c] >> 8) & 0xFF;
+//						uint8_t blue = pMM2S_Mem[r *COL_SIZE + c] & 0xFF;
+//						uint8_t Y = (uint8_t)((0.183 * red) + (0.614 * green) + (0.062 * blue) + 16);
+//						uint8_t Cb = (uint8_t)((-0.101 * red) + (-0.338 * green) + (0.439 * blue) + 128);
+//						uint8_t Cr = (uint8_t)((0.439 * red) + (-0.399 * green) + (-0.040 * blue) + 128);
+//						pMM2S_Mem[r *COL_SIZE + c] = (Y << 16) | (Cb << 8) | Cr;
+//					}
+//				}
+//
+//				for (int r = 0; r < ROW_SIZE; r++) {
+//					for (int c = 0; c < COL_SIZE; c++) {
+//						uint8_t Y = (pMM2S_Mem[r *COL_SIZE + c] >> 16) & 0xFF;
+//						uint8_t Cb = (pMM2S_Mem[r *COL_SIZE + c] >> 8) & 0xFF;
+//						uint8_t Cr = pMM2S_Mem[r *COL_SIZE + c] & 0xFF;
+//						pMM2S_Mem[r *COL_SIZE + c] = (Cr << 24) | (Y << 16) | (Cb << 8) | Y;
+//					}
+//				}
 
-                     // Top neighbor
-                     if (y > 0) {
-                         g += rawBayer[idx - 1920];
-                         green_count++;
-                     }
 
-                     g = (green_count > 0) ? (g / green_count) : 0;
+//
+//		for (int r = 0; r < ROW_SIZE; r++) {
+//			for (int c = 0; c < COL_SIZE; c++) {
+//				uint8_t Y = (pMM2S_Mem[r *COL_SIZE + c] >> 16) & 0xFF;
+//				uint8_t Cb = (pMM2S_Mem[r *COL_SIZE + c] >> 8) & 0xFF;
+//				uint8_t Cr = pMM2S_Mem[r *COL_SIZE + c] & 0xFF;
+//				pMM2S_Mem[r *COL_SIZE + c] = (Cr << 24) | (Y << 16) | (Cb << 8) | Y;
+//			}
+//		}
 
-                     // Red - diagonal neighbor average
-                     int red_count = 0;
-                     r = 0;
+        // 3. Convert RGB to YCbCr 4:4:4
+//        rgbToYCbCr444(fullColor, ROW_SIZE, COL_SIZE);
+//
+//        // 4. Convert YCbCr 4:4:4 to 4:2:2
+//        YCbCr444to422(fullColor, ROW_SIZE, COL_SIZE);
 
-                     // Top-left neighbor
-                     if (x > 0 && y > 0) {
-                         r += rawBayer[idx - 1920 - 1];
-                         red_count++;
-                     }
+        // 5. Store the processed frame back to memory for HDMI output
+//        for (int r = 0; r < ROW_SIZE; r++) {
+//            for (int c = 0; c < COL_SIZE; c++) {
+//                pMM2S_Mem[r * COL_SIZE + c] = pMM2S_Mem[r *COL_SIZE + c];
+//            }
+//        }
+    }
 
-                     r = (red_count > 0) ? r : 0;
-                 }
 
-                 // Store RGB values
-                 rgbImage[rgb_idx] = r;
-                 rgbImage[rgb_idx + 1] = g;
-                 rgbImage[rgb_idx + 2] = b;
-             }
-         }
+	// Run for 1000 frames before going back to HW mode
+//	for (j = 0; j < 1000; j++) {
+//		for (i = 0; i < 1920*1080; i++) {
+//	       pMM2S_Mem[i] = pS2MM_Mem[1920*1080-i-1];
+//		}
+//	}
 
-         // Convert RGB to YCbCr 4:2:2 format
-         for (y = 0; y < 1080; y++) {
-             for (x = 0; x < 1920; x += 2) {  // Process two pixels at a time for 4:2:2 format
-                 int idx = y * 1920 + x;
-                 int rgb_idx1 = idx * 3;
-                 int rgb_idx2 = (idx + 1) * 3;
+	// Grab the DMA Control Registers, and re-enable circular park mode.
+	vdma_MM2S_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET);
+	XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
+	vdma_S2MM_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET);
+	XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
 
-                 // Get RGB values for two adjacent pixels
-                 Xuint8 r1 = rgbImage[rgb_idx1];
-                 Xuint8 g1 = rgbImage[rgb_idx1 + 1];
-                 Xuint8 b1 = rgbImage[rgb_idx1 + 2];
 
-                 Xuint8 r2 = (x + 1 < 1920) ? rgbImage[rgb_idx2] : 0;
-                 Xuint8 g2 = (x + 1 < 1920) ? rgbImage[rgb_idx2 + 1] : 0;
-                 Xuint8 b2 = (x + 1 < 1920) ? rgbImage[rgb_idx2 + 2] : 0;
+	xil_printf("Main SW processing loop complete!\r\n");
 
-                 // Convert to YCbCr
-                 Xuint8 y1, cb1, cr1, y2, cb2, cr2;
-                 rgb_to_ycbcr(r1, g1, b1, &y1, &cb1, &cr1);
-                 rgb_to_ycbcr(r2, g2, b2, &y2, &cb2, &cr2);
+	sleep(5);
 
-                 // Pack into 4:2:2 format - use the Cb from the first pixel and Cr from the second
-                 pMM2S_Mem[idx/2 * 2] = pack_ycbcr422(y1, cb1, 1);      // Y0 Cb
-                 pMM2S_Mem[idx/2 * 2 + 1] = pack_ycbcr422(y2, cr1, 0);  // Y1 Cr
-             }
-         }
+	// Uncomment when using TPG for Video input
+	// fmc_imageon_disable_tpg(config);
 
-         // Print a progress indicator every 100 frames
-         if (j % 100 == 0) {
-             xil_printf("Processed %d frames\r\n", j);
-         }
-     }
+	sleep(1);
 
-     // Free allocated memory
-     free(rawBayer);
-     free(rgbImage);
 
-     // Grab the DMA Control Registers, and re-enable circular park mode.
-     vdma_MM2S_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET);
-     XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
-     vdma_S2MM_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET);
-     XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
+	return;
 
-     xil_printf("Main SW processing loop complete!\r\n");
-
-     sleep(5);
-
-     // Uncomment when using TPG for Video input
-     //fmc_imageon_disable_tpg(config);
-
-     // Disable VITA camera
-//     fmc_imageon_disable_vita(config);
-
-     sleep(1);
-
-     return;
- }
+}
