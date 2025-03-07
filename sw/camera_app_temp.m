@@ -43,7 +43,7 @@ function pMM2S_Mem = camera_app_temp()
 %     pMM2S_Mem = zeros(1920*1080, 1, 'uint16');
 
     % Process frames with Bayer demosaicing    
-    for j = 1:1000
+%     for j = 1:1000
         for i = 1:((1920 - 1) * (1080 - 1))
             pixel_value = bitand(bitshift(pS2MM_Mem(i), -8), 255);
             R = 0;
@@ -76,7 +76,7 @@ function pMM2S_Mem = camera_app_temp()
                     R = pixel_value;
 
                     if (i + 1920) >= 2073600
-                        print("Fuck")
+                        disp("Fuck")
                     end
                     G = ((bitand(bitshift(pS2MM_Mem(i + 1), -8), 255) + bitand(bitshift(pS2MM_Mem(i + 1920), -8), 255)) / 2);
                     B = bitand(bitshift(pS2MM_Mem(i - 1920), -8), 255);
@@ -93,19 +93,56 @@ function pMM2S_Mem = camera_app_temp()
             Cb = max(16, min(240, Cb));
             Cr = max(16, min(240, Cr));
 
-            % Chroma subsampling
-            if (mod(x,2) == 0)
-                % Store Y for the first pixel and Cb
-                YCbCr = bitor(bitshift(uint16(Y), 8), bitand(uint16(Cb), 255));
-                pMM2S_Mem(i) = YCbCr;
-            else
-                % Store Y for the second pixel and Cr
-                YCbCr = bitor(bitshift(uint16(Y), 8), bitand(uint16(Cr), 255));
-                pMM2S_Mem(i) = YCbCr;
-            end 
+%             % Chroma subsampling
+%             if (mod(x,2) == 0)
+%                 % Store Y for the first pixel and Cb
+%                 YCbCr = bitor(bitshift(uint16(Y), 8), bitand(uint16(Cb), 255));
+%                 pMM2S_Mem(i) = YCbCr;
+%             else
+%                 % Store Y for the second pixel and Cr
+%                 YCbCr = bitor(bitshift(uint16(Y), 8), bitand(uint16(Cr), 255));
+%                 pMM2S_Mem(i) = YCbCr;
+%             end 
+
+            % Store in full resolution arrays
+            Y_full(y+1, x+1)  = Y;
+            Cb_full(y+1, x+1) = Cb;
+            Cr_full(y+1, x+1) = Cr;
 
         end % i
-    end % j
+%     end % j
+
+    % Now perform 4:2:0 chroma subsampling: for every 2x2 block, average Cb and Cr.
+    Y_plane  = Y_full;  % Y remains full resolution
+    Cb_plane = zeros(height/2, width/2);
+    Cr_plane = zeros(height/2, width/2);
+    
+    for y = 1:2:height-1
+        for x = 1:2:width-1
+            % Define the block indices
+            y_end = min(y+1, height);
+            x_end = min(x+1, width);
+%             disp("y_end");
+%             disp(y_end);
+%             disp("x_end");
+%             disp(x_end);
+            blockCb = double(Cb_full(y:y_end, x:x_end));
+            blockCr = double(Cr_full(y:y_end, x:x_end));
+            % Compute the average for the 2x2 block
+            avgCb = mean(blockCb(:));
+            avgCr = mean(blockCr(:));
+            % Map block position to subsampled plane
+            sub_y = ceil(y/2);
+            sub_x = ceil(x/2);
+            Cb_plane(sub_y, sub_x) = avgCb;
+            Cr_plane(sub_y, sub_x) = avgCr;
+        end
+    end
+    
+    % Optionally, you can display the Y and chroma planes
+    figure, imshow(uint8(Y_plane)), title('Y Plane');
+    figure, imshow(uint8(Cb_plane)), title('Cb Plane');
+    figure, imshow(uint8(Cr_plane)), title('Cr Plane');
 
     % Display results for visual verification
     figure, imshow(bayer), title('Synthetic Bayer Image');
