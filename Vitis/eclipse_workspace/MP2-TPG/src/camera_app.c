@@ -20,7 +20,6 @@
 #include "xil_types.h"
 #include "include/demosaicing.h"
 
-
 camera_config_t camera_config;
 
 // Main function. Initializes the devices and configures VDMA
@@ -91,12 +90,24 @@ void camera_loop(camera_config_t *config) {
 	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
 	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
 
+	// Define read macro
+	#define CAMERA_READ(offset) *((volatile uint32_t*) config->vdma_hdmi.BaseAddr + XAXIVDMA_RX_OFFSET + offset)
+
+	// Enable frame counter
+	CAMERA_READ(0x0) &= ~0x1;
+	CAMERA_READ(0x0) &= ~0xF000000;
+	CAMERA_READ(0x0) |= 0x10;
+	//CAMERA_READ(0x0) |= 0x1;
+
 	// Run for 100 frames before going back to HW mode
-	for (j = 0; j < 100; j++)
+	for (j = 0; j < 1000; j++)
 	{
 		// Apply CFA
 		run_demosaicing((uint16_t*)pS2MM_Mem, (uint16_t*)pMM2S_Mem);
 	}
+
+	// Disable frame counter
+	CAMERA_READ(0x0) &= ~0x10;
 
 
 	// Grab the DMA Control Registers, and re-enable circular park mode.
