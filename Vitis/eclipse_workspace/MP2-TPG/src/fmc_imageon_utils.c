@@ -176,7 +176,7 @@ int fmc_imageon_enable( camera_config_t *config )
 
    // Output static Frame buffer for 5 seconds
    xil_printf( "Output static Frame buffer for 5 seconds\n\r" );
-   sleep(5);
+   sleep(1);
 
 
    // Initialize Input Side of AXI VDMA
@@ -212,7 +212,7 @@ int fmc_imageon_enable( camera_config_t *config )
 
    // Output Video input source in Hardware mode for 10 seconds
    xil_printf( "Output Video input source in Hardware mode for 10 seconds\n\r" );
-   sleep(10);
+   //sleep(10);
 
 
    // Status of AXI VDMA
