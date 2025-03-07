@@ -444,53 +444,53 @@ void write_ppm(t_image_type fb, const char *filename) {
   fclose(f);
 }
 
-int main() {
-  // Create and initialize the framebuffer
-  t_image_type image;
-  memset(image, 0, sizeof(image)); // Start with a black image
-
-  printf("Starting image generation...\n");
-
-  char filename[50];
-  // Demo: Draw a progress bar and some text that updates
-  for (int i = 0; i <= 100; i++) {
-    // Create a constant output filename
-    sprintf(filename, "output_%03d.ppm", i);
-    printf("Progress: %d%%\n", i);
-    // Clear the image first (fill with black)
-    fill_rect(image, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT, 0x0000);
-
-    // Set colors (RGB565 format)
-    u16 bar_color = 0x07E0;    // Green
-    u16 text_color = 0xFFFF;   // White
-    u16 border_color = 0xF800; // Red
-
-    // Draw some demo elements
-    draw_bar(image, 55, 205, IMAGE_WIDTH - 110, 40, i, bar_color);
-
-    // Create a status text
-    char status[50];
-    snprintf(status, sizeof(status), "Progress: %d%%", i);
-    draw_string(image, status, 50, 180, text_color);
-
-    // Add timestamp
-    time_t now = time(NULL);
-    char time_str[50];
-    strftime(time_str, sizeof(time_str), "Time: %H:%M:%S", localtime(&now));
-    draw_string(image, time_str, 50, 160, text_color);
-
-    // Write the current state to a PPM file
-    write_ppm(image, filename);
-
-    // Sleep briefly to allow external viewers to refresh
-    printf("wait");
-    /*sleep(1); // 100ms*/
-    printf("done");
-
-    // Print update to console
-    printf("\rFrame %d/100 - Progress: %d%%", i, i);
-  }
-
-  printf("\nImage generation complete! Final output saved to %s\n", ".");
-  return 0;
-}
+//int main() {
+//  // Create and initialize the framebuffer
+//  t_image_type image;
+//  memset(image, 0, sizeof(image)); // Start with a black image
+//
+//  printf("Starting image generation...\n");
+//
+//  char filename[50];
+//  // Demo: Draw a progress bar and some text that updates
+//  for (int i = 0; i <= 100; i++) {
+//    // Create a constant output filename
+//    sprintf(filename, "output_%03d.ppm", i);
+//    printf("Progress: %d%%\n", i);
+//    // Clear the image first (fill with black)
+//    fill_rect(image, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT, 0x0000);
+//
+//    // Set colors (RGB565 format)
+//    u16 bar_color = 0x07E0;    // Green
+//    u16 text_color = 0xFFFF;   // White
+//    u16 border_color = 0xF800; // Red
+//
+//    // Draw some demo elements
+//    draw_bar(image, 55, 205, IMAGE_WIDTH - 110, 40, i, bar_color);
+//
+//    // Create a status text
+//    char status[50];
+//    snprintf(status, sizeof(status), "Progress: %d%%", i);
+//    draw_string(image, status, 50, 180, text_color);
+//
+//    // Add timestamp
+//    time_t now = time(NULL);
+//    char time_str[50];
+//    strftime(time_str, sizeof(time_str), "Time: %H:%M:%S", localtime(&now));
+//    draw_string(image, time_str, 50, 160, text_color);
+//
+//    // Write the current state to a PPM file
+//    write_ppm(image, filename);
+//
+//    // Sleep briefly to allow external viewers to refresh
+//    printf("wait");
+//    /*sleep(1); // 100ms*/
+//    printf("done");
+//
+//    // Print update to console
+//    printf("\rFrame %d/100 - Progress: %d%%", i, i);
+//  }
+//
+//  printf("\nImage generation complete! Final output saved to %s\n", ".");
+//  return 0;
+//}
