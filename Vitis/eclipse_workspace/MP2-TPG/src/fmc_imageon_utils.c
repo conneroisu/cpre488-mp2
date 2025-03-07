@@ -16,6 +16,7 @@
  *****************************************************************************/
 
 #include "camera_app.h"
+#include "xil_types.h"
 #include "xil_cache.h"
 
 
@@ -193,15 +194,15 @@ int fmc_imageon_enable( camera_config_t *config )
    // Choose Video Source  ( 1. TPG or 2. onsemi VITA Camera)
 
    // 1. Uncomment for TPG
-   fmc_imageon_enable_tpg(config);
+   //fmc_imageon_enable_tpg(config);
 
    // 2. Uncomment for onsemi VITA Camera
-//   int vita_enabled_error = 0;
-//   int vita_enable_attempt=1;
-//   do {
-//	   xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
-//	   vita_enabled_error = fmc_imageon_enable_vita(config);
-//   } while(vita_enabled_error != 0);
+   int vita_enabled_error = 0;
+   int vita_enable_attempt=1;
+   do {
+	   xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
+	   vita_enabled_error = fmc_imageon_enable_vita(config);
+   } while(vita_enabled_error != 0);
 
 
      // Uncomment to enable HW Video processing pipeling (last part of lab)
@@ -230,17 +231,20 @@ int fmc_imageon_enable( camera_config_t *config )
 
 
 int fmc_imageon_enable_tpg( camera_config_t *config ) {
-   Xuint32 Reg32Value;
-   Xuint32 CurrentSpeed;
-
    // Define convenient volatile pointers for accessing TPG registers
-   volatile unsigned int *TPG_CR       = config->uBaseAddr_TPG_PatternGenerator + 0;    // TPG Control
-   volatile unsigned int *TPG_Act_H    = config->uBaseAddr_TPG_PatternGenerator + 0x10; // Active Height
-   volatile unsigned int *TPG_Act_W    = config->uBaseAddr_TPG_PatternGenerator + 0x18; // Active Width
-   volatile unsigned int *TPG_BGP      = config->uBaseAddr_TPG_PatternGenerator + 0x20; // Background Pattern
-   volatile unsigned int *TPG_FGP      = config->uBaseAddr_TPG_PatternGenerator + 0x28; // Foreground Pattern
-   volatile unsigned int *TPG_MS       = config->uBaseAddr_TPG_PatternGenerator + 0x38; // Motion Speed
-   volatile unsigned int *TPG_CF       = config->uBaseAddr_TPG_PatternGenerator + 0x40; // TPG Color Format
+   volatile uint32_t *TPG_CR       = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0);    // TPG Control
+   volatile uint32_t *TPG_Act_H    = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x10); // Active Height
+   volatile uint32_t *TPG_Act_W    = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x18); // Active Width
+   volatile uint32_t *TPG_BGP      = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x20); // Background Pattern
+   volatile uint32_t *TPG_FGP      = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x28); // Foreground Pattern
+   volatile uint32_t *TPG_MS       = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x38); // Motion Speed
+   volatile uint32_t *TPG_CF       = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x40); // TPG Color Format
+   volatile uint32_t *TPG_BOX_SIZE = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x78);
+   volatile uint32_t *TPG_BOX_COLOR_Y = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x80);
+   volatile uint32_t *TPG_BOX_COLOR_U = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x88);
+   volatile uint32_t *TPG_BOX_COLOR_V = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x90);
+
+
 
 
    xil_printf("Test Pattern Generator Initialization ...\n\r");
@@ -249,9 +253,13 @@ int fmc_imageon_enable_tpg( camera_config_t *config ) {
    // See TPG data sheet for configuring the TPG for other features
    TPG_Act_H[0]  = 0x438; // Active Height
    TPG_Act_W[0]  = 0x780; // Active Width
-   TPG_BGP[0]    = 0x0A;  // Background Pattern
-   TPG_FGP[0]    = 0x00;  // Foreground Pattern
+   TPG_BGP[0]    = 0x09;  // Background Pattern
+   TPG_FGP[0]    = 0x01;  // Foreground Pattern
    TPG_MS[0]     = 0x04;  // Motion Speed
+   TPG_BOX_SIZE[0] = 100;
+   TPG_BOX_COLOR_Y[0] = 167;
+   TPG_BOX_COLOR_U[0] = 120;
+   TPG_BOX_COLOR_V[0] = 8;
    TPG_CF[0]     = 0x02;  // TPG Color Format
    TPG_CR[0]     = 0x81;  // TPG Control
 
