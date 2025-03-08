@@ -44,9 +44,7 @@ The following is a list of the intended operations of the given start mp-2 desig
 
 ## changes mande to camera_app.c
 
-Describe in your writeup what changes you made, and
-save a copy of any files modified (presumably only camera_app.c and fmc_imageon_utils.c) during
-this process into a folder named part3
+Describe in your writeup what changes you made, and save a copy of any files modified (presumably only camera_app.c and fmc_imageon_utils.c) during this process into a folder named part3.
 
 ## why at this point, camera has no color
 
