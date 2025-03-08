@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1741361868">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1741461855">
   <File Type="BITSTR-BMM" Name="design_1_wrapper_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="design_1_wrapper_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="design_1_wrapper_timing_summary_init.rpt"/>
@@ -145,10 +145,18 @@
   <BlockFileSet Type="BlockSrcs" Name="design_1_clk_wiz_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_processing_system7_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_rst_ps7_0_100M_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="bd_d92b_csc_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_rst_clk_wiz_0_148M_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_v_tc_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_xbar_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_v_vid_in_axi4s_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_onsemi_vita_cam_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_onsemi_vita_spi_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_auto_cc_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_v_proc_ss_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="bd_19ea_hcr_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_v_demosaic_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_auto_cc_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_v_proc_ss_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_auto_cc_0"/>
 </GenRun>

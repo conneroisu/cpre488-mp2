@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Fri Mar  7 09:37:40 2025
---Host        : CO2041-08 running 64-bit major release  (build 9200)
+--Date        : Sat Mar  8 13:24:04 2025
+--Host        : CO2041-04 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
 --Purpose     : IP block netlist
@@ -86,15 +86,21 @@ architecture STRUCTURE of design_1_wrapper is
     IO_VITA_SPI_spi_ssel_n : out STD_LOGIC;
     IO_VITA_SPI_spi_mosi : out STD_LOGIC;
     IO_VITA_SPI_spi_miso : in STD_LOGIC;
+    IO_HDMIO_clk : out STD_LOGIC;
+    IO_HDMIO_data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IO_HDMIO_spdif : out STD_LOGIC;
+    fmc_imageon_iic_scl_i : in STD_LOGIC;
+    fmc_imageon_iic_scl_o : out STD_LOGIC;
+    fmc_imageon_iic_scl_t : out STD_LOGIC;
+    fmc_imageon_iic_sda_i : in STD_LOGIC;
+    fmc_imageon_iic_sda_o : out STD_LOGIC;
+    fmc_imageon_iic_sda_t : out STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_i : in STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_o : out STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_t : out STD_LOGIC;
     fmc_ipmi_id_eeprom_sda_i : in STD_LOGIC;
     fmc_ipmi_id_eeprom_sda_o : out STD_LOGIC;
     fmc_ipmi_id_eeprom_sda_t : out STD_LOGIC;
-    IO_HDMIO_clk : out STD_LOGIC;
-    IO_HDMIO_data : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    IO_HDMIO_spdif : out STD_LOGIC;
     IO_VITA_CAM_data_p : in STD_LOGIC_VECTOR ( 3 downto 0 );
     IO_VITA_CAM_sync_p : in STD_LOGIC;
     IO_VITA_CAM_sync_n : in STD_LOGIC;
@@ -110,13 +116,7 @@ architecture STRUCTURE of design_1_wrapper is
     FIXED_IO_ddr_vrp : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     FIXED_IO_ps_clk : inout STD_LOGIC;
-    FIXED_IO_ps_porb : inout STD_LOGIC;
-    fmc_imageon_iic_scl_i : in STD_LOGIC;
-    fmc_imageon_iic_scl_o : out STD_LOGIC;
-    fmc_imageon_iic_scl_t : out STD_LOGIC;
-    fmc_imageon_iic_sda_i : in STD_LOGIC;
-    fmc_imageon_iic_sda_o : out STD_LOGIC;
-    fmc_imageon_iic_sda_t : out STD_LOGIC
+    FIXED_IO_ps_porb : inout STD_LOGIC
   );
   end component design_1;
   component IOBUF is
