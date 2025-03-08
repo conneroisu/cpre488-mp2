@@ -16,6 +16,7 @@
  * 02/04/14 by JAZ::Design created.
  *****************************************************************************/
 
+#include <stdlib.h>
 #include "camera_app.h"
 #include "xil_types.h"
 #include "include/demosaicing.h"
@@ -61,16 +62,15 @@ void camera_loop(camera_config_t *config) {
 
 	Xuint32 parkptr;
 	Xuint32 vdma_S2MM_DMACR, vdma_MM2S_DMACR;
-	int i, j;
 
 
 	xil_printf("Entering main SW processing loop\r\n");
 
-	// Grab the DMA parkptr, and update it to ensure that when parked, the S2MM side is on frame 0, and the MM2S side on frame 1
+	// Grab the DMA parkptr, and update it to ensure that when parked, the S2MM side is on frame 1, and the MM2S side on frame 2
 	parkptr = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET);
 	parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
 	parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
-	parkptr |= 0x1;
+	parkptr |= 0x102;
 	XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET, parkptr);
 
 
@@ -83,32 +83,44 @@ void camera_loop(camera_config_t *config) {
 
 	// Pointers to the S2MM memory frame and M2SS memory frame
 	volatile Xuint16 *pS2MM_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET);
-	volatile Xuint16 *pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+4);
+	volatile Xuint16 *pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+8);
 
 
 	xil_printf("Start processing 1000 frames!\r\n");
 	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
 	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
 
-	// Define read macro
-	#define CAMERA_READ(offset) *((volatile uint32_t*) config->vdma_hdmi.BaseAddr + XAXIVDMA_RX_OFFSET + offset)
-
-	// Enable frame counter
-//	CAMERA_READ(0x0) &= ~0x1;
-//	CAMERA_READ(0x0) &= ~0xF000000;
-//	CAMERA_READ(0x0) |= 0x10;
-	//CAMERA_READ(0x0) |= 0x1;
-
 	// Run for 100 frames before going back to HW mode
-	for (j = 0; j < 1000; j++)
+	for (int j = 0; j < 1000; j++)
 	{
 		// Apply CFA
 		run_demosaicing((uint16_t*)pS2MM_Mem, (uint16_t*)pMM2S_Mem);
+
+		parkptr = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET);
+		parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
+		parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
+		parkptr |= 0x2;
+		XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET, parkptr);
+
+		// Wait until frame zero is being written to.
+		while((XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET) & XAXIVDMA_PARKPTR_WRTSTR_MASK))
+		{
+
+		}
+
+		parkptr = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET);
+		parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
+		parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
+		parkptr |= 0x102;
+		XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET, parkptr);
+
+		// Wait until frame one is being written to.
+		while(!(XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_PARKPTR_OFFSET) & XAXIVDMA_PARKPTR_WRTSTR_MASK))
+		{
+
+		}
+
 	}
-
-	// Disable frame counter
-	//CAMERA_READ(0x0) &= ~0x10;
-
 
 	// Grab the DMA Control Registers, and re-enable circular park mode.
 	vdma_MM2S_DMACR = XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET);
