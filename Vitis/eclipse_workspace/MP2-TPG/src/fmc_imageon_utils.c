@@ -333,10 +333,12 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
        XPAR_XVPROCSS_1_BASEADDR //
    );
    XVprocSs_SetSubsystemConfig(&proc_ss_444_to_422);
+   XVprocSs_Start(&proc_ss_444_to_422);
 
-   // void XVprocSs_SetPictureSaturation(XVprocSs *InstancePtr, s32 NewValue)
-   // TODO: USE THIS FUNCTION TO SET THE PICTURE SATURATION DYMANICALLY with USER INPUT
+   // TODO: USE THIS FUNCTION TO SET THE PICTURE SATURATION/BRIGHTNESS/CONTRAST DYMANICALLY with USER INPUT
    // XVprocSs_SetPictureSaturation(&proc_ss_444_to_422, 0x80); // Set Picture Saturation to 0x80
+   // XVprocSs_SetPictureBrightness(&proc_ss_444_to_422, 0x80); // Set Picture Brightness to 0x80
+   // XVprocSs_SetPictureContrast(&proc_ss_444_to_422, 0x80); // Set Picture Contrast to 0x80
 
    // Add assignments here
 
@@ -348,7 +350,7 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // Trace through these calls to see how much work they do.
    // This could have been set up with direct register writes, but there are about 20 registers that need to be set for this IP block
 
-   // Setup Color Space Conversion (CSC) IP core
+   // Color Space Conversion (CSC) IP core Setup (PG231)
    Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
    XVprocSs_CfgInitialize(
        &proc_ss_RGB_YCrCb_444,

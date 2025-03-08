@@ -60,7 +60,7 @@ digital camera settings. (2 bonus points each: up to 8pts)
 ![](HW-BD.png)
 
 
-4:4:4 to 4:2:2 Conversion Eq from Subsystem Documentation:
+4:4:4 to 4:2:2 Conversion Eq from Subsystem Documentation (PG231):
 ![](assets/444to422eq.png)
 
 This conversion is a horizontal 2:1 decimation operation, implemented using a low-pass FIR
