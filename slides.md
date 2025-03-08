@@ -26,4 +26,14 @@ UI
 
 ---
 
+Fixing Vivado Git 
+
+Export Project as tcl script.
+
+Upon clone of repo, cd to repo directory and execute generate tcl script.
+
+---
+
+Thank You
+
 

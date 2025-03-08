@@ -1,20 +1,3 @@
-/*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
- * camera_app.h - header file for the main camera application code.
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
- *****************************************************************************/
-
-
-
 #ifndef __CAMERA_APP_H__
 #define __CAMERA_APP_H__
 
@@ -28,8 +11,8 @@
 #include "fmc_ipmi.h"
 #include "fmc_imageon.h"
 #include "onsemi_vita_sw.h"
-//#include "xv_demosaic.h"   // Uncomment when using Demosaic IP core  
-//#include "xvprocss.h"      // Uncomment when using Video Processing Subsystem IP cores
+#include "xv_demosaic.h"   // Uncomment when using Demosaic IP core  
+#include "xvprocss.h"      // Uncomment when using Video Processing Subsystem IP cores
 #include "xvtc.h"
 #include "xaxivdma.h"
 #include "xtpg_app.h"

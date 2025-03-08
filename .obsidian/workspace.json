@@ -13,12 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "slides.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "slides"
+            }
+          }
+        ]
+      },
+      {
+        "id": "8e21102c533ea459",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e5bf4ae51855f7cb",
+            "type": "leaf",
+            "state": {
+              "type": "reveal-preview-view",
+              "state": {},
+              "icon": "slides",
+              "title": "Preview: slides.md"
             }
           }
         ]
@@ -168,11 +184,13 @@
       "command-palette:Open command palette": false,
       "obsidian-git:Open Git source control": false,
       "open-vscode:VSCode": false,
-      "vim-toggle:Toggle Vim Mode": false
+      "vim-toggle:Toggle Vim Mode": false,
+      "slides-extended:Show slide preview": false
     }
   },
-  "active": "14e9f4b65f63f903",
+  "active": "e5bf4ae51855f7cb",
   "lastOpenFiles": [
+    "README.md",
     "README.md~",
     "Pasted image 20250308090456.png",
     "Pasted image 20250308090340.png",
@@ -185,7 +203,6 @@
     "project_1/project_1.srcs/sources_1/imports/project_1/archive_project_summary.txt",
     "project_1/project_1.srcs/sources_1/imports/hdl/design_1_wrapper.vhd",
     "project_1/project_1.srcs/sources_1/imports/project_1",
-    "project_1/project_1.srcs/sources_1/imports/hdl",
-    "README.md"
+    "project_1/project_1.srcs/sources_1/imports/hdl"
   ]
 }

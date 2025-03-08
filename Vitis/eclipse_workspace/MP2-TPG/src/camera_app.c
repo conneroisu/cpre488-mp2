@@ -1,21 +1,3 @@
-/*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
- * camera_app.c - main camera application code. The camera configures the various
- * video in and video out peripherals, and (optionally) performs some
- * image processing on data coming in from the vdma.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
- *****************************************************************************/
-
 #include "camera_app.h"
 #include "xil_types.h"
 
@@ -45,7 +27,7 @@ void camera_config_init(camera_config_t *config) {
 
 
     // Uncomment when using the TPG for Video input
-    //config->uBaseAddr_TPG_PatternGenerator = XPAR_V_TPG_0_S_AXI_CTRL_BASEADDR; // TPG Device
+//    config->uBaseAddr_TPG_PatternGenerator = XPAR_V_TPG_0_S_AXI_CTRL_BASEADDR; // TPG Device
 
     config->uDeviceId_VTC_tpg   = XPAR_V_TC_0_DEVICE_ID;                        // Video Timer Controller (VTC) ID
     config->uDeviceId_VDMA_HdmiFrameBuffer = XPAR_AXI_VDMA_0_DEVICE_ID;         // VDMA ID
@@ -123,7 +105,7 @@ void camera_loop(camera_config_t *config) {
 
 	sleep(5);
 
-	//fmc_imageon_disable_tpg(config);
+	fmc_imageon_disable_tpg(config);
 
 	sleep(1);
 
