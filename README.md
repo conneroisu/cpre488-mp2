@@ -38,7 +38,6 @@ system, both at the IP core level (i.e. the components in our VIVADO design) as 
 level (i.e. the various chips that work together to connect the output video to the monitor).
 
 ![assets/diagram.png](assets/diagram.png)
-
 ## Starter Hardware Operation Intentions
 
 The following is a list of the intended operations of the given start mp-2 design hardware.
