@@ -133,7 +133,6 @@ void camera_loop(camera_config_t *config)
 
 	sleep(5);
 
-	fmc_imageon_disable_tpg(config);
 
 	sleep(1);
 

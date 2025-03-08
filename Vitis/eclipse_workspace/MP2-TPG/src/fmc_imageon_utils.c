@@ -209,52 +209,8 @@ int fmc_imageon_enable(camera_config_t *config)
    return 0;
 }
 
-int fmc_imageon_enable_tpg(camera_config_t *config)
-{
-   // Define convenient volatile pointers for accessing TPG registers
-   volatile uint32_t *TPG_CR = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0);       // TPG Control
-   volatile uint32_t *TPG_Act_H = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x10); // Active Height
-   volatile uint32_t *TPG_Act_W = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x18); // Active Width
-   volatile uint32_t *TPG_BGP = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x20);   // Background Pattern
-   volatile uint32_t *TPG_FGP = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x28);   // Foreground Pattern
-   volatile uint32_t *TPG_MS = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x38);    // Motion Speed
-   volatile uint32_t *TPG_CF = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x40);    // TPG Color Format
-   volatile uint32_t *TPG_BOX_SIZE = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x78);
-   volatile uint32_t *TPG_BOX_COLOR_Y = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x80);
-   volatile uint32_t *TPG_BOX_COLOR_U = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x88);
-   volatile uint32_t *TPG_BOX_COLOR_V = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x90);
 
-   // xil_printf("Test Pattern Generator Initialization ...\n\r");
 
-   // Direct Memory Mapped access of TPG configuration registers
-   // See TPG data sheet for configuring the TPG for other features
-   // TPG_Act_H[0] = 0x438; // Active Height
-   // TPG_Act_W[0] = 0x780; // Active Width
-   // TPG_BGP[0] = 0x09;    // Background Pattern
-   // TPG_FGP[0] = 0x01;    // Foreground Pattern
-   // TPG_MS[0] = 0x04;     // Motion Speed
-   // TPG_BOX_SIZE[0] = 100;
-   // TPG_BOX_COLOR_Y[0] = 167;
-   // TPG_BOX_COLOR_U[0] = 120;
-   // TPG_BOX_COLOR_V[0] = 8;
-   // TPG_CF[0] = 0x02; // TPG Color Format
-   // TPG_CR[0] = 0x81; // TPG Control
-
-   return 0;
-}
-
-// Disable Test Pattern Generator (TPG)
-int fmc_imageon_disable_tpg(camera_config_t *config)
-{
-
-   // Define convenient volatile pointers for accessing TPG registers
-   volatile unsigned int *TPG_CR = config->uBaseAddr_TPG_PatternGenerator + 0; // TPG Control
-
-   xil_printf("Test Pattern Generator Disable ...\n\r");
-   TPG_CR[0] = 0x00; // TPG Control Register (Disable TPG)
-
-   return 0;
-}
 
 int fmc_imageon_enable_vita(camera_config_t *config)
 {
