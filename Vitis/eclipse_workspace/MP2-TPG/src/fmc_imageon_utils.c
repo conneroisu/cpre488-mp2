@@ -363,44 +363,48 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
    XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr, XPAR_XVPROCSS_0_BASEADDR);
    XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
-   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444, XVIDC_BT_709, XVIDC_BT_709, XVIDC_CR_0_255);
+   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr,
+                       XVIDC_CSF_RGB,       //
+                       XVIDC_CSF_YCRCB_444, //
+                       XVIDC_BT_709,        //
+                       XVIDC_BT_709,        //
+                       XVIDC_CR_0_255       //
+   );
    XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
    xil_printf("RGB to 4:4:4 IP Configuration and Enable done\r\n");
 
    // Demosaic to convert sensor Bayer pattern into 24-bit RGB
-   // TODO Add additional register assignments here to fully configure this core.
 
-   // Hint 1: You will need to configure 3 addition registers (besides the given control register configuration),
+   // - [x] Hint 1: You will need to configure 3 addition registers (besides the given control register configuration),
 
    // Demosaic IP Setup (PG286)
 
    // Additional Register 1 (Demosaic)
    // Active Width Configuration (Number of Active Pixels per Scanline)
    Xil_Out32(
-         (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_WIDTH_DATA),
-         (u32)(8) // Number of Active Pixels per Scanline
+       (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_WIDTH_DATA),
+       (u32)(8) // Number of Active Pixels per Scanline
    );
 
    // Additional Register 2 (Demosaic)
    // Active Height Configuration (Number of Active Scanlines per Frame)
    Xil_Out32(
-         (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_HEIGHT_DATA),
-         (u32)(8) // Number of Active Lines per Frame
+       (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_HEIGHT_DATA),
+       (u32)(8) // Number of Active Lines per Frame
    );
 
    // Additional Register 3 (Demosaic)
    // Bayer Phase Configuration (Bayer Pattern)
    Xil_Out32(
-         (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_BAYER_PHASE_DATA),
-         (u32)(0) // Bayer sampling grid starting postition
+       (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_BAYER_PHASE_DATA),
+       (u32)(0) // Bayer sampling grid starting postition
    );
-   
+
    // 0b10000001 means start and freerun mode (page 16 in PG286)
    Xil_Out32(
        (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_AP_CTRL),
        (u32)(0x81) // start and freerun mode (page 16 in PG286)
    );
-
 
    xil_printf("Demosaic IP Configuring and Enable done\r\n"); // RGRG sensor pattern
 
