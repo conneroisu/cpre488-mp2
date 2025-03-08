@@ -19,7 +19,7 @@ cd %userprofile%
 
 Tasks:
 
-- [ ] [detailed system diagram](#detailed-system-diagram)
+- [x] [detailed system diagram](#detailed-system-diagram)
 - [ ] [starter hardware operation intentions](#starter-hardware-operation-intentions)
 - [ ] [changes mande to camera_app.c](#changes-mande-to-camera_app.c)
 - [ ] [why at this point, camera has no color](#why-at-this-point-camera-has-no-color)
@@ -36,6 +36,7 @@ Tasks:
 The following diagram illustrates the interconnection between the various modules in the
 system, both at the IP core level (i.e. the components in our VIVADO design) as well as the board
 level (i.e. the various chips that work together to connect the output video to the monitor).
+![[Pasted image 20250308085351.png]]
 
 ## Starter Hardware Operation Intentions
 

@@ -173,6 +173,7 @@
   },
   "active": "14e9f4b65f63f903",
   "lastOpenFiles": [
+    "Pasted image 20250308085351.png",
     "flake.nix~",
     "project_1/vivado.log",
     "project_1/vivado.jou",
@@ -183,7 +184,6 @@
     "project_1/project_1.srcs/sources_1/imports/hdl",
     "project_1/project_1.srcs/sources_1/imports",
     "project_1/project_1.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui",
-    "project_1/project_1.srcs/sources_1/bd/design_1/ui",
     "README.md"
   ]
 }
