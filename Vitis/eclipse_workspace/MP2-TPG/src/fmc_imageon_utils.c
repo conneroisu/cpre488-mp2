@@ -378,14 +378,14 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // Active Width Configuration (Number of Active Pixels per Scanline)
    Xil_Out32(
        (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_WIDTH_DATA),
-       (u32)(8) // Number of Active Pixels per Scanline
+       (u32)(3480) // Number of Active Pixels per Scanline
    );
 
    // Additional Register 2 (Demosaic)
    // Active Height Configuration (Number of Active Scanlines per Frame)
    Xil_Out32(
        (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_HEIGHT_DATA),
-       (u32)(8) // Number of Active Lines per Frame
+       (u32)(2160) // Number of Active Lines per Frame
    );
 
    // Additional Register 3 (Demosaic)
