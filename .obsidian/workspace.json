@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "slides.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "slides"
+              "title": "README"
             }
           }
         ]
@@ -188,22 +188,26 @@
       "slides-extended:Show slide preview": false
     }
   },
-  "active": "e5bf4ae51855f7cb",
+  "active": "14e9f4b65f63f903",
   "lastOpenFiles": [
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/README.txt",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/BOOT.BIN",
+    "assets/HW-BD.png",
+    "README.md",
+    "slides.md",
+    "Vivado/digital_camera/design_1.pdf",
+    "assets/444to422eq.png",
+    "docs/IP/LogiCORE IP Video Processing Subsystem Product Guide v2.0 (PG231).pdf",
+    "444to422eq.png",
+    "2025-03-08-15-18-40.png",
     "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/boot.bif",
     "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/BOOT.BIN",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/README.txt",
     "Vitis/eclipse_workspace/MP2-TPG/Debug/MP2-TPG.elf",
     "Vitis/eclipse_workspace/MP2-TPG/Debug/src/fmc_imageon_utils.o",
-    "README.md",
     "README.md~",
     "Pasted image 20250308090456.png",
     "Pasted image 20250308090340.png",
     "assets/diagram.mermaid~",
-    "Pasted image 20250308085351.png",
-    "flake.nix~",
-    "project_1/vivado.log",
-    "project_1/vivado.jou"
+    "Pasted image 20250308085351.png"
   ]
 }

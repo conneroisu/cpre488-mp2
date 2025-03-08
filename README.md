@@ -53,3 +53,21 @@ A digital zoom mode, which uses the up and down buttons to zoom in and out of th
 (10 bonus points).
 Various analog and digital adjustments for the gain, exposure, and other common user-configurable
 digital camera settings. (2 bonus points each: up to 8pts)
+
+
+## Hardware changes
+
+![](HW-BD.png)
+
+
+4:4:4 to 4:2:2 Conversion Eq from Subsystem Documentation:
+![](assets/444to422eq.png)
+
+This conversion is a horizontal 2:1 decimation operation, implemented using a low-pass FIR
+filter to suppress chroma aliasing. In order to evaluate output pixel ox,y, the FIR filter in the
+core convolves COEFk_HPHASE0, where k is the coefficient index, ix,y are pixels from the
+input image, and [ ]^M_m represents rounding with clipping at M, and clamping at m. DW is the
+Data Width or number of bits per video component. Ntaps is the number of filter taps.
+
+The predefined filter coefficients are [0.25 0.5 0.25]. 
+

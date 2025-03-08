@@ -321,6 +321,10 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // See Video Processing Subsystem IP documentation for register details.
    // - [ ] Hint 1: You will need to configure 4 additional registers. You will need to dig through some header files for some of the values.
 
+   
+
+   // Additional Register 1 (Re-sampling)
+
 
    // Add assignments here
 
