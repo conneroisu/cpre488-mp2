@@ -4,7 +4,6 @@
 #include "xil_cache.h"
 #include "xvprocss.h"
 
-// Main FMC-IMAGEON initialization function. Add your code here.
 int fmc_imageon_enable(camera_config_t *config)
 {
    int ret;
@@ -209,9 +208,6 @@ int fmc_imageon_enable(camera_config_t *config)
    return 0;
 }
 
-
-
-
 int fmc_imageon_enable_vita(camera_config_t *config)
 {
    int ret;
@@ -282,23 +278,38 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // See Video Processing Subsystem IP documentation for register details.
    // - [ ] Hint 1: You will need to configure 4 additional registers. You will need to dig through some header files for some of the values.
 
+   int result;
+
+   // Re-Sampling Subsystem IP Setup (PG231)
+   xil_printf("4:4:4 to 4:2:2 Re-sampling IP Initialization ...\n\r");
+
+   xil_printf("4:4:4 to 4:2:2 Lookup Configuration ...\n\r");
    Config_ptr_422 = XVprocSs_LookupConfig(XPAR_XVPROCSS_1_DEVICE_ID);
-   XVprocSs_CfgInitialize(
+   xil_printf("4:4:4 to 4:2:2 Configuration Initialization ...\n\r");
+   result = XVprocSs_CfgInitialize(
        &proc_ss_444_to_422,
        Config_ptr_422,
        XPAR_XVPROCSS_1_BASEADDR //
    );
-   XVprocSs_SetSubsystemConfig(&proc_ss_444_to_422);
+   if (result != XST_SUCCESS)
+   {
+      xil_printf("Error initializing 4:4:4 to 4:2:2 conversion\n\r");
+      return -1;
+   }
+
+   xil_printf("4:4:4 to 4:2:2 Starting ...\n\r");
    XVprocSs_Start(&proc_ss_444_to_422);
+   xil_printf("4:4:4 to 4:2:2 Started ...\n\r");
 
    // TODO: USE THIS FUNCTION TO SET THE PICTURE SATURATION/BRIGHTNESS/CONTRAST DYMANICALLY with USER INPUT
    // XVprocSs_SetPictureSaturation(&proc_ss_444_to_422, 0x80); // Set Picture Saturation to 0x80
    // XVprocSs_SetPictureBrightness(&proc_ss_444_to_422, 0x80); // Set Picture Brightness to 0x80
    // XVprocSs_SetPictureContrast(&proc_ss_444_to_422, 0x80); // Set Picture Contrast to 0x80
 
-   // Add assignments here
-
-   Xil_Out32((XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL), (u32)(0x81)); // Control
+   Xil_Out32(
+       (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL),
+       (u32)(0x81) // Control 0x10000001 means start and freerun mode (page 16 in PG231)
+   );
    xil_printf("4:4:4 to 4:2:2 Re-sampling IP Configuration and Enable done\r\n");
 
    // Video Processing Subsystem Hardware IP (configured for Only Color Conversion) from 24-bit RGB to YCrCb 4:4:4
@@ -306,21 +317,45 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // Trace through these calls to see how much work they do.
    // This could have been set up with direct register writes, but there are about 20 registers that need to be set for this IP block
 
-   // Color Space Conversion (CSC) IP core Setup (PG231)
+   // Color Space Conversion (CSC) IP Setup (PG231)
    Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
-   XVprocSs_CfgInitialize(
+
+   xil_printf("RGB to 4:4:4 Conversion IP Initialization ...\n\r");
+   result = XVprocSs_CfgInitialize(
        &proc_ss_RGB_YCrCb_444,
        Config_ptr,
        XPAR_XVPROCSS_0_BASEADDR //
    );
-   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
-   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr,
-                       XVIDC_CSF_RGB,       //
-                       XVIDC_CSF_YCRCB_444, //
-                       XVIDC_BT_709,        //
-                       XVIDC_BT_709,        //
-                       XVIDC_CR_0_255       //
+   if (result != XST_SUCCESS)
+   {
+      xil_printf("Error initializing RGB to 4:4:4 conversion\n\r");
+      return -1;
+   }
+
+   xil_printf("RGB to 4:4:4 Setting Subsystem Configuration ...\n\r");
+   result = XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
+   if (result != XST_SUCCESS)
+   {
+      xil_printf("Error setting subsystem configuration for RGB to 4:4:4 conversion\n\r");
+      return -1;
+   }
+
+   xil_printf("RGB to 4:4:4 Setting Color Space ...\n\r");
+   result = XV_CscSetColorspace(
+       proc_ss_RGB_YCrCb_444.CscPtr,
+       XVIDC_CSF_RGB,       //
+       XVIDC_CSF_YCRCB_444, //
+       XVIDC_BT_709,        //
+       XVIDC_BT_709,        //
+       XVIDC_CR_0_255       //
    );
+   if (result != XST_SUCCESS)
+   {
+      xil_printf("Error setting colorspace for RGB to YCrCb 4:4:4 conversion\n\r");
+      return -1;
+   }
+
+   xil_printf("RGB to 4:4:4 Start ...\n\r");
    XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
    xil_printf("RGB to 4:4:4 IP Configuration and Enable done\r\n");
 

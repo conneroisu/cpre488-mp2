@@ -9,7 +9,12 @@ int main()
 
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);
-	camera_loop(&camera_config);
+	// camera_loop(&camera_config);
+	while (1)
+	{
+		// camera_loop(&camera_config);
+		// xil_printf("Running on HW\n\r");
+	}
 
 	return 0;
 }
@@ -32,109 +37,110 @@ void camera_config_init(camera_config_t *config)
 }
 
 // Main (SW) processing loop. Recommended to have an explicit exit condition
-void camera_loop(camera_config_t *config)
-{
-	Xuint32 parkptr;
-	Xuint32 vdma_S2MM_DMACR, vdma_MM2S_DMACR;
-	int i, j;
+// void camera_loop(camera_config_t *config)
+// {
+// 	Xuint32 parkptr;
+// 	Xuint32 vdma_S2MM_DMACR, vdma_MM2S_DMACR;
+// 	int i, j;
 
-	xil_printf("Entering main SW processing loop\r\n");
+// 	xil_printf("Entering main SW processing loop\r\n");
 
-	// Grab the DMA parkptr, and update it to ensure that when parked, the S2MM side is on frame 0, and the MM2S side on frame 1
-	parkptr = XAxiVdma_ReadReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_PARKPTR_OFFSET // Park Pointer Register
-	);
-	parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
-	parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
-	parkptr |= 0x1;
-	XAxiVdma_WriteReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_PARKPTR_OFFSET,
-		parkptr // Park the S2MM channel on frame 0, and the MM2S channel on frame 1
-	);
+// 	// Grab the DMA parkptr, and update it to ensure that when parked, the S2MM side is on frame 0, and the MM2S side on frame 1
+// 	parkptr = XAxiVdma_ReadReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_PARKPTR_OFFSET // Park Pointer Register
+// 	);
+// 	parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
+// 	parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
+// 	parkptr |= 0x1;
+// 	XAxiVdma_WriteReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_PARKPTR_OFFSET,
+// 		parkptr // Park the S2MM channel on frame 0, and the MM2S channel on frame 1
+// 	);
 
-	// Grab the DMA Control Registers, and clear circular park mode.
-	vdma_MM2S_DMACR = XAxiVdma_ReadReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET //
-	);
-	XAxiVdma_WriteReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET,
-		vdma_MM2S_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK //
-	);
-	vdma_S2MM_DMACR = XAxiVdma_ReadReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET //
-	);
-	XAxiVdma_WriteReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET,
-		vdma_S2MM_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK //
-	);
+// 	// Grab the DMA Control Registers, and clear circular park mode.
+// 	vdma_MM2S_DMACR = XAxiVdma_ReadReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET //
+// 	);
+// 	XAxiVdma_WriteReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET,
+// 		vdma_MM2S_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK //
+// 	);
+// 	vdma_S2MM_DMACR = XAxiVdma_ReadReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET //
+// 	);
+// 	XAxiVdma_WriteReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET,
+// 		vdma_S2MM_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK //
+// 	);
 
-	// Pointers to the S2MM memory frame and M2SS memory frame
-	volatile Xuint16 *pS2MM_Mem = (Xuint16 *)XAxiVdma_ReadReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_S2MM_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET //
-	);
-	volatile Xuint16 *pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET + 4 //
-	);
+// 	// Pointers to the S2MM memory frame and M2SS memory frame
+// 	volatile Xuint16 *pS2MM_Mem = (Xuint16 *)XAxiVdma_ReadReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_S2MM_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET //
+// 	);
+// 	volatile Xuint16 *pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET + 4 //
+// 	);
 
-	xil_printf("Start processing 1000 frames!\r\n");
-	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
-	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
+// 	xil_printf("Start processing 1000 frames!\r\n");
+// 	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
+// 	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
 
-	// Run for 1000 frames before going back to HW mode
-	for (j = 0; j < 1000; j++)
-	{
-		for (i = 0; i < 1920 * 1080; i += 2)
-		{
-			uint8_t u, v = 0;
-			uint16_t y = 0;
+// 	// Run for 1000 frames before going back to HW mode
+// 	for (j = 0; j < 1000; j++)
+// 	{
+// 		for (i = 0; i < 1920 * 1080; i += 2)
+// 		{
+// 			uint8_t u, v = 0;
+// 			uint16_t y = 0;
 
-			u = (pS2MM_Mem[i] & 0xFF00) >> 8;
-			v = (pS2MM_Mem[i + 1] & 0xFF00) >> 8;
-			y = (pS2MM_Mem[i] & 0xFF) | ((pS2MM_Mem[i + 1] & 0xFF) << 8);
+// 			u = (pS2MM_Mem[i] & 0xFF00) >> 8;
+// 			v = (pS2MM_Mem[i + 1] & 0xFF00) >> 8;
+// 			y = (pS2MM_Mem[i] & 0xFF) | ((pS2MM_Mem[i + 1] & 0xFF) << 8);
 
-			// Half luminance
-			y /= 2;
+// 			// Half luminance
+// 			y /= 2;
 
-			// Set from YUV values.
-			pMM2S_Mem[i] = (u << 8) | (y & 0xFF);
-			pMM2S_Mem[i + 1] = (v << 8) | ((y & 0xFF00) >> 8);
-		}
-	}
+// 			// Set from YUV values.
+// 			pMM2S_Mem[i] = (u << 8) | (y & 0xFF);
+// 			pMM2S_Mem[i + 1] = (v << 8) | ((y & 0xFF00) >> 8);
+// 		}
+// 	}
 
-	// Grab the DMA Control Registers, and re-enable circular park mode.
-	vdma_MM2S_DMACR = XAxiVdma_ReadReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET //
-	);
-	XAxiVdma_WriteReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET,
-		vdma_MM2S_DMACR | XAXIVDMA_CR_TAIL_EN_MASK //
-	);
-	vdma_S2MM_DMACR = XAxiVdma_ReadReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET //
-	);
-	XAxiVdma_WriteReg(
-		config->vdma_hdmi.BaseAddr,
-		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET,
-		vdma_S2MM_DMACR | XAXIVDMA_CR_TAIL_EN_MASK //
-	);
+// 	// Grab the DMA Control Registers, and re-enable circular park mode.
+// 	vdma_MM2S_DMACR = XAxiVdma_ReadReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET //
+// 	);
+// 	XAxiVdma_WriteReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET,
+// 		vdma_MM2S_DMACR | XAXIVDMA_CR_TAIL_EN_MASK //
+// 	);
+// 	vdma_S2MM_DMACR = XAxiVdma_ReadReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET //
+// 	);
+// 	XAxiVdma_WriteReg(
+// 		config->vdma_hdmi.BaseAddr,
+// 		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET,
+// 		vdma_S2MM_DMACR | XAXIVDMA_CR_TAIL_EN_MASK //
+// 	);
 
-	xil_printf("Main SW processing loop complete!\r\n");
+// 	xil_printf("Main SW processing loop complete!\r\n");
 
-	sleep(5);
+// 	sleep(5);
 
 
-	sleep(1);
+// 	sleep(1);
 
-	return;
-}
+// goto start;
+// 	return;
+// }
