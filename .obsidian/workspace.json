@@ -190,6 +190,8 @@
   },
   "active": "e5bf4ae51855f7cb",
   "lastOpenFiles": [
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/README.txt",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/BOOT.BIN",
     "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/boot.bif",
     "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp",
     "Vitis/eclipse_workspace/MP2-TPG/Debug/MP2-TPG.elf",
@@ -202,8 +204,6 @@
     "Pasted image 20250308085351.png",
     "flake.nix~",
     "project_1/vivado.log",
-    "project_1/vivado.jou",
-    "project_1/project_1.xpr",
-    "project_1/project_1.srcs/sources_1/imports/project_1/archive_project_summary.txt"
+    "project_1/vivado.jou"
   ]
 }

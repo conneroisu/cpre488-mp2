@@ -175,15 +175,15 @@ int fmc_imageon_enable(camera_config_t *config)
    // Choose Video Source  ( 1. TPG or 2. onsemi VITA Camera)
 
    // 1. Uncomment for TPG
-   fmc_imageon_enable_tpg(config);
+   // fmc_imageon_enable_tpg(config);
 
    // 2. Uncomment for onsemi VITA Camera
-   // int vita_enabled_error = 0;
-   // int vita_enable_attempt=1;
-   // do {
-   //    xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
-   //    vita_enabled_error = fmc_imageon_enable_vita(config);
-   // } while(vita_enabled_error != 0);
+   int vita_enabled_error = 0;
+   int vita_enable_attempt=1;
+   do {
+      xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
+      vita_enabled_error = fmc_imageon_enable_vita(config);
+   } while(vita_enabled_error != 0);
 
    // Uncomment to enable HW Video processing pipeling (last part of lab)
    // You need to complete implmentation of this function before enabling
@@ -237,32 +237,6 @@ int fmc_imageon_enable_tpg(camera_config_t *config)
    TPG_BOX_COLOR_V[0] = 8;
    TPG_CF[0] = 0x02; // TPG Color Format
    TPG_CR[0] = 0x81; // TPG Control
-
-   // (UNDER CONSTRUCTION: DO NOT USE!!) Useful portable wrapper functions for accessing TPG configuration registers
-   /*
-   // See TPG data sheet for configuring the TPG for other features
-
-   xTPG_config(config->hdmio_width, config->hdmio_height, config->uBaseAddr_TPG_PatternGenerator, 1);
-
-   // Default to Zone Plate
-   Reg32Value = XTPG_mReadSlaveReg0(config->uBaseAddr_TPG_PatternGenerator, 0);
-   XTPG_mWriteSlaveReg0(config->uBaseAddr_TPG_PatternGenerator, 0, (Reg32Value & 0xFFFFFFF0) | 10);
-   ZPlate_config(config->hdmio_width, config->hdmio_height, config->uBaseAddr_TPG_PatternGenerator);
-
-   // Enable motion
-   Reg32Value = XTPG_mReadSlaveReg1(config->uBaseAddr_TPG_PatternGenerator, 0);
-   if ((Reg32Value & 0x00000001)==0)
-      XTPG_mWriteSlaveReg1(config->uBaseAddr_TPG_PatternGenerator, 0, (Reg32Value | 0x00000001));
-   else
-      XTPG_mWriteSlaveReg1(config->uBaseAddr_TPG_PatternGenerator, 0, (Reg32Value & 0xFFFFFFFE));
-
-   // Speed = 4
-   Reg32Value = XTPG_mReadSlaveReg1(config->uBaseAddr_TPG_PatternGenerator, 0);
-   CurrentSpeed = (Reg32Value&0x000001fe)>>1;
-   CurrentSpeed = 4;
-   XTPG_mWriteSlaveReg1(config->uBaseAddr_TPG_PatternGenerator, 0, (CurrentSpeed<<1)|(Reg32Value & 0x00000001));
-
-   */
 
    return 0;
 }
@@ -345,13 +319,12 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // Video Processing Subsystem (Only re-sampling) 4:4:4 to 4:2:2  (See IP documentation for register details)
    // TODO Add additional register assignments here to fully configure this core.
    // See Video Processing Subsystem IP documentation for register details.
-   // Hint 1: You will need to configure 4 additional registers,
-   // Hint 2: You will need to dig through some header files for some of the values,
+   // - [ ] Hint 1: You will need to configure 4 additional registers. You will need to dig through some header files for some of the values.
+
 
    // Add assignments here
 
-   // Uncomment as part of Re-sampler IP setup
-   // Xil_Out32((XPAR_V_PROC_SS_2_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL), (u32)(0x81)); // Control
+   Xil_Out32((XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL), (u32)(0x81)); // Control
    xil_printf("4:4:4 to 4:2:2 Re-sampling IP Configuration and Enable done\r\n");
 
    // Video Processing Subsystem Hardware IP (configured for Only Color Conversion) from 24-bit RGB to YCrCb 4:4:4

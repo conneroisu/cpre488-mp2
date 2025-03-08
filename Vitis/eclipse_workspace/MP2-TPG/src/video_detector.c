@@ -1,36 +1,23 @@
 /*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
  * video_detector.c - configuration functions for the VTC video timing
  * controller. Note that the "video detection" functions do both detection
  * and generation.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
  *****************************************************************************/
 
 #include "camera_app.h"
 
-/*****************************************************************************/
 /**
-*
-* This function sets up the Video Timing Controller Signal configuration.
-*
-* @param	None.
-*
-* @return	None.
-*
-* @note		None.
-*
-****************************************************************************/
-static void SignalSetup( XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCfgPtr )
+ *
+ * This function sets up the Video Timing Controller Signal configuration.
+ *
+ * @param	None.
+ *
+ * @return	None.
+ *
+ * @note		None.
+ *
+ **/
+static void SignalSetup(XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCfgPtr)
 {
 	vres_timing_t VideoTiming;
 
@@ -46,12 +33,12 @@ static void SignalSetup( XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCf
 	vres_get_timing(ResolutionId, &VideoTiming);
 
 	HFrontPorch = VideoTiming.HFrontPorch;
-	HSyncWidth  = VideoTiming.HSyncWidth;
-	HBackPorch  = VideoTiming.HBackPorch;
+	HSyncWidth = VideoTiming.HSyncWidth;
+	HBackPorch = VideoTiming.HBackPorch;
 	VFrontPorch = VideoTiming.VFrontPorch;
-	VSyncWidth  = VideoTiming.VSyncWidth;
-	VBackPorch  = VideoTiming.VBackPorch;
-	LineWidth   = VideoTiming.HActiveVideo;
+	VSyncWidth = VideoTiming.VSyncWidth;
+	VBackPorch = VideoTiming.VBackPorch;
+	LineWidth = VideoTiming.HActiveVideo;
 	FrameHeight = VideoTiming.VActiveVideo;
 
 	/* Clear the VTC Signal config structure */
@@ -60,53 +47,51 @@ static void SignalSetup( XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCf
 
 	/* Populate the VTC Signal config structure. Ignore the Field 1 */
 
-//	SignalCfgPtr->HFrontPorchStart = 0;
-//	SignalCfgPtr->HTotal = HFrontPorch + HSyncWidth + HBackPorch
-//				+ LineWidth - 1;
-//	SignalCfgPtr->HBackPorchStart = HFrontPorch + HSyncWidth;
-//	SignalCfgPtr->HSyncStart = HFrontPorch;
-//	SignalCfgPtr->HActiveStart = HFrontPorch + HSyncWidth + HBackPorch;
-//
-//	SignalCfgPtr->V0FrontPorchStart = 0;
-//	SignalCfgPtr->V0Total = VFrontPorch + VSyncWidth + VBackPorch
-//				+ FrameHeight - 1;
-//	SignalCfgPtr->V0BackPorchStart = VFrontPorch + VSyncWidth;
-//	SignalCfgPtr->V0SyncStart = VFrontPorch;
-//	SignalCfgPtr->V0ChromaStart = VFrontPorch + VSyncWidth + VBackPorch;
-//	SignalCfgPtr->V0ActiveStart = VFrontPorch + VSyncWidth + VBackPorch;
+	//	SignalCfgPtr->HFrontPorchStart = 0;
+	//	SignalCfgPtr->HTotal = HFrontPorch + HSyncWidth + HBackPorch
+	//				+ LineWidth - 1;
+	//	SignalCfgPtr->HBackPorchStart = HFrontPorch + HSyncWidth;
+	//	SignalCfgPtr->HSyncStart = HFrontPorch;
+	//	SignalCfgPtr->HActiveStart = HFrontPorch + HSyncWidth + HBackPorch;
+	//
+	//	SignalCfgPtr->V0FrontPorchStart = 0;
+	//	SignalCfgPtr->V0Total = VFrontPorch + VSyncWidth + VBackPorch
+	//				+ FrameHeight - 1;
+	//	SignalCfgPtr->V0BackPorchStart = VFrontPorch + VSyncWidth;
+	//	SignalCfgPtr->V0SyncStart = VFrontPorch;
+	//	SignalCfgPtr->V0ChromaStart = VFrontPorch + VSyncWidth + VBackPorch;
+	//	SignalCfgPtr->V0ActiveStart = VFrontPorch + VSyncWidth + VBackPorch;
 
 	SignalCfgPtr->HFrontPorchStart = LineWidth;
-	SignalCfgPtr->HTotal = HFrontPorch + HSyncWidth + HBackPorch
-				+ LineWidth;
+	SignalCfgPtr->HTotal = HFrontPorch + HSyncWidth + HBackPorch + LineWidth;
 	SignalCfgPtr->HBackPorchStart = LineWidth + HFrontPorch + HSyncWidth;
 	SignalCfgPtr->HSyncStart = LineWidth + HFrontPorch;
 	SignalCfgPtr->HActiveStart = 0;
 
 	SignalCfgPtr->V0FrontPorchStart = FrameHeight;
-	SignalCfgPtr->V0Total = VFrontPorch + VSyncWidth + VBackPorch
-				+ FrameHeight;
+	SignalCfgPtr->V0Total = VFrontPorch + VSyncWidth + VBackPorch + FrameHeight;
 	SignalCfgPtr->V0BackPorchStart = FrameHeight + VFrontPorch + VSyncWidth;
 	SignalCfgPtr->V0SyncStart = FrameHeight + VFrontPorch;
 	SignalCfgPtr->V0ChromaStart = 0;
 	SignalCfgPtr->V0ActiveStart = 0;
 
-	 return;
+	return;
 }
 
 /*****************************************************************************/
 /**
-*
-* vdet_init
-* - initializes the VTC detector
-*
-* @param	VtcDeviceID is the device ID of the Video Timing Controller core.
-*           pVtc is a pointer to a VTC instance
-*
-* @return	0 if all tests pass, 1 otherwise.
-*
-* @note		None.
-*
-******************************************************************************/
+ *
+ * vdet_init
+ * - initializes the VTC detector
+ *
+ * @param	VtcDeviceID is the device ID of the Video Timing Controller core.
+ *           pVtc is a pointer to a VTC instance
+ *
+ * @return	0 if all tests pass, 1 otherwise.
+ *
+ * @note		None.
+ *
+ ******************************************************************************/
 int vdet_init(XVtc *pVtc, u16 VtcDeviceID)
 {
 	int Status;
@@ -119,26 +104,26 @@ int vdet_init(XVtc *pVtc, u16 VtcDeviceID)
 	/* Look for the device configuration info for the Video Timing
 	 * Controller.
 	 */
-	VtcCfgPtr = XVtc_LookupConfig( VtcDeviceID );
-	if (VtcCfgPtr == NULL) {
+	VtcCfgPtr = XVtc_LookupConfig(VtcDeviceID);
+	if (VtcCfgPtr == NULL)
+	{
 		return 1;
 	}
 
 	/* Initialize the Video Timing Controller instance */
 
 	Status = XVtc_CfgInitialize(pVtc, VtcCfgPtr,
-		VtcCfgPtr->BaseAddress);
-	if (Status != XST_SUCCESS) {
+								VtcCfgPtr->BaseAddress);
+	if (Status != XST_SUCCESS)
+	{
 		return 1;
 	}
 
 	// Enable Synchronization of Generator with Detector
-//	XVtc_EnableSync(pVtc);
+	//	XVtc_EnableSync(pVtc);
 	XVtc_DisableSync(pVtc);
 
 	/* Enable both generator and detector modules */
-
-	// phjones update to pass just 1 arg.  XVtc_Enable(pVtc, XVTC_EN_GENERATOR | XVTC_EN_DETECTOR);
 	XVtc_Enable(pVtc);
 
 	return 0;
@@ -146,27 +131,27 @@ int vdet_init(XVtc *pVtc, u16 VtcDeviceID)
 
 /*****************************************************************************/
 /**
-*
-* vdet_detect
-* - enables the detector and detects the timing of incoming video
-*
-* @param	pVtc is a pointer to an initialized VTC instance
-*           vVerbose = 0 no verbose, 1 minimal verbose, 2 most verbose
-*
-* @return	ResolutionId (defined in video_resolution.h).
-*
-* @note		None.
-*
-******************************************************************************/
+ *
+ * vdet_detect
+ * - enables the detector and detects the timing of incoming video
+ *
+ * @param	pVtc is a pointer to an initialized VTC instance
+ *           vVerbose = 0 no verbose, 1 minimal verbose, 2 most verbose
+ *
+ * @return	ResolutionId (defined in video_resolution.h).
+ *
+ * @note		None.
+ *
+ ******************************************************************************/
 int vdet_detect(XVtc *pVtc, int bVerbose)
 {
 	Xuint32 Width;
 	Xuint32 Height;
 	int ResolutionId;
 
-	XVtc_Signal Signal;		/* VTC Signal configuration */
-	XVtc_Polarity Polarity;		/* Polarity configuration */
-	XVtc_SourceSelect SourceSelect;	/* Source Selection configuration */
+	XVtc_Signal Signal;				/* VTC Signal configuration */
+	XVtc_Polarity Polarity;			/* Polarity configuration */
+	XVtc_SourceSelect SourceSelect; /* Source Selection configuration */
 
 	// Wait 100 msec ...
 	usleep(100000);
@@ -174,16 +159,16 @@ int vdet_detect(XVtc *pVtc, int bVerbose)
 	// Get Detector
 	XVtc_GetDetector(pVtc, &Signal);
 
-	if ( bVerbose == 2 )
+	if (bVerbose == 2)
 	{
-		xil_printf("\tVTC Detector Configuration\n\r" );
-		xil_printf("\t\tHorizontal Timing:\n\r" );
+		xil_printf("\tVTC Detector Configuration\n\r");
+		xil_printf("\t\tHorizontal Timing:\n\r");
 		xil_printf("\t\t\tHFrontPorchStart %d\r\n", Signal.HFrontPorchStart);
 		xil_printf("\t\t\tHSyncStart %d\r\n", Signal.HSyncStart);
 		xil_printf("\t\t\tHBackPorchStart %d\r\n", Signal.HBackPorchStart);
 		xil_printf("\t\t\tHActiveStart = %d\r\n", Signal.HActiveStart);
 		xil_printf("\t\t\tHTotal = %d\r\n", Signal.HTotal);
-		xil_printf("\t\tVertical Timing:\n\r" );
+		xil_printf("\t\tVertical Timing:\n\r");
 		xil_printf("\t\t\tV0FrontPorchStart %d\r\n", Signal.V0FrontPorchStart);
 		xil_printf("\t\t\tV0SyncStart %d\r\n", Signal.V0SyncStart);
 		xil_printf("\t\t\tV0BackPorchStart %d\r\n", Signal.V0BackPorchStart);
@@ -191,49 +176,48 @@ int vdet_detect(XVtc *pVtc, int bVerbose)
 		xil_printf("\t\t\tV0Total %d\r\n", Signal.V0Total);
 	}
 
-	Width = (Signal.HTotal  + 1) - Signal.HActiveStart;
+	Width = (Signal.HTotal + 1) - Signal.HActiveStart;
 	Height = (Signal.V0Total + 1) - Signal.V0ActiveStart;
-	if ( bVerbose )
+	if (bVerbose)
 	{
-		xil_printf( "\tVideo Dimensions = %d x %d\n\r", Width, Height );
+		xil_printf("\tVideo Dimensions = %d x %d\n\r", Width, Height);
 	}
 
-    ResolutionId = vres_detect( Width, Height );
-    if ( bVerbose )
-    {
-		xil_printf( "\tVideo Resolution = %s\n\r", vres_get_name(ResolutionId) );
+	ResolutionId = vres_detect(Width, Height);
+	if (bVerbose)
+	{
+		xil_printf("\tVideo Resolution = %s\n\r", vres_get_name(ResolutionId));
 	}
 
 	return ResolutionId;
 }
 
-/*****************************************************************************/
 /**
-*
-* vdet_config
-* - configures the generator to generate missing syncs
-*
-* @param	pVtc is a pointer to an initialized VTC instance
-*           ResolutionId identified a video resolution
-*           vVerbose = 0 no verbose, 1 minimal verbose, 2 most verbose
-*
-* @return	0 if all tests pass, 1 otherwise.
-*
-* @note		None.
-*
-******************************************************************************/
+ *
+ * vdet_config
+ * - configures the generator to generate missing syncs
+ *
+ * @param	pVtc is a pointer to an initialized VTC instance
+ *           ResolutionId identified a video resolution
+ *           vVerbose = 0 no verbose, 1 minimal verbose, 2 most verbose
+ *
+ * @return	0 if all tests pass, 1 otherwise.
+ *
+ * @note		None.
+ *
+ **/
 int vdet_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 {
 	int Status;
 
-	XVtc_Signal Signal;		/* VTC Signal configuration */
-	XVtc_Polarity Polarity;		/* Polarity configuration */
-	XVtc_HoriOffsets HoriOffsets;  /* Horizontal offsets configuration */
-    XVtc_SourceSelect SourceSelect;	/* Source Selection configuration */
+	XVtc_Signal Signal;				/* VTC Signal configuration */
+	XVtc_Polarity Polarity;			/* Polarity configuration */
+	XVtc_HoriOffsets HoriOffsets;	/* Horizontal offsets configuration */
+	XVtc_SourceSelect SourceSelect; /* Source Selection configuration */
 
-    if ( bVerbose )
-    {
-		xil_printf( "\tVideo Resolution = %s\n\r", vres_get_name(ResolutionId) );
+	if (bVerbose)
+	{
+		xil_printf("\tVideo Resolution = %s\n\r", vres_get_name(ResolutionId));
 	}
 
 	/* Set up Polarity of all outputs */
@@ -259,18 +243,18 @@ int vdet_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 
 	XVtc_SetGeneratorHoriOffset(pVtc, &HoriOffsets);
 
-	SignalSetup(pVtc,ResolutionId, &Signal);
+	SignalSetup(pVtc, ResolutionId, &Signal);
 
-	if ( bVerbose == 2 )
+	if (bVerbose == 2)
 	{
-		xil_printf("\tVTC Generator Configuration\n\r" );
-		xil_printf("\t\tHorizontal Timing:\n\r" );
+		xil_printf("\tVTC Generator Configuration\n\r");
+		xil_printf("\t\tHorizontal Timing:\n\r");
 		xil_printf("\t\t\tHFrontPorchStart %d\r\n", Signal.HFrontPorchStart);
 		xil_printf("\t\t\tHSyncStart %d\r\n", Signal.HSyncStart);
 		xil_printf("\t\t\tHBackPorchStart %d\r\n", Signal.HBackPorchStart);
 		xil_printf("\t\t\tHActiveStart = %d\r\n", Signal.HActiveStart);
 		xil_printf("\t\t\tHTotal = %d\r\n", Signal.HTotal);
-		xil_printf("\t\tVertical Timing:\n\r" );
+		xil_printf("\t\tVertical Timing:\n\r");
 		xil_printf("\t\t\tV0FrontPorchStart %d\r\n", Signal.V0FrontPorchStart);
 		xil_printf("\t\t\tV0SyncStart %d\r\n", Signal.V0SyncStart);
 		xil_printf("\t\t\tV0BackPorchStart %d\r\n", Signal.V0BackPorchStart);
@@ -298,7 +282,7 @@ int vdet_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 	XVtc_SetSource(pVtc, &SourceSelect);
 
 	// Enable Synchronization of Generator with Detector
-//	XVtc_EnableSync(pVtc);
+	//	XVtc_EnableSync(pVtc);
 	XVtc_DisableSync(pVtc);
 
 	/* Return success */
