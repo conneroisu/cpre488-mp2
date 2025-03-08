@@ -15,8 +15,9 @@ clc;
 % T = zeros(M,N,3);
 % figure,imshow(uint8(J));
 
+
 %% For Bayer Filtered images
-Ja = imread('mandi.tif');
+Ja = imread('bayer_image.tif');
 [M,N,~] = size(Ja);
 T = zeros(M,N,3, "uint8");
 J = padarray(double(Ja), [2, 2], 'replicate', 'both');
@@ -28,9 +29,9 @@ for i = 1:M
 
         ip = i + 2;
         jp = j + 2;
-  
+
         % Red Pixels - odd, odd
-        if mod(i,2) == 0 && mod(j,2) == 0
+        if mod(i,2) == 1 && mod(j,2) == 1
             % Red remains the same
             T(i,j,1) = J(ip,jp);
             % Average green neighbors (cardinal)
@@ -40,21 +41,21 @@ for i = 1:M
 
 
         % Blue Pixels - even, even
-        elseif mod(i,2) == 1 && mod(j,2) == 1
+        elseif mod(i,2) == 0 && mod(j,2) == 0
             % Average red neighbors (diagonal)
             T(i,j,1) = uint8(round((J(ip-1, jp-1) + J(ip-1, jp+1) + J(ip+1, jp-1) + J(ip+1, jp+1)) / 4));
             % Average green neighbors (cardinal)
             T(i,j,2) = uint8(round((J(ip-1, jp) + J(ip+1, jp) + J(ip, jp-1) + J(ip, jp+1)) / 4));
             % Blue remains the same
             T(i,j,3) = J(ip,jp);
-        
+
         % Green Pixels
         else 
             % Green remains the same
             T(i,j,2) = J(ip,jp);
 
             % Blue col: odd, even
-            if (mod(i,2) == 0 && mod(j,2) == 1) 
+            if (mod(i,2) == 1 && mod(j,2) == 0) 
                 % Average red neighbors (left and right)
                 T(i,j,1) = uint8(round((J(ip, jp+1) + J(ip, jp-1)) / 2));
                 % Average blue neighbors (up and down)
@@ -78,9 +79,9 @@ R = T(:,:,1);
 G = T(:,:,2);
 B = T(:,:,3);
 
-Y = ((0.183 * R) + (0.614 * G) + (0.062 * B)) + 16;
-U = ((-0.101 * R) + (-0.338 * G) + (0.439 * B)) + 128;
-V = ((0.439 * R) + (-0.399 * G) + (-0.040 * B)) + 128; 
+Y = ((0.183 * double(R)) + (0.614 * double(G)) + (0.062 * double(B))) + 16;
+U = ((-0.101 * double(R)) + (-0.338 * double(G)) + (0.439 * double(B))) + 128;
+V = ((0.439 * double(R)) + (-0.399 * double(G)) + (-0.040 * double(B))) + 128; 
 
 YCbCr_img = cat(3, uint8(Y),uint8(U),uint8(V));
 
@@ -93,7 +94,7 @@ figure,imshow(YCbCr_img), title("Reconstructed Bayer - YCbCr");
 RGB_reconstruct = ycbcr2rgb(YCbCr_img);
 figure,imshow(RGB_reconstruct), title("Reconstructed RGB from YUV");
 %% Use given functions
-given = demosaic(uint8(Ja), 'rggb');
+given = demosaic(uint8(Ja), 'bggr');
 figure,imshow(given), title("Reconstructed Bayer with built-in function - uint8");
 YCbCr_given = rgb2ycbcr(given);
 figure,imshow(YCbCr_given), title("Reconstructed Bayer - YCbCr given");
@@ -110,24 +111,24 @@ figure,imshow(RGB_recon_given), title("Reconstructed RGB from YUV given");
 
 
 %% RGB iamge into Beyer-encoded image
-% % RGB = imread('q.jpg'); % Load your color image
-% % RGB = im2double(RGB); % Convert to double precision for better accuracy
-% % 
-% % % Ensure the image has an even number of rows and columns
-% % RGB = RGB(1:floor(end/2)*2, 1:floor(end/2)*2, :);
-% % 
-% % % Create a Bayer-patterned image (RGGB example)
-% % Bayer = zeros(size(RGB, 1), size(RGB, 2));
-% % 
-% % % Assign only one color component per pixel location
-% % Bayer(1:2:end, 1:2:end) = RGB(1:2:end, 1:2:end, 1); % Red channel (R)
-% % Bayer(1:2:end, 2:2:end) = RGB(1:2:end, 2:2:end, 2); % Green channel (G1)
-% % Bayer(2:2:end, 1:2:end) = RGB(2:2:end, 1:2:end, 2); % Green channel (G2)
-% % Bayer(2:2:end, 2:2:end) = RGB(2:2:end, 2:2:end, 3); % Blue channel (B)
-% % 
-% % % Save the Bayer image
-% % imwrite(Bayer, 'bayer_image.tif');
-% % 
-% % BayerImg = imread('bayer_image.tif'); % Read the simulated raw Bayer image
-% % RGB_reconstructed = demosaic(BayerImg, 'rggb'); % Use the correct Bayer pattern
-% % imshow(RGB_reconstructed);
+% RGB = imread('q.jpg'); % Load your color image
+% RGB = im2double(RGB); % Convert to double precision for better accuracy
+% 
+% % Ensure the image has an even number of rows and columns
+% RGB = RGB(1:floor(end/2)*2, 1:floor(end/2)*2, :);
+% 
+% % Create a Bayer-patterned image (RGGB example)
+% Bayer = zeros(size(RGB, 1), size(RGB, 2));
+% 
+% % Assign only one color component per pixel location
+% Bayer(1:2:end, 1:2:end) = RGB(1:2:end, 1:2:end, 3); % Red channel (R)
+% Bayer(1:2:end, 2:2:end) = RGB(1:2:end, 2:2:end, 2); % Green channel (G1)
+% Bayer(2:2:end, 1:2:end) = RGB(2:2:end, 1:2:end, 2); % Green channel (G2)
+% Bayer(2:2:end, 2:2:end) = RGB(2:2:end, 2:2:end, 1); % Blue channel (B)
+% 
+% % Save the Bayer image
+% imwrite(Bayer, 'bayer_image.tif');
+% 
+% BayerImg = imread('bayer_image.tif'); % Read the simulated raw Bayer image
+% RGB_reconstructed = demosaic(BayerImg, 'bggr'); % Use the correct Bayer pattern
+% imshow(RGB_reconstructed);
