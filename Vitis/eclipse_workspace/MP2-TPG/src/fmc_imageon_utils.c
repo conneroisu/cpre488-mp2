@@ -2,6 +2,7 @@
 #include "camera_app.h"
 #include "xil_types.h"
 #include "xil_cache.h"
+#include "xvprocss.h"
 
 // Main FMC-IMAGEON initialization function. Add your code here.
 int fmc_imageon_enable(camera_config_t *config)
@@ -179,11 +180,12 @@ int fmc_imageon_enable(camera_config_t *config)
 
    // 2. Uncomment for onsemi VITA Camera
    int vita_enabled_error = 0;
-   int vita_enable_attempt=1;
-   do {
+   int vita_enable_attempt = 1;
+   do
+   {
       xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
       vita_enabled_error = fmc_imageon_enable_vita(config);
-   } while(vita_enabled_error != 0);
+   } while (vita_enabled_error != 0);
 
    // Uncomment to enable HW Video processing pipeling (last part of lab)
    // You need to complete implmentation of this function before enabling
@@ -311,6 +313,9 @@ int fmc_imageon_enable_vita(camera_config_t *config)
 XVprocSs proc_ss_RGB_YCrCb_444; // To hold info for the Video Processing Subsystem: Color Conversion Only IP core: See xv_procss.h, and xv_csc_l2.h
 XVprocSs_Config *Config_ptr;
 
+XVprocSs proc_ss_444_to_422; // To hold info for the Video Processing Subsystem: Re-sampling Only IP core: See xv_procss.h, and xv_hcresampler_l2.h
+XVprocSs_Config *Config_ptr_422;
+
 int fmc_imageon_enable_ipipe(camera_config_t *config)
 {
 
@@ -321,10 +326,17 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // See Video Processing Subsystem IP documentation for register details.
    // - [ ] Hint 1: You will need to configure 4 additional registers. You will need to dig through some header files for some of the values.
 
-   
+   Config_ptr_422 = XVprocSs_LookupConfig(XPAR_XVPROCSS_1_DEVICE_ID);
+   XVprocSs_CfgInitialize(
+       &proc_ss_444_to_422,
+       Config_ptr_422,
+       XPAR_XVPROCSS_1_BASEADDR //
+   );
+   XVprocSs_SetSubsystemConfig(&proc_ss_444_to_422);
 
-   // Additional Register 1 (Re-sampling)
-
+   // void XVprocSs_SetPictureSaturation(XVprocSs *InstancePtr, s32 NewValue)
+   // TODO: USE THIS FUNCTION TO SET THE PICTURE SATURATION DYMANICALLY with USER INPUT
+   // XVprocSs_SetPictureSaturation(&proc_ss_444_to_422, 0x80); // Set Picture Saturation to 0x80
 
    // Add assignments here
 
@@ -338,7 +350,11 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
 
    // Setup Color Space Conversion (CSC) IP core
    Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
-   XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr, XPAR_XVPROCSS_0_BASEADDR);
+   XVprocSs_CfgInitialize(
+       &proc_ss_RGB_YCrCb_444,
+       Config_ptr,
+       XPAR_XVPROCSS_0_BASEADDR //
+   );
    XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
    XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr,
                        XVIDC_CSF_RGB,       //
