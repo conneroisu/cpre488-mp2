@@ -224,21 +224,21 @@ int fmc_imageon_enable_tpg(camera_config_t *config)
    volatile uint32_t *TPG_BOX_COLOR_U = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x88);
    volatile uint32_t *TPG_BOX_COLOR_V = (volatile uint32_t *)(config->uBaseAddr_TPG_PatternGenerator + 0x90);
 
-   xil_printf("Test Pattern Generator Initialization ...\n\r");
+   // xil_printf("Test Pattern Generator Initialization ...\n\r");
 
    // Direct Memory Mapped access of TPG configuration registers
    // See TPG data sheet for configuring the TPG for other features
-   TPG_Act_H[0] = 0x438; // Active Height
-   TPG_Act_W[0] = 0x780; // Active Width
-   TPG_BGP[0] = 0x09;    // Background Pattern
-   TPG_FGP[0] = 0x01;    // Foreground Pattern
-   TPG_MS[0] = 0x04;     // Motion Speed
-   TPG_BOX_SIZE[0] = 100;
-   TPG_BOX_COLOR_Y[0] = 167;
-   TPG_BOX_COLOR_U[0] = 120;
-   TPG_BOX_COLOR_V[0] = 8;
-   TPG_CF[0] = 0x02; // TPG Color Format
-   TPG_CR[0] = 0x81; // TPG Control
+   // TPG_Act_H[0] = 0x438; // Active Height
+   // TPG_Act_W[0] = 0x780; // Active Width
+   // TPG_BGP[0] = 0x09;    // Background Pattern
+   // TPG_FGP[0] = 0x01;    // Foreground Pattern
+   // TPG_MS[0] = 0x04;     // Motion Speed
+   // TPG_BOX_SIZE[0] = 100;
+   // TPG_BOX_COLOR_Y[0] = 167;
+   // TPG_BOX_COLOR_U[0] = 120;
+   // TPG_BOX_COLOR_V[0] = 8;
+   // TPG_CF[0] = 0x02; // TPG Color Format
+   // TPG_CR[0] = 0x81; // TPG Control
 
    return 0;
 }
