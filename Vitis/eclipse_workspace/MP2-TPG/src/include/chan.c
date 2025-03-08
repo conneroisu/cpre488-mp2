@@ -619,8 +619,3 @@ int chan_recv_buf(chan_t* chan, void* data, size_t size)
 
     return success;
 }
-[Vivado_Tcl 4-391] The following IPs are missing output products for Synthesis target. These output products could be required for synthesis, please generate the output products using the generate_target or synth_ip command before running synth_design.
-synth_ip c:/Users/connero/Downloads/cpre488-mp2/Vivado/digital_camera/digital_camera/digital_camera.srcs/sources_1/bd/design_1/ip/design_1_v_demosaic_0_0/design_1_v_demosaic_0_0.xci
-
-synth_ip c:/Users/connero/Downloads/cpre488-mp2/Vivado/digital_camera/digital_camera/digital_camera.srcs/sources_1/bd/design_1/ip/design_1_v_demosaic_0_0/design_1_v_demosaic_0_0.xci
-create_ip_run [get_ips design_1_v_demosaic_0_0] 
