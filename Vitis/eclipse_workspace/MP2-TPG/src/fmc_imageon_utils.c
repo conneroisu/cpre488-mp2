@@ -309,12 +309,12 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // Set HW REG Input Video Format for SS1
    Xil_Out8(
        (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_HWREG_INPUT_VIDEO_FORMAT_DATA),
-       (u8)(0x02) // 0x02 means 4:4:4 (page 16 in PG231)
+       (u8)(0x01)
    );
    // Set HW REG Output Video Format for SS1
    Xil_Out8(
        (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_HWREG_OUTPUT_VIDEO_FORMAT_DATA),
-       (u8)(0x01) // 0x01 means 4:2:2 (page 16 in PG231)
+       (u8)(0x02) 
    );
    // Set Mode for SS1
    Xil_Out32(
@@ -401,21 +401,21 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // Active Width Configuration (Number of Active Pixels per Scanline)
    Xil_Out32(
        (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_WIDTH_DATA),
-       (u32)(3480) // Number of Active Pixels per Scanline
+       (u32)(1920) // Number of Active Pixels per Scanline
    );
 
    // Additional Register 2 (Demosaic)
    // Active Height Configuration (Number of Active Scanlines per Frame)
    Xil_Out32(
        (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_HEIGHT_DATA),
-       (u32)(2160) // Number of Active Lines per Frame
+       (u32)(1080) // Number of Active Lines per Frame
    );
 
    // Additional Register 3 (Demosaic)
    // Bayer Phase Configuration (Bayer Pattern)
    Xil_Out32(
        (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_BAYER_PHASE_DATA),
-       (u32)(1) // Bayer sampling grid starting postition
+       (u32)(0) // Bayer sampling grid starting postition
    );
 
    // 0b10000001 means start and freerun mode (page 16 in PG286)
