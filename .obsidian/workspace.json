@@ -22,22 +22,6 @@
             }
           }
         ]
-      },
-      {
-        "id": "8e21102c533ea459",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "e5bf4ae51855f7cb",
-            "type": "leaf",
-            "state": {
-              "type": "reveal-preview-view",
-              "state": {},
-              "icon": "slides",
-              "title": "Preview: slides.md"
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -190,25 +174,28 @@
   },
   "active": "dbb72a7c94dcb3f7",
   "lastOpenFiles": [
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/BOOT.BIN",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/boot.bif",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/system.bif",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/README.txt",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card/README.txt",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card/BOOT.BIN",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/writebif.log",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/MP2-TPG_system_Debug.build.ui.log",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/makefile",
+    "Vivado/digital_camera/digital_camera/digital_camera.runs/synth_1/bd_197a_hcr_0/prj/impl/ip/misc/logo.png",
+    "Vivado/digital_camera/digital_camera/digital_camera.runs/synth_1/bd_197a_hcr_0/prj/impl/misc/logo.png",
+    "Vivado/digital_camera/digital_camera/digital_camera.runs/synth_1/bd_d92b_csc_0/prj/impl/ip/misc/logo.png",
+    "Vivado/digital_camera/digital_camera/digital_camera.runs/synth_1/bd_d92b_csc_0/prj/impl/misc/logo.png",
     "README.md",
     "slides.md",
     "assets/diagram.png",
     "assets/444to422eq.png",
-    "Vivado/digital_camera/design_1_wrapper.xsa",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/BOOT.BIN",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/boot.bif",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/README.txt",
-    "Vitis/eclipse_workspace/MP2-TPG/Debug/MP2-TPG.elf",
     "assets/HW-BD.png",
-    "Vivado/digital_camera/design_1.pdf",
-    "docs/IP/LogiCORE IP Video Processing Subsystem Product Guide v2.0 (PG231).pdf",
     "444to422eq.png",
     "2025-03-08-15-18-40.png",
-    "Vitis/eclipse_workspace/MP2-TPG/Debug/src/fmc_imageon_utils.o",
-    "README.md~",
-    "Pasted image 20250308090456.png",
-    "Pasted image 20250308090340.png",
-    "Pasted image 20250308085351.png"
+    "Pasted image 20250308090456.png"
   ]
 }

@@ -1,5 +1,6 @@
 #include "camera_app.h"
 #include "xil_types.h"
+#include "xvprocss.h"
 
 camera_config_t camera_config;
 
@@ -7,13 +8,21 @@ camera_config_t camera_config;
 int main()
 {
 
+	XVprocSs *proc_ss_RGB_YCrCb_444;
+	XVprocSs *proc_ss_444_to_422;
+
 	camera_config_init(&camera_config);
-	fmc_imageon_enable(&camera_config);
+	fmc_imageon_enable(&camera_config, proc_ss_444_to_422, proc_ss_RGB_YCrCb_444);
 	// camera_loop(&camera_config);
 	while (1)
 	{
-		// camera_loop(&camera_config);
-		// xil_printf("HW");
+		// TODO: Add switch from software to hardware mode!
+		for (int i = 0; i < 100; i++)
+		{
+			xil_printf("Setting brightness to %d\n", i);
+			XVprocSs_SetPictureBrightness(proc_ss_RGB_YCrCb_444, (s32)i);
+			sleep(1);
+		}
 	}
 
 	return 0;
@@ -137,7 +146,6 @@ void camera_config_init(camera_config_t *config)
 // 	xil_printf("Main SW processing loop complete!\r\n");
 
 // 	sleep(5);
-
 
 // 	sleep(1);
 

@@ -1,7 +1,6 @@
 #ifndef __CAMERA_APP_H__
 #define __CAMERA_APP_H__
 
-
 #include <xparameters.h>
 #include <xbasic_types.h>
 #include <stdlib.h>
@@ -11,21 +10,20 @@
 #include "fmc_ipmi.h"
 #include "fmc_imageon.h"
 #include "onsemi_vita_sw.h"
-#include "xv_demosaic.h"   // Uncomment when using Demosaic IP core  
-#include "xvprocss.h"      // Uncomment when using Video Processing Subsystem IP cores
+#include "xv_demosaic.h" // Uncomment when using Demosaic IP core
+#include "xvprocss.h"	 // Uncomment when using Video Processing Subsystem IP cores
 #include "xvtc.h"
 #include "xaxivdma.h"
 #include "xtpg_app.h"
 
-
 // Constants for library code
 #define ZED_FMC_IMAGEON_GETTING_STARTED_HW
-#define ADV7511_ADDR   0x72
-
+#define ADV7511_ADDR 0x72
 
 // This structure contains the configuration context for the
 // camera peripherals
-struct struct_camera_config_t {
+struct struct_camera_config_t
+{
 
 	// IP base addresses
 	Xuint32 uBaseAddr_MUX_VideoSource;
@@ -54,7 +52,6 @@ struct struct_camera_config_t {
 	XAxiVdma_DmaSetup vdmacfg_hdmi_read;
 	XAxiVdma_DmaSetup vdmacfg_hdmi_write;
 
-
 	fmc_iic_t fmc_ipmi_iic;
 	fmc_iic_t fmc_imageon_iic;
 	fmc_imageon_t fmc_imageon;
@@ -78,21 +75,22 @@ struct struct_camera_config_t {
 	Xuint32 hdmio_height;
 	Xuint32 hdmio_resolution;
 	fmc_imageon_video_timing_t hdmio_timing;
-}; typedef struct struct_camera_config_t camera_config_t;
-
+};
+typedef struct struct_camera_config_t camera_config_t;
 
 // Video resolution macros and structure
-#define VIDEO_RESOLUTION_VGA       0
-#define VIDEO_RESOLUTION_NTSC      1
-#define VIDEO_RESOLUTION_SVGA      2
-#define VIDEO_RESOLUTION_XGA       3
-#define VIDEO_RESOLUTION_720P      4
-#define VIDEO_RESOLUTION_SXGA      5
-#define VIDEO_RESOLUTION_1080P     6
-#define VIDEO_RESOLUTION_UXGA      7
-#define NUM_VIDEO_RESOLUTIONS      8
+#define VIDEO_RESOLUTION_VGA 0
+#define VIDEO_RESOLUTION_NTSC 1
+#define VIDEO_RESOLUTION_SVGA 2
+#define VIDEO_RESOLUTION_XGA 3
+#define VIDEO_RESOLUTION_720P 4
+#define VIDEO_RESOLUTION_SXGA 5
+#define VIDEO_RESOLUTION_1080P 6
+#define VIDEO_RESOLUTION_UXGA 7
+#define NUM_VIDEO_RESOLUTIONS 8
 
-struct struct_vres_timing_t {
+struct struct_vres_timing_t
+{
 	char *pName;
 	Xuint32 VActiveVideo;
 	Xuint32 VFrontPorch;
@@ -104,26 +102,24 @@ struct struct_vres_timing_t {
 	Xuint32 HSyncWidth;
 	Xuint32 HBackPorch;
 	Xuint32 HSyncPolarity;
-}; typedef struct struct_vres_timing_t vres_timing_t;
-
+};
+typedef struct struct_vres_timing_t vres_timing_t;
 
 // Function prototypes (camera_app.c)
 void camera_config_init(camera_config_t *config);
 void camera_loop(camera_config_t *config);
 
 // Function prototypes (fmc_imageon_utils.c)
-int fmc_imageon_enable(camera_config_t *config);
+int fmc_imageon_enable(camera_config_t *config, XVprocSs proc_ss_444_to_422, XVprocSs proc_ss_RGB_YCrCb_444);
 int fmc_imageon_enable_tpg(camera_config_t *config);
 int fmc_imageon_disable_tpg(camera_config_t *config);
 int fmc_imageon_enable_vita(camera_config_t *config);
-int fmc_imageon_enable_ipipe(camera_config_t *config);
+int fmc_imageon_enable_ipipe(camera_config_t *config, XVprocSs proc_ss_444_to_422, XVprocSs proc_ss_RGB_YCrCb_444);
 void reset_dcms(camera_config_t *config);
 void enable_ssc(camera_config_t *config);
 
-
-
 // Function prototypes (video_resolution.c)
-char * vres_get_name(Xuint32 resolutionId);
+char *vres_get_name(Xuint32 resolutionId);
 Xuint32 vres_get_width(Xuint32 resolutionId);
 Xuint32 vres_get_height(Xuint32 resolutionId);
 Xuint32 vres_get_timing(Xuint32 resolutionId, vres_timing_t *pTiming);
@@ -139,18 +135,16 @@ int vdet_detect(XVtc *pVtc, int bVerbose);
 int vdet_config(XVtc *pVtc, int ResolutionId, int bVerbose);
 
 // Function prototypes (video_frame_buffer.c)
-int vfb_common_init( u16 uDeviceId, XAxiVdma * InstancePtr );
-int vfb_rx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg, Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames );
-int vfb_rx_setup( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg, Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames );
-int vfb_rx_start( XAxiVdma *pAxiVdma );
-int vfb_rx_stop ( XAxiVdma *pAxiVdma );
-int vfb_tx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg , Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames );
-int vfb_tx_setup( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg , Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames );
-int vfb_tx_start( XAxiVdma *pAxiVdma );
-int vfb_tx_stop ( XAxiVdma *pAxiVdma );
-int vfb_dump_registers( XAxiVdma *pAxiVdma);
-int vfb_check_errors( XAxiVdma *pAxiVdma, u8 bClearErrors );
-
-
+int vfb_common_init(u16 uDeviceId, XAxiVdma *InstancePtr);
+int vfb_rx_init(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg, Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames);
+int vfb_rx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg, Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames);
+int vfb_rx_start(XAxiVdma *pAxiVdma);
+int vfb_rx_stop(XAxiVdma *pAxiVdma);
+int vfb_tx_init(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames);
+int vfb_tx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames);
+int vfb_tx_start(XAxiVdma *pAxiVdma);
+int vfb_tx_stop(XAxiVdma *pAxiVdma);
+int vfb_dump_registers(XAxiVdma *pAxiVdma);
+int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors);
 
 #endif // __CAMERA_APP_H__

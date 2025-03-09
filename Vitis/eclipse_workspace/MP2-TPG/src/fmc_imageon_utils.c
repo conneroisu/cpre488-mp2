@@ -4,7 +4,11 @@
 #include "xil_cache.h"
 #include "xvprocss.h"
 
-int fmc_imageon_enable(camera_config_t *config)
+int fmc_imageon_enable(
+    camera_config_t *config,
+    XVprocSs *proc_ss_444_to_422,
+    XVprocSs *proc_ss_RGB_YCrCb_444 //
+)
 {
    int ret;
 
@@ -109,10 +113,18 @@ int fmc_imageon_enable(camera_config_t *config)
 
    // FMC-IMAGEON VITA Camera Receiver Initialization
    xil_printf("FMC-IMAGEON VITA Camera Initialization ...\n\r");
-   onsemi_vita_init(&(config->onsemi_vita), "VITA-2000", config->uBaseAddr_VITA_SPI, config->uBaseAddr_VITA_CAM);
+   onsemi_vita_init(
+       &(config->onsemi_vita),
+       "VITA-2000",
+       config->uBaseAddr_VITA_SPI,
+       config->uBaseAddr_VITA_CAM // Base Address of VITA CAM
+   );
    config->onsemi_vita.uManualTap = 25;
    // Assuming a 75 MHz AXI-Lite SPI bus
-   onsemi_vita_spi_config(&(config->onsemi_vita), (75000000 / 10000000)); // AXI-Lite SPI Speed (HZ) / 10,000,000 Hz
+   onsemi_vita_spi_config(
+       &(config->onsemi_vita),
+       (75000000 / 10000000) // AXI-Lite SPI Speed (HZ) / 10,000,000 Hz
+   );
 
    // Enable spread-spectrum clocking (SSC)
    enable_ssc(config);
@@ -188,11 +200,11 @@ int fmc_imageon_enable(camera_config_t *config)
 
    // Uncomment to enable HW Video processing pipeling (last part of lab)
    // You need to complete implmentation of this function before enabling
-   fmc_imageon_enable_ipipe(config);
+   fmc_imageon_enable_ipipe(config, proc_ss_444_to_422, proc_ss_RGB_YCrCb_444);
 
    // Output Video input source in Hardware mode for 10 seconds
-   xil_printf("Output Video input source in Hardware mode for 10 seconds\n\r");
-   sleep(10);
+   xil_printf("Output Video input source in Hardware mode for 1 seconds\n\r");
+   sleep(1);
 
    // Status of AXI VDMA
    vfb_dump_registers(&(config->vdma_hdmi));
@@ -261,14 +273,14 @@ int fmc_imageon_enable_vita(camera_config_t *config)
    return 0;
 }
 
-// Uncomment for Hardware Image color Pipeline
-XVprocSs proc_ss_RGB_YCrCb_444; // To hold info for the Video Processing Subsystem: Color Conversion Only IP core: See xv_procss.h, and xv_csc_l2.h
 XVprocSs_Config *Config_ptr;
-
-XVprocSs proc_ss_444_to_422; // To hold info for the Video Processing Subsystem: Re-sampling Only IP core: See xv_procss.h, and xv_hcresampler_l2.h
 XVprocSs_Config *Config_ptr_422;
 
-int fmc_imageon_enable_ipipe(camera_config_t *config)
+int fmc_imageon_enable_ipipe(
+    camera_config_t *config,
+    XVprocSs *proc_ss_444_to_422,
+    XVprocSs *proc_ss_RGB_YCrCb_444 //
+)
 {
 
    xil_printf("Hardware Image Processing Pipeline (iPIPE) Initialization ...\n\r");
@@ -286,7 +298,7 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    Config_ptr_422 = XVprocSs_LookupConfig(XPAR_XVPROCSS_1_DEVICE_ID);
 
    result = XVprocSs_CfgInitialize(
-       &proc_ss_444_to_422,
+       proc_ss_444_to_422,
        Config_ptr_422,
        XPAR_XVPROCSS_1_BASEADDR //
    );
@@ -309,13 +321,11 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // Set HW REG Input Video Format for SS1
    Xil_Out8(
        (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_HWREG_INPUT_VIDEO_FORMAT_DATA),
-       (u8)(0x01)
-   );
+       (u8)(0x01));
    // Set HW REG Output Video Format for SS1
    Xil_Out8(
        (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_HWREG_OUTPUT_VIDEO_FORMAT_DATA),
-       (u8)(0x02) 
-   );
+       (u8)(0x02));
    // Set Mode for SS1
    Xil_Out32(
        (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL),
@@ -331,19 +341,14 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // XVprocSs_SetPictureBrightness(&proc_ss_444_to_422, 0x80); // Set Picture Brightness to 0x80
    // XVprocSs_SetPictureContrast(&proc_ss_444_to_422, 0x80); // Set Picture Contrast to 0x80
 
-   // Video Processing Subsystem Hardware IP (configured for Only Color Conversion) from 24-bit RGB to YCrCb 4:4:4
-   // For this IP core there was a High level API for setting it up.
-   // Trace through these calls to see how much work they do.
-   // This could have been set up with direct register writes, but there are about 20 registers that need to be set for this IP block
-
-   // # Color Space Conversion (CSC) IP Setup (PG231)
+   // # Color Space Conversion (CSC) Subsystem IP Setup (PG231)
    // RGB => YCrCb 444
 
    Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
 
    xil_printf("RGB to 4:4:4 Conversion IP Initialization ...\n\r");
    result = XVprocSs_CfgInitialize(
-       &proc_ss_RGB_YCrCb_444,
+       proc_ss_RGB_YCrCb_444,
        Config_ptr,
        XPAR_XVPROCSS_0_BASEADDR //
    );
@@ -354,7 +359,7 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    }
 
    result = XV_CscSetColorspace(
-       proc_ss_RGB_YCrCb_444.CscPtr,
+       (*proc_ss_RGB_YCrCb_444).CscPtr,
        XVIDC_CSF_RGB,       //
        XVIDC_CSF_YCRCB_444, //
        XVIDC_BT_709,        //
@@ -386,16 +391,9 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
       xil_printf("Error setting colorspace for RGB to YCrCb 4:4:4 conversion\n\r");
       return -1;
    }
-
-   xil_printf("RGB to 4:4:4 Start ...\n\r");
    XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
-   xil_printf("RGB to 4:4:4 IP Configuration and Enable done\r\n");
 
-   // Demosaic to convert sensor Bayer pattern into 24-bit RGB
-
-   // - [x] Hint 1: You will need to configure 3 addition registers (besides the given control register configuration),
-
-   // Demosaic IP Setup (PG286)
+   // # Demosaic Bayer Pattern to 24b RGB IP Setup (PG286)
 
    // Additional Register 1 (Demosaic)
    // Active Width Configuration (Number of Active Pixels per Scanline)
@@ -447,8 +445,12 @@ void enable_ssc(camera_config_t *config)
 
    for (i = 0; i < 3; i++)
    {
-      config->fmc_imageon.pIIC->fpIicWrite(config->fmc_imageon.pIIC, FMC_IMAGEON_VID_CLK_ADDR,
-                                           (0x80 | iic_cdce913_ssc_on[i][0]), &(iic_cdce913_ssc_on[i][1]), 1);
+      config->fmc_imageon.pIIC->fpIicWrite(
+          config->fmc_imageon.pIIC,
+          FMC_IMAGEON_VID_CLK_ADDR,
+          (0x80 | iic_cdce913_ssc_on[i][0]),
+          &(iic_cdce913_ssc_on[i][1]), 1 //
+      );
    }
 
    return;

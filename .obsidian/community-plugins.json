@@ -5,5 +5,7 @@
   "open-vscode",
   "vim-toggle",
   "obsidian-vimrc-support",
-  "slides-extended"
+  "slides-extended",
+  "execute-code",
+  "scroll-with-jk"
 ]
