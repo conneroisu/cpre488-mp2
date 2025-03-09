@@ -346,6 +346,12 @@
       }
     },
     "interface_nets": {
+      "intf_net_bdry_in_s_axi_ctrl": {
+        "interface_ports": [
+          "s_axi_ctrl",
+          "csc/s_axi_CTRL"
+        ]
+      },
       "intf_net_csc_m_axis_video": {
         "interface_ports": [
           "m_axis",
@@ -356,12 +362,6 @@
         "interface_ports": [
           "s_axis",
           "csc/s_axis_video"
-        ]
-      },
-      "intf_net_bdry_in_s_axi_ctrl": {
-        "interface_ports": [
-          "s_axi_ctrl",
-          "csc/s_axi_CTRL"
         ]
       }
     },

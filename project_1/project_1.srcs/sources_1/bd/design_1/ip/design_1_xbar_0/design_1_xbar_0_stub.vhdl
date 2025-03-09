@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Sat Mar  8 13:24:53 2025
--- Host        : CO2041-04 running 64-bit major release  (build 9200)
+-- Date        : Sun Mar  9 00:14:21 2025
+-- Host        : DESKTOP-V4CC4PR running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_xbar_0/design_1_xbar_0_stub.vhdl
+--               z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_xbar_0/design_1_xbar_0_stub.vhdl
 -- Design      : design_1_xbar_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1
@@ -35,25 +35,25 @@ entity design_1_xbar_0 is
     s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_rready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    m_axi_awaddr : out STD_LOGIC_VECTOR ( 287 downto 0 );
-    m_axi_awprot : out STD_LOGIC_VECTOR ( 26 downto 0 );
-    m_axi_awvalid : out STD_LOGIC_VECTOR ( 8 downto 0 );
-    m_axi_awready : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    m_axi_wdata : out STD_LOGIC_VECTOR ( 287 downto 0 );
-    m_axi_wstrb : out STD_LOGIC_VECTOR ( 35 downto 0 );
-    m_axi_wvalid : out STD_LOGIC_VECTOR ( 8 downto 0 );
-    m_axi_wready : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    m_axi_bresp : in STD_LOGIC_VECTOR ( 17 downto 0 );
-    m_axi_bvalid : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    m_axi_bready : out STD_LOGIC_VECTOR ( 8 downto 0 );
-    m_axi_araddr : out STD_LOGIC_VECTOR ( 287 downto 0 );
-    m_axi_arprot : out STD_LOGIC_VECTOR ( 26 downto 0 );
-    m_axi_arvalid : out STD_LOGIC_VECTOR ( 8 downto 0 );
-    m_axi_arready : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    m_axi_rdata : in STD_LOGIC_VECTOR ( 287 downto 0 );
-    m_axi_rresp : in STD_LOGIC_VECTOR ( 17 downto 0 );
-    m_axi_rvalid : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    m_axi_rready : out STD_LOGIC_VECTOR ( 8 downto 0 )
+    m_axi_awaddr : out STD_LOGIC_VECTOR ( 351 downto 0 );
+    m_axi_awprot : out STD_LOGIC_VECTOR ( 32 downto 0 );
+    m_axi_awvalid : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    m_axi_awready : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    m_axi_wdata : out STD_LOGIC_VECTOR ( 351 downto 0 );
+    m_axi_wstrb : out STD_LOGIC_VECTOR ( 43 downto 0 );
+    m_axi_wvalid : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    m_axi_wready : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    m_axi_bresp : in STD_LOGIC_VECTOR ( 21 downto 0 );
+    m_axi_bvalid : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    m_axi_bready : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    m_axi_araddr : out STD_LOGIC_VECTOR ( 351 downto 0 );
+    m_axi_arprot : out STD_LOGIC_VECTOR ( 32 downto 0 );
+    m_axi_arvalid : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    m_axi_arready : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    m_axi_rdata : in STD_LOGIC_VECTOR ( 351 downto 0 );
+    m_axi_rresp : in STD_LOGIC_VECTOR ( 21 downto 0 );
+    m_axi_rvalid : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    m_axi_rready : out STD_LOGIC_VECTOR ( 10 downto 0 )
   );
 
 end design_1_xbar_0;
@@ -62,7 +62,7 @@ architecture stub of design_1_xbar_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,s_axi_awaddr[31:0],s_axi_awprot[2:0],s_axi_awvalid[0:0],s_axi_awready[0:0],s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wvalid[0:0],s_axi_wready[0:0],s_axi_bresp[1:0],s_axi_bvalid[0:0],s_axi_bready[0:0],s_axi_araddr[31:0],s_axi_arprot[2:0],s_axi_arvalid[0:0],s_axi_arready[0:0],s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid[0:0],s_axi_rready[0:0],m_axi_awaddr[287:0],m_axi_awprot[26:0],m_axi_awvalid[8:0],m_axi_awready[8:0],m_axi_wdata[287:0],m_axi_wstrb[35:0],m_axi_wvalid[8:0],m_axi_wready[8:0],m_axi_bresp[17:0],m_axi_bvalid[8:0],m_axi_bready[8:0],m_axi_araddr[287:0],m_axi_arprot[26:0],m_axi_arvalid[8:0],m_axi_arready[8:0],m_axi_rdata[287:0],m_axi_rresp[17:0],m_axi_rvalid[8:0],m_axi_rready[8:0]";
+attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,s_axi_awaddr[31:0],s_axi_awprot[2:0],s_axi_awvalid[0:0],s_axi_awready[0:0],s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wvalid[0:0],s_axi_wready[0:0],s_axi_bresp[1:0],s_axi_bvalid[0:0],s_axi_bready[0:0],s_axi_araddr[31:0],s_axi_arprot[2:0],s_axi_arvalid[0:0],s_axi_arready[0:0],s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid[0:0],s_axi_rready[0:0],m_axi_awaddr[351:0],m_axi_awprot[32:0],m_axi_awvalid[10:0],m_axi_awready[10:0],m_axi_wdata[351:0],m_axi_wstrb[43:0],m_axi_wvalid[10:0],m_axi_wready[10:0],m_axi_bresp[21:0],m_axi_bvalid[10:0],m_axi_bready[10:0],m_axi_araddr[351:0],m_axi_arprot[32:0],m_axi_arvalid[10:0],m_axi_arready[10:0],m_axi_rdata[351:0],m_axi_rresp[21:0],m_axi_rvalid[10:0],m_axi_rready[10:0]";
 attribute X_CORE_INFO : string;
 attribute X_CORE_INFO of stub : architecture is "axi_crossbar_v2_1_22_axi_crossbar,Vivado 2020.1";
 begin

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1741461855">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1741500766">
   <File Type="BITSTR-BMM" Name="design_1_wrapper_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="design_1_wrapper_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="design_1_wrapper_timing_summary_init.rpt"/>
@@ -152,11 +152,10 @@
   <BlockFileSet Type="BlockSrcs" Name="design_1_v_vid_in_axi4s_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_onsemi_vita_cam_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_onsemi_vita_spi_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_auto_cc_2"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_v_proc_ss_0_1"/>
   <BlockFileSet Type="BlockSrcs" Name="bd_19ea_hcr_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_v_demosaic_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_auto_cc_1"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_v_proc_ss_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_auto_cc_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_axi_gpio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_axi_gpio_1_0"/>
 </GenRun>
