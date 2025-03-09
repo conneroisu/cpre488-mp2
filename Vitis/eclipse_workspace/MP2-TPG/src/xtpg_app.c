@@ -1,18 +1,6 @@
 /*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
  * xtpg_app.c - Customized macros and routines for the TPG test pattern
  * generator module.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
  *****************************************************************************/
 
 // !!! UNDER CONSTRUCTION: Only use as a high-level structural reference !!!
@@ -42,8 +30,6 @@ void xTPG_main (int width, int height, int TPG_BASEADDR)
    unsigned int data, mask, data_read;
    int x_offset, y_offset, fstore_address;
    int i, j, num, offset, pass;
-//   int width = 1280;
-//   int height = 720;
 
    CurrentBoxColourPreset =0;
 
@@ -836,12 +822,3 @@ void xTPG_config(int width, int height, int TPG_BASEADDR, int reset)
 
 }
 
-
-//#else
-//void xTPG_main(void)
-//{
-//
-//        print("XTPG Not Implemented in this Design!\r\n\r\n");
-//}
-//
-//#endif

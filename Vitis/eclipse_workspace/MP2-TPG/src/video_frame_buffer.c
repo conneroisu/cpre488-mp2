@@ -1,19 +1,7 @@
 /*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
  * video_frame_buffer.c - VDMA code. Uses higher-level AXI-VDMA functions
  * (as opposed to explicitly writing register values) to configure the
  * triple framebuffer VDMA mode.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
  *****************************************************************************/
 
 #include "camera_app.h"
@@ -100,11 +88,9 @@ int vfb_tx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideo
 	XAxiVdma_GenLockSourceSelect(pAxiVdma, XAXIVDMA_INTERNAL_GENLOCK, XAXIVDMA_READ);
 #else
 	uBaseAddr = pAxiVdma->BaseAddr;
-	//xil_printf( "\t MM2S_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) );
 	uDMACR = *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET ));
 	uDMACR |= 0x00000080;
 	*((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) = uDMACR;
-	//xil_printf( "\t MM2S_DMACR       = 0x%08X\n\r", *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET )) );
 #endif
 
 }
@@ -336,8 +322,6 @@ int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors )
    Xuint32 Errors;
 
    // Get Status of Error Flags
-   //inErrors = XAxiVdma_GetStatus(pAxiVdma, XAXIVDMA_WRITE) & XAXIVDMA_SR_ERR_ALL_MASK;
-   //outErrors = XAxiVdma_GetStatus(pAxiVdma, XAXIVDMA_READ) & XAXIVDMA_SR_ERR_ALL_MASK;
    inErrors  = *((volatile int *)(uBaseAddr+XAXIVDMA_RX_OFFSET+XAXIVDMA_SR_OFFSET )) & 0x0000CFF0;
    outErrors = *((volatile int *)(uBaseAddr+XAXIVDMA_TX_OFFSET+XAXIVDMA_SR_OFFSET )) & 0x000046F0;
    xil_printf( "AXI_VDMA - Checking Error Flags\n\r" );

@@ -1,24 +1,11 @@
 /*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
  * video_generator.c - configuration functions for the VTC video timing
  * controller. Configures a VTC to generate timing at the specified frequency.
  * Mostly redundant functionality with video_detector.c
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
  *****************************************************************************/
 
 #include "camera_app.h"
 
-/*****************************************************************************/
 /**
 *
 * This function sets up the Video Timing Controller Signal configuration.
@@ -29,7 +16,7 @@
 *
 * @note		None.
 *
-****************************************************************************/
+**/
 static void SignalSetup( XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCfgPtr )
 {
 	vres_timing_t VideoTiming;
@@ -60,21 +47,6 @@ static void SignalSetup( XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCf
 
 	/* Populate the VTC Signal config structure. Ignore the Field 1 */
 
-//	SignalCfgPtr->HFrontPorchStart = 0;
-//	SignalCfgPtr->HTotal = HFrontPorch + HSyncWidth + HBackPorch
-//				+ LineWidth - 1;
-//	SignalCfgPtr->HBackPorchStart = HFrontPorch + HSyncWidth;
-//	SignalCfgPtr->HSyncStart = HFrontPorch;
-//	SignalCfgPtr->HActiveStart = HFrontPorch + HSyncWidth + HBackPorch;
-//
-//	SignalCfgPtr->V0FrontPorchStart = 0;
-//	SignalCfgPtr->V0Total = VFrontPorch + VSyncWidth + VBackPorch
-//				+ FrameHeight - 1;
-//	SignalCfgPtr->V0BackPorchStart = VFrontPorch + VSyncWidth;
-//	SignalCfgPtr->V0SyncStart = VFrontPorch;
-//	SignalCfgPtr->V0ChromaStart = VFrontPorch + VSyncWidth + VBackPorch;
-//	SignalCfgPtr->V0ActiveStart = VFrontPorch + VSyncWidth + VBackPorch;
-
 	SignalCfgPtr->HFrontPorchStart = LineWidth;
 	SignalCfgPtr->HTotal = HFrontPorch + HSyncWidth + HBackPorch
 				+ LineWidth;
@@ -93,7 +65,6 @@ static void SignalSetup( XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCf
 	 return;
 }
 
-/*****************************************************************************/
 /**
 *
 * vgen_init
@@ -107,7 +78,7 @@ static void SignalSetup( XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCf
 *
 * @note		None.
 *
-******************************************************************************/
+**/
 int vgen_init(XVtc *pVtc, u16 VtcDeviceID)
 {
 	int Status;
@@ -149,7 +120,6 @@ int vgen_init(XVtc *pVtc, u16 VtcDeviceID)
 }
 
 
-/*****************************************************************************/
 /**
 *
 * vgen_config
@@ -163,7 +133,7 @@ int vgen_init(XVtc *pVtc, u16 VtcDeviceID)
 *
 * @note		None.
 *
-******************************************************************************/
+**/
 int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose)
 {
 	int Status;

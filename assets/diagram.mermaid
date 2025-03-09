@@ -1,0 +1,117 @@
+%%{
+  init: {
+    'theme': 'dark',
+    'themeVariables': {
+      'primaryTextColor': '#000000',
+      'primaryBorderColor': '#7C0000',
+      'lineColor': '#000000',
+      'textColor': '#000000'
+    }
+  }
+}%%
+flowchart TD
+    %% Board-level components (physical chips)
+    subgraph "Board Level Components"
+        VITA["ON Semiconductor VITA\nImage Sensor"]
+        IMC["FMC-IMAGEON Card"]
+        ZEDB["ZedBoard"]
+        HDMI_IN["HDMI Input"]
+        HDMI_OUT["HDMI Output"]
+        MONITOR["Monitor/Display"]
+        VCS["Video Clock Synthesizer"]
+    end
+
+    %% FPGA IP Core components in VIVADO design
+    subgraph "FPGA IP Core Level (VIVADO Design)"
+        %% Zynq Processing System
+        PS["Zynq Processing System\n(ARM Cortex-A9)"]
+        
+        %% Control interfaces
+        subgraph "Control Interfaces"
+            SPI["VITA SPI Controller\n(onsemi_vita_spi_0)"]
+            IIC["I2C Controllers"]
+            IPMI["IPMI EEPROM Interface"]
+        end
+        
+        %% Video input path
+        subgraph "Video Input Pipeline"
+            VITA_CAM["VITA Camera Receiver\n(onsemi_vita_cam_0)"]
+            VID_IN["Video In to AXI4-Stream\n(v_vid_in_axi4s_0)"]
+            DEMOSAIC["Sensor Demosaic\n(v_demosaic_0)"]
+            PROC_SS0["Video Processing Subsystem\n(Color Space Conversion)\n(v_proc_ss0)"]
+            PROC_SS1["Video Processing Subsystem\n(422-444 Chroma Resampling)\n(v_proc_ss1)"]
+            AXIS_CONV["AXI Stream Subset Converter\n(axis_subset_converter_0)"]
+        end
+        
+        %% Memory interfaces
+        VDMA["Video Direct Memory Access\n(axi_vdma_0)"]
+        DDR["DDR Memory Controller"]
+        
+        %% Video output path
+        subgraph "Video Output Pipeline"
+            VID_OUT["AXI4-Stream to Video Out\n(v_axi4s_vid_out_0)"]
+            VTC["Video Timing Controller\n(v_tc_0)"]
+            HDMI_TX["HDMI Transmitter Controller"]
+        end
+        
+        %% Clock management
+        CLK_WIZ["Clock Wizard\n(clk_wiz_0)"]
+        RST["Processor System Reset"]
+    end
+    
+    %% Board level connections
+    VITA --> IMC
+    HDMI_IN --> IMC
+    IMC --> ZEDB
+    ZEDB --> HDMI_OUT
+    HDMI_OUT --> MONITOR
+    VCS --> IMC
+    
+    %% IP core connections (video pipeline)
+    VITA_CAM --> VID_IN
+    VID_IN --> DEMOSAIC
+    DEMOSAIC --> PROC_SS0
+    PROC_SS0 --> PROC_SS1
+    PROC_SS1 --> AXIS_CONV
+    AXIS_CONV --> VDMA
+    VDMA <--> DDR
+    VDMA --> VID_OUT
+    VTC --> VID_OUT
+    VID_OUT --> HDMI_TX
+    
+    %% Control connections
+    PS --> SPI
+    PS --> IIC
+    PS --> IPMI
+    PS --> VDMA
+    PS --> VTC
+    PS <--> DDR
+    
+    %% Clock connections
+    PS --> CLK_WIZ
+    CLK_WIZ --> RST
+    CLK_WIZ --> VITA_CAM
+    CLK_WIZ --> VID_IN
+    CLK_WIZ --> DEMOSAIC
+    CLK_WIZ --> PROC_SS0
+    CLK_WIZ --> PROC_SS1
+    CLK_WIZ --> VDMA
+    CLK_WIZ --> VID_OUT
+    CLK_WIZ --> VTC
+    
+    %% Board to IP connections
+    SPI -.-> VITA
+    IIC -.-> IMC
+    VITA -.-> VITA_CAM
+    HDMI_TX -.-> HDMI_OUT
+    
+    %% Legend
+    classDef boardLevel fill:#d9f7be,stroke:#389e0d
+    classDef ipCore fill:#d6e4ff,stroke:#1d39c4
+    classDef memoryComponent fill:#fff1f0,stroke:#cf1322
+    classDef clockComponent fill:#f9f0ff,stroke:#722ed1
+    
+    class VITA,IMC,ZEDB,HDMI_IN,HDMI_OUT,MONITOR,VCS boardLevel
+    class PS,SPI,IIC,IPMI,VITA_CAM,VID_IN,DEMOSAIC,PROC_SS0,PROC_SS1,AXIS_CONV,VID_OUT,VTC,HDMI_TX ipCore
+    class VDMA,DDR memoryComponent
+    class CLK_WIZ,RST clockComponent

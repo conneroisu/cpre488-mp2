@@ -3,6 +3,7 @@
 	<name>MP2-TPG</name>
 	<comment>Created by Vitis v2020.1</comment>
 	<projects>
+		<project>TPG</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

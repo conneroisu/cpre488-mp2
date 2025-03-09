@@ -1,18 +1,6 @@
 /*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
  * video_resolution.c - Video resolution lookup functions. Contains information
  * that would have been nice to know in MP-0.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
  *****************************************************************************/
 
 #include "camera_app.h"
@@ -77,7 +65,7 @@ Xint32 vres_detect( Xuint32 width, Xuint32 height )
   {
      if ( width == vres_get_width(i) && height == vres_get_height(i) )
      {
-        //xil_printf( "Detected Video Resolution = %s\r\n", vres_get_name(i) );
+        xil_printf( "Detected Video Resolution = %s\r\n", vres_get_name(i) );
         resolution = i;
         break;
      }

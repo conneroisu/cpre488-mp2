@@ -4,5 +4,8 @@
   "quick-explorer",
   "open-vscode",
   "vim-toggle",
-  "obsidian-vimrc-support"
+  "obsidian-vimrc-support",
+  "slides-extended",
+  "execute-code",
+  "scroll-with-jk"
 ]

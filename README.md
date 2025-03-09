@@ -19,7 +19,7 @@ cd %userprofile%
 
 Tasks:
 
-- [ ] [detailed system diagram](#detailed-system-diagram)
+- [x] [detailed system diagram](#detailed-system-diagram)
 - [ ] [starter hardware operation intentions](#starter-hardware-operation-intentions)
 - [ ] [changes mande to camera_app.c](#changes-mande-to-camera_app.c)
 - [ ] [why at this point, camera has no color](#why-at-this-point-camera-has-no-color)
@@ -37,15 +37,14 @@ The following diagram illustrates the interconnection between the various module
 system, both at the IP core level (i.e. the components in our VIVADO design) as well as the board
 level (i.e. the various chips that work together to connect the output video to the monitor).
 
+![assets/diagram.png](assets/diagram.png)
 ## Starter Hardware Operation Intentions
 
 The following is a list of the intended operations of the given start mp-2 design hardware.
 
 ## changes mande to camera_app.c
 
-Describe in your writeup what changes you made, and
-save a copy of any files modified (presumably only camera_app.c and fmc_imageon_utils.c) during
-this process into a folder named part3
+Describe in your writeup what changes you made, and save a copy of any files modified (presumably only camera_app.c and fmc_imageon_utils.c) during this process into a folder named part3.
 
 ## why at this point, camera has no color
 
@@ -54,3 +53,21 @@ A digital zoom mode, which uses the up and down buttons to zoom in and out of th
 (10 bonus points).
 Various analog and digital adjustments for the gain, exposure, and other common user-configurable
 digital camera settings. (2 bonus points each: up to 8pts)
+
+
+## Hardware changes
+
+![](HW-BD.png)
+
+
+4:4:4 to 4:2:2 Conversion Eq from Subsystem Documentation (PG231):
+![](assets/444to422eq.png)
+
+This conversion is a horizontal 2:1 decimation operation, implemented using a low-pass FIR
+filter to suppress chroma aliasing. In order to evaluate output pixel ox,y, the FIR filter in the
+core convolves COEFk_HPHASE0, where k is the coefficient index, ix,y are pixels from the
+input image, and [ ]^M_m represents rounding with clipping at M, and clamping at m. DW is the
+Data Width or number of bits per video component. Ntaps is the number of filter taps.
+
+The predefined filter coefficients are [0.25 0.5 0.25]. 
+
