@@ -20,6 +20,11 @@
 #include "xil_cache.h"
 
 
+static void write_ISR(void *CallBackRef, u32 InterruptTypes)
+{
+	xil_printf("Write ISR hit!\n\r");
+}
+
 // Main FMC-IMAGEON initialization function. Add your code here.
 int fmc_imageon_enable( camera_config_t *config )
 {
@@ -172,6 +177,16 @@ int fmc_imageon_enable( camera_config_t *config )
       config->uBaseAddr_MEM_HdmiFrameBuffer,  // uMemAddr
       config->uNumFrames_HdmiFrameBuffer      // uNumFrames
       );
+
+	// Setup interrupt handlers
+    if(XAxiVdma_SetCallBack(&(config->vdma_hdmi), XAXIVDMA_HANDLER_GENERAL, write_ISR, (void *) &(config->vdma_hdmi), XAXIVDMA_WRITE) != XST_SUCCESS)
+    {
+    	xil_printf("Error when registering the stream write VDMA interrupt handler!\n\r");
+    }
+    else
+    {
+    	XAxiVdma_IntrEnable(&(config->vdma_hdmi), XAXIVDMA_IXR_FRMCNT_MASK, XAXIVDMA_WRITE);
+    }
 
 
    // Output static Frame buffer for 5 seconds

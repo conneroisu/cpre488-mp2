@@ -23,6 +23,8 @@
 
 camera_config_t camera_config;
 
+
+
 // Main function. Initializes the devices and configures VDMA
 int main() {
 
