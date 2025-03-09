@@ -4,10 +4,11 @@
 #include "xil_cache.h"
 #include "xvprocss.h"
 
+	XVprocSs proc_ss_RGB_YCrCb_444;
+	XVprocSs proc_ss_444_to_422;
+
 int fmc_imageon_enable(
-    camera_config_t *config,
-    XVprocSs *proc_ss_444_to_422,
-    XVprocSs *proc_ss_RGB_YCrCb_444 //
+    camera_config_t *config
 )
 {
    int ret;
@@ -200,7 +201,7 @@ int fmc_imageon_enable(
 
    // Uncomment to enable HW Video processing pipeling (last part of lab)
    // You need to complete implmentation of this function before enabling
-   fmc_imageon_enable_ipipe(config, proc_ss_444_to_422, proc_ss_RGB_YCrCb_444);
+   fmc_imageon_enable_ipipe(config);
 
    // Output Video input source in Hardware mode for 10 seconds
    xil_printf("Output Video input source in Hardware mode for 1 seconds\n\r");
@@ -277,9 +278,7 @@ XVprocSs_Config *Config_ptr;
 XVprocSs_Config *Config_ptr_422;
 
 int fmc_imageon_enable_ipipe(
-    camera_config_t *config,
-    XVprocSs *proc_ss_444_to_422,
-    XVprocSs *proc_ss_RGB_YCrCb_444 //
+    camera_config_t *config
 )
 {
 
@@ -298,7 +297,7 @@ int fmc_imageon_enable_ipipe(
    Config_ptr_422 = XVprocSs_LookupConfig(XPAR_XVPROCSS_1_DEVICE_ID);
 
    result = XVprocSs_CfgInitialize(
-       proc_ss_444_to_422,
+       &proc_ss_444_to_422,
        Config_ptr_422,
        XPAR_XVPROCSS_1_BASEADDR //
    );
@@ -348,7 +347,7 @@ int fmc_imageon_enable_ipipe(
 
    xil_printf("RGB to 4:4:4 Conversion IP Initialization ...\n\r");
    result = XVprocSs_CfgInitialize(
-       proc_ss_RGB_YCrCb_444,
+       &proc_ss_RGB_YCrCb_444,
        Config_ptr,
        XPAR_XVPROCSS_0_BASEADDR //
    );
@@ -359,7 +358,7 @@ int fmc_imageon_enable_ipipe(
    }
 
    result = XV_CscSetColorspace(
-       (*proc_ss_RGB_YCrCb_444).CscPtr,
+       proc_ss_RGB_YCrCb_444.CscPtr,
        XVIDC_CSF_RGB,       //
        XVIDC_CSF_YCRCB_444, //
        XVIDC_BT_709,        //
@@ -473,4 +472,16 @@ void reset_dcms(camera_config_t *config)
    value = value & ~0x00000004; // Force bit 2 to 0
    config->fmc_ipmi_iic.fpGpoWrite(&(config->fmc_ipmi_iic), value);
    usleep(500000);
+}
+
+// Cycles the brightness of the image 
+void cycle_brightness() {
+
+		// TODO: Add switch from software to hardware mode!
+		for (int i = 0; i < 100; i++)
+		{
+			xil_printf("Setting brightness to %d\n", i);
+			XVprocSs_SetPictureBrightness(&proc_ss_RGB_YCrCb_444, (s32)i);
+			sleep(1);
+		}
 }
