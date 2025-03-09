@@ -332,6 +332,20 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
       return -1;
    }
 
+   result = XV_CscSetColorspace(
+         proc_ss_RGB_YCrCb_444.CscPtr,
+         XVIDC_CSF_RGB,       //
+         XVIDC_CSF_YCRCB_444, //
+         XVIDC_BT_709,        //
+         XVIDC_BT_709,        //
+         XVIDC_CR_0_255       //
+   );
+   if (result != XST_SUCCESS)
+   {
+      xil_printf("Error setting colorspace for RGB to YCrCb 4:4:4 conversion\n\r");
+      return -1;
+   }
+
    xil_printf("RGB to 4:4:4 Setting Subsystem Configuration ...\n\r");
    result = XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
    if (result != XST_SUCCESS)
@@ -383,7 +397,7 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // Bayer Phase Configuration (Bayer Pattern)
    Xil_Out32(
        (XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_HWREG_BAYER_PHASE_DATA),
-       (u32)(0) // Bayer sampling grid starting postition
+       (u32)(1) // Bayer sampling grid starting postition
    );
 
    // 0b10000001 means start and freerun mode (page 16 in PG286)

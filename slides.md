@@ -17,7 +17,10 @@ Initial Setup/Design
 ---
 
 Image Pipeline
-<!-- TODO: diagram here? -->
+
+
+![[diagram.png]]
+
 
 ---
 

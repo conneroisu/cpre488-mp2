@@ -13,7 +13,7 @@ int main()
 	while (1)
 	{
 		// camera_loop(&camera_config);
-		// xil_printf("Running on HW\n\r");
+		// xil_printf("HW");
 	}
 
 	return 0;
