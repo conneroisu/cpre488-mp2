@@ -193,20 +193,21 @@ int fmc_imageon_enable( camera_config_t *config )
    // Choose Video Source  ( 1. TPG or 2. onsemi VITA Camera)
 
    // 1. Uncomment for TPG
-   fmc_imageon_enable_vita(config);
+//   fmc_imageon_enable_vita(config);
 
    // 2. Uncomment for onsemi VITA Camera
-//   int vita_enabled_error = 0;
-//   int vita_enable_attempt=1;
-//   do {
-//	   xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
-//	   vita_enabled_error = fmc_imageon_enable_vita(config);
-//   } while(vita_enabled_error != 0);
+   int vita_enabled_error = 0;
+   int vita_enable_attempt=1;
+   do {
+	   xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
+	   vita_enabled_error = fmc_imageon_enable_vita(config);
+   } while(vita_enabled_error != 0);
 
 
      // Uncomment to enable HW Video processing pipeling (last part of lab)
      // You need to complete implmentation of this function before enabling
-//   fmc_imageon_enable_ipipe(config);
+   //// TODO:
+   fmc_imageon_enable_ipipe(config);
 
 
    // Output Video input source in Hardware mode for 10 seconds
@@ -352,14 +353,15 @@ int fmc_imageon_enable_vita( camera_config_t *config ) {
 
 
 // Uncomment for Hardware Image color Pipeline
-// XVprocSs proc_ss_RGB_YCrCb_444;  // To hold info for the Video Processing Subsystem: Color Conversion Only IP core: See xv_procss.h, and xv_csc_l2.h
-// XVprocSs_Config *Config_ptr;
+ XVprocSs proc_ss_RGB_YCrCb_444;  // To hold info for the Video Processing Subsystem: Color Conversion Only IP core: See xv_procss.h, and xv_csc_l2.h
+ XVprocSs_Config *Config_ptr;
 
 int fmc_imageon_enable_ipipe( camera_config_t *config ) {
 
 
    xil_printf("Hardware Image Processing Pipeline (iPIPE) Initialization ...\n\r" );
 
+   //// TODO:
    // Video Processing Subsystem (Only re-sampling) 4:4:4 to 4:2:2  (See IP documentation for register details)
    // TODO Add additional register assignments here to fully configure this core. See Video Processing Subsystem IP documentation for register details.
    // Hint 1: You will need to configure 4 additional registers, 
@@ -368,8 +370,19 @@ int fmc_imageon_enable_ipipe( camera_config_t *config ) {
    
    // Add assignments here
 
+   Xil_Out32(XPAR_V_PROC_SS_1_BASEADDR + XV_HCRESAMPLER_CTRL_ADDR_HWREG_WIDTH_DATA, 1920);  // Width = 1920 pixels
+   Xil_Out32(XPAR_V_PROC_SS_1_BASEADDR + XV_HCRESAMPLER_CTRL_ADDR_HWREG_HEIGHT_DATA, 1080); // Height = 1080 lines
+
+   Xil_Out32(XPAR_V_PROC_SS_1_BASEADDR + XV_HCRESAMPLER_CTRL_ADDR_HWREG_INPUT_VIDEO_FORMAT_DATA, 0x01);  // Input format = 4:4:4
+   Xil_Out32(XPAR_V_PROC_SS_1_BASEADDR + XV_HCRESAMPLER_CTRL_ADDR_HWREG_OUTPUT_VIDEO_FORMAT_DATA, 0x02); // Output format = 4:2:2
+
+
+   //Xil_Out32((XPAR_V_PROC_SS_1_BASEADDR) + 0x30, (u32)(0x0));  // Set chroma phase
+   xil_printf("4:4:4 to 4:2:2 Re-sampling IP Configuration and Enable done\r\n");
+
+
    // Uncomment as part of Re-sampler IP setup
-//   Xil_Out32((XPAR_V_PROC_SS_2_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL), (u32)(0x81));  // Control
+   Xil_Out32((XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL), (u32)(0x81));  // Control
    xil_printf("4:4:4 to 4:2:2 Re-sampling IP Configuration and Enable done\r\n");
 
    // Video Processing Subsystem Hardware IP (configured for Only Color Conversion) from 24-bit RGB to YCrCb 4:4:4
@@ -377,11 +390,11 @@ int fmc_imageon_enable_ipipe( camera_config_t *config ) {
    // This could have been set up with direct register writes, but there are about 20 registers that need to be set for this IP block
 
    // Uncomment to setup Color Conversion IP
-//   Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
-//   XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr, XPAR_XVPROCSS_0_BASEADDR);
-//   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
-//   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444, XVIDC_BT_709, XVIDC_BT_709, XVIDC_CR_0_255);
-//   XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
+   Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
+   XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr, XPAR_XVPROCSS_0_BASEADDR);
+   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
+   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444, XVIDC_BT_709, XVIDC_BT_709, XVIDC_CR_0_255);
+   XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
    xil_printf("RGB to 4:4:4 IP Configuration and Enable done\r\n");
 
 
@@ -390,9 +403,12 @@ int fmc_imageon_enable_ipipe( camera_config_t *config ) {
    // Hint 1: You will need to configure 3 addition registers
 
    // Add assignment here
+   Xil_Out32((XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + 0x0028, (u32)(0x0));   // Set Bayer pattern
+   Xil_Out32((XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + 0x0010, (u32)(1920));    // Set image width
+   Xil_Out32((XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + 0x0018, (u32)(1080));   // Set image height
 
    // Uncomment as part of Demosaic IP setup
-//   Xil_Out32((XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_AP_CTRL), (u32)(0x81));// 0b10000001 means start and freerun mode (page 16 in PG286)
+   Xil_Out32((XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR) + (XV_DEMOSAIC_CTRL_ADDR_AP_CTRL), (u32)(0x81));// 0b10000001 means start and freerun mode (page 16 in PG286)
    xil_printf("Demosaic IP Configuring and Enable done\r\n"); // RGRG sensor pattern
 
    return 0;

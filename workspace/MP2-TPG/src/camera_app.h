@@ -28,8 +28,8 @@
 #include "fmc_ipmi.h"
 #include "fmc_imageon.h"
 #include "onsemi_vita_sw.h"
-//#include "xv_demosaic.h"   // Uncomment when using Demosaic IP core  
-//#include "xvprocss.h"      // Uncomment when using Video Processing Subsystem IP cores
+#include "xv_demosaic.h"   // Uncomment when using Demosaic IP core
+#include "xvprocss.h"      // Uncomment when using Video Processing Subsystem IP cores
 #include "xvtc.h"
 #include "xaxivdma.h"
 #include "xtpg_app.h"
