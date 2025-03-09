@@ -8,21 +8,12 @@ camera_config_t camera_config;
 int main()
 {
 
-	XVprocSs *proc_ss_RGB_YCrCb_444;
-	XVprocSs *proc_ss_444_to_422;
-
 	camera_config_init(&camera_config);
-	fmc_imageon_enable(&camera_config, proc_ss_444_to_422, proc_ss_RGB_YCrCb_444);
+	fmc_imageon_enable(&camera_config);
 	// camera_loop(&camera_config);
 	while (1)
 	{
-		// TODO: Add switch from software to hardware mode!
-		for (int i = 0; i < 100; i++)
-		{
-			xil_printf("Setting brightness to %d\n", i);
-			XVprocSs_SetPictureBrightness(proc_ss_RGB_YCrCb_444, (s32)i);
-			sleep(1);
-		}
+		cycle_brightness();
 	}
 
 	return 0;
