@@ -2,14 +2,16 @@
 #include "camera_app.h"
 #include "xil_types.h"
 #include "xil_cache.h"
+#include "sleep.h"
 #include "xvprocss.h"
 
-	XVprocSs proc_ss_RGB_YCrCb_444;
-	XVprocSs proc_ss_444_to_422;
+XVprocSs proc_ss_RGB_YCrCb_444;
+XVprocSs proc_ss_444_to_422;
+XVprocSs_Config *Config_ptr;
+XVprocSs_Config *Config_ptr_422;
 
 int fmc_imageon_enable(
-    camera_config_t *config
-)
+    camera_config_t *config)
 {
    int ret;
 
@@ -274,12 +276,8 @@ int fmc_imageon_enable_vita(camera_config_t *config)
    return 0;
 }
 
-XVprocSs_Config *Config_ptr;
-XVprocSs_Config *Config_ptr_422;
-
 int fmc_imageon_enable_ipipe(
-    camera_config_t *config
-)
+    camera_config_t *config)
 {
 
    xil_printf("Hardware Image Processing Pipeline (iPIPE) Initialization ...\n\r");
@@ -474,14 +472,38 @@ void reset_dcms(camera_config_t *config)
    usleep(500000);
 }
 
-// Cycles the brightness of the image 
-void cycle_brightness() {
+void set_brightness(
+    camera_config_t *config,
+    int percent //
+)
+{
+   if (config->bVerbose)
+   {
+      xil_printf("Setting brightness to %d\n\r", percent);
+   }
+   XVprocSs_SetPictureBrightness(&proc_ss_RGB_YCrCb_444, (s32)percent);
+}
 
-		// TODO: Add switch from software to hardware mode!
-		for (int i = 0; i < 100; i++)
-		{
-			xil_printf("Setting brightness to %d\n", i);
-			XVprocSs_SetPictureBrightness(&proc_ss_RGB_YCrCb_444, (s32)i);
-			sleep(1);
-		}
+void set_contrast(
+    camera_config_t *config,
+    int percent //
+)
+{
+   if (config->bVerbose)
+   {
+      xil_printf("Setting contrast to %d\n\r", percent);
+   }
+   XVprocSs_SetPictureContrast(&proc_ss_RGB_YCrCb_444, (s32)percent);
+}
+
+void set_saturation(
+    camera_config_t *config,
+    int percent //
+)
+{
+   if (config->bVerbose)
+   {
+      xil_printf("Setting saturation to %d\n\r", percent);
+   }
+   XVprocSs_SetPictureSaturation(&proc_ss_RGB_YCrCb_444, (s32)percent);
 }

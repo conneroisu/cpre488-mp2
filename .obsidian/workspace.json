@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ca92893c3b318218",
+        "id": "6888ae7ff162c8da",
         "type": "tabs",
         "children": [
           {
-            "id": "dbb72a7c94dcb3f7",
+            "id": "0311c8a5fb8f5475",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,6 +19,22 @@
               },
               "icon": "lucide-file",
               "title": "slides"
+            }
+          }
+        ]
+      },
+      {
+        "id": "1a42a348eb6cb8bb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0d9e312b929e3e4c",
+            "type": "leaf",
+            "state": {
+              "type": "reveal-preview-view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Slide Preview"
             }
           }
         ]
@@ -78,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "33f108f055891bf8",
@@ -169,33 +186,71 @@
       "obsidian-git:Open Git source control": false,
       "open-vscode:VSCode": false,
       "vim-toggle:Toggle Vim Mode": false,
-      "slides-extended:Show slide preview": false
+      "slides-extended:Show slide preview": false,
+      "obsidian-advanced-slides:Show Slide Preview": false,
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "dbb72a7c94dcb3f7",
+  "floating": {
+    "id": "f43b734423c0cb06",
+    "type": "floating",
+    "children": [
+      {
+        "id": "b24d7914d0fdca38",
+        "type": "window",
+        "children": [
+          {
+            "id": "7002c68fee105b7c",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "84a2a9e90fa92ecd",
+                "type": "leaf",
+                "state": {
+                  "type": "empty",
+                  "state": {},
+                  "icon": "lucide-file",
+                  "title": "New tab"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 475,
+        "y": 408,
+        "width": 1024,
+        "height": 800,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "0d9e312b929e3e4c",
   "lastOpenFiles": [
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/boot.bif",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp",
+    "assets/test.pdf",
+    "assets/Drawing 2025-03-09 16.19.57.excalidraw.md",
+    "assets/diagram.png.crdownload",
+    "assets/diagram.png",
+    "Excalidraw",
+    "slides.md",
+    "write_project_to_tcl_dialog.png",
+    "assets/bd-digram-mask.png",
+    "assets/generate_project_tcl_menu_item.png",
+    "Vitis/eclipse_workspace/TPG/export/TPG/sw/TPG/standalone_domain/bspinclude/include/xvprocss.h",
+    "Vitis/eclipse_workspace/TPG/zynq_fsbl/zynq_fsbl_bsp/ps7_cortexa9_0/code",
+    "Vivado/digital_camera/digital_camera/digital_camera.runs/impl_1/design_1_wrapper.bit",
+    "Vivado/digital_camera/digital_camera/digital_camera.runs/impl_1/write_bitstream.pb",
+    "Vivado/digital_camera/digital_camera/digital_camera.runs/impl_1/design_1_wrapper.vdi",
+    "Vivado/digital_camera/digital_camera/digital_camera.runs/impl_1/vivado_16824.backup.jou",
     "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/BOOT.BIN",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/README.txt",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/system.bif",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card/README.txt",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card/BOOT.BIN",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/writebif.log",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/MP2-TPG_system_Debug.build.ui.log",
-    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/makefile",
+    "Vitis/eclipse_workspace/MP2-TPG_system/Debug/sd_card_temp/boot.bif",
     "Vivado/digital_camera/digital_camera/digital_camera.runs/synth_1/bd_197a_hcr_0/prj/impl/ip/misc/logo.png",
     "Vivado/digital_camera/digital_camera/digital_camera.runs/synth_1/bd_197a_hcr_0/prj/impl/misc/logo.png",
     "Vivado/digital_camera/digital_camera/digital_camera.runs/synth_1/bd_d92b_csc_0/prj/impl/ip/misc/logo.png",
     "Vivado/digital_camera/digital_camera/digital_camera.runs/synth_1/bd_d92b_csc_0/prj/impl/misc/logo.png",
     "README.md",
-    "slides.md",
-    "assets/diagram.png",
     "assets/444to422eq.png",
-    "assets/HW-BD.png",
-    "444to422eq.png",
-    "2025-03-08-15-18-40.png",
-    "Pasted image 20250308090456.png"
+    "assets/HW-BD.png"
   ]
 }

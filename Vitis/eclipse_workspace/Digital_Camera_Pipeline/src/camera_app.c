@@ -13,7 +13,14 @@ int main()
 	// camera_loop(&camera_config);
 	while (1)
 	{
-		cycle_brightness();
+		// TODO: Add switch from software to hardware mode!
+		for (int i = 0; i < 100; i++)
+		{
+			// XVprocSs_SetPictureBrightness(&proc_ss_RGB_YCrCb_444, (s32)i);
+			// XVprocSs_SetPictureContrast(&proc_ss_RGB_YCrCb_444, (s32)i);
+			set_contrast(&camera_config, i);
+			usleep(100000);
+		}
 	}
 
 	return 0;
