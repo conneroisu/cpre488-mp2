@@ -115,7 +115,6 @@ int fmc_imageon_enable_tpg(camera_config_t *config);
 int fmc_imageon_disable_tpg(camera_config_t *config);
 int fmc_imageon_enable_vita(camera_config_t *config);
 int fmc_imageon_enable_ipipe(camera_config_t *config);
-void cycle_brightness();
 void reset_dcms(camera_config_t *config);
 void enable_ssc(camera_config_t *config);
 
@@ -147,5 +146,15 @@ int vfb_tx_start(XAxiVdma *pAxiVdma);
 int vfb_tx_stop(XAxiVdma *pAxiVdma);
 int vfb_dump_registers(XAxiVdma *pAxiVdma);
 int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors);
+
+void set_brightness(
+	camera_config_t *config,
+	int brightness);
+void set_contrast(
+	camera_config_t *config,
+	int contrast);
+void set_saturation(
+	camera_config_t *config,
+	int saturation);
 
 #endif // __CAMERA_APP_H__
