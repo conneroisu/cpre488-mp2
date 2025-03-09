@@ -280,12 +280,10 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
 
    int result;
 
-   // Re-Sampling Subsystem IP Setup (PG231)
-   xil_printf("4:4:4 to 4:2:2 Re-sampling IP Initialization ...\n\r");
+   // # Re-Sampling Subsystem IP Setup (PG231)
 
-   xil_printf("4:4:4 to 4:2:2 Lookup Configuration ...\n\r");
    Config_ptr_422 = XVprocSs_LookupConfig(XPAR_XVPROCSS_1_DEVICE_ID);
-   xil_printf("4:4:4 to 4:2:2 Configuration Initialization ...\n\r");
+
    result = XVprocSs_CfgInitialize(
        &proc_ss_444_to_422,
        Config_ptr_422,
@@ -297,6 +295,32 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
       return -1;
    }
 
+   // Set Up HW REG Width for SS1
+   Xil_Out16(
+       (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_HWREG_WIDTH_DATA),
+       (u16)(1920) // Number of Active Pixels per Scanline
+   );
+   // Set Up HW REG Height for SS1
+   Xil_Out16(
+       (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_HWREG_HEIGHT_DATA),
+       (u16)(1080) // Number of Active Lines per Frame
+   );
+   // Set HW REG Input Video Format for SS1
+   Xil_Out8(
+       (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_HWREG_INPUT_VIDEO_FORMAT_DATA),
+       (u8)(0x02) // 0x02 means 4:4:4 (page 16 in PG231)
+   );
+   // Set HW REG Output Video Format for SS1
+   Xil_Out8(
+       (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_HWREG_OUTPUT_VIDEO_FORMAT_DATA),
+       (u8)(0x01) // 0x01 means 4:2:2 (page 16 in PG231)
+   );
+   // Set Mode for SS1
+   Xil_Out32(
+       (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL),
+       (u32)(0x81) // Control 0x10000001 means start and freerun mode (page 16 in PG231)
+   );
+
    xil_printf("4:4:4 to 4:2:2 Starting ...\n\r");
    XVprocSs_Start(&proc_ss_444_to_422);
    xil_printf("4:4:4 to 4:2:2 Started ...\n\r");
@@ -306,18 +330,13 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // XVprocSs_SetPictureBrightness(&proc_ss_444_to_422, 0x80); // Set Picture Brightness to 0x80
    // XVprocSs_SetPictureContrast(&proc_ss_444_to_422, 0x80); // Set Picture Contrast to 0x80
 
-   Xil_Out32(
-       (XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL),
-       (u32)(0x81) // Control 0x10000001 means start and freerun mode (page 16 in PG231)
-   );
-   xil_printf("4:4:4 to 4:2:2 Re-sampling IP Configuration and Enable done\r\n");
-
    // Video Processing Subsystem Hardware IP (configured for Only Color Conversion) from 24-bit RGB to YCrCb 4:4:4
    // For this IP core there was a High level API for setting it up.
    // Trace through these calls to see how much work they do.
    // This could have been set up with direct register writes, but there are about 20 registers that need to be set for this IP block
 
-   // Color Space Conversion (CSC) IP Setup (PG231)
+   // # Color Space Conversion (CSC) IP Setup (PG231)
+
    Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
 
    xil_printf("RGB to 4:4:4 Conversion IP Initialization ...\n\r");
@@ -333,12 +352,12 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    }
 
    result = XV_CscSetColorspace(
-         proc_ss_RGB_YCrCb_444.CscPtr,
-         XVIDC_CSF_RGB,       //
-         XVIDC_CSF_YCRCB_444, //
-         XVIDC_BT_709,        //
-         XVIDC_BT_709,        //
-         XVIDC_CR_0_255       //
+       proc_ss_RGB_YCrCb_444.CscPtr,
+       XVIDC_CSF_RGB,       //
+       XVIDC_CSF_YCRCB_444, //
+       XVIDC_BT_709,        //
+       XVIDC_BT_709,        //
+       XVIDC_CR_0_255       //
    );
    if (result != XST_SUCCESS)
    {
