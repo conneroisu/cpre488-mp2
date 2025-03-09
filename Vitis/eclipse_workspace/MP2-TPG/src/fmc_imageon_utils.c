@@ -281,6 +281,7 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    int result;
 
    // # Re-Sampling Subsystem IP Setup (PG231)
+   // 444 => 422
 
    Config_ptr_422 = XVprocSs_LookupConfig(XPAR_XVPROCSS_1_DEVICE_ID);
 
@@ -336,6 +337,7 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
    // This could have been set up with direct register writes, but there are about 20 registers that need to be set for this IP block
 
    // # Color Space Conversion (CSC) IP Setup (PG231)
+   // RGB => YCrCb 444
 
    Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
 
@@ -365,15 +367,12 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
       return -1;
    }
 
-   xil_printf("RGB to 4:4:4 Setting Subsystem Configuration ...\n\r");
    result = XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
    if (result != XST_SUCCESS)
    {
       xil_printf("Error setting subsystem configuration for RGB to 4:4:4 conversion\n\r");
       return -1;
    }
-
-   xil_printf("RGB to 4:4:4 Setting Color Space ...\n\r");
    result = XV_CscSetColorspace(
        proc_ss_RGB_YCrCb_444.CscPtr,
        XVIDC_CSF_RGB,       //
