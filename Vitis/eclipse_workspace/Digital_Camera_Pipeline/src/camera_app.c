@@ -1,25 +1,95 @@
 #include "camera_app.h"
 #include "xil_types.h"
 #include "xvprocss.h"
+#include "control.h"
 
 camera_config_t camera_config;
+
+typedef enum settings_state
+{
+	CONTRAST = 0x1,
+	BRIGHTNESS = 0x2,
+	SATURATION = 0x3,
+} t_settings_state;
+
+t_settings_state settings_state = CONTRAST;
+
+void print_state(t_settings_state settings_state)
+{
+	switch (settings_state)
+	{
+	case CONTRAST:
+		xil_printf("Contrast\n\r");
+		break;
+	case BRIGHTNESS:
+		xil_printf("Brightness\n\r");
+		break;
+	case SATURATION:
+		xil_printf("Saturation\n\r");
+		break;
+	default:
+
+		xil_printf("Unknown\n\r");
+		break;
+	}
+}
 
 // Main function. Initializes the devices and configures VDMA
 int main()
 {
 
+	u32 button_state = 0;
+	u32 switch_state = 0;
+
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);
+	init_interface();
 	// camera_loop(&camera_config);
 	while (1)
 	{
-		// TODO: Add switch from software to hardware mode!
-		for (int i = 0; i < 100; i++)
+		button_state = get_button_states();
+		switch_state = get_switch_states();
+		xil_printf("Button state: %x\n\r", button_state);
+
+		if (button_pressed(RIGHT, button_state))
 		{
-			// XVprocSs_SetPictureBrightness(&proc_ss_RGB_YCrCb_444, (s32)i);
-			// XVprocSs_SetPictureContrast(&proc_ss_RGB_YCrCb_444, (s32)i);
-			set_contrast(&camera_config, i);
-			usleep(100000);
+			settings_state = (settings_state + 1) % 4;
+			print_state(settings_state);
+		}
+		else if (button_pressed(LEFT, button_state))
+		{
+			settings_state = (settings_state - 1) % 4;
+			print_state(settings_state);
+		}
+		else if (button_pressed(UP, button_state))
+		{
+			// Increase the value of the current setting
+			switch (settings_state)
+			{
+			case CONTRAST:
+				increase_contrast(&camera_config);
+			case BRIGHTNESS:
+				increase_brightness(&camera_config);
+			case SATURATION:
+				increase_saturation(&camera_config);
+			default:
+				break;
+			}
+		}
+		else if (button_pressed(DOWN, button_state))
+		{
+			// Decrease the value of the current setting
+			switch (settings_state)
+			{
+			case CONTRAST:
+				decrease_contrast(&camera_config);
+			case BRIGHTNESS:
+				decrease_brightness(&camera_config);
+			case SATURATION:
+				decrease_saturation(&camera_config);
+			default:
+				break;
+			}
 		}
 	}
 

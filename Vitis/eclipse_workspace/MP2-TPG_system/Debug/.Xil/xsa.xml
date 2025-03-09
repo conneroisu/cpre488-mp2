@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root VersionMajor="1" VersionMinor="15">
+  <GenAppInfo Name="Vivado" Version="2020.1" CL="2902540" TimeStamp="Sat Mar  8 13:07:26 2025"/>
+  <DSA Vendor="xilinx" BoardId="zed" Name="" VersionMajor="0" VersionMinor="0" Description="Vivado generated Hardware Platform" FeatureRomTimestamp="0" DcpLogicFunctionStripped="false" DcpEncrypt="false" Unified="true" Fixed="true" DefaultOutputType="hw_export">
+    <Build UsesPR="false" PlatformState="pre_synth" AcceleratorBinaryContent="bitstream" ValidBinaryContentValues="dcp,bitstream" TopModuleName="design_1_wrapper"/>
+    <Board Name="em.avnet.com:zed:1.3" Vendor="em.avnet.com" Part="xc7z020clg484-1" BoardPart="em.avnet.com:zed:part0:1.3">
+      <Images>
+        <Img Type="HDPI" File="zed_board.jpg"/>
+        <Img Type="MDPI" File=""/>
+        <Img Type="LDPI" File=""/>
+      </Images>
+    </Board>
+    <Devices>
+      <Device Name="fpga0" Type="8" FpgaDevice="zynq:xc7z020:clg484:-1">
+        <Core Name="OCL_REGION_0" Type="clc_region" ComputeUnits="60"/>
+      </Device>
+    </Devices>
+    <Files>
+      <File Type="FULL_BIT" Name="design_1_wrapper.bit"/>
+    </Files>
+  </DSA>
+</Root>

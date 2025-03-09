@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="DigitalCamera_system" platform="C:/Users/neastbur/cpre488-mp2/Vitis/eclipse_workspace/DigitalCamera_HW/export/DigitalCamera_HW/DigitalCamera_HW.xpfm" platformUID="xilinx:zed::0.0(custom)" sysConfig="DigitalCamera_HW" runtime="cpp" dimmRepoPath="" rootFSLocation="" linuxImage="" sysroot="">
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="DigitalCamera_system" platform="C:/Users/connero/Downloads/cpre488-mp2/Vitis/eclipse_workspace/DigitalCamera_HW/export/DigitalCamera_HW/DigitalCamera_HW.xpfm" platformUID="xilinx:zed::0.0(custom)" sysConfig="DigitalCamera_HW" runtime="cpp" dimmRepoPath="" rootFSLocation="" linuxImage="" sysroot="">
   <configuration name="Debug">
     <configBuildOptions xsi:type="systemproject:SystemOptions">
       <applications name="DigitalCamera" domainName="standalone_domain" domainPrettyName="standalone on ps7_cortexa9_0" appBuildConfig="Debug"/>

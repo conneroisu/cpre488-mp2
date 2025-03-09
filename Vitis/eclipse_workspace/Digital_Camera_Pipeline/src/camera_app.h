@@ -156,5 +156,17 @@ void set_contrast(
 void set_saturation(
 	camera_config_t *config,
 	int saturation);
+void increase_brightness(
+	camera_config_t *config);
+void decrease_brightness(
+	camera_config_t *config);
+void increase_contrast(
+	camera_config_t *config);
+void decrease_contrast(
+	camera_config_t *config);
+void increase_saturation(
+	camera_config_t *config);
+void decrease_saturation(
+	camera_config_t *config);
 
 #endif // __CAMERA_APP_H__
