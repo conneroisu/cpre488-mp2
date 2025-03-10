@@ -38,7 +38,7 @@
 #define XPAR_AXI_VDMA_0_DEVICE_ID 0U
 #define XPAR_AXI_VDMA_0_BASEADDR 0x43000000U
 #define XPAR_AXI_VDMA_0_HIGHADDR 0x4300FFFFU
-#define XPAR_AXI_VDMA_0_NUM_FSTORES 3U
+#define XPAR_AXI_VDMA_0_NUM_FSTORES 5U
 #define XPAR_AXI_VDMA_0_INCLUDE_MM2S 1U
 #define XPAR_AXI_VDMA_0_INCLUDE_MM2S_DRE 0U
 #define XPAR_AXI_VDMA_0_M_AXI_MM2S_DATA_WIDTH 64U
@@ -80,7 +80,7 @@
 #define XPAR_AXIVDMA_0_DEVICE_ID XPAR_AXI_VDMA_0_DEVICE_ID
 #define XPAR_AXIVDMA_0_BASEADDR 0x43000000U
 #define XPAR_AXIVDMA_0_HIGHADDR 0x4300FFFFU
-#define XPAR_AXIVDMA_0_NUM_FSTORES 3U
+#define XPAR_AXIVDMA_0_NUM_FSTORES 5U
 #define XPAR_AXIVDMA_0_INCLUDE_MM2S 1U
 #define XPAR_AXIVDMA_0_INCLUDE_MM2S_DRE 0U
 #define XPAR_AXIVDMA_0_M_AXI_MM2S_DATA_WIDTH 64U
@@ -399,6 +399,18 @@
 
 /******************************************************************/
 
+/* Definitions for Fabric interrupts connected to ps7_scugic_0 */
+#define XPAR_FABRIC_AXI_VDMA_0_MM2S_INTROUT_INTR 61U
+#define XPAR_FABRIC_AXI_VDMA_0_S2MM_INTROUT_INTR 62U
+
+/******************************************************************/
+
+/* Canonical definitions for Fabric interrupts connected to ps7_scugic_0 */
+#define XPAR_FABRIC_AXIVDMA_0_MM2S_INTROUT_VEC_ID XPAR_FABRIC_AXI_VDMA_0_MM2S_INTROUT_INTR
+#define XPAR_FABRIC_AXIVDMA_0_S2MM_INTROUT_VEC_ID XPAR_FABRIC_AXI_VDMA_0_S2MM_INTROUT_INTR
+
+/******************************************************************/
+
 /* Definitions for driver SCUGIC */
 #define XPAR_XSCUGIC_NUM_INSTANCES 1U
 
@@ -627,4 +639,11 @@
 
 /******************************************************************/
 
+/* Xilinx FAT File System Library (XilFFs) User Settings */
+#define FILE_SYSTEM_INTERFACE_SD
+#define FILE_SYSTEM_USE_MKFS
+#define FILE_SYSTEM_NUM_LOGIC_VOL 2
+#define FILE_SYSTEM_USE_STRFUNC 0
+#define FILE_SYSTEM_SET_FS_RPATH 0
+#define FILE_SYSTEM_WORD_ACCESS
 #endif  /* end of protection macro */

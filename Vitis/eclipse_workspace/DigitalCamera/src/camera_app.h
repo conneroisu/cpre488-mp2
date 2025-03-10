@@ -155,6 +155,10 @@ int vdet_init(XVtc *pVtc, u16 VtcDeviceID);
 int vdet_detect(XVtc *pVtc, int bVerbose);
 int vdet_config(XVtc *pVtc, int ResolutionId, int bVerbose);
 
+void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes);
+void camera_input_isr(void* CallBackRef, u32 InterruptTypes);
+void error_isr(void* CallBackRef, u32 InterruptTypes);
+
 // Function prototypes (video_frame_buffer.c)
 int vfb_common_init( u16 uDeviceId, XAxiVdma * InstancePtr );
 int vfb_rx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg, Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr, Xuint32 uNumFrames );

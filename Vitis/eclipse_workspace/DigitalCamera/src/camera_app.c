@@ -20,9 +20,79 @@
 #include "camera_app.h"
 #include "xil_types.h"
 #include "include/demosaicing.h"
+#include "xscugic.h"
 
 camera_config_t camera_config;
 
+u8 get_current_frame_pointer(XAxiVdma* vdma, u16 dir)
+{
+
+	u8 result = 0;
+
+	u32 mask = 0;
+	u32 shift_amt = 0;
+
+	if(dir == XAXIVDMA_READ)
+	{
+		mask = 0x1F0000;
+		shift_amt = 16;
+	}
+	else if(dir == XAXIVDMA_WRITE)
+	{
+		mask = 0x1F00000;
+		shift_amt = 24;
+	}
+
+	result = (*((volatile u32*) (vdma->BaseAddr + XAXIVDMA_PARKPTR_OFFSET)) & mask) >> shift_amt;
+
+	return result;
+}
+
+void set_park_frame(XAxiVdma* vdma, u8 frame, u16 dir)
+{
+
+}
+
+void error_isr(void* CallBackRef, u32 InterruptTypes)
+{
+	xil_printf("VDMA error %X occurred!!!\n\r", InterruptTypes);
+	usleep(1);
+}
+
+void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
+{
+	switch(InterruptTypes)
+	{
+		case XAXIVDMA_IXR_FRMCNT_MASK:
+		{
+			xil_printf("Got frame write interrupt! Frame %d was written to!\n\r", get_current_frame_pointer(CallBackRef, XAXIVDMA_READ));
+		}
+
+		default:
+		{
+			break;
+		}
+	}
+
+}
+
+void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
+{
+	switch(InterruptTypes)
+	{
+		case XAXIVDMA_IXR_FRMCNT_MASK:
+		{
+			xil_printf("Got frame read interrupt! Frame %d was read!\n\r", get_current_frame_pointer(CallBackRef, XAXIVDMA_WRITE));
+		}
+
+
+		default:
+		{
+			break;
+		}
+	}
+
+}
 
 
 // Main function. Initializes the devices and configures VDMA

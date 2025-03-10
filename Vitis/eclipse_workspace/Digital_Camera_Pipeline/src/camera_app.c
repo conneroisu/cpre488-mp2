@@ -32,6 +32,7 @@ u8 get_current_frame_pointer(XAxiVdma* vdma, u16 dir)
 void error_isr(void* CallBackRef, u32 InterruptTypes)
 {
 	xil_printf("VDMA error %X occurred!!!\n\r", InterruptTypes);
+	usleep(1);
 }
 
 void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
