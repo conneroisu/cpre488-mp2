@@ -18,14 +18,6 @@ Image Pipeline
 
 ![image-pipeline-diagram.png](assets/image-pipeline-diagram.png)
 
-
-
-
----
-
-UI
-<!-- TODO: gif/video here? -->
-
 ---
 
 # Fixing Vivado Git 
@@ -33,6 +25,14 @@ UI
 Export Project as tcl script.
 
 ![generate_project_tcl_menu_item.png](assets/generate_project_tcl_menu_item.png)
+
+---
+
+# Fixing Vivado Git
+
+Select required options for project.
+
+![generate_project_tcl_options.png](./assets/write_project_to_tcl_dialog.png)
 
 ---
 # Fixing Vivado Git
