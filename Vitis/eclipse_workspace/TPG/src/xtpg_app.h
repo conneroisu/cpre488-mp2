@@ -1,20 +1,3 @@
-/*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
- * xtpg_app.h - Customized macros and routines for the TPG test pattern
- * generator module.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
- *****************************************************************************/
-
 #ifndef XTPG_APP_H
 #define XTPG_APP_H
 
@@ -23,14 +6,13 @@
 // !!! UNDER CONSTRUCTION: Only use as a high-level structural reference !!!
 
 #include "xbasic_types.h"
-#include "xstatus.h"
 #include "xil_io.h"
+#include "xstatus.h"
 
-void xTPG_main (int width, int height, int TPG_BASEADDR);
+void xTPG_main(int width, int height, int TPG_BASEADDR);
 void ZPlate_config(int width, int height, int TPG_BASEADDR);
 
-
-//#ifdef XPAR_AXI_TPG_0_BASEADDR
+// #ifdef XPAR_AXI_TPG_0_BASEADDR
 
 /************************** Constant Definitions ***************************/
 
@@ -68,7 +50,6 @@ void ZPlate_config(int width, int height, int TPG_BASEADDR);
 #define XTPG_SLV_REG30_OFFSET (XTPG_USER_SLV_SPACE_OFFSET + 0x00000078)
 #define XTPG_SLV_REG31_OFFSET (XTPG_USER_SLV_SPACE_OFFSET + 0x0000007C)
 #define XTPG_SLV_REG32_OFFSET (XTPG_USER_SLV_SPACE_OFFSET + 0x00000080)
-
 
 /**
  * Software Reset Space Register Offsets
@@ -124,7 +105,6 @@ void ZPlate_config(int width, int height, int TPG_BASEADDR);
 
 /**************************** Type Definitions *****************************/
 
-
 /***************** Macros (Inline Functions) Definitions *******************/
 
 /**
@@ -144,8 +124,8 @@ void ZPlate_config(int width, int height, int TPG_BASEADDR);
  *  void XTPG_mWriteReg(Xuint32 BaseAddress, unsigned RegOffset, Xuint32 Data)
  *
  */
-#define XTPG_mWriteReg(BaseAddress, RegOffset, Data) \
-    Xil_Out32((BaseAddress) + (RegOffset), (Xuint32)(Data))
+#define XTPG_mWriteReg(BaseAddress, RegOffset, Data)                           \
+  Xil_Out32((BaseAddress) + (RegOffset), (Xuint32)(Data))
 
 /**
  *
@@ -164,92 +144,107 @@ void ZPlate_config(int width, int height, int TPG_BASEADDR);
  *  Xuint32 XTPG_mReadReg(Xuint32 BaseAddress, unsigned RegOffset)
  *
  */
-#define XTPG_mReadReg(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (RegOffset))
-
+#define XTPG_mReadReg(BaseAddress, RegOffset)                                  \
+  Xil_In32((BaseAddress) + (RegOffset))
 
 /**
  *
  * Write/Read 32 bit value to/from XTPG user logic slave registers.
  *
  * @param   BaseAddress is the base address of the XTPG device.
- * @param   RegOffset is the offset from the slave register to write to or read from.
+ * @param   RegOffset is the offset from the slave register to write to or read
+ * from.
  * @param   Value is the data written to the register.
  *
  * @return  Data is the data from the user logic slave register.
  *
  * @note
  * C-style signature:
- *  void XTPG_mWriteSlaveRegn(Xuint32 BaseAddress, unsigned RegOffset, Xuint32 Value)
- *  Xuint32 XTPG_mReadSlaveRegn(Xuint32 BaseAddress, unsigned RegOffset)
+ *  void XTPG_mWriteSlaveRegn(Xuint32 BaseAddress, unsigned RegOffset, Xuint32
+ * Value) Xuint32 XTPG_mReadSlaveRegn(Xuint32 BaseAddress, unsigned RegOffset)
  *
  */
-#define XTPG_mWriteSlaveReg0(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG0_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg1(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG1_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg2(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG2_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg3(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG3_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg4(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG4_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg5(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG5_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg6(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG6_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg7(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG7_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg8(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG8_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg9(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG9_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg10(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG10_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg11(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG11_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg12(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG12_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg13(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG13_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg14(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG14_OFFSET) + (RegOffset), (Xuint32)(Value))
-#define XTPG_mWriteSlaveReg15(BaseAddress, RegOffset, Value) \
-    Xil_Out32((BaseAddress) + (XTPG_SLV_REG15_OFFSET) + (RegOffset), (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg0(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG0_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg1(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG1_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg2(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG2_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg3(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG3_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg4(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG4_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg5(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG5_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg6(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG6_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg7(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG7_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg8(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG8_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg9(BaseAddress, RegOffset, Value)                    \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG9_OFFSET) + (RegOffset),              \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg10(BaseAddress, RegOffset, Value)                   \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG10_OFFSET) + (RegOffset),             \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg11(BaseAddress, RegOffset, Value)                   \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG11_OFFSET) + (RegOffset),             \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg12(BaseAddress, RegOffset, Value)                   \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG12_OFFSET) + (RegOffset),             \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg13(BaseAddress, RegOffset, Value)                   \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG13_OFFSET) + (RegOffset),             \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg14(BaseAddress, RegOffset, Value)                   \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG14_OFFSET) + (RegOffset),             \
+            (Xuint32)(Value))
+#define XTPG_mWriteSlaveReg15(BaseAddress, RegOffset, Value)                   \
+  Xil_Out32((BaseAddress) + (XTPG_SLV_REG15_OFFSET) + (RegOffset),             \
+            (Xuint32)(Value))
 
-#define XTPG_mReadSlaveReg0(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG0_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg1(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG1_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg2(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG2_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg3(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG3_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg4(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG4_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg5(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG5_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg6(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG6_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg7(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG7_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg8(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG8_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg9(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG9_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg10(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG10_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg11(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG11_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg12(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG12_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg13(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG13_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg14(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG14_OFFSET) + (RegOffset))
-#define XTPG_mReadSlaveReg15(BaseAddress, RegOffset) \
-    Xil_In32((BaseAddress) + (XTPG_SLV_REG15_OFFSET) + (RegOffset))
-
+#define XTPG_mReadSlaveReg0(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG0_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg1(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG1_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg2(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG2_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg3(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG3_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg4(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG4_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg5(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG5_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg6(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG6_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg7(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG7_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg8(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG8_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg9(BaseAddress, RegOffset)                            \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG9_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg10(BaseAddress, RegOffset)                           \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG10_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg11(BaseAddress, RegOffset)                           \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG11_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg12(BaseAddress, RegOffset)                           \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG12_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg13(BaseAddress, RegOffset)                           \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG13_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg14(BaseAddress, RegOffset)                           \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG14_OFFSET) + (RegOffset))
+#define XTPG_mReadSlaveReg15(BaseAddress, RegOffset)                           \
+  Xil_In32((BaseAddress) + (XTPG_SLV_REG15_OFFSET) + (RegOffset))
 
 /**
  *
@@ -264,11 +259,10 @@ void ZPlate_config(int width, int height, int TPG_BASEADDR);
  *  void XTPG_mReset(Xuint32 BaseAddress)
  *
  */
-#define XTPG_mReset(BaseAddress) \
-    Xil_Out32((BaseAddress)+(XTPG_RST_REG_OFFSET), SOFT_RESET)
+#define XTPG_mReset(BaseAddress)                                               \
+  Xil_Out32((BaseAddress) + (XTPG_RST_REG_OFFSET), SOFT_RESET)
 
 /************************** Function Prototypes ****************************/
-
 
 /**
  *
@@ -281,7 +275,7 @@ void ZPlate_config(int width, int height, int TPG_BASEADDR);
  * @note    None.
  *
  */
-void XTPG_EnableInterrupt(void * baseaddr_p);
+void XTPG_EnableInterrupt(void *baseaddr_p);
 
 /**
  *
@@ -297,7 +291,7 @@ void XTPG_EnableInterrupt(void * baseaddr_p);
 
 void xTPG_config(int width, int height, int TPG_BASEADDR, int reset);
 
-void XTPG_Intr_DefaultHandler(void * baseaddr_p);
+void XTPG_Intr_DefaultHandler(void *baseaddr_p);
 
 /**
  *
@@ -315,9 +309,10 @@ void XTPG_Intr_DefaultHandler(void * baseaddr_p);
  *    - XST_FAILURE   if any self-test code failed
  *
  * @note    Caching must be turned off for this function to work.
- * @note    Self test may fail if data memory and device are not on the same bus.
+ * @note    Self test may fail if data memory and device are not on the same
+ * bus.
  *
  */
-XStatus XTPG_SelfTest(void * baseaddr_p);
-//#endif
+XStatus XTPG_SelfTest(void *baseaddr_p);
+// #endif
 #endif // XTPG_H
