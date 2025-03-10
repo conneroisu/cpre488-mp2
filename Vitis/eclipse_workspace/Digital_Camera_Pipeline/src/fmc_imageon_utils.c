@@ -203,7 +203,7 @@ int fmc_imageon_enable(
 
    // Uncomment to enable HW Video processing pipeling (last part of lab)
    // You need to complete implmentation of this function before enabling
-   //fmc_imageon_enable_ipipe(config);
+   fmc_imageon_enable_ipipe(config);
 
    // Output Video input source in Hardware mode for 10 seconds
    xil_printf("Output Video input source in Hardware mode for 1 seconds\n\r");

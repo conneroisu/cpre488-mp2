@@ -17,11 +17,11 @@ void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
 		case XAXIVDMA_IXR_FRMCNT_MASK:
 		{
 			xil_printf("Got frame write interrupt!\n\r");
+			sleep(1);
 		}
 
 		default:
 		{
-			xil_printf("Got misc interrupt on write side!\n\r");
 			break;
 		}
 	}
@@ -34,13 +34,13 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 	{
 		case XAXIVDMA_IXR_FRMCNT_MASK:
 		{
-			xil_printf("Got frame read interrupt!\n\r");
+			xil_printf("Got frame read interrupt!\n\r");\
+			sleep(1);
 		}
 
 
 		default:
 		{
-			xil_printf("Got misc interrupt on read side!\n\r");
 			break;
 		}
 	}
