@@ -24,7 +24,17 @@
 #include "xtime_l.h"
 #include <stdio.h>
 
+#define MAX_FPS_ENTRIES 10
+
+typedef struct fps
+{
+	int next_to_write;
+	int size;
+	float entries[MAX_FPS_ENTRIES];
+} fps_t;
+
 // Timing globals
+static fps_t fps;
 static int sw_mode = 0;
 static int snapshot_saved = 0;
 
@@ -39,9 +49,51 @@ static XTime tStart, tEnd = 0;
 static float frame_time = 0;
 
 // To store frame time message
-static char* frame_time_msg = 0;
+static char* fps_msg = 0;
 
 camera_config_t camera_config;
+
+void fps_init(fps_t* f)
+{
+	f->next_to_write = 0;
+	f->size = 0;
+
+	for(int i = 0; i < MAX_FPS_ENTRIES; ++i)
+	{
+		f->entries[i] = 0;
+	}
+}
+
+void fps_time_store(fps_t* f, float time)
+{
+	f->entries[f->next_to_write] = time;
+
+	if(f->next_to_write == (MAX_FPS_ENTRIES - 1))
+	{
+		f->next_to_write = 0;
+	}
+	else
+	{
+		f->next_to_write++;
+	}
+
+	if(f->size != MAX_FPS_ENTRIES)
+	{
+		f->size++;
+	}
+}
+
+float fps_calculate(fps_t* f)
+{
+	float sum = 0;
+
+	for(int i = 0; i < f->size; ++i)
+	{
+		sum += f->entries[i];
+	}
+
+	return f->size / sum;
+}
 
 // Swaps the memory addresses associated with the frame pointers
 void swap_frame_pointers(XAxiVdma* vdma, u16 dir, u8 a, u8 b)
@@ -129,13 +181,15 @@ void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
 			if(sw_mode & (get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ) == target_frame) && snapshot_saved)
 			{
 				XTime_GetTime(&tEnd);
-				xil_printf("Snapshot has been demosaiced and written!\n\r");
 				snapshot_saved = 0;
 
 				frame_time = (tEnd - tStart) / (float)COUNTS_PER_SECOND;
-				sprintf(frame_time_msg, "Frame Time: %.5f", frame_time);
 
-				xil_printf("%s\n\r", frame_time_msg);
+				fps_time_store(&fps, frame_time);
+
+				sprintf(fps_msg, "Average FPS: %.5f", fps_calculate(&fps));
+
+				xil_printf("%s\n\r", fps_msg);
 			}
 		}
 
@@ -156,7 +210,6 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 			if(sw_mode && get_current_frame_pointer((XAxiVdma*)CallBackRef, XAXIVDMA_WRITE) == 0 && !snapshot_saved)
 			{
 				XTime_GetTime(&tStart);
-				xil_printf("Snapshot saved!\n\r");
 				snapshot_saved = 1;
 				target_frame = back_buffer_frame;
 			}
@@ -175,7 +228,10 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 // Main function. Initializes the devices and configures VDMA
 int main() {
 
-	frame_time_msg = (char*) calloc(64, sizeof(char*));
+	// Init the FPS struct.
+	fps_init(&fps);
+
+	fps_msg = (char*) calloc(64, sizeof(char*));
 
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);
