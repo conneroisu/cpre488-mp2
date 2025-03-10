@@ -128,13 +128,7 @@ Describe in your writeup what changes you made, and save a copy of any files mod
   - `demosaicing.h` is a header file that contains the function declarations for the demosaicing algorithm. 
   - RGB to YCbCr conversion is performed in this definition.
 
-#### 2. Camera Configuration
-
-- **Both Versions:**  
-  - The camera configuration function (`camera_config_init`) is largely identical.  
-  - Both enable the VITA camera input (with VITA-related addresses uncommented) and comment out the TPG (Test Pattern Generator) configuration.
-
-#### 3. MDMA Park Pointer and Memory Pointer Adjustments
+#### 2. MDMA Park Pointer and Memory Pointer Adjustments
 
 - **Original Pipeline:**  
   - Sets the MDMA park pointer to place the S2MM side on frame 0 and the MM2S side on frame 1 by OR-ing with `0x1`.  
@@ -144,7 +138,7 @@ Describe in your writeup what changes you made, and save a copy of any files mod
   - Configures the park pointer differently: it is set to `0x102`, indicating a different frame mapping (S2MM on frame 1 and MM2S on frame 2).  
   - Allows for switching the park pointer to remove tearing artifacts in the camera output.
 
-#### 4. Frame Processing and Synchronization
+#### 3. Frame Processing and Synchronization
 
 - **Original Pipeline Processing Loop:**  
   - The loop iterates for 1000 frames.  
