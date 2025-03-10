@@ -23,7 +23,7 @@ int main() {
     xil_printf("FMC-IMAGEON enabled successfully.\r\n");
 
     xil_printf("Starting camera loop...\r\n");
-    camera_loop(&camera_config);
+    //camera_loop(&camera_config);
 
     xil_printf("Program completed successfully.\r\n");
     return 0;

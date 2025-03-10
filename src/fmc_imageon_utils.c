@@ -391,12 +391,48 @@ int fmc_imageon_enable_ipipe( camera_config_t *config ) {
 
    // Uncomment to setup Color Conversion IP
    Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
-   XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr, XPAR_XVPROCSS_0_BASEADDR);
-   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
-   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444, XVIDC_BT_709, XVIDC_BT_709, XVIDC_CR_0_255);
-   XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
-   xil_printf("RGB to 4:4:4 IP Configuration and Enable done\r\n");
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
+   xil_printf("Config_ptr\r\n");
 
+   XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr, XPAR_XVPROCSS_0_BASEADDR);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
+   xil_printf("Cfg_init\r\n");
+
+   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
+   xil_printf("SetSubsystem\r\n");
+
+//   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.HscalerPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444, XVIDC_BT_709, XVIDC_BT_709, XVIDC_CR_0_255);
+//   XV_HScalerInitialize(proc_ss_RGB_YCrCb_444.HscalerPtr, XPAR_XVPROCSS_0_DEVICE_ID);
+   xil_printf("Ugh\r\n");
+//   XV_HScalerValidateConfig(&proc_ss_RGB_YCrCb_444.HscalerPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444);
+//   XV_HScalerSetup(InstancePtr, HeightIn, WidthIn, WidthOut, cformat, cformatOut)
+   XV_HScalerSetup(proc_ss_RGB_YCrCb_444.HscalerPtr, 1080, 1920, 1920, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444);
+   XV_HScalerDbgReportStatus(proc_ss_RGB_YCrCb_444.HscalerPtr);
+   xil_printf("HScale pass\r\n");
+
+//   XV_VScalerSetup(proc_ss_RGB_YCrCb_444.VscalerPtr, 1080, 1920, 1080, XVIDC_CSF_RGB);
+//   xil_printf("Vscale pass\r\n");
+//   XV_VScalerSetup(InstancePtr, WidthIn, HeightIn, HeightOut, ColorFormat)
+
+   XVidC_VideoWindow winZoom;
+
+   XVprocSs_SetZoomPipWindow(&proc_ss_RGB_YCrCb_444, XVPROCSS_ZOOM_WIN, &winZoom);
+   xil_printf("Zoom shit got set\r\n");
+   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
+//
+//   XVprocSs_UpdateZoomPipWindow(&proc_ss_RGB_YCrCb_444);
+//   XVprocSs_SetZoomMode(&proc_ss_RGB_YCrCb_444, TRUE);
+//   xil_printf("Ugh2\r\n");
+////   XV_HScalerDbgReportStatus(proc_ss_RGB_YCrCb_444.HscalerPtr);
+//   xil_printf("Fuck\r\n");
+//   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
+//   xil_printf("Sad\r\n");
+////   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
+
+   XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
+   xil_printf("RGB to 4:4:4 IP Configuration and Enable done\r\n");
 
    // Demosaic to convert sensor Bayer pattern into 24-bit RGB
    // TODO Add additional register assignments here to fully configure this core. See Demosaic IP documentation for register details.
