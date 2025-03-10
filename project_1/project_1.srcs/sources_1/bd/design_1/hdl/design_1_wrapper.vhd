@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Mon Mar 10 06:59:53 2025
---Host        : DESKTOP-V4CC4PR running 64-bit major release  (build 9200)
+--Date        : Mon Mar 10 14:50:16 2025
+--Host        : CO2041-04 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
 --Purpose     : IP block netlist
@@ -69,6 +69,9 @@ architecture STRUCTURE of design_1_wrapper is
     fmc_imageon_iic_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     IO_HDMII_spdif : in STD_LOGIC;
     fmc_imageon_vclk : in STD_LOGIC;
+    IO_HDMIO_clk : out STD_LOGIC;
+    IO_HDMIO_data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IO_HDMIO_spdif : out STD_LOGIC;
     DDR_cas_n : inout STD_LOGIC;
     DDR_cke : inout STD_LOGIC;
     DDR_ck_n : inout STD_LOGIC;
@@ -90,21 +93,24 @@ architecture STRUCTURE of design_1_wrapper is
     IO_VITA_SPI_spi_mosi : out STD_LOGIC;
     IO_VITA_SPI_spi_miso : in STD_LOGIC;
     sws_8bits_tri_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    IO_HDMIO_clk : out STD_LOGIC;
-    IO_HDMIO_data : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    IO_HDMIO_spdif : out STD_LOGIC;
-    FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
-    FIXED_IO_ddr_vrn : inout STD_LOGIC;
-    FIXED_IO_ddr_vrp : inout STD_LOGIC;
-    FIXED_IO_ps_srstb : inout STD_LOGIC;
-    FIXED_IO_ps_clk : inout STD_LOGIC;
-    FIXED_IO_ps_porb : inout STD_LOGIC;
+    fmc_imageon_iic_scl_i : in STD_LOGIC;
+    fmc_imageon_iic_scl_o : out STD_LOGIC;
+    fmc_imageon_iic_scl_t : out STD_LOGIC;
+    fmc_imageon_iic_sda_i : in STD_LOGIC;
+    fmc_imageon_iic_sda_o : out STD_LOGIC;
+    fmc_imageon_iic_sda_t : out STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_i : in STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_o : out STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_t : out STD_LOGIC;
     fmc_ipmi_id_eeprom_sda_i : in STD_LOGIC;
     fmc_ipmi_id_eeprom_sda_o : out STD_LOGIC;
     fmc_ipmi_id_eeprom_sda_t : out STD_LOGIC;
+    FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
+    FIXED_IO_ddr_vrn : inout STD_LOGIC;
+    FIXED_IO_ddr_vrp : inout STD_LOGIC;
+    FIXED_IO_ps_srstb : inout STD_LOGIC;
+    FIXED_IO_ps_clk : inout STD_LOGIC;
+    FIXED_IO_ps_porb : inout STD_LOGIC;
     IO_VITA_CAM_data_p : in STD_LOGIC_VECTOR ( 3 downto 0 );
     IO_VITA_CAM_sync_p : in STD_LOGIC;
     IO_VITA_CAM_sync_n : in STD_LOGIC;
@@ -114,13 +120,7 @@ architecture STRUCTURE of design_1_wrapper is
     IO_VITA_CAM_clk_pll : out STD_LOGIC;
     IO_VITA_CAM_data_n : in STD_LOGIC_VECTOR ( 3 downto 0 );
     IO_VITA_CAM_clk_out_p : in STD_LOGIC;
-    IO_VITA_CAM_clk_out_n : in STD_LOGIC;
-    fmc_imageon_iic_scl_i : in STD_LOGIC;
-    fmc_imageon_iic_scl_o : out STD_LOGIC;
-    fmc_imageon_iic_scl_t : out STD_LOGIC;
-    fmc_imageon_iic_sda_i : in STD_LOGIC;
-    fmc_imageon_iic_sda_o : out STD_LOGIC;
-    fmc_imageon_iic_sda_t : out STD_LOGIC
+    IO_VITA_CAM_clk_out_n : in STD_LOGIC
   );
   end component design_1;
   component IOBUF is

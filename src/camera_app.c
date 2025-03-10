@@ -26,6 +26,15 @@ int main() {
     //camera_loop(&camera_config);
 
     xil_printf("Program completed successfully.\r\n");
+
+    UINTPTR ButtonIn = 0x41200000;
+    while (1) {
+    	if((Xil_In32(ButtonIn) & 0x00000001) == 0x00000001){
+			xil_printf("Button 1 toggled\n\r");
+			fmc_config_test(&camera_config);
+		}
+    }
+
     return 0;
 }
 

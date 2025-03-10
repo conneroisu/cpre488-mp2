@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="design_1" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1741608042"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1741608042"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1741608042"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1741608042"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1741636237"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1741636237"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1741636237"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1741636237"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\design_1_avnet_hdmi_out_0_0\design_1_avnet_hdmi_out_0_0.xci" Type="IP">
         <Instance HierarchyPath="avnet_hdmi_out_0"/>
@@ -209,8 +209,16 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\design_1_v_proc_ss_1_0\design_1_v_proc_ss_1_0.xci" Type="IP">
+      <File Name="ip\design_1_v_proc_ss_1_1\design_1_v_proc_ss_1_1.xci" Type="IP">
         <Instance HierarchyPath="v_proc_ss_1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_v_proc_ss_2_1\design_1_v_proc_ss_2_1.xci" Type="IP">
+        <Instance HierarchyPath="v_proc_ss_2"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -243,6 +251,14 @@
       </File>
       <File Name="ip\design_1_auto_cc_2\design_1_auto_cc_2.xci" Type="IP">
         <Instance HierarchyPath="ps7_0_axi_periph/m08_couplers/auto_cc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_auto_cc_3\design_1_auto_cc_3.xci" Type="IP">
+        <Instance HierarchyPath="ps7_0_axi_periph/m11_couplers/auto_cc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

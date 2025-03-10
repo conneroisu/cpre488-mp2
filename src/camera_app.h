@@ -130,6 +130,7 @@ void camera_loop(camera_config_t *config);
 
 // Function prototypes (fmc_imageon_utils.c)
 int fmc_imageon_enable(camera_config_t *config);
+int fmc_config_test(camera_config_t *config);
 int fmc_imageon_enable_tpg(camera_config_t *config);
 int fmc_imageon_disable_tpg(camera_config_t *config);
 int fmc_imageon_enable_vita(camera_config_t *config);

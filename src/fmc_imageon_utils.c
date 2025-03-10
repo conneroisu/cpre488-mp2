@@ -354,7 +354,104 @@ int fmc_imageon_enable_vita( camera_config_t *config ) {
 
 // Uncomment for Hardware Image color Pipeline
  XVprocSs proc_ss_RGB_YCrCb_444;  // To hold info for the Video Processing Subsystem: Color Conversion Only IP core: See xv_procss.h, and xv_csc_l2.h
- XVprocSs_Config *Config_ptr;
+ XVprocSs_Config *Config_ptr_0;
+
+ XVprocSs proc_ss_RGB_YCrCb_444_1;
+ XVprocSs_Config *Config_ptr_1;
+
+
+
+ int fmc_config_test ( camera_config_t *config ) {
+	 xil_printf("pls?");
+	 XVidC_VideoWindow winZoom;
+
+	 u32 HActiveVideoTmp = (config->hdmio_timing.HActiveVideo);
+	 u32 VActiveVideoTmp = (config->hdmio_timing.VActiveVideo);
+
+	 u32 windowWidth = HActiveVideoTmp;
+	 u32 windowHeight = VActiveVideoTmp; //= VActiveVideoTmp;
+	 u32 windowStartX = (1920 - HActiveVideoTmp) / 2;
+	 u32 windowStarty = (1080 - VActiveVideoTmp) / 2;
+
+	 UINTPTR ButtonIn = 0x41200000;
+	 while(1) {
+		 if((Xil_In32(ButtonIn) & 0x00000001) == 0x00000001){
+			 xil_printf("Button 1 toggled internally \n\r");
+
+			 windowWidth = windowWidth - 20;
+			 windowHeight = windowHeight - 20;
+
+			 winZoom.Height = windowHeight;
+			 winZoom.Width = windowWidth;
+			 winZoom.StartX = 0; //(1920 - windowWidth) / 2;
+			 winZoom.StartY = 0; //(1080 - windowHeight) / 2;
+
+			 XVprocSs_SetZoomPipWindow(&proc_ss_RGB_YCrCb_444_1, XVPROCSS_ZOOM_WIN, &winZoom);
+			 XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+			 xil_printf("Set Zoom Window\r\n");
+
+//			 XVprocSs_GetZoomPipWindow(&proc_ss_RGB_YCrCb_444_1, XVPROCSS_ZOOM_WIN, &winZoom);
+//			 XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+//			 xil_printf("Get Zoom Window\r\n");
+
+			 XVprocSs_UpdateZoomPipWindow(&proc_ss_RGB_YCrCb_444_1);
+			 XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+			 xil_printf("Update Zoom Window\r\n");
+
+			 XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444_1);
+			 XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+			 xil_printf("Set Subsystem 2\r\n");
+
+//			 XV_CscSetColorspace(InstancePtr, cfmtIn, cfmtOut, cstdIn, cstdOut, cRangeOut)
+//			 XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444, XVIDC_BT_709, XVIDC_BT_709, XVIDC_CR_0_255);
+			 sleep(1);
+		 }
+
+		 if((Xil_In32(ButtonIn) & 0x00000002) == 0x00000002){
+			 xil_printf("Button 2 toggled internally \n\r");
+
+			 windowWidth = windowWidth + 20;
+			 windowHeight = windowHeight + 20;
+
+			 winZoom.Height = windowHeight;
+			 winZoom.Width = windowWidth;
+			 winZoom.StartX = 0; //(1920 - windowWidth) / 2;
+			 winZoom.StartY = 0; //(1080 - windowHeight) / 2;
+
+//			 XVprocSs_SetZoomMode(&proc_ss_RGB_YCrCb_444_1, TRUE);
+//			 XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+//			 xil_printf("Set Zoom Mode\r\n");
+
+			 XVprocSs_SetZoomPipWindow(&proc_ss_RGB_YCrCb_444_1, XVPROCSS_ZOOM_WIN, &winZoom);
+			 XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+			 xil_printf("Set Zoom Window\r\n");
+
+//			 XVprocSs_GetZoomPipWindow(&proc_ss_RGB_YCrCb_444_1, XVPROCSS_ZOOM_WIN, &winZoom);
+//			 XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+//			 xil_printf("Get Zoom Window\r\n");
+
+			 XVprocSs_UpdateZoomPipWindow(&proc_ss_RGB_YCrCb_444_1);
+			 XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+			 xil_printf("Update Zoom Window\r\n");
+
+			 XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444_1);
+			 XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+			 xil_printf("Set Subsystem 2\r\n");
+
+//			 XV_HCrsmplSetActiveSize(proc_ss_RGB_YCrCb_444_1.HcrsmplrPtr, 1920, 1080);
+//			 XV_HCrsmplSetFormat(proc_ss_RGB_YCrCb_444_1.HcrsmplrPtr, XVIDC_CSF_YCRCB_444, XVIDC_CSF_YCRCB_422);
+//			 xil_printf("4:4:4 to 4:2:2 Re-sampling IP Configuration and Enable done\r\n");
+//
+//			 XV_HCrsmplStart(proc_ss_RGB_YCrCb_444_1.HcrsmplrPtr);
+
+//			 XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_YCRCB_444, XVIDC_CSF_YCRCB_422, XVIDC_BT_709, XVIDC_BT_709, XVIDC_CR_0_255);
+			 sleep(1);
+		 }
+	 }
+
+	 return 0;
+ }
+
 
 int fmc_imageon_enable_ipipe( camera_config_t *config ) {
 
@@ -377,8 +474,8 @@ int fmc_imageon_enable_ipipe( camera_config_t *config ) {
    Xil_Out32(XPAR_V_PROC_SS_1_BASEADDR + XV_HCRESAMPLER_CTRL_ADDR_HWREG_OUTPUT_VIDEO_FORMAT_DATA, 0x02); // Output format = 4:2:2
 
 
-   //Xil_Out32((XPAR_V_PROC_SS_1_BASEADDR) + 0x30, (u32)(0x0));  // Set chroma phase
-   xil_printf("4:4:4 to 4:2:2 Re-sampling IP Configuration and Enable done\r\n");
+//   Xil_Out32((XPAR_V_PROC_SS_1_BASEADDR) + 0x30, (u32)(0x0));  // Set chroma phase
+//   xil_printf("4:4:4 to 4:2:2 Re-sampling IP Configuration and Enable done\r\n");
 
 
    // Uncomment as part of Re-sampler IP setup
@@ -390,49 +487,148 @@ int fmc_imageon_enable_ipipe( camera_config_t *config ) {
    // This could have been set up with direct register writes, but there are about 20 registers that need to be set for this IP block
 
    // Uncomment to setup Color Conversion IP
-   Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
+   Config_ptr_0 = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
    XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
-   xil_printf("Config_ptr\r\n");
+   xil_printf("Config_ptr_0\r\n");
 
-   XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr, XPAR_XVPROCSS_0_BASEADDR);
+   XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr_0, XPAR_XVPROCSS_0_BASEADDR);
    XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
-   xil_printf("Cfg_init\r\n");
+   xil_printf("Cfg_init_0\r\n");
 
    XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
    XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
-   xil_printf("SetSubsystem\r\n");
+   xil_printf("SetSubsystem_0\r\n");
 
-//   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.HscalerPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444, XVIDC_BT_709, XVIDC_BT_709, XVIDC_CR_0_255);
+   Config_ptr_1 = XVprocSs_LookupConfig(XPAR_XVPROCSS_2_DEVICE_ID);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("Config_ptr_1\r\n");
+
+   XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444_1, Config_ptr_1, XPAR_XVPROCSS_2_BASEADDR);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("Cfg_ini_1t\r\n");
+
+   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444_1);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("SetSubsystem_1\r\n");
+
+//   XV_HCrsmplSetActiveSize(proc_ss_RGB_YCrCb_444_1.HcrsmplrPtr, 1920, 1080);
+//   XV_HCrsmplSetFormat(proc_ss_RGB_YCrCb_444_1.HcrsmplrPtr, XVIDC_CSF_YCRCB_444, XVIDC_CSF_YCRCB_422);
+//   XV_HCrsmplLoadDefaultCoeff(proc_ss_RGB_YCrCb_444_1.HcrsmplrPtr);
+//   XV_HCrsmplStart(proc_ss_RGB_YCrCb_444_1.HcrsmplrPtr);
+//   xil_printf("4:4:4 to 4:2:2 Re-sampling IP Configuration and Enable done\r\n");
+
+   /// Window shit
+
+   XVidC_VideoWindow winZoom;
+
+   u32 HActiveVideoTmp = (config->hdmio_timing.HActiveVideo);
+   u32 VActiveVideoTmp = (config->hdmio_timing.VActiveVideo);
+   //   hStepSize = XVprocSs_GetPipZoomWinHStepSize(&proc_ss_RGB_YCrCb_444);
+   //
+   //   windowWidthTmp = ( (HActiveVideoTmp) / zoomFactor ) + 0.5;
+   //   windowWidth  = ((windowWidthTmp/(hStepSize*2)))*(hStepSize*2);
+
+   u32 windowWidth = HActiveVideoTmp;
+   u32 windowHeight = VActiveVideoTmp;
+   u32 windowStartX = (1920 - HActiveVideoTmp) / 2;
+   u32 windowStartY = (1080 - VActiveVideoTmp) / 2;
+
+   winZoom.Height = windowHeight;
+   winZoom.Width = windowWidth;
+   winZoom.StartX = windowStartX;
+   winZoom.StartY = windowStartY;
+
+   /// Scaling
+
+   //   XV_VScalerSetup(proc_ss_RGB_YCrCb_444.VscalerPtr, windowWidth, windowHeight, windowHeight*2, XVIDC_CSF_RGB);
+   //
+   //   XV_VScalerStart(proc_ss_RGB_YCrCb_444.VscalerPtr);
+   //
+   //   XV_VScalerDbgReportStatus(proc_ss_RGB_YCrCb_444.VscalerPtr);
+
+//      XV_HScalerSetup(proc_ss_RGB_YCrCb_444.HscalerPtr, windowHeight*2, windowWidth, windowWidth*2, XVIDC_CSF_RGB, XVIDC_CSF_RGB);
+//
+//      XV_HScalerStart(proc_ss_RGB_YCrCb_444.HscalerPtr);
+//
+//      XV_HScalerDbgReportStatus(proc_ss_RGB_YCrCb_444.HscalerPtr);
+
+
+   /// Zoom/Pip
+
+   XVprocSs_SetZoomMode(&proc_ss_RGB_YCrCb_444_1, TRUE);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("Set Zoom Mode\r\n");
+
+//   XVprocSs_SetPipMode(&proc_ss_RGB_YCrCb_444, TRUE);
+//   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
+//   xil_printf("Set PIP Mode\r\n");
+
+   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444_1); // Confused
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("Set Subsystem\r\n");
+
+//   XVprocSs_SetZoomPipWindow(&proc_ss_RGB_YCrCb_444, XVPROCSS_PIP_WIN, &winZoom);
+   XVprocSs_SetZoomPipWindow(&proc_ss_RGB_YCrCb_444_1, XVPROCSS_ZOOM_WIN, &winZoom);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("Set Zoom Window\r\n");
+
+//   XVprocSs_GetZoomPipWindow(&proc_ss_RGB_YCrCb_444, XVPROCSS_PIP_WIN, &winZoom);
+   XVprocSs_GetZoomPipWindow(&proc_ss_RGB_YCrCb_444_1, XVPROCSS_ZOOM_WIN, &winZoom);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("Get Zoom Window\r\n");
+
+   XVprocSs_UpdateZoomPipWindow(&proc_ss_RGB_YCrCb_444_1);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("Update Zoom Window\r\n");
+
+   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444_1);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("Set Subsystem 2\r\n");
+
+   /// CSC
+
+   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444, XVIDC_BT_709, XVIDC_BT_709, XVIDC_CR_0_255);
+
+//   XV_CscSetColorspace(proc_ss_RGB_YCrCb_444_1.CscPtr, XVIDC_CSF_YCRCB_444, XVIDC_CSF_YCRCB_422, XVIDC_BT_601, XVIDC_BT_601, XVIDC_CR_0_255);
+
+
+
 //   XV_HScalerInitialize(proc_ss_RGB_YCrCb_444.HscalerPtr, XPAR_XVPROCSS_0_DEVICE_ID);
-   xil_printf("Ugh\r\n");
+//   xil_printf("Ugh\r\n");
 //   XV_HScalerValidateConfig(&proc_ss_RGB_YCrCb_444.HscalerPtr, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444);
 //   XV_HScalerSetup(InstancePtr, HeightIn, WidthIn, WidthOut, cformat, cformatOut)
-   XV_HScalerSetup(proc_ss_RGB_YCrCb_444.HscalerPtr, 1080, 1920, 1920, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444);
-   XV_HScalerDbgReportStatus(proc_ss_RGB_YCrCb_444.HscalerPtr);
-   xil_printf("HScale pass\r\n");
+//   XV_HScalerSetup(proc_ss_RGB_YCrCb_444.HscalerPtr, 1080, 1920, 1920, XVIDC_CSF_RGB, XVIDC_CSF_YCRCB_444);
+//   XV_HScalerDbgReportStatus(proc_ss_RGB_YCrCb_444.HscalerPtr);
+//   xil_printf("HScale pass\r\n");
 
 //   XV_VScalerSetup(proc_ss_RGB_YCrCb_444.VscalerPtr, 1080, 1920, 1080, XVIDC_CSF_RGB);
 //   xil_printf("Vscale pass\r\n");
 //   XV_VScalerSetup(InstancePtr, WidthIn, HeightIn, HeightOut, ColorFormat)
 
-   XVidC_VideoWindow winZoom;
 
-   XVprocSs_SetZoomPipWindow(&proc_ss_RGB_YCrCb_444, XVPROCSS_ZOOM_WIN, &winZoom);
-   xil_printf("Zoom shit got set\r\n");
-   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
+
+//   XVidC_VideoWindow winZoom;
 //
+//   XVprocSs_SetZoomPipWindow(&proc_ss_RGB_YCrCb_444, XVPROCSS_ZOOM_WIN, &winZoom);
+//   xil_printf("Zoom shit got set\r\n");
+//   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
+
 //   XVprocSs_UpdateZoomPipWindow(&proc_ss_RGB_YCrCb_444);
 //   XVprocSs_SetZoomMode(&proc_ss_RGB_YCrCb_444, TRUE);
 //   xil_printf("Ugh2\r\n");
 ////   XV_HScalerDbgReportStatus(proc_ss_RGB_YCrCb_444.HscalerPtr);
 //   xil_printf("Fuck\r\n");
 //   XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
-//   xil_printf("Sad\r\n");
-////   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
+//   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
 
    XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
    XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444);
    xil_printf("RGB to 4:4:4 IP Configuration and Enable done\r\n");
+
+   XVprocSs_Start(&proc_ss_RGB_YCrCb_444_1);
+   XVprocSs_LogDisplay(&proc_ss_RGB_YCrCb_444_1);
+   xil_printf("Zoom IP Configuration and Enable done\r\n");
+
 
    // Demosaic to convert sensor Bayer pattern into 24-bit RGB
    // TODO Add additional register assignments here to fully configure this core. See Demosaic IP documentation for register details.

@@ -2,11 +2,11 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Mon Mar 10 07:08:18 2025
-# Process ID: 24592
-# Current directory: Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/synth_1
+# Start of session at: Mon Mar 10 14:50:45 2025
+# Process ID: 20696
+# Current directory: C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1
 # Command line: vivado.exe -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
-# Log file: Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/synth_1/design_1_wrapper.vds
-# Journal file: Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/synth_1\vivado.jou
+# Log file: C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/design_1_wrapper.vds
+# Journal file: C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source design_1_wrapper.tcl -notrace
