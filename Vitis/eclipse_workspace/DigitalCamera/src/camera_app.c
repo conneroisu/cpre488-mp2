@@ -21,9 +21,25 @@
 #include "xil_types.h"
 #include "include/demosaicing.h"
 #include "xscugic.h"
+#include "xtime_l.h"
+#include <stdio.h>
 
 // Timing globals
-int sw_mode = 0;
+static int sw_mode = 0;
+static int snapshot_saved = 0;
+
+static u8 back_buffer_frame = 2;
+static u8 front_buffer_frame = 3;
+
+static u8 target_frame = 2;
+
+static XTime tStart, tEnd = 0;
+
+// In seconds
+static float frame_time = 0;
+
+// To store frame time message
+static char* frame_time_msg = 0;
 
 camera_config_t camera_config;
 
@@ -100,7 +116,6 @@ void set_park_frame(XAxiVdma* vdma, u8 frame, u16 dir)
 void error_isr(void* CallBackRef, u32 InterruptTypes)
 {
 	xil_printf("VDMA error %X occurred!!!\n\r", InterruptTypes);
-	usleep(1);
 }
 
 void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
@@ -109,7 +124,19 @@ void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
 	{
 		case XAXIVDMA_IXR_FRMCNT_MASK:
 		{
-			//xil_printf("Got frame write interrupt! Frame %d was written to!\n\r", get_current_frame_pointer(CallBackRef, XAXIVDMA_READ));
+			// Once we have read from the back buffer, we know that it is the new front buffer
+			// so we must have just swapped.
+			if(sw_mode & (get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ) == target_frame) && snapshot_saved)
+			{
+				XTime_GetTime(&tEnd);
+				xil_printf("Snapshot has been demosaiced and written!\n\r");
+				snapshot_saved = 0;
+
+				frame_time = (tEnd - tStart) / (float)COUNTS_PER_SECOND;
+				sprintf(frame_time_msg, "Frame Time: %.5f", frame_time);
+
+				xil_printf("%s\n\r", frame_time_msg);
+			}
 		}
 
 		default:
@@ -126,11 +153,13 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 	{
 		case XAXIVDMA_IXR_FRMCNT_MASK:
 		{
-			if(sw_mode && get_current_frame_pointer((XAxiVdma*)CallBackRef, XAXIVDMA_WRITE) == 0 && get_current_frame_pointer((XAxiVdma*)CallBackRef, XAXIVDMA_READ) == 2)
+			if(sw_mode && get_current_frame_pointer((XAxiVdma*)CallBackRef, XAXIVDMA_WRITE) == 0 && !snapshot_saved)
 			{
-				xil_printf("Wrote snapshot to memory!\n\r");
+				XTime_GetTime(&tStart);
+				xil_printf("Snapshot saved!\n\r");
+				snapshot_saved = 1;
+				target_frame = back_buffer_frame;
 			}
-			//xil_printf("Got frame read interrupt! Frame %d was read!\n\r", get_current_frame_pointer(CallBackRef, XAXIVDMA_WRITE));
 		}
 
 
@@ -145,6 +174,8 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 
 // Main function. Initializes the devices and configures VDMA
 int main() {
+
+	frame_time_msg = (char*) calloc(64, sizeof(char*));
 
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);
@@ -197,9 +228,6 @@ void camera_loop(camera_config_t *config) {
 	XAxiVdma_WriteReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK);
 
 	sw_mode = 1;
-
-	u8 back_buffer_frame = 2;
-	u8 front_buffer_frame = 3;
 
 	// Pointers to the S2MM memory frame and M2SS memory frame
 	volatile Xuint16 *pS2MM_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET);
