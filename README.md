@@ -33,7 +33,7 @@ The following diagram illustrates the interconnection between the various module
 system, both at the IP core level (i.e. the components in our VIVADO design) as well as the board
 level (i.e. the various chips that work together to connect the output video to the monitor).
 
-![assets/diagram.png](assets/diagram.png)
+![assets/diagram.png](assets/image-pipeline-diagram.png)
 
 ## Starter Hardware Operation Intentions
 
