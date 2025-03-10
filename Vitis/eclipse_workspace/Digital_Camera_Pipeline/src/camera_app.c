@@ -5,8 +5,12 @@
 #include "xtime_l.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "include/controls/control.h"
+#include "platform.h"
+#include "xil_io.h"
 
 #define MAX_FPS_ENTRIES 100
+#define OUTPUT_FPS 0
 
 typedef struct fps
 {
@@ -175,9 +179,11 @@ void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
 
 					fps_time_store(&fps, fps_reading);
 
+#if OUTPUT_FPS
 					sprintf(fps_msg, "Average FPS: %.5f", fps_calculate(&fps));
 
 					xil_printf("%s\n\r", fps_msg);
+#endif
 
 					// Start the timer back up!
 					XTime_GetTime(&tStart);
@@ -220,11 +226,15 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 
 }
 
+u32 button_states, switch_states = 0;
 
 
 // Main function. Initializes the devices and configures VDMA
 int main()
 {
+    init_platform();
+	init_interface();
+
 	// Init FPS
 	fps_init(&fps);
 
@@ -236,9 +246,17 @@ int main()
 	//camera_loop(&camera_config);
 	while (1)
 	{
+		// Get IO
+		button_states = get_button_states();
+		switch_states = get_switch_states();
+
+		xil_printf("Button States: %X | Switch States: %X\n\r", button_states, switch_states);
+
 		// TODO: Add switch from software to hardware mode!
 		for (int i = 0; i < 100; i++)
 		{
+
+
 			// XVprocSs_SetPictureBrightness(&proc_ss_RGB_YCrCb_444, (s32)i);
 			// XVprocSs_SetPictureContrast(&proc_ss_RGB_YCrCb_444, (s32)i);
 			//set_contrast(&camera_config, i);
