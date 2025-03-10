@@ -246,16 +246,16 @@ int main()
 	//camera_loop(&camera_config);
 	while (1)
 	{
-		// Get IO
-		button_states = get_button_states();
-		switch_states = get_switch_states();
-
-		xil_printf("Button States: %X | Switch States: %X\n\r", button_states, switch_states);
 
 		// TODO: Add switch from software to hardware mode!
 		for (int i = 0; i < 100; i++)
 		{
 
+			// Get IO
+			button_states = get_button_states();
+			switch_states = get_switch_states();
+
+			xil_printf("Button States: %X | Switch States: %X\n\r", button_states, switch_states);
 
 			// XVprocSs_SetPictureBrightness(&proc_ss_RGB_YCrCb_444, (s32)i);
 			// XVprocSs_SetPictureContrast(&proc_ss_RGB_YCrCb_444, (s32)i);

@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Sat Mar  8 12:47:20 2025
---Host        : CO2041-16 running 64-bit major release  (build 9200)
+--Date        : Mon Mar 10 18:35:38 2025
+--Host        : CO2041-04 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
 --Purpose     : IP block netlist
@@ -52,12 +52,14 @@ entity design_1_wrapper is
     IO_VITA_SPI_spi_mosi : out STD_LOGIC;
     IO_VITA_SPI_spi_sclk : out STD_LOGIC;
     IO_VITA_SPI_spi_ssel_n : out STD_LOGIC;
+    btns_5bits_tri_i : in STD_LOGIC_VECTOR ( 4 downto 0 );
     fmc_imageon_iic_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     fmc_imageon_iic_scl_io : inout STD_LOGIC;
     fmc_imageon_iic_sda_io : inout STD_LOGIC;
     fmc_imageon_vclk : in STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_io : inout STD_LOGIC;
-    fmc_ipmi_id_eeprom_sda_io : inout STD_LOGIC
+    fmc_ipmi_id_eeprom_sda_io : inout STD_LOGIC;
+    sws_8bits_tri_i : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
 end design_1_wrapper;
 
@@ -82,25 +84,6 @@ architecture STRUCTURE of design_1_wrapper is
     DDR_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    fmc_imageon_iic_scl_i : in STD_LOGIC;
-    fmc_imageon_iic_scl_o : out STD_LOGIC;
-    fmc_imageon_iic_scl_t : out STD_LOGIC;
-    fmc_imageon_iic_sda_i : in STD_LOGIC;
-    fmc_imageon_iic_sda_o : out STD_LOGIC;
-    fmc_imageon_iic_sda_t : out STD_LOGIC;
-    IO_VITA_SPI_spi_sclk : out STD_LOGIC;
-    IO_VITA_SPI_spi_ssel_n : out STD_LOGIC;
-    IO_VITA_SPI_spi_mosi : out STD_LOGIC;
-    IO_VITA_SPI_spi_miso : in STD_LOGIC;
-    FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
-    FIXED_IO_ddr_vrn : inout STD_LOGIC;
-    FIXED_IO_ddr_vrp : inout STD_LOGIC;
-    FIXED_IO_ps_srstb : inout STD_LOGIC;
-    FIXED_IO_ps_clk : inout STD_LOGIC;
-    FIXED_IO_ps_porb : inout STD_LOGIC;
-    IO_HDMIO_clk : out STD_LOGIC;
-    IO_HDMIO_data : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    IO_HDMIO_spdif : out STD_LOGIC;
     IO_VITA_CAM_data_p : in STD_LOGIC_VECTOR ( 3 downto 0 );
     IO_VITA_CAM_sync_p : in STD_LOGIC;
     IO_VITA_CAM_sync_n : in STD_LOGIC;
@@ -116,7 +99,28 @@ architecture STRUCTURE of design_1_wrapper is
     fmc_ipmi_id_eeprom_scl_t : out STD_LOGIC;
     fmc_ipmi_id_eeprom_sda_i : in STD_LOGIC;
     fmc_ipmi_id_eeprom_sda_o : out STD_LOGIC;
-    fmc_ipmi_id_eeprom_sda_t : out STD_LOGIC
+    fmc_ipmi_id_eeprom_sda_t : out STD_LOGIC;
+    IO_VITA_SPI_spi_sclk : out STD_LOGIC;
+    IO_VITA_SPI_spi_ssel_n : out STD_LOGIC;
+    IO_VITA_SPI_spi_mosi : out STD_LOGIC;
+    IO_VITA_SPI_spi_miso : in STD_LOGIC;
+    IO_HDMIO_clk : out STD_LOGIC;
+    IO_HDMIO_data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IO_HDMIO_spdif : out STD_LOGIC;
+    FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
+    FIXED_IO_ddr_vrn : inout STD_LOGIC;
+    FIXED_IO_ddr_vrp : inout STD_LOGIC;
+    FIXED_IO_ps_srstb : inout STD_LOGIC;
+    FIXED_IO_ps_clk : inout STD_LOGIC;
+    FIXED_IO_ps_porb : inout STD_LOGIC;
+    fmc_imageon_iic_scl_i : in STD_LOGIC;
+    fmc_imageon_iic_scl_o : out STD_LOGIC;
+    fmc_imageon_iic_scl_t : out STD_LOGIC;
+    fmc_imageon_iic_sda_i : in STD_LOGIC;
+    fmc_imageon_iic_sda_o : out STD_LOGIC;
+    fmc_imageon_iic_sda_t : out STD_LOGIC;
+    btns_5bits_tri_i : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    sws_8bits_tri_i : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component design_1;
   component IOBUF is
@@ -181,6 +185,7 @@ design_1_i: component design_1
       IO_VITA_SPI_spi_mosi => IO_VITA_SPI_spi_mosi,
       IO_VITA_SPI_spi_sclk => IO_VITA_SPI_spi_sclk,
       IO_VITA_SPI_spi_ssel_n => IO_VITA_SPI_spi_ssel_n,
+      btns_5bits_tri_i(4 downto 0) => btns_5bits_tri_i(4 downto 0),
       fmc_imageon_iic_rst_n(0) => fmc_imageon_iic_rst_n(0),
       fmc_imageon_iic_scl_i => fmc_imageon_iic_scl_i,
       fmc_imageon_iic_scl_o => fmc_imageon_iic_scl_o,
@@ -194,7 +199,8 @@ design_1_i: component design_1
       fmc_ipmi_id_eeprom_scl_t => fmc_ipmi_id_eeprom_scl_t,
       fmc_ipmi_id_eeprom_sda_i => fmc_ipmi_id_eeprom_sda_i,
       fmc_ipmi_id_eeprom_sda_o => fmc_ipmi_id_eeprom_sda_o,
-      fmc_ipmi_id_eeprom_sda_t => fmc_ipmi_id_eeprom_sda_t
+      fmc_ipmi_id_eeprom_sda_t => fmc_ipmi_id_eeprom_sda_t,
+      sws_8bits_tri_i(7 downto 0) => sws_8bits_tri_i(7 downto 0)
     );
 fmc_imageon_iic_scl_iobuf: component IOBUF
      port map (
