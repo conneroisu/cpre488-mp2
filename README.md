@@ -41,14 +41,11 @@ The following is a list of the intended operations of the given start mp-2 desig
 
 ## Software Processing
 
-The software processing loop implements a simple vertical flip operation by reversing the pixel order from the input frame to the output frame.
-This demonstrates how software can access and modify frame buffer data before display.
-
-The system is designed with flexibility to switch between hardware acceleration (for real-time processing) and software processing (for custom operations), with appropriate handoffs between the two modes.
+The software processing loop implements a simple vertical flip operation by reversing the pixel order from the input frame to the output frame. This demonstrates how software can access and modify frame buffer data before display.
 
 ## What are the changes we made to `camera_app.c`?
 
-Describe in your writeup what changes you made, and save a copy of any files modified (presumably only `camera_app.c` and `fmc_imageon_utils.c`) during this process into a folder named part3.
+The following are the changes made to `camera_app.c` in this project during the creation of the software processing phase.
 
 ### Software Processing Version:
 
@@ -219,6 +216,7 @@ Where:
 This format maintains full luminance resolution (the "4" in 4:2:2) while halving the horizontal resolution of the color information (the "2:2"). This works well because human vision is more sensitive to changes in brightness than in color.
 
 For the `camera_loop()` function's conversion pass, this format would need to be maintained when processing the data, ensuring that each 32-bit word continues to represent two pixels in the YCbCr 4:2:2 format, with the appropriate luminance and chrominance values preserved during the vertical flip operation.
+
 ## Performance
 
 ### Introduction (how we measured performance)
