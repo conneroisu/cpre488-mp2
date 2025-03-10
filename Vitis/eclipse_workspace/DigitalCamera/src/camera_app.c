@@ -41,6 +41,7 @@ static int snapshot_saved = 0;
 static u8 back_buffer_frame = 2;
 static u8 front_buffer_frame = 3;
 
+// Frame that indicates that the write completed.
 static u8 target_frame = 2;
 
 static XTime tStart, tEnd = 0;
@@ -180,16 +181,30 @@ void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
 			// so we must have just swapped.
 			if(sw_mode & (get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ) == target_frame) && snapshot_saved)
 			{
-				XTime_GetTime(&tEnd);
-				snapshot_saved = 0;
+				// We start and stop the timer on this ISR.
+				// If this is the first frame, the timer won't be started, so start it up without ending any timer.
+				if(!tStart)
+				{
+					XTime_GetTime(&tStart);
+				}
+				else
+				{
+					XTime_GetTime(&tEnd);
+					snapshot_saved = 0;
 
-				frame_time = (tEnd - tStart) / (float)COUNTS_PER_SECOND;
+					frame_time = (tEnd - tStart) / (float)COUNTS_PER_SECOND;
 
-				fps_time_store(&fps, frame_time);
+					fps_time_store(&fps, frame_time);
 
-				sprintf(fps_msg, "Average FPS: %.5f", fps_calculate(&fps));
+					sprintf(fps_msg, "Average FPS: %.5f", fps_calculate(&fps));
 
-				xil_printf("%s\n\r", fps_msg);
+					xil_printf("%s\n\r", fps_msg);
+
+					// Start the timer back up!
+					XTime_GetTime(&tStart);
+				}
+
+
 			}
 		}
 
@@ -209,7 +224,6 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 		{
 			if(sw_mode && get_current_frame_pointer((XAxiVdma*)CallBackRef, XAXIVDMA_WRITE) == 0 && !snapshot_saved)
 			{
-				XTime_GetTime(&tStart);
 				snapshot_saved = 1;
 				target_frame = back_buffer_frame;
 			}
@@ -267,7 +281,6 @@ void camera_config_init(camera_config_t *config) {
 // Main (SW) processing loop. Recommended to have an explicit exit condition
 void camera_loop(camera_config_t *config) {
 
-	Xuint32 parkptr;
 	Xuint32 vdma_S2MM_DMACR, vdma_MM2S_DMACR;
 
 
@@ -324,6 +337,12 @@ void camera_loop(camera_config_t *config) {
 
 		// Have the read side park on the new front buffer
 		set_park_frame(&(config->vdma_hdmi), front_buffer_frame, XAXIVDMA_READ);
+
+		// Wait for park frame to update.
+		while(get_current_frame_pointer(&(config->vdma_hdmi), XAXIVDMA_READ != front_buffer_frame))
+		{
+
+		}
 
 		// Update pMM2S_Mem to point to back buffer.
 		pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET + (back_buffer_frame * 0x4));
