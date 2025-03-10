@@ -2,8 +2,103 @@
 #include "xil_types.h"
 #include "xvprocss.h"
 #include "xscugic.h"
+#include "xtime_l.h"
+#include <stdio.h>
+
+#define MAX_FPS_ENTRIES 10
+
+typedef struct fps
+{
+	int next_to_write;
+	int size;
+	float entries[MAX_FPS_ENTRIES];
+} fps_t;
+
+// Timing globals
+static fps_t fps;
+static int sw_mode = 0;
+static int snapshot_saved = 0;
+
+static u8 back_buffer_frame = 2;
+static u8 front_buffer_frame = 3;
+
+// Frame that indicates that the write completed.
+static u8 target_frame = 2;
+
+static XTime tStart, tEnd = 0;
+
+// In seconds
+static float frame_time = 0;
+
+// To store frame time message
+static char* fps_msg = 0;
 
 camera_config_t camera_config;
+
+void fps_init(fps_t* f)
+{
+	f->next_to_write = 0;
+	f->size = 0;
+
+	for(int i = 0; i < MAX_FPS_ENTRIES; ++i)
+	{
+		f->entries[i] = 0;
+	}
+}
+
+void fps_time_store(fps_t* f, float time)
+{
+	f->entries[f->next_to_write] = time;
+
+	if(f->next_to_write == (MAX_FPS_ENTRIES - 1))
+	{
+		f->next_to_write = 0;
+	}
+	else
+	{
+		f->next_to_write++;
+	}
+
+	if(f->size != MAX_FPS_ENTRIES)
+	{
+		f->size++;
+	}
+}
+
+float fps_calculate(fps_t* f)
+{
+	float sum = 0;
+
+	for(int i = 0; i < f->size; ++i)
+	{
+		sum += f->entries[i];
+	}
+
+	return f->size / sum;
+}
+
+// Swaps the memory addresses associated with the frame pointers
+void swap_frame_pointers(XAxiVdma* vdma, u16 dir, u8 a, u8 b)
+{
+	u32 offset = XAXIVDMA_TX_OFFSET ? dir == XAXIVDMA_WRITE : XAXIVDMA_RX_OFFSET;
+
+#define START_ADDR(index) *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_START_ADDR_OFFSET + (index * 0x4)))
+#define VSIZE *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_VSIZE_OFFSET))
+
+	a &= 0x1F;
+	b &= 0x1F;
+
+	u32 start_a = START_ADDR(a);
+	u32 start_b = START_ADDR(b);
+
+	START_ADDR(a) = start_b;
+	START_ADDR(b) = start_a;
+
+	VSIZE = VSIZE;
+
+#undef START_ADDR
+#undef VSIZE
+}
 
 u8 get_current_frame_pointer(XAxiVdma* vdma, u16 dir)
 {
@@ -28,6 +123,31 @@ u8 get_current_frame_pointer(XAxiVdma* vdma, u16 dir)
 
 	return result;
 }
+
+void set_park_frame(XAxiVdma* vdma, u8 frame, u16 dir)
+{
+#define	PARK *((volatile u32*) (vdma->BaseAddr + XAXIVDMA_PARKPTR_OFFSET))
+
+	u32 mask = 0;
+	u32 shift_amt = 0;
+
+	if(dir == XAXIVDMA_READ)
+	{
+		mask = ~0x1F;
+	}
+	else if(dir == XAXIVDMA_WRITE)
+	{
+		mask = ~0x1F0;
+		shift_amt = 8;
+	}
+
+	PARK = (PARK & mask) | ((u32)(frame & 0x1F) << shift_amt);
+
+
+#undef PARK
+}
+
+camera_config_t camera_config;
 
 void error_isr(void* CallBackRef, u32 InterruptTypes)
 {
