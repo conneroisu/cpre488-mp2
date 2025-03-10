@@ -6,6 +6,7 @@
 #include <stdio.h>
 
 #define MAX_FPS_ENTRIES 10
+#define NUM_FRAMES XPAR_AXIVDMA_0_NUM_FSTORES
 
 typedef struct fps
 {
@@ -13,6 +14,13 @@ typedef struct fps
 	int size;
 	float entries[MAX_FPS_ENTRIES];
 } fps_t;
+
+// We have a total of 5 frames, keep start and end for each one.
+typedef struct frame_times
+{
+	XTime tStart[NUM_FRAMES];
+	XTime tEnd[NUM_FRAMES];
+} frame_times_t;
 
 // Timing globals
 static fps_t fps;
@@ -25,10 +33,10 @@ static u8 front_buffer_frame = 3;
 // Frame that indicates that the write completed.
 static u8 target_frame = 2;
 
-static XTime tStart, tEnd = 0;
+static frame_times_t frame_times;
 
 // In seconds
-static float frame_time = 0;
+static float fps_reading = 0;
 
 // To store frame time message
 static char* fps_msg = 0;
@@ -152,7 +160,6 @@ camera_config_t camera_config;
 void error_isr(void* CallBackRef, u32 InterruptTypes)
 {
 	xil_printf("VDMA error %X occurred!!!\n\r", InterruptTypes);
-	usleep(1);
 }
 
 void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
@@ -161,7 +168,28 @@ void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
 	{
 		case XAXIVDMA_IXR_FRMCNT_MASK:
 		{
-			xil_printf("Got frame write interrupt! Frame %d was written to!\n\r", get_current_frame_pointer(CallBackRef, XAXIVDMA_READ));
+			u8 frame = get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ);
+
+			// If first frame, start only
+			if(!frame_times.tStart[frame])
+			{
+				XTime_GetTime(&frame_times.tStart[frame]);
+			}
+			else
+			{
+				XTime_GetTime(&frame_times.tEnd[frame]);
+
+				fps_reading = (frame_times.tEnd[frame] - frame_times.tStart[frame]) / (float)COUNTS_PER_SECOND;
+
+				fps_time_store(&fps, fps_reading);
+
+				sprintf(fps_msg, "Average FPS: %.5f", fps_calculate(&fps));
+
+				xil_printf("%s\n\r", fps_msg);
+
+				// Start the timer back up!
+				XTime_GetTime(&frame_times.tStart[frame]);
+			}
 		}
 
 		default:
@@ -172,13 +200,14 @@ void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
 
 }
 
+// Does nothing as of now. All timer operations are done when a frame is drawn to the screen.
 void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 {
 	switch(InterruptTypes)
 	{
 		case XAXIVDMA_IXR_FRMCNT_MASK:
 		{
-			xil_printf("Got frame read interrupt! Frame %d was read!\n\r", get_current_frame_pointer(CallBackRef, XAXIVDMA_WRITE));
+			break;
 		}
 
 
@@ -195,6 +224,17 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 // Main function. Initializes the devices and configures VDMA
 int main()
 {
+	// Init frame_times
+	for(u8 i = 0; i < NUM_FRAMES; ++i)
+	{
+		frame_times.tEnd[i] = 0;
+		frame_times.tStart[i] = 0;
+	}
+
+	// Init FPS
+	fps_init(&fps);
+
+	// Camera Init
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);
 	camera_loop(&camera_config);
