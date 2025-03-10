@@ -437,6 +437,18 @@
 
 /******************************************************************/
 
+/* Definitions for Fabric interrupts connected to ps7_scugic_0 */
+#define XPAR_FABRIC_AXI_VDMA_0_MM2S_INTROUT_INTR 61U
+#define XPAR_FABRIC_AXI_VDMA_0_S2MM_INTROUT_INTR 62U
+
+/******************************************************************/
+
+/* Canonical definitions for Fabric interrupts connected to ps7_scugic_0 */
+#define XPAR_FABRIC_AXIVDMA_0_MM2S_INTROUT_VEC_ID XPAR_FABRIC_AXI_VDMA_0_MM2S_INTROUT_INTR
+#define XPAR_FABRIC_AXIVDMA_0_S2MM_INTROUT_VEC_ID XPAR_FABRIC_AXI_VDMA_0_S2MM_INTROUT_INTR
+
+/******************************************************************/
+
 /* Definitions for driver SCUGIC */
 #define XPAR_XSCUGIC_NUM_INSTANCES 1U
 
