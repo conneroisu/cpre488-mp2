@@ -227,22 +227,26 @@ We measured the performance of the software and hardware pipelines in this desig
 
 #### Performance
 
+<!-- TODO: Add performance measurements for software pipeline -->
+
 #### Testing Methodology
 
 
+<!-- TODO: Add testing methodology for software pipeline -->
 
 ### Hardware Pipeline 
 
 #### Performance
 
+<!-- TODO: Add performance measurements for hardware pipeline -->
+
 #### Testing Methodology
+
+<!-- TODO: Add testing methodology for hardware pipeline -->
 
 ## Bonus Credit
 
 The following sections describe the bonus credit tasks that were completed for this project and how they were implemented/acomplished.
-
-### A video mode, which records and can replay up to 5 seconds of 1080p video. 
-### A digital zoom mode, which uses the up and down buttons to zoom in and out of the current scene.
 
 ### Various analog and digital adjustments for the gain, exposure, and other common user-configurable digital camera settings. 
 
@@ -320,3 +324,12 @@ void set_saturation(
 ```
 
 Using the buttons on the board (code resused from mp-1), the user can adjust the gain, contrast, brightness, and saturation. 
+
+### A video mode, which records and can replay up to 5 seconds of 1080p video. 
+
+<!-- TODO: Add description of video mode and implementation -->
+
+### A digital zoom mode, which uses the up and down buttons to zoom in and out of the current scene.
+
+<!-- TODO: Add description of digital zoom mode and implementation -->
+
