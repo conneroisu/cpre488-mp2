@@ -1,7 +1,6 @@
 ---
 id: slides
 ---
-
 # CPRE 488 MP2
 
 Conner Ohnesorge - Nolan Eastburn
@@ -17,8 +16,9 @@ Initial Setup/Design
 
 Image Pipeline
 
+![image-pipeline-diagram.png](assets/image-pipeline-diagram.png)
 
-![[diagram.png]]
+
 
 
 ---
