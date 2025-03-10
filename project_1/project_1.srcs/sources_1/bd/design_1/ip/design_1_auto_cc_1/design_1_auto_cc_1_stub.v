@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Mon Mar 10 00:05:24 2025
+// Date        : Mon Mar 10 00:05:23 2025
 // Host        : CO2041-04 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_auto_cc_1/design_1_auto_cc_1_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top design_1_auto_cc_1 -prefix
+//               design_1_auto_cc_1_ design_1_auto_cc_1_stub.v
 // Design      : design_1_auto_cc_1
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1

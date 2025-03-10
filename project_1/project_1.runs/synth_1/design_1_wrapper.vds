@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Mon Mar 10 00:07:33 2025
-# Process ID: 19632
+# Start of session at: Mon Mar 10 04:46:57 2025
+# Process ID: 17016
 # Current directory: C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1
 # Command line: vivado.exe -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
 # Log file: C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/design_1_wrapper.vds
@@ -20,7 +20,7 @@ WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:av
 WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_cam:1.0'. The one found in location 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_cam.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP/interfaces/onsemi_vita_cam.xml'
 WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_spi:1.0'. The one found in location 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_spi.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP/interfaces/onsemi_vita_spi.xml'
 WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:user:SF_SM_Master_Bus:1.0'. The one found in location 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/SF_SM_Master_Bus.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP/interfaces/SF_SM_Master_Bus.xml'
-add_files: Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1013.516 ; gain = 0.000
+add_files: Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 1013.438 ; gain = 0.000
 Command: synth_design -top design_1_wrapper -part xc7z020clg484-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
@@ -28,31 +28,31 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 13156
+INFO: [Synth 8-7075] Helper process launched with PID 18336
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:00 ; elapsed = 00:00:02 . Memory (MB): peak = 1013.516 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:00 ; elapsed = 00:00:02 . Memory (MB): peak = 1013.438 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'design_1_wrapper' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:66]
 INFO: [Synth 8-3491] module 'design_1' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:3630' bound to instance 'design_1_i' of component 'design_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:147]
 INFO: [Synth 8-638] synthesizing module 'design_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:3694]
-INFO: [Synth 8-3491] module 'design_1_avnet_hdmi_out_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_avnet_hdmi_out_0_0_stub.vhdl:5' bound to instance 'avnet_hdmi_out_0' of component 'design_1_avnet_hdmi_out_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5028]
-INFO: [Synth 8-638] synthesizing module 'design_1_avnet_hdmi_out_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_avnet_hdmi_out_0_0_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'design_1_axi_gpio_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axi_gpio_0_0_stub.vhdl:5' bound to instance 'axi_gpio_0' of component 'design_1_axi_gpio_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5043]
-INFO: [Synth 8-638] synthesizing module 'design_1_axi_gpio_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axi_gpio_0_0_stub.vhdl:31]
-INFO: [Synth 8-3491] module 'design_1_axi_gpio_1_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axi_gpio_1_0_stub.vhdl:5' bound to instance 'axi_gpio_1' of component 'design_1_axi_gpio_1_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5066]
-INFO: [Synth 8-638] synthesizing module 'design_1_axi_gpio_1_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axi_gpio_1_0_stub.vhdl:31]
-INFO: [Synth 8-3491] module 'design_1_axi_smc_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axi_smc_0_stub.vhdl:5' bound to instance 'axi_smc' of component 'design_1_axi_smc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5089]
-INFO: [Synth 8-638] synthesizing module 'design_1_axi_smc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axi_smc_0_stub.vhdl:79]
-INFO: [Synth 8-3491] module 'design_1_axi_vdma_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axi_vdma_0_0_stub.vhdl:5' bound to instance 'axi_vdma_0' of component 'design_1_axi_vdma_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5160]
-INFO: [Synth 8-638] synthesizing module 'design_1_axi_vdma_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axi_vdma_0_0_stub.vhdl:78]
-INFO: [Synth 8-3491] module 'design_1_axis_subset_converter_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axis_subset_converter_0_0_stub.vhdl:5' bound to instance 'axis_subset_converter_0' of component 'design_1_axis_subset_converter_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5230]
-INFO: [Synth 8-638] synthesizing module 'design_1_axis_subset_converter_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_axis_subset_converter_0_0_stub.vhdl:31]
-INFO: [Synth 8-3491] module 'design_1_clk_wiz_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_clk_wiz_0_0_stub.vhdl:5' bound to instance 'clk_wiz_0' of component 'design_1_clk_wiz_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5253]
-INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_clk_wiz_0_0_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'design_1_fmc_imageon_iic_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_fmc_imageon_iic_0_0_stub.vhdl:5' bound to instance 'fmc_imageon_iic_0' of component 'design_1_fmc_imageon_iic_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5260]
-INFO: [Synth 8-638] synthesizing module 'design_1_fmc_imageon_iic_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_fmc_imageon_iic_0_0_stub.vhdl:38]
-INFO: [Synth 8-3491] module 'design_1_fmc_ipmi_id_eeprom_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_fmc_ipmi_id_eeprom_0_0_stub.vhdl:5' bound to instance 'fmc_ipmi_id_eeprom_0' of component 'design_1_fmc_ipmi_id_eeprom_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5290]
-INFO: [Synth 8-638] synthesizing module 'design_1_fmc_ipmi_id_eeprom_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_fmc_ipmi_id_eeprom_0_0_stub.vhdl:38]
+INFO: [Synth 8-3491] module 'design_1_avnet_hdmi_out_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_avnet_hdmi_out_0_0_stub.vhdl:5' bound to instance 'avnet_hdmi_out_0' of component 'design_1_avnet_hdmi_out_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5028]
+INFO: [Synth 8-638] synthesizing module 'design_1_avnet_hdmi_out_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_avnet_hdmi_out_0_0_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'design_1_axi_gpio_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axi_gpio_0_0_stub.vhdl:5' bound to instance 'axi_gpio_0' of component 'design_1_axi_gpio_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5043]
+INFO: [Synth 8-638] synthesizing module 'design_1_axi_gpio_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axi_gpio_0_0_stub.vhdl:31]
+INFO: [Synth 8-3491] module 'design_1_axi_gpio_1_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axi_gpio_1_0_stub.vhdl:5' bound to instance 'axi_gpio_1' of component 'design_1_axi_gpio_1_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5066]
+INFO: [Synth 8-638] synthesizing module 'design_1_axi_gpio_1_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axi_gpio_1_0_stub.vhdl:31]
+INFO: [Synth 8-3491] module 'design_1_axi_smc_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axi_smc_0_stub.vhdl:5' bound to instance 'axi_smc' of component 'design_1_axi_smc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5089]
+INFO: [Synth 8-638] synthesizing module 'design_1_axi_smc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axi_smc_0_stub.vhdl:79]
+INFO: [Synth 8-3491] module 'design_1_axi_vdma_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axi_vdma_0_0_stub.vhdl:5' bound to instance 'axi_vdma_0' of component 'design_1_axi_vdma_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5160]
+INFO: [Synth 8-638] synthesizing module 'design_1_axi_vdma_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axi_vdma_0_0_stub.vhdl:78]
+INFO: [Synth 8-3491] module 'design_1_axis_subset_converter_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axis_subset_converter_0_0_stub.vhdl:5' bound to instance 'axis_subset_converter_0' of component 'design_1_axis_subset_converter_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5230]
+INFO: [Synth 8-638] synthesizing module 'design_1_axis_subset_converter_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_axis_subset_converter_0_0_stub.vhdl:31]
+INFO: [Synth 8-3491] module 'design_1_clk_wiz_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_clk_wiz_0_0_stub.vhdl:5' bound to instance 'clk_wiz_0' of component 'design_1_clk_wiz_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5253]
+INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_clk_wiz_0_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'design_1_fmc_imageon_iic_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_fmc_imageon_iic_0_0_stub.vhdl:5' bound to instance 'fmc_imageon_iic_0' of component 'design_1_fmc_imageon_iic_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5260]
+INFO: [Synth 8-638] synthesizing module 'design_1_fmc_imageon_iic_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_fmc_imageon_iic_0_0_stub.vhdl:38]
+INFO: [Synth 8-3491] module 'design_1_fmc_ipmi_id_eeprom_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_fmc_ipmi_id_eeprom_0_0_stub.vhdl:5' bound to instance 'fmc_ipmi_id_eeprom_0' of component 'design_1_fmc_ipmi_id_eeprom_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5290]
+INFO: [Synth 8-638] synthesizing module 'design_1_fmc_ipmi_id_eeprom_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_fmc_ipmi_id_eeprom_0_0_stub.vhdl:38]
 INFO: [Synth 8-3491] module 'design_1_xlconstant_0_0' declared at 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_xlconstant_0_0/synth/design_1_xlconstant_0_0.v:57' bound to instance 'high' of component 'design_1_xlconstant_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5320]
 INFO: [Synth 8-6157] synthesizing module 'design_1_xlconstant_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_xlconstant_0_0/synth/design_1_xlconstant_0_0.v:57]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
@@ -67,18 +67,18 @@ INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant__paramete
 	Parameter CONST_WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' (2#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'design_1_high_0' (3#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_high_0/synth/design_1_high_0.v:57]
-INFO: [Synth 8-3491] module 'design_1_onsemi_vita_cam_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_onsemi_vita_cam_0_0_stub.vhdl:5' bound to instance 'onsemi_vita_cam_0' of component 'design_1_onsemi_vita_cam_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5328]
-INFO: [Synth 8-638] synthesizing module 'design_1_onsemi_vita_cam_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_onsemi_vita_cam_0_0_stub.vhdl:54]
-INFO: [Synth 8-3491] module 'design_1_onsemi_vita_spi_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_onsemi_vita_spi_0_0_stub.vhdl:5' bound to instance 'onsemi_vita_spi_0' of component 'design_1_onsemi_vita_spi_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5374]
-INFO: [Synth 8-638] synthesizing module 'design_1_onsemi_vita_spi_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_onsemi_vita_spi_0_0_stub.vhdl:37]
-INFO: [Synth 8-3491] module 'design_1_processing_system7_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'design_1_processing_system7_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5403]
-INFO: [Synth 8-638] synthesizing module 'design_1_processing_system7_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_processing_system7_0_0_stub.vhdl:127]
+INFO: [Synth 8-3491] module 'design_1_onsemi_vita_cam_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_onsemi_vita_cam_0_0_stub.vhdl:5' bound to instance 'onsemi_vita_cam_0' of component 'design_1_onsemi_vita_cam_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5328]
+INFO: [Synth 8-638] synthesizing module 'design_1_onsemi_vita_cam_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_onsemi_vita_cam_0_0_stub.vhdl:54]
+INFO: [Synth 8-3491] module 'design_1_onsemi_vita_spi_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_onsemi_vita_spi_0_0_stub.vhdl:5' bound to instance 'onsemi_vita_spi_0' of component 'design_1_onsemi_vita_spi_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5374]
+INFO: [Synth 8-638] synthesizing module 'design_1_onsemi_vita_spi_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_onsemi_vita_spi_0_0_stub.vhdl:37]
+INFO: [Synth 8-3491] module 'design_1_processing_system7_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'design_1_processing_system7_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5403]
+INFO: [Synth 8-638] synthesizing module 'design_1_processing_system7_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_processing_system7_0_0_stub.vhdl:127]
 INFO: [Synth 8-638] synthesizing module 'design_1_ps7_0_axi_periph_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:2093]
 INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_15SPJYW' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:57]
 INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_15SPJYW' (4#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:57]
 INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_XU9C55' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:160]
-INFO: [Synth 8-3491] module 'design_1_auto_cc_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_auto_cc_0_stub.vhdl:5' bound to instance 'auto_cc' of component 'design_1_auto_cc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:290]
-INFO: [Synth 8-638] synthesizing module 'design_1_auto_cc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_auto_cc_0_stub.vhdl:53]
+INFO: [Synth 8-3491] module 'design_1_auto_cc_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_auto_cc_0_stub.vhdl:5' bound to instance 'auto_cc' of component 'design_1_auto_cc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:290]
+INFO: [Synth 8-638] synthesizing module 'design_1_auto_cc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_auto_cc_0_stub.vhdl:53]
 INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_XU9C55' (5#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:160]
 INFO: [Synth 8-638] synthesizing module 'm02_couplers_imp_14WQB4R' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:383]
 INFO: [Synth 8-256] done synthesizing module 'm02_couplers_imp_14WQB4R' (6#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:383]
@@ -91,40 +91,40 @@ INFO: [Synth 8-256] done synthesizing module 'm05_couplers_imp_VQEDA7' (9#1) [C:
 INFO: [Synth 8-638] synthesizing module 'm06_couplers_imp_16EQN6L' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:796]
 INFO: [Synth 8-256] done synthesizing module 'm06_couplers_imp_16EQN6L' (10#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:796]
 INFO: [Synth 8-638] synthesizing module 'm07_couplers_imp_X61OAK' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:907]
-INFO: [Synth 8-3491] module 'design_1_auto_cc_1' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_auto_cc_1_stub.vhdl:5' bound to instance 'auto_cc' of component 'design_1_auto_cc_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1039]
-INFO: [Synth 8-638] synthesizing module 'design_1_auto_cc_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_auto_cc_1_stub.vhdl:53]
+INFO: [Synth 8-3491] module 'design_1_auto_cc_1' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_auto_cc_1_stub.vhdl:5' bound to instance 'auto_cc' of component 'design_1_auto_cc_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1039]
+INFO: [Synth 8-638] synthesizing module 'design_1_auto_cc_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_auto_cc_1_stub.vhdl:53]
 INFO: [Synth 8-256] done synthesizing module 'm07_couplers_imp_X61OAK' (11#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:907]
 INFO: [Synth 8-638] synthesizing module 'm08_couplers_imp_1024TAS' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1134]
-INFO: [Synth 8-3491] module 'design_1_auto_cc_2' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_auto_cc_2_stub.vhdl:5' bound to instance 'auto_cc' of component 'design_1_auto_cc_2' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1264]
-INFO: [Synth 8-638] synthesizing module 'design_1_auto_cc_2' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_auto_cc_2_stub.vhdl:53]
+INFO: [Synth 8-3491] module 'design_1_auto_cc_2' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_auto_cc_2_stub.vhdl:5' bound to instance 'auto_cc' of component 'design_1_auto_cc_2' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1264]
+INFO: [Synth 8-638] synthesizing module 'design_1_auto_cc_2' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_auto_cc_2_stub.vhdl:53]
 INFO: [Synth 8-256] done synthesizing module 'm08_couplers_imp_1024TAS' (12#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1134]
 INFO: [Synth 8-638] synthesizing module 'm09_couplers_imp_UP9YUT' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1357]
 INFO: [Synth 8-256] done synthesizing module 'm09_couplers_imp_UP9YUT' (13#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1357]
 INFO: [Synth 8-638] synthesizing module 'm10_couplers_imp_I40Q9S' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1458]
 INFO: [Synth 8-256] done synthesizing module 'm10_couplers_imp_I40Q9S' (14#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1458]
 INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_UYSKKA' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1582]
-INFO: [Synth 8-3491] module 'design_1_auto_pc_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'design_1_auto_pc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1765]
-INFO: [Synth 8-638] synthesizing module 'design_1_auto_pc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_auto_pc_0_stub.vhdl:70]
+INFO: [Synth 8-3491] module 'design_1_auto_pc_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'design_1_auto_pc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1765]
+INFO: [Synth 8-638] synthesizing module 'design_1_auto_pc_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_auto_pc_0_stub.vhdl:70]
 INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_UYSKKA' (15#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:1582]
-INFO: [Synth 8-3491] module 'design_1_xbar_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'design_1_xbar_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:3398]
-INFO: [Synth 8-638] synthesizing module 'design_1_xbar_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_xbar_0_stub.vhdl:51]
+INFO: [Synth 8-3491] module 'design_1_xbar_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'design_1_xbar_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:3398]
+INFO: [Synth 8-638] synthesizing module 'design_1_xbar_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_xbar_0_stub.vhdl:51]
 INFO: [Synth 8-256] done synthesizing module 'design_1_ps7_0_axi_periph_0' (16#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:2093]
-INFO: [Synth 8-3491] module 'design_1_rst_clk_wiz_0_148M_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_rst_clk_wiz_0_148M_0_stub.vhdl:5' bound to instance 'rst_clk_wiz_0_148M' of component 'design_1_rst_clk_wiz_0_148M_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5781]
-INFO: [Synth 8-638] synthesizing module 'design_1_rst_clk_wiz_0_148M_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_rst_clk_wiz_0_148M_0_stub.vhdl:21]
-INFO: [Synth 8-3491] module 'design_1_rst_ps7_0_100M_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_rst_ps7_0_100M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_100M' of component 'design_1_rst_ps7_0_100M_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5794]
-INFO: [Synth 8-638] synthesizing module 'design_1_rst_ps7_0_100M_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_rst_ps7_0_100M_0_stub.vhdl:21]
-INFO: [Synth 8-3491] module 'design_1_v_axi4s_vid_out_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_axi4s_vid_out_0_0_stub.vhdl:5' bound to instance 'v_axi4s_vid_out_0' of component 'design_1_v_axi4s_vid_out_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5807]
-INFO: [Synth 8-638] synthesizing module 'design_1_v_axi4s_vid_out_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_axi4s_vid_out_0_0_stub.vhdl:42]
-INFO: [Synth 8-3491] module 'design_1_v_demosaic_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_demosaic_0_0_stub.vhdl:5' bound to instance 'v_demosaic_0' of component 'design_1_v_demosaic_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5841]
-INFO: [Synth 8-638] synthesizing module 'design_1_v_demosaic_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_demosaic_0_0_stub.vhdl:49]
-INFO: [Synth 8-3491] module 'design_1_v_proc_ss_0_3' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_proc_ss_0_3_stub.vhdl:5' bound to instance 'v_proc_ss_0' of component 'design_1_v_proc_ss_0_3' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5882]
-INFO: [Synth 8-638] synthesizing module 'design_1_v_proc_ss_0_3' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_proc_ss_0_3_stub.vhdl:52]
-INFO: [Synth 8-3491] module 'design_1_v_proc_ss_0_1' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_proc_ss_0_1_stub.vhdl:5' bound to instance 'v_proc_ss_1' of component 'design_1_v_proc_ss_0_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5926]
-INFO: [Synth 8-638] synthesizing module 'design_1_v_proc_ss_0_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_proc_ss_0_1_stub.vhdl:48]
-INFO: [Synth 8-3491] module 'design_1_v_tc_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_tc_0_0_stub.vhdl:5' bound to instance 'v_tc_0' of component 'design_1_v_tc_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5966]
-INFO: [Synth 8-638] synthesizing module 'design_1_v_tc_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_tc_0_0_stub.vhdl:43]
-INFO: [Synth 8-3491] module 'design_1_v_vid_in_axi4s_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_vid_in_axi4s_0_0_stub.vhdl:5' bound to instance 'v_vid_in_axi4s_0' of component 'design_1_v_vid_in_axi4s_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:6001]
-INFO: [Synth 8-638] synthesizing module 'design_1_v_vid_in_axi4s_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-19632-CO2041-04/realtime/design_1_v_vid_in_axi4s_0_0_stub.vhdl:37]
+INFO: [Synth 8-3491] module 'design_1_rst_clk_wiz_0_148M_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_rst_clk_wiz_0_148M_0_stub.vhdl:5' bound to instance 'rst_clk_wiz_0_148M' of component 'design_1_rst_clk_wiz_0_148M_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5781]
+INFO: [Synth 8-638] synthesizing module 'design_1_rst_clk_wiz_0_148M_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_rst_clk_wiz_0_148M_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'design_1_rst_ps7_0_100M_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_rst_ps7_0_100M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_100M' of component 'design_1_rst_ps7_0_100M_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5794]
+INFO: [Synth 8-638] synthesizing module 'design_1_rst_ps7_0_100M_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_rst_ps7_0_100M_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'design_1_v_axi4s_vid_out_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_axi4s_vid_out_0_0_stub.vhdl:5' bound to instance 'v_axi4s_vid_out_0' of component 'design_1_v_axi4s_vid_out_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5807]
+INFO: [Synth 8-638] synthesizing module 'design_1_v_axi4s_vid_out_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_axi4s_vid_out_0_0_stub.vhdl:42]
+INFO: [Synth 8-3491] module 'design_1_v_demosaic_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_demosaic_0_0_stub.vhdl:5' bound to instance 'v_demosaic_0' of component 'design_1_v_demosaic_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5841]
+INFO: [Synth 8-638] synthesizing module 'design_1_v_demosaic_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_demosaic_0_0_stub.vhdl:49]
+INFO: [Synth 8-3491] module 'design_1_v_proc_ss_0_3' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_proc_ss_0_3_stub.vhdl:5' bound to instance 'v_proc_ss_0' of component 'design_1_v_proc_ss_0_3' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5882]
+INFO: [Synth 8-638] synthesizing module 'design_1_v_proc_ss_0_3' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_proc_ss_0_3_stub.vhdl:52]
+INFO: [Synth 8-3491] module 'design_1_v_proc_ss_0_1' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_proc_ss_0_1_stub.vhdl:5' bound to instance 'v_proc_ss_1' of component 'design_1_v_proc_ss_0_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5926]
+INFO: [Synth 8-638] synthesizing module 'design_1_v_proc_ss_0_1' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_proc_ss_0_1_stub.vhdl:48]
+INFO: [Synth 8-3491] module 'design_1_v_tc_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_tc_0_0_stub.vhdl:5' bound to instance 'v_tc_0' of component 'design_1_v_tc_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:5966]
+INFO: [Synth 8-638] synthesizing module 'design_1_v_tc_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_tc_0_0_stub.vhdl:43]
+INFO: [Synth 8-3491] module 'design_1_v_vid_in_axi4s_0_0' declared at 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_vid_in_axi4s_0_0_stub.vhdl:5' bound to instance 'v_vid_in_axi4s_0' of component 'design_1_v_vid_in_axi4s_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:6001]
+INFO: [Synth 8-638] synthesizing module 'design_1_v_vid_in_axi4s_0_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/.Xil/Vivado-17016-CO2041-04/realtime/design_1_v_vid_in_axi4s_0_0_stub.vhdl:37]
 INFO: [Synth 8-3491] module 'design_1_xlconstant_1_0' declared at 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_xlconstant_1_0/synth/design_1_xlconstant_1_0.v:57' bound to instance 'xlconstant_1' of component 'design_1_xlconstant_1_0' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/synth/design_1.vhd:6030]
 INFO: [Synth 8-6157] synthesizing module 'design_1_xlconstant_1_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_xlconstant_1_0/synth/design_1_xlconstant_1_0.v:57]
 INFO: [Synth 8-6155] done synthesizing module 'design_1_xlconstant_1_0' (17#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_xlconstant_1_0/synth/design_1_xlconstant_1_0.v:57]
@@ -141,18 +141,18 @@ INFO: [Synth 8-3491] module 'IOBUF' declared at 'C:/Xilinx/Vivado/2020.1/scripts
 INFO: [Synth 8-3491] module 'IOBUF' declared at 'C:/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:36238' bound to instance 'fmc_ipmi_id_eeprom_sda_iobuf' of component 'IOBUF' [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:226]
 INFO: [Synth 8-256] done synthesizing module 'design_1_wrapper' (20#1) [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:66]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 1013.516 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 1013.438 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1013.516 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1013.438 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1013.516 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1013.438 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 1013.516 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1013.438 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -241,22 +241,22 @@ Parsing XDC File [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/sy
 Finished Parsing XDC File [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1064.844 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1066.070 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 4 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 4 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1064.844 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1066.070 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'design_1_i/axi_vdma_0' at clock pin 'm_axi_mm2s_aclk' is different from the actual clock period '7.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1065.082 ; gain = 51.566
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 1066.145 ; gain = 52.707
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1065.082 ; gain = 51.566
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 1066.145 ; gain = 52.707
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -630,10 +630,10 @@ Applied set_property DONT_TOUCH = true for design_1_i/ps7_0_axi_periph/m01_coupl
 Applied set_property DONT_TOUCH = true for design_1_i/ps7_0_axi_periph/m07_couplers/auto_cc. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/ps7_0_axi_periph/m08_couplers/auto_cc. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1065.082 ; gain = 51.566
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.145 ; gain = 52.707
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1065.082 ; gain = 51.566
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.145 ; gain = 52.707
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -655,25 +655,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 1065.082 ; gain = 51.566
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 1066.145 ; gain = 52.707
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1065.082 ; gain = 51.566
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1066.145 ; gain = 52.707
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1065.082 ; gain = 51.566
+Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1066.145 ; gain = 52.707
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1070.164 ; gain = 56.648
+Finished Technology Mapping : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1068.125 ; gain = 54.688
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -691,37 +691,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1074.973 ; gain = 61.457
+Finished IO Insertion : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1072.906 ; gain = 59.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1074.973 ; gain = 61.457
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1072.906 ; gain = 59.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1074.973 ; gain = 61.457
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1072.906 ; gain = 59.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1074.973 ; gain = 61.457
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1072.906 ; gain = 59.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1074.973 ; gain = 61.457
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1072.906 ; gain = 59.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1074.973 ; gain = 61.457
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1072.906 ; gain = 59.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -792,18 +792,18 @@ Report Cell Usage:
 |28    |OBUF                                    |     1|
 +------+----------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1074.973 ; gain = 61.457
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1072.906 ; gain = 59.469
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:05 ; elapsed = 00:00:14 . Memory (MB): peak = 1074.973 ; gain = 9.891
-Synthesis Optimization Complete : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1074.973 ; gain = 61.457
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:04 ; elapsed = 00:00:15 . Memory (MB): peak = 1072.906 ; gain = 6.762
+Synthesis Optimization Complete : Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1072.906 ; gain = 59.469
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 1074.973 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 1072.906 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1097.734 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1093.699 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 4 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 4 instances
@@ -811,9 +811,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 123 Infos, 17 Warnings, 5 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:21 . Memory (MB): peak = 1097.734 ; gain = 84.219
+synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:22 . Memory (MB): peak = 1093.699 ; gain = 80.262
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Mar 10 00:08:02 2025...
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 10 04:47:31 2025...

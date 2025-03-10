@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
 -- Date        : Mon Mar 10 00:06:01 2025
 -- Host        : CO2041-04 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_proc_ss_0_3/bd_0/ip/ip_28/bd_d86b_auto_ss_slid_4_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top bd_d86b_auto_ss_slid_4 -prefix
+--               bd_d86b_auto_ss_slid_4_ bd_d86b_auto_ss_slid_4_stub.vhdl
 -- Design      : bd_d86b_auto_ss_slid_4
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1

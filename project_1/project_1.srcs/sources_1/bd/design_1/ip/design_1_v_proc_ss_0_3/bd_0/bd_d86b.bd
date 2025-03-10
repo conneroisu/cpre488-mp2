@@ -1481,16 +1481,16 @@
               }
             },
             "interface_nets": {
-              "s00_couplers_to_auto_ss_slid": {
-                "interface_ports": [
-                  "S_AXIS",
-                  "auto_ss_slid/S_AXIS"
-                ]
-              },
               "auto_ss_slid_to_s00_couplers": {
                 "interface_ports": [
                   "M_AXIS",
                   "auto_ss_slid/M_AXIS"
+                ]
+              },
+              "s00_couplers_to_auto_ss_slid": {
+                "interface_ports": [
+                  "S_AXIS",
+                  "auto_ss_slid/S_AXIS"
                 ]
               }
             },
@@ -1569,16 +1569,16 @@
               }
             },
             "interface_nets": {
-              "auto_ss_slid_to_s01_couplers": {
-                "interface_ports": [
-                  "M_AXIS",
-                  "auto_ss_slid/M_AXIS"
-                ]
-              },
               "s01_couplers_to_auto_ss_slid": {
                 "interface_ports": [
                   "S_AXIS",
                   "auto_ss_slid/S_AXIS"
+                ]
+              },
+              "auto_ss_slid_to_s01_couplers": {
+                "interface_ports": [
+                  "M_AXIS",
+                  "auto_ss_slid/M_AXIS"
                 ]
               }
             },
@@ -2275,10 +2275,10 @@
               }
             },
             "interface_nets": {
-              "m01_regslice_to_m01_couplers": {
+              "auto_ss_slidr_to_m01_regslice": {
                 "interface_ports": [
-                  "M_AXIS",
-                  "m01_regslice/M_AXIS"
+                  "m01_regslice/S_AXIS",
+                  "auto_ss_slidr/M_AXIS"
                 ]
               },
               "m01_couplers_to_auto_ss_slidr": {
@@ -2287,10 +2287,10 @@
                   "auto_ss_slidr/S_AXIS"
                 ]
               },
-              "auto_ss_slidr_to_m01_regslice": {
+              "m01_regslice_to_m01_couplers": {
                 "interface_ports": [
-                  "m01_regslice/S_AXIS",
-                  "auto_ss_slidr/M_AXIS"
+                  "M_AXIS",
+                  "m01_regslice/M_AXIS"
                 ]
               }
             },
@@ -2385,10 +2385,10 @@
               }
             },
             "interface_nets": {
-              "m02_regslice_to_m02_couplers": {
+              "m02_couplers_to_auto_ss_slidr": {
                 "interface_ports": [
-                  "M_AXIS",
-                  "m02_regslice/M_AXIS"
+                  "S_AXIS",
+                  "auto_ss_slidr/S_AXIS"
                 ]
               },
               "auto_ss_slidr_to_m02_regslice": {
@@ -2397,10 +2397,10 @@
                   "auto_ss_slidr/M_AXIS"
                 ]
               },
-              "m02_couplers_to_auto_ss_slidr": {
+              "m02_regslice_to_m02_couplers": {
                 "interface_ports": [
-                  "S_AXIS",
-                  "auto_ss_slidr/S_AXIS"
+                  "M_AXIS",
+                  "m02_regslice/M_AXIS"
                 ]
               }
             },
@@ -2549,12 +2549,6 @@
               }
             },
             "interface_nets": {
-              "m04_regslice_to_m04_couplers": {
-                "interface_ports": [
-                  "M_AXIS",
-                  "m04_regslice/M_AXIS"
-                ]
-              },
               "m04_couplers_to_auto_ss_slidr": {
                 "interface_ports": [
                   "S_AXIS",
@@ -2565,6 +2559,12 @@
                 "interface_ports": [
                   "m04_regslice/S_AXIS",
                   "auto_ss_slidr/M_AXIS"
+                ]
+              },
+              "m04_regslice_to_m04_couplers": {
+                "interface_ports": [
+                  "M_AXIS",
+                  "m04_regslice/M_AXIS"
                 ]
               }
             },
@@ -2647,16 +2647,16 @@
               }
             },
             "interface_nets": {
-              "m05_couplers_to_m05_regslice": {
-                "interface_ports": [
-                  "S_AXIS",
-                  "m05_regslice/S_AXIS"
-                ]
-              },
               "m05_regslice_to_m05_couplers": {
                 "interface_ports": [
                   "M_AXIS",
                   "m05_regslice/M_AXIS"
+                ]
+              },
+              "m05_couplers_to_m05_regslice": {
+                "interface_ports": [
+                  "S_AXIS",
+                  "m05_regslice/S_AXIS"
                 ]
               }
             },
@@ -2727,16 +2727,16 @@
               }
             },
             "interface_nets": {
-              "m06_regslice_to_m06_couplers": {
-                "interface_ports": [
-                  "M_AXIS",
-                  "m06_regslice/M_AXIS"
-                ]
-              },
               "m06_couplers_to_m06_regslice": {
                 "interface_ports": [
                   "S_AXIS",
                   "m06_regslice/S_AXIS"
+                ]
+              },
+              "m06_regslice_to_m06_couplers": {
+                "interface_ports": [
+                  "M_AXIS",
+                  "m06_regslice/M_AXIS"
                 ]
               }
             },
@@ -3001,130 +3001,34 @@
           }
         },
         "interface_nets": {
-          "s05_couplers_to_xbar": {
+          "xbar_to_m06_couplers": {
             "interface_ports": [
-              "s05_couplers/M_AXIS",
-              "xbar/S05_AXIS"
+              "xbar/M06_AXIS",
+              "m06_couplers/S_AXIS"
             ]
           },
-          "video_router_to_s06_couplers": {
+          "m07_couplers_to_video_router": {
             "interface_ports": [
-              "S06_AXIS",
-              "s06_couplers/S_AXIS"
+              "M07_AXIS",
+              "m07_couplers/M_AXIS"
             ]
           },
-          "s06_couplers_to_xbar": {
+          "m06_couplers_to_video_router": {
             "interface_ports": [
-              "s06_couplers/M_AXIS",
-              "xbar/S06_AXIS"
+              "M06_AXIS",
+              "m06_couplers/M_AXIS"
             ]
           },
-          "s07_couplers_to_xbar": {
+          "xbar_to_m07_couplers": {
             "interface_ports": [
-              "s07_couplers/M_AXIS",
-              "xbar/S07_AXIS"
+              "xbar/M07_AXIS",
+              "m07_couplers/S_AXIS"
             ]
           },
-          "video_router_to_s07_couplers": {
+          "m08_couplers_to_video_router": {
             "interface_ports": [
-              "S07_AXIS",
-              "s07_couplers/S_AXIS"
-            ]
-          },
-          "video_router_to_s08_couplers": {
-            "interface_ports": [
-              "S08_AXIS",
-              "s08_couplers/S_AXIS"
-            ]
-          },
-          "s09_couplers_to_xbar": {
-            "interface_ports": [
-              "s09_couplers/M_AXIS",
-              "xbar/S09_AXIS"
-            ]
-          },
-          "s08_couplers_to_xbar": {
-            "interface_ports": [
-              "s08_couplers/M_AXIS",
-              "xbar/S08_AXIS"
-            ]
-          },
-          "video_router_to_s09_couplers": {
-            "interface_ports": [
-              "S09_AXIS",
-              "s09_couplers/S_AXIS"
-            ]
-          },
-          "video_router_to_s01_couplers": {
-            "interface_ports": [
-              "S01_AXIS",
-              "s01_couplers/S_AXIS"
-            ]
-          },
-          "video_router_to_s02_couplers": {
-            "interface_ports": [
-              "S02_AXIS",
-              "s02_couplers/S_AXIS"
-            ]
-          },
-          "s01_couplers_to_xbar": {
-            "interface_ports": [
-              "s01_couplers/M_AXIS",
-              "xbar/S01_AXIS"
-            ]
-          },
-          "s02_couplers_to_xbar": {
-            "interface_ports": [
-              "s02_couplers/M_AXIS",
-              "xbar/S02_AXIS"
-            ]
-          },
-          "video_router_to_xbar": {
-            "interface_ports": [
-              "S_AXI_CTRL",
-              "xbar/S_AXI_CTRL"
-            ]
-          },
-          "video_router_to_s00_couplers": {
-            "interface_ports": [
-              "S00_AXIS",
-              "s00_couplers/S_AXIS"
-            ]
-          },
-          "s00_couplers_to_xbar": {
-            "interface_ports": [
-              "s00_couplers/M_AXIS",
-              "xbar/S00_AXIS"
-            ]
-          },
-          "video_router_to_s04_couplers": {
-            "interface_ports": [
-              "S04_AXIS",
-              "s04_couplers/S_AXIS"
-            ]
-          },
-          "video_router_to_s03_couplers": {
-            "interface_ports": [
-              "S03_AXIS",
-              "s03_couplers/S_AXIS"
-            ]
-          },
-          "video_router_to_s05_couplers": {
-            "interface_ports": [
-              "S05_AXIS",
-              "s05_couplers/S_AXIS"
-            ]
-          },
-          "s04_couplers_to_xbar": {
-            "interface_ports": [
-              "s04_couplers/M_AXIS",
-              "xbar/S04_AXIS"
-            ]
-          },
-          "s03_couplers_to_xbar": {
-            "interface_ports": [
-              "s03_couplers/M_AXIS",
-              "xbar/S03_AXIS"
+              "M08_AXIS",
+              "m08_couplers/M_AXIS"
             ]
           },
           "xbar_to_m09_couplers": {
@@ -3145,58 +3049,16 @@
               "m09_couplers/M_AXIS"
             ]
           },
-          "m08_couplers_to_video_router": {
+          "xbar_to_m04_couplers": {
             "interface_ports": [
-              "M08_AXIS",
-              "m08_couplers/M_AXIS"
+              "xbar/M04_AXIS",
+              "m04_couplers/S_AXIS"
             ]
           },
-          "xbar_to_m00_couplers": {
+          "m04_couplers_to_video_router": {
             "interface_ports": [
-              "xbar/M00_AXIS",
-              "m00_couplers/S_AXIS"
-            ]
-          },
-          "m01_couplers_to_video_router": {
-            "interface_ports": [
-              "M01_AXIS",
-              "m01_couplers/M_AXIS"
-            ]
-          },
-          "xbar_to_m01_couplers": {
-            "interface_ports": [
-              "xbar/M01_AXIS",
-              "m01_couplers/S_AXIS"
-            ]
-          },
-          "m00_couplers_to_video_router": {
-            "interface_ports": [
-              "M00_AXIS",
-              "m00_couplers/M_AXIS"
-            ]
-          },
-          "m02_couplers_to_video_router": {
-            "interface_ports": [
-              "M02_AXIS",
-              "m02_couplers/M_AXIS"
-            ]
-          },
-          "xbar_to_m03_couplers": {
-            "interface_ports": [
-              "xbar/M03_AXIS",
-              "m03_couplers/S_AXIS"
-            ]
-          },
-          "m03_couplers_to_video_router": {
-            "interface_ports": [
-              "M03_AXIS",
-              "m03_couplers/M_AXIS"
-            ]
-          },
-          "xbar_to_m02_couplers": {
-            "interface_ports": [
-              "xbar/M02_AXIS",
-              "m02_couplers/S_AXIS"
+              "M04_AXIS",
+              "m04_couplers/M_AXIS"
             ]
           },
           "m05_couplers_to_video_router": {
@@ -3211,40 +3073,178 @@
               "m05_couplers/S_AXIS"
             ]
           },
-          "xbar_to_m04_couplers": {
+          "xbar_to_m01_couplers": {
             "interface_ports": [
-              "xbar/M04_AXIS",
-              "m04_couplers/S_AXIS"
+              "xbar/M01_AXIS",
+              "m01_couplers/S_AXIS"
             ]
           },
-          "m04_couplers_to_video_router": {
+          "m01_couplers_to_video_router": {
             "interface_ports": [
-              "M04_AXIS",
-              "m04_couplers/M_AXIS"
+              "M01_AXIS",
+              "m01_couplers/M_AXIS"
             ]
           },
-          "m06_couplers_to_video_router": {
+          "m02_couplers_to_video_router": {
             "interface_ports": [
-              "M06_AXIS",
-              "m06_couplers/M_AXIS"
+              "M02_AXIS",
+              "m02_couplers/M_AXIS"
             ]
           },
-          "xbar_to_m06_couplers": {
+          "xbar_to_m02_couplers": {
             "interface_ports": [
-              "xbar/M06_AXIS",
-              "m06_couplers/S_AXIS"
+              "xbar/M02_AXIS",
+              "m02_couplers/S_AXIS"
             ]
           },
-          "m07_couplers_to_video_router": {
+          "m03_couplers_to_video_router": {
             "interface_ports": [
-              "M07_AXIS",
-              "m07_couplers/M_AXIS"
+              "M03_AXIS",
+              "m03_couplers/M_AXIS"
             ]
           },
-          "xbar_to_m07_couplers": {
+          "xbar_to_m03_couplers": {
             "interface_ports": [
-              "xbar/M07_AXIS",
-              "m07_couplers/S_AXIS"
+              "xbar/M03_AXIS",
+              "m03_couplers/S_AXIS"
+            ]
+          },
+          "video_router_to_s01_couplers": {
+            "interface_ports": [
+              "S01_AXIS",
+              "s01_couplers/S_AXIS"
+            ]
+          },
+          "video_router_to_xbar": {
+            "interface_ports": [
+              "S_AXI_CTRL",
+              "xbar/S_AXI_CTRL"
+            ]
+          },
+          "video_router_to_s00_couplers": {
+            "interface_ports": [
+              "S00_AXIS",
+              "s00_couplers/S_AXIS"
+            ]
+          },
+          "s00_couplers_to_xbar": {
+            "interface_ports": [
+              "s00_couplers/M_AXIS",
+              "xbar/S00_AXIS"
+            ]
+          },
+          "s01_couplers_to_xbar": {
+            "interface_ports": [
+              "s01_couplers/M_AXIS",
+              "xbar/S01_AXIS"
+            ]
+          },
+          "s02_couplers_to_xbar": {
+            "interface_ports": [
+              "s02_couplers/M_AXIS",
+              "xbar/S02_AXIS"
+            ]
+          },
+          "video_router_to_s03_couplers": {
+            "interface_ports": [
+              "S03_AXIS",
+              "s03_couplers/S_AXIS"
+            ]
+          },
+          "video_router_to_s02_couplers": {
+            "interface_ports": [
+              "S02_AXIS",
+              "s02_couplers/S_AXIS"
+            ]
+          },
+          "video_router_to_s04_couplers": {
+            "interface_ports": [
+              "S04_AXIS",
+              "s04_couplers/S_AXIS"
+            ]
+          },
+          "s03_couplers_to_xbar": {
+            "interface_ports": [
+              "s03_couplers/M_AXIS",
+              "xbar/S03_AXIS"
+            ]
+          },
+          "video_router_to_s05_couplers": {
+            "interface_ports": [
+              "S05_AXIS",
+              "s05_couplers/S_AXIS"
+            ]
+          },
+          "video_router_to_s06_couplers": {
+            "interface_ports": [
+              "S06_AXIS",
+              "s06_couplers/S_AXIS"
+            ]
+          },
+          "s04_couplers_to_xbar": {
+            "interface_ports": [
+              "s04_couplers/M_AXIS",
+              "xbar/S04_AXIS"
+            ]
+          },
+          "s05_couplers_to_xbar": {
+            "interface_ports": [
+              "s05_couplers/M_AXIS",
+              "xbar/S05_AXIS"
+            ]
+          },
+          "video_router_to_s09_couplers": {
+            "interface_ports": [
+              "S09_AXIS",
+              "s09_couplers/S_AXIS"
+            ]
+          },
+          "s06_couplers_to_xbar": {
+            "interface_ports": [
+              "s06_couplers/M_AXIS",
+              "xbar/S06_AXIS"
+            ]
+          },
+          "video_router_to_s07_couplers": {
+            "interface_ports": [
+              "S07_AXIS",
+              "s07_couplers/S_AXIS"
+            ]
+          },
+          "s08_couplers_to_xbar": {
+            "interface_ports": [
+              "s08_couplers/M_AXIS",
+              "xbar/S08_AXIS"
+            ]
+          },
+          "video_router_to_s08_couplers": {
+            "interface_ports": [
+              "S08_AXIS",
+              "s08_couplers/S_AXIS"
+            ]
+          },
+          "s07_couplers_to_xbar": {
+            "interface_ports": [
+              "s07_couplers/M_AXIS",
+              "xbar/S07_AXIS"
+            ]
+          },
+          "m00_couplers_to_video_router": {
+            "interface_ports": [
+              "M00_AXIS",
+              "m00_couplers/M_AXIS"
+            ]
+          },
+          "xbar_to_m00_couplers": {
+            "interface_ports": [
+              "xbar/M00_AXIS",
+              "m00_couplers/S_AXIS"
+            ]
+          },
+          "s09_couplers_to_xbar": {
+            "interface_ports": [
+              "s09_couplers/M_AXIS",
+              "xbar/S09_AXIS"
             ]
           }
         },

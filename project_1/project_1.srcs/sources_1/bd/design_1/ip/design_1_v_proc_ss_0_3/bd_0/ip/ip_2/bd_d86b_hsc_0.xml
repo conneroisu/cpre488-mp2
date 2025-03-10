@@ -1079,6 +1079,10 @@
             <spirit:name>outputProductCRC</spirit:name>
             <spirit:value>9:ce25f5ad</spirit:value>
           </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>sim_type</spirit:name>
+            <spirit:value>rtl</spirit:value>
+          </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
       <spirit:view>

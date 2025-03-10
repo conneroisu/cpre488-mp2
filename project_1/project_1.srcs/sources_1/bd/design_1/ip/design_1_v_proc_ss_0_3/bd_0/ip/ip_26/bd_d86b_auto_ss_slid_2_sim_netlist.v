@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
 // Date        : Mon Mar 10 00:05:58 2025
 // Host        : CO2041-04 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_proc_ss_0_3/bd_0/ip/ip_26/bd_d86b_auto_ss_slid_2_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top bd_d86b_auto_ss_slid_2 -prefix
+//               bd_d86b_auto_ss_slid_2_ bd_d86b_auto_ss_slid_2_sim_netlist.v
 // Design      : bd_d86b_auto_ss_slid_2
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -146,7 +146,7 @@ endmodule
 (* G_MASK_SS_TDEST = "64" *) (* G_MASK_SS_TID = "32" *) (* G_MASK_SS_TKEEP = "8" *) 
 (* G_MASK_SS_TLAST = "16" *) (* G_MASK_SS_TREADY = "1" *) (* G_MASK_SS_TSTRB = "4" *) 
 (* G_MASK_SS_TUSER = "128" *) (* G_TASK_SEVERITY_ERR = "2" *) (* G_TASK_SEVERITY_INFO = "0" *) 
-(* G_TASK_SEVERITY_WARNING = "1" *) (* ORIG_REF_NAME = "top_bd_d86b_auto_ss_slid_2" *) 
+(* G_TASK_SEVERITY_WARNING = "1" *) 
 module bd_d86b_auto_ss_slid_2_top_bd_d86b_auto_ss_slid_2
    (aclk,
     aresetn,

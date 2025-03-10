@@ -206,12 +206,12 @@ proc create_root_design { parentCell } {
   # Create instance: axi_vdma_0, and set properties
   set axi_vdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vdma:6.3 axi_vdma_0 ]
   set_property -dict [ list \
-   CONFIG.c_include_mm2s_dre {1} \
-   CONFIG.c_include_s2mm_dre {1} \
+   CONFIG.c_include_mm2s_dre {0} \
+   CONFIG.c_include_s2mm_dre {0} \
    CONFIG.c_m_axis_mm2s_tdata_width {16} \
-   CONFIG.c_mm2s_linebuffer_depth {4096} \
+   CONFIG.c_mm2s_linebuffer_depth {8192} \
    CONFIG.c_num_fstores {3} \
-   CONFIG.c_s2mm_linebuffer_depth {4096} \
+   CONFIG.c_s2mm_linebuffer_depth {8192} \
  ] $axi_vdma_0
 
   # Create instance: axis_subset_converter_0, and set properties

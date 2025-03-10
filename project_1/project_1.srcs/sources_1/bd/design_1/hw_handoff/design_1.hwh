@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Mar 10 00:04:32 2025" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Mar 10 04:45:42 2025" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.3" DEVICE="7z020" NAME="design_1" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -3225,9 +3225,9 @@
         <PARAMETER NAME="C_MM2S_GENLOCK_NUM_MASTERS" VALUE="1"/>
         <PARAMETER NAME="C_MM2S_GENLOCK_REPEAT_EN" VALUE="0"/>
         <PARAMETER NAME="C_MM2S_SOF_ENABLE" VALUE="1"/>
-        <PARAMETER NAME="C_INCLUDE_MM2S_DRE" VALUE="1"/>
+        <PARAMETER NAME="C_INCLUDE_MM2S_DRE" VALUE="0"/>
         <PARAMETER NAME="C_INCLUDE_MM2S_SF" VALUE="0"/>
-        <PARAMETER NAME="C_MM2S_LINEBUFFER_DEPTH" VALUE="4096"/>
+        <PARAMETER NAME="C_MM2S_LINEBUFFER_DEPTH" VALUE="8192"/>
         <PARAMETER NAME="C_MM2S_LINEBUFFER_THRESH" VALUE="4"/>
         <PARAMETER NAME="C_MM2S_MAX_BURST_LENGTH" VALUE="8"/>
         <PARAMETER NAME="C_M_AXI_MM2S_ADDR_WIDTH" VALUE="32"/>
@@ -3239,9 +3239,9 @@
         <PARAMETER NAME="C_S2MM_GENLOCK_NUM_MASTERS" VALUE="1"/>
         <PARAMETER NAME="C_S2MM_GENLOCK_REPEAT_EN" VALUE="1"/>
         <PARAMETER NAME="C_S2MM_SOF_ENABLE" VALUE="1"/>
-        <PARAMETER NAME="C_INCLUDE_S2MM_DRE" VALUE="1"/>
+        <PARAMETER NAME="C_INCLUDE_S2MM_DRE" VALUE="0"/>
         <PARAMETER NAME="C_INCLUDE_S2MM_SF" VALUE="1"/>
-        <PARAMETER NAME="C_S2MM_LINEBUFFER_DEPTH" VALUE="4096"/>
+        <PARAMETER NAME="C_S2MM_LINEBUFFER_DEPTH" VALUE="8192"/>
         <PARAMETER NAME="C_S2MM_LINEBUFFER_THRESH" VALUE="4"/>
         <PARAMETER NAME="C_S2MM_MAX_BURST_LENGTH" VALUE="8"/>
         <PARAMETER NAME="C_M_AXI_S2MM_ADDR_WIDTH" VALUE="32"/>
@@ -3274,7 +3274,7 @@
         <PARAMETER NAME="c_m_axis_mm2s_tdata_width" VALUE="16"/>
         <PARAMETER NAME="c_m_axi_s2mm_data_width" VALUE="64"/>
         <PARAMETER NAME="c_s_axis_s2mm_tdata_width" VALUE="16"/>
-        <PARAMETER NAME="c_include_s2mm_dre" VALUE="1"/>
+        <PARAMETER NAME="c_include_s2mm_dre" VALUE="0"/>
         <PARAMETER NAME="c_include_s2mm_sf" VALUE="1"/>
         <PARAMETER NAME="c_include_mm2s_sf" VALUE="0"/>
         <PARAMETER NAME="c_enable_vidprmtr_reads" VALUE="1"/>
@@ -3289,9 +3289,9 @@
         <PARAMETER NAME="c_mm2s_genlock_num_masters" VALUE="1"/>
         <PARAMETER NAME="c_s2mm_genlock_mode" VALUE="2"/>
         <PARAMETER NAME="c_s2mm_genlock_num_masters" VALUE="1"/>
-        <PARAMETER NAME="c_mm2s_linebuffer_depth" VALUE="4096"/>
+        <PARAMETER NAME="c_mm2s_linebuffer_depth" VALUE="8192"/>
         <PARAMETER NAME="c_mm2s_linebuffer_thresh" VALUE="4"/>
-        <PARAMETER NAME="c_s2mm_linebuffer_depth" VALUE="4096"/>
+        <PARAMETER NAME="c_s2mm_linebuffer_depth" VALUE="8192"/>
         <PARAMETER NAME="c_s2mm_linebuffer_thresh" VALUE="4"/>
         <PARAMETER NAME="c_include_mm2s" VALUE="1"/>
         <PARAMETER NAME="c_mm2s_max_burst_length" VALUE="8"/>
@@ -3318,7 +3318,7 @@
         <PARAMETER NAME="c_enable_s2mm_frmstr_reg" VALUE="0"/>
         <PARAMETER NAME="c_enable_s2mm_delay_counter" VALUE="1"/>
         <PARAMETER NAME="c_enable_s2mm_frm_counter" VALUE="1"/>
-        <PARAMETER NAME="c_include_mm2s_dre" VALUE="1"/>
+        <PARAMETER NAME="c_include_mm2s_dre" VALUE="0"/>
         <PARAMETER NAME="c_flush_on_fsync" VALUE="1"/>
         <PARAMETER NAME="c_s2mm_genlock_repeat_en" VALUE="1"/>
         <PARAMETER NAME="c_mm2s_genlock_repeat_en" VALUE="0"/>

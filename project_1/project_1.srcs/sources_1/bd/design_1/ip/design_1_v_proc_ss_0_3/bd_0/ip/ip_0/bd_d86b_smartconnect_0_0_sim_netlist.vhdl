@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Mon Mar 10 00:06:17 2025
+-- Date        : Mon Mar 10 00:06:15 2025
 -- Host        : CO2041-04 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_proc_ss_0_3/bd_0/ip/ip_0/bd_d86b_smartconnect_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top bd_d86b_smartconnect_0_0 -prefix
+--               bd_d86b_smartconnect_0_0_ bd_d86b_smartconnect_0_0_sim_netlist.vhdl
 -- Design      : bd_d86b_smartconnect_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -20,8 +20,6 @@ entity bd_d86b_smartconnect_0_0_cdc_sync is
     aresetn : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_cdc_sync : entity is "cdc_sync";
 end bd_d86b_smartconnect_0_0_cdc_sync;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_cdc_sync is
@@ -109,8 +107,6 @@ entity bd_d86b_smartconnect_0_0_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_upcnt_n : entity is "upcnt_n";
 end bd_d86b_smartconnect_0_0_upcnt_n;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_upcnt_n is
@@ -383,8 +379,6 @@ entity bd_d86b_smartconnect_0_0_sc_axi2sc_v1_0_7_top is
   attribute LP_RUSER_INDEX of bd_d86b_smartconnect_0_0_sc_axi2sc_v1_0_7_top : entity is 0;
   attribute LP_WUSER_INDEX : integer;
   attribute LP_WUSER_INDEX of bd_d86b_smartconnect_0_0_sc_axi2sc_v1_0_7_top : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_axi2sc_v1_0_7_top : entity is "sc_axi2sc_v1_0_7_top";
   attribute T_SC_ADDR_WIDTH : integer;
   attribute T_SC_ADDR_WIDTH of bd_d86b_smartconnect_0_0_sc_axi2sc_v1_0_7_top : entity is 19;
   attribute T_SC_ARUSER_WIDTH : integer;
@@ -2820,8 +2814,6 @@ entity bd_d86b_smartconnect_0_0_sc_exit_v1_0_10_exit is
     s_axi_arvalid : in STD_LOGIC;
     m_axi_arready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_exit_v1_0_10_exit : entity is "sc_exit_v1_0_10_exit";
 end bd_d86b_smartconnect_0_0_sc_exit_v1_0_10_exit;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_exit_v1_0_10_exit is
@@ -4024,8 +4016,6 @@ entity bd_d86b_smartconnect_0_0_sc_mmu_v1_0_9_decerr_slave is
     s_axi_rready : in STD_LOGIC;
     \gen_axilite.gen_write.s_axi_bvalid_i_reg_0\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_mmu_v1_0_9_decerr_slave : entity is "sc_mmu_v1_0_9_decerr_slave";
 end bd_d86b_smartconnect_0_0_sc_mmu_v1_0_9_decerr_slave;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_mmu_v1_0_9_decerr_slave is
@@ -4291,8 +4281,6 @@ entity bd_d86b_smartconnect_0_0_sc_node_v1_0_11_arb_alg_rr is
     s_sc_aclk : in STD_LOGIC;
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_arb_alg_rr : entity is "sc_node_v1_0_11_arb_alg_rr";
 end bd_d86b_smartconnect_0_0_sc_node_v1_0_11_arb_alg_rr;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_arb_alg_rr is
@@ -5366,8 +5354,6 @@ entity bd_d86b_smartconnect_0_0_sc_node_v1_0_11_fi_regulator is
     s_sc_aclk : in STD_LOGIC;
     \gen_normal_area.fifo_node_payld_full_i\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_fi_regulator : entity is "sc_node_v1_0_11_fi_regulator";
 end bd_d86b_smartconnect_0_0_sc_node_v1_0_11_fi_regulator;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_fi_regulator is
@@ -5447,8 +5433,6 @@ entity bd_d86b_smartconnect_0_0_sc_node_v1_0_11_mi_handler is
     s_sc_aclk : in STD_LOGIC;
     s_sc_send : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_mi_handler : entity is "sc_node_v1_0_11_mi_handler";
 end bd_d86b_smartconnect_0_0_sc_node_v1_0_11_mi_handler;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_mi_handler is
@@ -7378,8 +7362,6 @@ entity bd_d86b_smartconnect_0_0_sc_sc2axi_v1_0_7_top is
   attribute LP_RUSER_INDEX of bd_d86b_smartconnect_0_0_sc_sc2axi_v1_0_7_top : entity is 0;
   attribute LP_WUSER_INDEX : integer;
   attribute LP_WUSER_INDEX of bd_d86b_smartconnect_0_0_sc_sc2axi_v1_0_7_top : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_sc2axi_v1_0_7_top : entity is "sc_sc2axi_v1_0_7_top";
   attribute T_SC_ADDR_WIDTH : integer;
   attribute T_SC_ADDR_WIDTH of bd_d86b_smartconnect_0_0_sc_sc2axi_v1_0_7_top : entity is 19;
   attribute T_SC_ARUSER_WIDTH : integer;
@@ -27380,8 +27362,6 @@ entity bd_d86b_smartconnect_0_0_sc_si_converter_v1_0_9_splitter is
     m_axi_wready : in STD_LOGIC;
     s_axi_wvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_si_converter_v1_0_9_splitter : entity is "sc_si_converter_v1_0_9_splitter";
 end bd_d86b_smartconnect_0_0_sc_si_converter_v1_0_9_splitter;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_si_converter_v1_0_9_splitter is
@@ -27591,8 +27571,6 @@ entity bd_d86b_smartconnect_0_0_sc_switchboard_v1_0_6_top is
   attribute LP_MUX_IMPL of bd_d86b_smartconnect_0_0_sc_switchboard_v1_0_6_top : entity is "32'b00000000000000000000000000000000";
   attribute LP_M_SC_SEL_MI_PIPELINE_DEPTH : string;
   attribute LP_M_SC_SEL_MI_PIPELINE_DEPTH of bd_d86b_smartconnect_0_0_sc_switchboard_v1_0_6_top : entity is "32'b00000000000000000000000000000000";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_switchboard_v1_0_6_top : entity is "sc_switchboard_v1_0_6_top";
 end bd_d86b_smartconnect_0_0_sc_switchboard_v1_0_6_top;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_switchboard_v1_0_6_top is
@@ -34454,8 +34432,6 @@ entity bd_d86b_smartconnect_0_0_sc_transaction_regulator_v1_0_8_singleorder is
     s_axi_arvalid : in STD_LOGIC;
     \gen_id_reg.s_single_aready_i_reg_0\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_transaction_regulator_v1_0_8_singleorder : entity is "sc_transaction_regulator_v1_0_8_singleorder";
 end bd_d86b_smartconnect_0_0_sc_transaction_regulator_v1_0_8_singleorder;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_transaction_regulator_v1_0_8_singleorder is
@@ -36484,8 +36460,6 @@ entity bd_d86b_smartconnect_0_0_sc_util_v1_0_4_axi_splitter is
     m_axi_awvalid_INST_0_i_1 : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_util_v1_0_4_axi_splitter : entity is "sc_util_v1_0_4_axi_splitter";
 end bd_d86b_smartconnect_0_0_sc_util_v1_0_4_axi_splitter;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_util_v1_0_4_axi_splitter is
@@ -38676,8 +38650,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_arinsw_0 is
     S00_SC_AR_payld : in STD_LOGIC_VECTOR ( 24 downto 0 );
     S_SC_AR_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_arinsw_0 : entity is "bd_71bb_arinsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_arinsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_arinsw_0 is
@@ -38755,8 +38727,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_aroutsw_0 is
     M_SC_AR_payld : in STD_LOGIC_VECTOR ( 18 downto 0 );
     m_sc_recv : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_aroutsw_0 : entity is "bd_71bb_aroutsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_aroutsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_aroutsw_0 is
@@ -38862,8 +38832,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_awinsw_0 is
     S00_SC_AW_payld : in STD_LOGIC_VECTOR ( 24 downto 0 );
     S_SC_AW_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_awinsw_0 : entity is "bd_71bb_awinsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_awinsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_awinsw_0 is
@@ -38941,8 +38909,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_awoutsw_0 is
     M_SC_AW_payld : in STD_LOGIC_VECTOR ( 18 downto 0 );
     \gen_single_rank.empty_r_i_2\ : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_awoutsw_0 : entity is "bd_71bb_awoutsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_awoutsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_awoutsw_0 is
@@ -39048,8 +39014,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_binsw_0 is
     M_SC_B_payld : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M00_SC_B_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_binsw_0 : entity is "bd_71bb_binsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_binsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_binsw_0 is
@@ -39117,8 +39081,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_boutsw_0 is
     s_sc_payld : in STD_LOGIC_VECTOR ( 11 downto 0 );
     S_SC_B_recv : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_boutsw_0 : entity is "bd_71bb_boutsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_boutsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_boutsw_0 is
@@ -39243,8 +39205,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m00s2a_0 is
     s_axi_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m00s2a_0 : entity is "bd_71bb_m00s2a_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m00s2a_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m00s2a_0 is
@@ -39465,8 +39425,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m01s2a_0 is
     s_axi_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m01s2a_0 : entity is "bd_71bb_m01s2a_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m01s2a_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m01s2a_0 is
@@ -39687,8 +39645,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m02s2a_0 is
     s_axi_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m02s2a_0 : entity is "bd_71bb_m02s2a_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m02s2a_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m02s2a_0 is
@@ -39909,8 +39865,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m03s2a_0 is
     s_axi_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m03s2a_0 : entity is "bd_71bb_m03s2a_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m03s2a_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m03s2a_0 is
@@ -40131,8 +40085,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m04s2a_0 is
     s_axi_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m04s2a_0 : entity is "bd_71bb_m04s2a_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m04s2a_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m04s2a_0 is
@@ -40353,8 +40305,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m08s2a_0 is
     s_axi_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m08s2a_0 : entity is "bd_71bb_m08s2a_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m08s2a_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m08s2a_0 is
@@ -40547,8 +40497,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_rinsw_0 is
     M_SC_R_payld : in STD_LOGIC_VECTOR ( 34 downto 0 );
     M00_SC_R_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_rinsw_0 : entity is "bd_71bb_rinsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_rinsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_rinsw_0 is
@@ -40616,8 +40564,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_routsw_0 is
     \gen_single_rank.data_reg[52]\ : in STD_LOGIC_VECTOR ( 203 downto 0 );
     S_SC_R_recv : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_routsw_0 : entity is "bd_71bb_routsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_routsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_routsw_0 is
@@ -40758,8 +40704,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_s00a2s_0 is
     m_axi_arvalid : in STD_LOGIC;
     m_axi_rready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_s00a2s_0 : entity is "bd_71bb_s00a2s_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_s00a2s_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_s00a2s_0 is
@@ -40969,8 +40913,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_winsw_0 is
     S00_SC_W_payld : in STD_LOGIC_VECTOR ( 41 downto 0 );
     S_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_winsw_0 : entity is "bd_71bb_winsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_winsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_winsw_0 is
@@ -41042,8 +40984,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_woutsw_0 is
     M_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     \gen_single_rank.empty_r_i_2\ : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_woutsw_0 : entity is "bd_71bb_woutsw_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_woutsw_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_woutsw_0 is
@@ -41131,8 +41071,6 @@ entity bd_d86b_smartconnect_0_0_lpf is
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_lpf : entity is "lpf";
 end bd_d86b_smartconnect_0_0_lpf;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_lpf is
@@ -41209,8 +41147,6 @@ entity bd_d86b_smartconnect_0_0_sequence_psr is
     lpf_int : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sequence_psr : entity is "sequence_psr";
 end bd_d86b_smartconnect_0_0_sequence_psr;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sequence_psr is
@@ -41587,8 +41523,6 @@ entity bd_d86b_smartconnect_0_0_sc_exit_v1_0_10_top is
   attribute C_WRITE_ACCEPTANCE of bd_d86b_smartconnect_0_0_sc_exit_v1_0_10_top : entity is 32;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of bd_d86b_smartconnect_0_0_sc_exit_v1_0_10_top : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_exit_v1_0_10_top : entity is "sc_exit_v1_0_10_top";
   attribute P_BYPASS : integer;
   attribute P_BYPASS of bd_d86b_smartconnect_0_0_sc_exit_v1_0_10_top : entity is 0;
   attribute P_FULLY_PIPELINED : integer;
@@ -55919,8 +55853,6 @@ entity bd_d86b_smartconnect_0_0_sc_mmu_v1_0_9_top is
   attribute C_WRITE_ACCEPTANCE of bd_d86b_smartconnect_0_0_sc_mmu_v1_0_9_top : entity is 32;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of bd_d86b_smartconnect_0_0_sc_mmu_v1_0_9_top : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_mmu_v1_0_9_top : entity is "sc_mmu_v1_0_9_top";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of bd_d86b_smartconnect_0_0_sc_mmu_v1_0_9_top : entity is 1;
   attribute P_AXI4 : integer;
@@ -60127,8 +60059,6 @@ entity bd_d86b_smartconnect_0_0_sc_node_v1_0_11_reg_fifo is
     m_sc_areset_r : in STD_LOGIC;
     m_sc_recv : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_reg_fifo : entity is "sc_node_v1_0_11_reg_fifo";
 end bd_d86b_smartconnect_0_0_sc_node_v1_0_11_reg_fifo;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_reg_fifo is
@@ -62209,8 +62139,6 @@ entity bd_d86b_smartconnect_0_0_sc_node_v1_0_11_top is
   attribute LP_S_STATIC_DWIDTH of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_top : entity is 1;
   attribute LP_ZERO_ROUTE_WIDTH : integer;
   attribute LP_ZERO_ROUTE_WIDTH of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_top : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_top : entity is "sc_node_v1_0_11_top";
   attribute P_NUM_OUTSTANDING : integer;
   attribute P_NUM_OUTSTANDING of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_top : entity is 16;
 end bd_d86b_smartconnect_0_0_sc_node_v1_0_11_top;
@@ -72467,8 +72395,6 @@ entity bd_d86b_smartconnect_0_0_sc_si_converter_v1_0_9_top is
   attribute C_WRITE_ACCEPTANCE of bd_d86b_smartconnect_0_0_sc_si_converter_v1_0_9_top : entity is 32;
   attribute C_WRITE_WATERMARK : integer;
   attribute C_WRITE_WATERMARK of bd_d86b_smartconnect_0_0_sc_si_converter_v1_0_9_top : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_si_converter_v1_0_9_top : entity is "sc_si_converter_v1_0_9_top";
   attribute P_EXOK : string;
   attribute P_EXOK of bd_d86b_smartconnect_0_0_sc_si_converter_v1_0_9_top : entity is "2'b01";
   attribute P_FULLY_PIPELINED : integer;
@@ -77888,8 +77814,6 @@ entity bd_d86b_smartconnect_0_0_sc_transaction_regulator_v1_0_8_top is
   attribute C_WRITE_ACCEPTANCE of bd_d86b_smartconnect_0_0_sc_transaction_regulator_v1_0_8_top : entity is 32;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of bd_d86b_smartconnect_0_0_sc_transaction_regulator_v1_0_8_top : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_transaction_regulator_v1_0_8_top : entity is "sc_transaction_regulator_v1_0_8_top";
   attribute P_FULLY_PIPELINED : integer;
   attribute P_FULLY_PIPELINED of bd_d86b_smartconnect_0_0_sc_transaction_regulator_v1_0_8_top : entity is 2;
   attribute P_ID_BUFFER_WIDTH : integer;
@@ -83205,8 +83129,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m00arn_0 is
     M00_SC_AR_payld : in STD_LOGIC_VECTOR ( 9 downto 0 );
     M_SC_AR_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m00arn_0 : entity is "bd_71bb_m00arn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m00arn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m00arn_0 is
@@ -83378,8 +83300,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m00awn_0 is
     M00_SC_AW_payld : in STD_LOGIC_VECTOR ( 9 downto 0 );
     M_SC_AW_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m00awn_0 : entity is "bd_71bb_m00awn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m00awn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m00awn_0 is
@@ -83552,8 +83472,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m00bn_0 is
     S_SC_B_payld : in STD_LOGIC_VECTOR ( 1 downto 0 );
     S00_SC_B_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m00bn_0 : entity is "bd_71bb_m00bn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m00bn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m00bn_0 is
@@ -83750,8 +83668,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m00e_0 is
     M00_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M00_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m00e_0 : entity is "bd_71bb_m00e_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m00e_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m00e_0 is
@@ -83958,8 +83874,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m00rn_0 is
     S_SC_R_payld : in STD_LOGIC_VECTOR ( 33 downto 0 );
     S00_SC_R_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m00rn_0 : entity is "bd_71bb_m00rn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m00rn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m00rn_0 is
@@ -84128,8 +84042,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m00wn_0 is
     M00_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m00wn_0 : entity is "bd_71bb_m00wn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m00wn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m00wn_0 is
@@ -84295,8 +84207,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m01arn_0 is
     M01_SC_AR_payld : in STD_LOGIC_VECTOR ( 11 downto 0 );
     M_SC_AR_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m01arn_0 : entity is "bd_71bb_m01arn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m01arn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m01arn_0 is
@@ -84468,8 +84378,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m01awn_0 is
     M01_SC_AW_payld : in STD_LOGIC_VECTOR ( 11 downto 0 );
     M_SC_AW_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m01awn_0 : entity is "bd_71bb_m01awn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m01awn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m01awn_0 is
@@ -84642,8 +84550,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m01bn_0 is
     S_SC_B_payld : in STD_LOGIC_VECTOR ( 1 downto 0 );
     S01_SC_B_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m01bn_0 : entity is "bd_71bb_m01bn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m01bn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m01bn_0 is
@@ -84840,8 +84746,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m01e_0 is
     M01_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M01_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m01e_0 : entity is "bd_71bb_m01e_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m01e_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m01e_0 is
@@ -85048,8 +84952,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m01rn_0 is
     S_SC_R_payld : in STD_LOGIC_VECTOR ( 33 downto 0 );
     S01_SC_R_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m01rn_0 : entity is "bd_71bb_m01rn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m01rn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m01rn_0 is
@@ -85218,8 +85120,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m01wn_0 is
     M01_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m01wn_0 : entity is "bd_71bb_m01wn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m01wn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m01wn_0 is
@@ -85385,8 +85285,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m02arn_0 is
     M02_SC_AR_payld : in STD_LOGIC_VECTOR ( 14 downto 0 );
     M_SC_AR_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m02arn_0 : entity is "bd_71bb_m02arn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m02arn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m02arn_0 is
@@ -85558,8 +85456,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m02awn_0 is
     M02_SC_AW_payld : in STD_LOGIC_VECTOR ( 14 downto 0 );
     M_SC_AW_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m02awn_0 : entity is "bd_71bb_m02awn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m02awn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m02awn_0 is
@@ -85732,8 +85628,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m02bn_0 is
     S_SC_B_payld : in STD_LOGIC_VECTOR ( 1 downto 0 );
     S02_SC_B_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m02bn_0 : entity is "bd_71bb_m02bn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m02bn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m02bn_0 is
@@ -85930,8 +85824,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m02e_0 is
     M02_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M02_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m02e_0 : entity is "bd_71bb_m02e_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m02e_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m02e_0 is
@@ -86138,8 +86030,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m02rn_0 is
     S_SC_R_payld : in STD_LOGIC_VECTOR ( 33 downto 0 );
     S02_SC_R_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m02rn_0 : entity is "bd_71bb_m02rn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m02rn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m02rn_0 is
@@ -86308,8 +86198,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m02wn_0 is
     M02_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m02wn_0 : entity is "bd_71bb_m02wn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m02wn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m02wn_0 is
@@ -86475,8 +86363,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m03arn_0 is
     M03_SC_AR_payld : in STD_LOGIC_VECTOR ( 18 downto 0 );
     M_SC_AR_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m03arn_0 : entity is "bd_71bb_m03arn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m03arn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m03arn_0 is
@@ -86648,8 +86534,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m03awn_0 is
     M03_SC_AW_payld : in STD_LOGIC_VECTOR ( 18 downto 0 );
     M_SC_AW_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m03awn_0 : entity is "bd_71bb_m03awn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m03awn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m03awn_0 is
@@ -86822,8 +86706,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m03bn_0 is
     S_SC_B_payld : in STD_LOGIC_VECTOR ( 1 downto 0 );
     S03_SC_B_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m03bn_0 : entity is "bd_71bb_m03bn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m03bn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m03bn_0 is
@@ -87020,8 +86902,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m03e_0 is
     M03_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M03_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m03e_0 : entity is "bd_71bb_m03e_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m03e_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m03e_0 is
@@ -87228,8 +87108,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m03rn_0 is
     S_SC_R_payld : in STD_LOGIC_VECTOR ( 33 downto 0 );
     S03_SC_R_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m03rn_0 : entity is "bd_71bb_m03rn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m03rn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m03rn_0 is
@@ -87398,8 +87276,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m03wn_0 is
     M03_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m03wn_0 : entity is "bd_71bb_m03wn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m03wn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m03wn_0 is
@@ -87565,8 +87441,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m04arn_0 is
     M04_SC_AR_payld : in STD_LOGIC_VECTOR ( 9 downto 0 );
     M_SC_AR_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m04arn_0 : entity is "bd_71bb_m04arn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m04arn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m04arn_0 is
@@ -87738,8 +87612,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m04awn_0 is
     M04_SC_AW_payld : in STD_LOGIC_VECTOR ( 9 downto 0 );
     M_SC_AW_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m04awn_0 : entity is "bd_71bb_m04awn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m04awn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m04awn_0 is
@@ -87912,8 +87784,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m04bn_0 is
     S_SC_B_payld : in STD_LOGIC_VECTOR ( 1 downto 0 );
     S04_SC_B_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m04bn_0 : entity is "bd_71bb_m04bn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m04bn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m04bn_0 is
@@ -88110,8 +87980,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m04e_0 is
     M04_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M04_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m04e_0 : entity is "bd_71bb_m04e_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m04e_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m04e_0 is
@@ -88318,8 +88186,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m04rn_0 is
     S_SC_R_payld : in STD_LOGIC_VECTOR ( 33 downto 0 );
     S04_SC_R_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m04rn_0 : entity is "bd_71bb_m04rn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m04rn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m04rn_0 is
@@ -88488,8 +88354,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m04wn_0 is
     M04_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m04wn_0 : entity is "bd_71bb_m04wn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m04wn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m04wn_0 is
@@ -88655,8 +88519,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m08arn_0 is
     M08_SC_AR_payld : in STD_LOGIC_VECTOR ( 10 downto 0 );
     M_SC_AR_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m08arn_0 : entity is "bd_71bb_m08arn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m08arn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m08arn_0 is
@@ -88828,8 +88690,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m08awn_0 is
     M08_SC_AW_payld : in STD_LOGIC_VECTOR ( 10 downto 0 );
     M_SC_AW_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m08awn_0 : entity is "bd_71bb_m08awn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m08awn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m08awn_0 is
@@ -89002,8 +88862,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m08bn_0 is
     S_SC_B_payld : in STD_LOGIC_VECTOR ( 1 downto 0 );
     S08_SC_B_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m08bn_0 : entity is "bd_71bb_m08bn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m08bn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m08bn_0 is
@@ -89200,8 +89058,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m08e_0 is
     M08_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M08_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m08e_0 : entity is "bd_71bb_m08e_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m08e_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m08e_0 is
@@ -89408,8 +89264,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m08rn_0 is
     S_SC_R_payld : in STD_LOGIC_VECTOR ( 33 downto 0 );
     S08_SC_R_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m08rn_0 : entity is "bd_71bb_m08rn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m08rn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m08rn_0 is
@@ -89578,8 +89432,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_m08wn_0 is
     M08_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_m08wn_0 : entity is "bd_71bb_m08wn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_m08wn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_m08wn_0 is
@@ -89781,8 +89633,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_s00mmu_0 is
     s_axi_rlast : in STD_LOGIC;
     s_axi_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_s00mmu_0 : entity is "bd_71bb_s00mmu_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_s00mmu_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_s00mmu_0 is
@@ -90079,8 +89929,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_s00sic_0 is
     \gen_id_reg.s_single_aready_i_reg_0\ : in STD_LOGIC;
     S00_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_s00sic_0 : entity is "bd_71bb_s00sic_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_s00sic_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_s00sic_0 is
@@ -90369,8 +90217,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_s00tr_0 is
     \gen_id_reg.s_single_aready_i_reg_3\ : in STD_LOGIC;
     S00_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_s00tr_0 : entity is "bd_71bb_s00tr_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_s00tr_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_s00tr_0 is
@@ -90596,8 +90442,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_sarn_0 is
     S_SC_AR_payld : in STD_LOGIC_VECTOR ( 24 downto 0 );
     S00_SC_AR_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_sarn_0 : entity is "bd_71bb_sarn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_sarn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_sarn_0 is
@@ -90776,8 +90620,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_sawn_0 is
     S_SC_AW_payld : in STD_LOGIC_VECTOR ( 24 downto 0 );
     S00_SC_AW_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_sawn_0 : entity is "bd_71bb_sawn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_sawn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_sawn_0 is
@@ -90956,8 +90798,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_sbn_0 is
     M00_SC_B_payld : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M_SC_B_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_sbn_0 : entity is "bd_71bb_sbn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_sbn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_sbn_0 is
@@ -91123,8 +90963,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_srn_0 is
     M00_SC_R_payld : in STD_LOGIC_VECTOR ( 34 downto 0 );
     M_SC_R_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_srn_0 : entity is "bd_71bb_srn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_srn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_srn_0 is
@@ -91290,8 +91128,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_swn_0 is
     S_SC_W_payld : in STD_LOGIC_VECTOR ( 41 downto 0 );
     S00_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_swn_0 : entity is "bd_71bb_swn_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_swn_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_swn_0 is
@@ -91459,8 +91295,6 @@ entity bd_d86b_smartconnect_0_0_proc_sys_reset is
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_proc_sys_reset : entity is "proc_sys_reset";
 end bd_d86b_smartconnect_0_0_proc_sys_reset;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_proc_sys_reset is
@@ -91512,8 +91346,6 @@ entity bd_d86b_smartconnect_0_0_sc_node_v1_0_11_fifo is
     m_sc_areset_r : in STD_LOGIC;
     m_sc_recv : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_fifo : entity is "sc_node_v1_0_11_fifo";
 end bd_d86b_smartconnect_0_0_sc_node_v1_0_11_fifo;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_sc_node_v1_0_11_fifo is
@@ -91691,8 +91523,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_psr_aclk_0 is
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_psr_aclk_0 : entity is "bd_71bb_psr_aclk_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_psr_aclk_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_psr_aclk_0 is
@@ -91751,8 +91581,6 @@ entity bd_d86b_smartconnect_0_0_m00_exit_pipeline_imp_UV6OGF is
     M00_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M00_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m00_exit_pipeline_imp_UV6OGF : entity is "m00_exit_pipeline_imp_UV6OGF";
 end bd_d86b_smartconnect_0_0_m00_exit_pipeline_imp_UV6OGF;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m00_exit_pipeline_imp_UV6OGF is
@@ -91844,8 +91672,6 @@ entity bd_d86b_smartconnect_0_0_m00_nodes_imp_HHQ15V is
     M00_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m00_nodes_imp_HHQ15V : entity is "m00_nodes_imp_HHQ15V";
 end bd_d86b_smartconnect_0_0_m00_nodes_imp_HHQ15V;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m00_nodes_imp_HHQ15V is
@@ -91961,8 +91787,6 @@ entity bd_d86b_smartconnect_0_0_m01_exit_pipeline_imp_XBIC27 is
     M01_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M01_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m01_exit_pipeline_imp_XBIC27 : entity is "m01_exit_pipeline_imp_XBIC27";
 end bd_d86b_smartconnect_0_0_m01_exit_pipeline_imp_XBIC27;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m01_exit_pipeline_imp_XBIC27 is
@@ -92054,8 +91878,6 @@ entity bd_d86b_smartconnect_0_0_m01_nodes_imp_18YD82D is
     M01_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m01_nodes_imp_18YD82D : entity is "m01_nodes_imp_18YD82D";
 end bd_d86b_smartconnect_0_0_m01_nodes_imp_18YD82D;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m01_nodes_imp_18YD82D is
@@ -92171,8 +91993,6 @@ entity bd_d86b_smartconnect_0_0_m02_exit_pipeline_imp_I5L3GV is
     M02_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M02_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m02_exit_pipeline_imp_I5L3GV : entity is "m02_exit_pipeline_imp_I5L3GV";
 end bd_d86b_smartconnect_0_0_m02_exit_pipeline_imp_I5L3GV;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m02_exit_pipeline_imp_I5L3GV is
@@ -92264,8 +92084,6 @@ entity bd_d86b_smartconnect_0_0_m02_nodes_imp_1PPGXCE is
     M02_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m02_nodes_imp_1PPGXCE : entity is "m02_nodes_imp_1PPGXCE";
 end bd_d86b_smartconnect_0_0_m02_nodes_imp_1PPGXCE;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m02_nodes_imp_1PPGXCE is
@@ -92381,8 +92199,6 @@ entity bd_d86b_smartconnect_0_0_m03_exit_pipeline_imp_NXSKR3 is
     M03_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M03_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m03_exit_pipeline_imp_NXSKR3 : entity is "m03_exit_pipeline_imp_NXSKR3";
 end bd_d86b_smartconnect_0_0_m03_exit_pipeline_imp_NXSKR3;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m03_exit_pipeline_imp_NXSKR3 is
@@ -92474,8 +92290,6 @@ entity bd_d86b_smartconnect_0_0_m03_nodes_imp_IPE01K is
     M03_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m03_nodes_imp_IPE01K : entity is "m03_nodes_imp_IPE01K";
 end bd_d86b_smartconnect_0_0_m03_nodes_imp_IPE01K;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m03_nodes_imp_IPE01K is
@@ -92591,8 +92405,6 @@ entity bd_d86b_smartconnect_0_0_m04_exit_pipeline_imp_EBNXAN is
     M04_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M04_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m04_exit_pipeline_imp_EBNXAN : entity is "m04_exit_pipeline_imp_EBNXAN";
 end bd_d86b_smartconnect_0_0_m04_exit_pipeline_imp_EBNXAN;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m04_exit_pipeline_imp_EBNXAN is
@@ -92684,8 +92496,6 @@ entity bd_d86b_smartconnect_0_0_m04_nodes_imp_AQ3YBC is
     M04_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m04_nodes_imp_AQ3YBC : entity is "m04_nodes_imp_AQ3YBC";
 end bd_d86b_smartconnect_0_0_m04_nodes_imp_AQ3YBC;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m04_nodes_imp_AQ3YBC is
@@ -92801,8 +92611,6 @@ entity bd_d86b_smartconnect_0_0_m08_exit_pipeline_imp_1NIH7IN is
     M08_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M08_AXI_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m08_exit_pipeline_imp_1NIH7IN : entity is "m08_exit_pipeline_imp_1NIH7IN";
 end bd_d86b_smartconnect_0_0_m08_exit_pipeline_imp_1NIH7IN;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m08_exit_pipeline_imp_1NIH7IN is
@@ -92894,8 +92702,6 @@ entity bd_d86b_smartconnect_0_0_m08_nodes_imp_3F2BTH is
     M08_SC_W_payld : in STD_LOGIC_VECTOR ( 35 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_m08_nodes_imp_3F2BTH : entity is "m08_nodes_imp_3F2BTH";
 end bd_d86b_smartconnect_0_0_m08_nodes_imp_3F2BTH;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_m08_nodes_imp_3F2BTH is
@@ -93015,8 +92821,6 @@ entity bd_d86b_smartconnect_0_0_s00_entry_pipeline_imp_1TI9BGS is
     s_axi_rlast : in STD_LOGIC;
     s_axi_rvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_s00_entry_pipeline_imp_1TI9BGS : entity is "s00_entry_pipeline_imp_1TI9BGS";
 end bd_d86b_smartconnect_0_0_s00_entry_pipeline_imp_1TI9BGS;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_s00_entry_pipeline_imp_1TI9BGS is
@@ -93272,8 +93076,6 @@ entity bd_d86b_smartconnect_0_0_s00_nodes_imp_1XA0H92 is
     S_SC_W_payld : in STD_LOGIC_VECTOR ( 41 downto 0 );
     S00_SC_W_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_s00_nodes_imp_1XA0H92 : entity is "s00_nodes_imp_1XA0H92";
 end bd_d86b_smartconnect_0_0_s00_nodes_imp_1XA0H92;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_s00_nodes_imp_1XA0H92 is
@@ -93671,8 +93473,6 @@ entity bd_d86b_smartconnect_0_0_clk_map_imp_161YTN8 is
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_clk_map_imp_161YTN8 : entity is "clk_map_imp_161YTN8";
 end bd_d86b_smartconnect_0_0_clk_map_imp_161YTN8;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_clk_map_imp_161YTN8 is
@@ -95317,8 +95117,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_arni_0 is
     S_SC_AR_payld : in STD_LOGIC_VECTOR ( 24 downto 0 );
     M_SC_AR_recv : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_arni_0 : entity is "bd_71bb_arni_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_arni_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_arni_0 is
@@ -95500,8 +95298,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_awni_0 is
     S_SC_AW_payld : in STD_LOGIC_VECTOR ( 24 downto 0 );
     M_SC_AW_recv : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_awni_0 : entity is "bd_71bb_awni_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_awni_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_awni_0 is
@@ -95684,8 +95480,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_bni_0 is
     S_SC_B_payld : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M_SC_B_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_bni_0 : entity is "bd_71bb_bni_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_bni_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_bni_0 is
@@ -95862,8 +95656,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_rni_0 is
     S_SC_R_payld : in STD_LOGIC_VECTOR ( 34 downto 0 );
     M_SC_R_recv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_rni_0 : entity is "bd_71bb_rni_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_rni_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_rni_0 is
@@ -96039,8 +95831,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb_wni_0 is
     S_SC_W_payld : in STD_LOGIC_VECTOR ( 41 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb_wni_0 : entity is "bd_71bb_wni_0";
 end bd_d86b_smartconnect_0_0_bd_71bb_wni_0;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb_wni_0 is
@@ -96242,8 +96032,6 @@ entity bd_d86b_smartconnect_0_0_i_nodes_imp_O00UII is
     S_SC_W_payld : in STD_LOGIC_VECTOR ( 41 downto 0 );
     M_SC_W_recv : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_i_nodes_imp_O00UII : entity is "i_nodes_imp_O00UII";
 end bd_d86b_smartconnect_0_0_i_nodes_imp_O00UII;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_i_nodes_imp_O00UII is
@@ -96353,8 +96141,6 @@ entity bd_d86b_smartconnect_0_0_switchboards_imp_14LU7UQ is
     S00_SC_W_payld : in STD_LOGIC_VECTOR ( 41 downto 0 );
     \gen_single_rank.empty_r_i_2_0\ : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_switchboards_imp_14LU7UQ : entity is "switchboards_imp_14LU7UQ";
 end bd_d86b_smartconnect_0_0_switchboards_imp_14LU7UQ;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_switchboards_imp_14LU7UQ is
@@ -96996,8 +96782,6 @@ entity bd_d86b_smartconnect_0_0_bd_71bb is
   );
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of bd_d86b_smartconnect_0_0_bd_71bb : entity is "bd_d86b_smartconnect_0_0.hwdef";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d86b_smartconnect_0_0_bd_71bb : entity is "bd_71bb";
 end bd_d86b_smartconnect_0_0_bd_71bb;
 
 architecture STRUCTURE of bd_d86b_smartconnect_0_0_bd_71bb is

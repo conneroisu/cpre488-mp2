@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Mon Mar 10 00:05:16 2025
+// Date        : Mon Mar 10 00:05:15 2025
 // Host        : CO2041-04 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_v_proc_ss_0_3/bd_0/ip/ip_18/bd_d86b_m07_regslice_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top bd_d86b_m07_regslice_0 -prefix
+//               bd_d86b_m07_regslice_0_ bd_d86b_m07_regslice_0_stub.v
 // Design      : bd_d86b_m07_regslice_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1
