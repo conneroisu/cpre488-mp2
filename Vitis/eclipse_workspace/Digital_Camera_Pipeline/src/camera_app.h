@@ -147,8 +147,9 @@ int vfb_tx_stop(XAxiVdma *pAxiVdma);
 int vfb_dump_registers(XAxiVdma *pAxiVdma);
 int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors);
 
-void write_isr(void* CallBackRef, u32 InterruptTypes);
-void read_isr(void* CallBackRef, u32 InterruptTypes);
+void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes);
+void camera_input_isr(void* CallBackRef, u32 InterruptTypes);
+void error_isr(void* CallBackRef, u32 InterruptTypes);
 
 void set_brightness(
 	camera_config_t *config,
