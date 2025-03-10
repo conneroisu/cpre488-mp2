@@ -37,9 +37,9 @@ Select required options for project.
 ---
 # Fixing Vivado Git
 
-Depending on the structure of the project, you may need to modify the tcl script to include the correct files from a static location in the repo.
+You may need to modify the tcl script to include the correct files from a static location in the repo.
 
-For example, in our case, we had to statically define:
+For example, in our case, we had to statically define places for:
 - Constraints File
 - VHDL Files (`design_1_wrapper.vhd`)
 - HW IP Files (`avnet_hdmi_out`, `avnet_hdmi_in`, `interfaces`, `onsemi_vita_cam`, `onsemi_vita_spi`)
