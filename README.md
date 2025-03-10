@@ -93,7 +93,7 @@ set_property IOSTANDARD LVDS_25 [get_ports IO_VITA_CAM_sync_*]
 set_property IOSTANDARD LVDS_25 [get_ports IO_VITA_CAM_data_*]
 ```
 
-### What LVDS Is and How It Works
+### What LVDS Is and How Does It Work?
 
 LVDS uses a pair of complementary signals that are transmitted on two separate traces:
 - The `_p` suffix indicates the positive/true signal
@@ -103,7 +103,7 @@ The actual data is determined by the voltage difference between these two signal
 - A positive difference represents a logical '1'
 - A negative difference represents a logical '0'
 
-### Why LVDS Is Used for the Camera Interface
+### Why Is LVDS Used for the Camera Interface?
 
 LVDS is used for the VITA camera interface for several important reasons:
 
@@ -216,6 +216,10 @@ Where:
 This format maintains full luminance resolution (the "4" in 4:2:2) while halving the horizontal resolution of the color information (the "2:2"). This works well because human vision is more sensitive to changes in brightness than in color.
 
 For the `camera_loop()` function's conversion pass, this format would need to be maintained when processing the data, ensuring that each 32-bit word continues to represent two pixels in the YCbCr 4:2:2 format, with the appropriate luminance and chrominance values preserved during the vertical flip operation.
+
+## Hardware Pipeline Diagram
+
+<!-- TODO: Add hardware pipeline diagram -->
 
 ## Performance
 
