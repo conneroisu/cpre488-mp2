@@ -179,7 +179,7 @@ void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
 		{
 			// Once we have read from the back buffer, we know that it is the new front buffer
 			// so we must have just swapped.
-			if(sw_mode & (get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ) == target_frame) && snapshot_saved)
+			if(sw_mode && (get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ) == target_frame) && snapshot_saved)
 			{
 				// We start and stop the timer on this ISR.
 				// If this is the first frame, the timer won't be started, so start it up without ending any timer.
@@ -339,7 +339,7 @@ void camera_loop(camera_config_t *config) {
 		set_park_frame(&(config->vdma_hdmi), front_buffer_frame, XAXIVDMA_READ);
 
 		// Wait for park frame to update.
-		while(get_current_frame_pointer(&(config->vdma_hdmi), XAXIVDMA_READ != front_buffer_frame))
+		while(get_current_frame_pointer(&(config->vdma_hdmi), XAXIVDMA_READ) != front_buffer_frame)
 		{
 
 		}

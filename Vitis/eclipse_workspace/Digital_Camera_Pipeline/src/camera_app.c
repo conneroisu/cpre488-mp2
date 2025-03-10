@@ -4,9 +4,9 @@
 #include "xscugic.h"
 #include "xtime_l.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-#define MAX_FPS_ENTRIES 10
-#define NUM_FRAMES XPAR_AXIVDMA_0_NUM_FSTORES
+#define MAX_FPS_ENTRIES 100
 
 typedef struct fps
 {
@@ -15,28 +15,17 @@ typedef struct fps
 	float entries[MAX_FPS_ENTRIES];
 } fps_t;
 
-// We have a total of 5 frames, keep start and end for each one.
-typedef struct frame_times
-{
-	XTime tStart[NUM_FRAMES];
-	XTime tEnd[NUM_FRAMES];
-} frame_times_t;
 
 // Timing globals
 static fps_t fps;
-static int sw_mode = 0;
-static int snapshot_saved = 0;
 
-static u8 back_buffer_frame = 2;
-static u8 front_buffer_frame = 3;
-
-// Frame that indicates that the write completed.
-static u8 target_frame = 2;
-
-static frame_times_t frame_times;
+static XTime tStart, tEnd = 0;
 
 // In seconds
 static float fps_reading = 0;
+
+static int rec_flag = 0;
+static u8 prev_frame = 255;
 
 // To store frame time message
 static char* fps_msg = 0;
@@ -168,28 +157,36 @@ void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
 	{
 		case XAXIVDMA_IXR_FRMCNT_MASK:
 		{
-			u8 frame = get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ);
+			u8 current_frame = get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ);
 
-			// If first frame, start only
-			if(!frame_times.tStart[frame])
+			// Make sure we received something before recording that we wrote it.
+			if(rec_flag && (current_frame != prev_frame))
 			{
-				XTime_GetTime(&frame_times.tStart[frame]);
+				// If first frame, start only
+				if(!tStart)
+				{
+					XTime_GetTime(&tStart);
+				}
+				else
+				{
+					XTime_GetTime(&tEnd);
+
+					fps_reading = (tEnd - tStart) / (float)COUNTS_PER_SECOND;
+
+					fps_time_store(&fps, fps_reading);
+
+					sprintf(fps_msg, "Average FPS: %.5f", fps_calculate(&fps));
+
+					xil_printf("%s\n\r", fps_msg);
+
+					// Start the timer back up!
+					XTime_GetTime(&tStart);
+				}
+
+				rec_flag = 0;
 			}
-			else
-			{
-				XTime_GetTime(&frame_times.tEnd[frame]);
 
-				fps_reading = (frame_times.tEnd[frame] - frame_times.tStart[frame]) / (float)COUNTS_PER_SECOND;
-
-				fps_time_store(&fps, fps_reading);
-
-				sprintf(fps_msg, "Average FPS: %.5f", fps_calculate(&fps));
-
-				xil_printf("%s\n\r", fps_msg);
-
-				// Start the timer back up!
-				XTime_GetTime(&frame_times.tStart[frame]);
-			}
+			prev_frame = current_frame;
 		}
 
 		default:
@@ -207,6 +204,10 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 	{
 		case XAXIVDMA_IXR_FRMCNT_MASK:
 		{
+			if(!rec_flag)
+			{
+				rec_flag = 1;
+			}
 			break;
 		}
 
@@ -224,20 +225,15 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 // Main function. Initializes the devices and configures VDMA
 int main()
 {
-	// Init frame_times
-	for(u8 i = 0; i < NUM_FRAMES; ++i)
-	{
-		frame_times.tEnd[i] = 0;
-		frame_times.tStart[i] = 0;
-	}
-
 	// Init FPS
 	fps_init(&fps);
+
+	fps_msg = (char*) calloc(64, sizeof(char*));
 
 	// Camera Init
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);
-	camera_loop(&camera_config);
+	//camera_loop(&camera_config);
 	while (1)
 	{
 		// TODO: Add switch from software to hardware mode!
@@ -245,7 +241,7 @@ int main()
 		{
 			// XVprocSs_SetPictureBrightness(&proc_ss_RGB_YCrCb_444, (s32)i);
 			// XVprocSs_SetPictureContrast(&proc_ss_RGB_YCrCb_444, (s32)i);
-			set_contrast(&camera_config, i);
+			//set_contrast(&camera_config, i);
 			usleep(100000);
 		}
 	}
