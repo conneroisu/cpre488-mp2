@@ -2,24 +2,24 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Sat Mar  8 13:24:16 2025
-# Process ID: 3412
-# Current directory: C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1
+# Start of session at: Mon Mar 10 07:01:09 2025
+# Process ID: 9096
+# Current directory: Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1
 # Command line: vivado.exe -log design_1_axis_subset_converter_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_axis_subset_converter_0_0.tcl
-# Log file: C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/design_1_axis_subset_converter_0_0.vds
-# Journal file: C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1\vivado.jou
+# Log file: Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/design_1_axis_subset_converter_0_0.vds
+# Journal file: Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1\vivado.jou
 #-----------------------------------------------------------
 source design_1_axis_subset_converter_0_0.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0'.
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP'.
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.1/data/ip'.
-WARNING: [IP_Flow 19-1663] Duplicate IP found for 'avnet:avnet_hdmi:avnet_hdmi_out:3.1'. The one found in IP location 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/avnet_hdmi_out' will take precedence over the same IP in location c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP/avnet_hdmi_out
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_ali3:1.0'. The one found in location 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_ali3.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP/interfaces/avnet_ali3.xml'
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_hdmi:2.0'. The one found in location 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_hdmi.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP/interfaces/avnet_hdmi.xml'
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_cam:1.0'. The one found in location 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_cam.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP/interfaces/onsemi_vita_cam.xml'
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_spi:1.0'. The one found in location 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_spi.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP/interfaces/onsemi_vita_spi.xml'
-WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:user:SF_SM_Master_Bus:1.0'. The one found in location 'c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/SF_SM_Master_Bus.xml' will take precedence over the same Interface in location 'c:/Users/jaxie963/Temp/cpre488-mp2/hw/IP/interfaces/SF_SM_Master_Bus.xml'
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'Z:/Vivado/Xilinx/Vivado/2020.1/data/ip'.
+WARNING: [IP_Flow 19-1663] Duplicate IP found for 'avnet:avnet_hdmi:avnet_hdmi_out:3.1'. The one found in IP location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/avnet_hdmi_out' will take precedence over the same IP in location z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/avnet_hdmi_out
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_ali3:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_ali3.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/avnet_ali3.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:avnet_hdmi:2.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/avnet_hdmi.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/avnet_hdmi.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_cam:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_cam.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/onsemi_vita_cam.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:interface:onsemi_vita_spi:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/onsemi_vita_spi.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/onsemi_vita_spi.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'avnet.com:user:SF_SM_Master_Bus:1.0'. The one found in location 'z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.ipdefs/IP_0_0/interfaces/SF_SM_Master_Bus.xml' will take precedence over the same Interface in location 'z:/Vivado/CPRE488_git/cpre488-mp2/hw/IP/interfaces/SF_SM_Master_Bus.xml'
 Command: synth_design -top design_1_axis_subset_converter_0_0 -part xc7z020clg484-1 -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
@@ -27,21 +27,21 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 18608
+INFO: [Synth 8-7075] Helper process launched with PID 17276
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1024.598 ; gain = 8.895
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'design_1_axis_subset_converter_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/synth/design_1_axis_subset_converter_0_0.v:58]
-INFO: [Synth 8-6157] synthesizing module 'top_design_1_axis_subset_converter_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/top_design_1_axis_subset_converter_0_0.v:60]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axis_subset_converter_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/synth/design_1_axis_subset_converter_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'top_design_1_axis_subset_converter_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/top_design_1_axis_subset_converter_0_0.v:60]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_S_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
 	Parameter C_S_AXIS_TID_WIDTH bound to: 1 - type: integer 
-	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
 	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_SIGNAL_SET bound to: 32'b00000000000000000000000011111111 
 	Parameter C_M_AXIS_TDATA_WIDTH bound to: 16 - type: integer 
 	Parameter C_M_AXIS_TID_WIDTH bound to: 1 - type: integer 
-	Parameter C_M_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
 	Parameter C_M_AXIS_SIGNAL_SET bound to: 32'b00000000000000000000000011111111 
 	Parameter C_M_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_DEFAULT_TLAST bound to: 0 - type: integer 
@@ -64,15 +64,15 @@ INFO: [Synth 8-6157] synthesizing module 'top_design_1_axis_subset_converter_0_0
 	Parameter G_TASK_SEVERITY_ERR bound to: 2 - type: integer 
 	Parameter G_TASK_SEVERITY_WARNING bound to: 1 - type: integer 
 	Parameter G_TASK_SEVERITY_INFO bound to: 0 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'axis_subset_converter_v1_1_21_core' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/128c/hdl/axis_subset_converter_v1_1_vl_rfs.v:62]
+INFO: [Synth 8-6157] synthesizing module 'axis_subset_converter_v1_1_21_core' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/128c/hdl/axis_subset_converter_v1_1_vl_rfs.v:62]
 	Parameter C_FAMILY bound to: zynq - type: string 
 	Parameter C_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
 	Parameter C_S_AXIS_TID_WIDTH bound to: 1 - type: integer 
-	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
 	Parameter C_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_SIGNAL_SET bound to: 32'b00000000000000000000000011111111 
 	Parameter C_M_AXIS_TID_WIDTH bound to: 1 - type: integer 
-	Parameter C_M_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
 	Parameter C_M_AXIS_SIGNAL_SET bound to: 32'b00000000000000000000000011111111 
 	Parameter C_DEFAULT_TLAST bound to: 0 - type: integer 
 	Parameter G_INDX_SS_TREADY bound to: 0 - type: integer 
@@ -98,104 +98,104 @@ INFO: [Synth 8-6157] synthesizing module 'axis_subset_converter_v1_1_21_core' [c
 	Parameter P_SIGNAL_SET_ADD bound to: 32'b00000000000000000000000000000000 
 	Parameter P_SIGNAL_SET_REM bound to: 32'b00000000000000000000000000000000 
 	Parameter P_TLAST_CNTR_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axis_subset_converter_v1_1_21_core' (1#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/128c/hdl/axis_subset_converter_v1_1_vl_rfs.v:62]
-INFO: [Synth 8-6157] synthesizing module 'tdata_design_1_axis_subset_converter_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tdata_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'axis_subset_converter_v1_1_21_core' (1#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ipshared/128c/hdl/axis_subset_converter_v1_1_vl_rfs.v:62]
+INFO: [Synth 8-6157] synthesizing module 'tdata_design_1_axis_subset_converter_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tdata_design_1_axis_subset_converter_0_0.v:48]
 	Parameter C_S_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
 	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_TID_WIDTH bound to: 1 - type: integer 
-	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
 	Parameter C_M_AXIS_TDATA_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'tdata_design_1_axis_subset_converter_0_0' (2#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tdata_design_1_axis_subset_converter_0_0.v:48]
-INFO: [Synth 8-6157] synthesizing module 'tuser_design_1_axis_subset_converter_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tuser_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'tdata_design_1_axis_subset_converter_0_0' (2#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tdata_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tuser_design_1_axis_subset_converter_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tuser_design_1_axis_subset_converter_0_0.v:48]
 	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
 	Parameter C_S_AXIS_TID_WIDTH bound to: 1 - type: integer 
-	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
 	Parameter C_M_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'tuser_design_1_axis_subset_converter_0_0' (3#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tuser_design_1_axis_subset_converter_0_0.v:48]
-INFO: [Synth 8-6157] synthesizing module 'tid_design_1_axis_subset_converter_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tid_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'tuser_design_1_axis_subset_converter_0_0' (3#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tuser_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tid_design_1_axis_subset_converter_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tid_design_1_axis_subset_converter_0_0.v:48]
 	Parameter C_S_AXIS_TID_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
-	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
 	Parameter C_M_AXIS_TID_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'tid_design_1_axis_subset_converter_0_0' (4#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tid_design_1_axis_subset_converter_0_0.v:48]
-INFO: [Synth 8-6157] synthesizing module 'tdest_design_1_axis_subset_converter_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tdest_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'tid_design_1_axis_subset_converter_0_0' (4#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tid_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tdest_design_1_axis_subset_converter_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tdest_design_1_axis_subset_converter_0_0.v:48]
 	Parameter C_S_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
 	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_TID_WIDTH bound to: 1 - type: integer 
-	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
-	Parameter C_M_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'tdest_design_1_axis_subset_converter_0_0' (5#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tdest_design_1_axis_subset_converter_0_0.v:48]
-INFO: [Synth 8-6157] synthesizing module 'tstrb_design_1_axis_subset_converter_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tstrb_design_1_axis_subset_converter_0_0.v:48]
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
+	Parameter C_M_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tdest_design_1_axis_subset_converter_0_0' (5#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tdest_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tstrb_design_1_axis_subset_converter_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tstrb_design_1_axis_subset_converter_0_0.v:48]
 	Parameter C_S_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
 	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_TID_WIDTH bound to: 1 - type: integer 
-	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
 	Parameter C_M_AXIS_TDATA_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'tstrb_design_1_axis_subset_converter_0_0' (6#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tstrb_design_1_axis_subset_converter_0_0.v:48]
-INFO: [Synth 8-6157] synthesizing module 'tkeep_design_1_axis_subset_converter_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tkeep_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'tstrb_design_1_axis_subset_converter_0_0' (6#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tstrb_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tkeep_design_1_axis_subset_converter_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tkeep_design_1_axis_subset_converter_0_0.v:48]
 	Parameter C_S_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
 	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_TID_WIDTH bound to: 1 - type: integer 
-	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
 	Parameter C_M_AXIS_TDATA_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'tkeep_design_1_axis_subset_converter_0_0' (7#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tkeep_design_1_axis_subset_converter_0_0.v:48]
-INFO: [Synth 8-6157] synthesizing module 'tlast_design_1_axis_subset_converter_0_0' [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tlast_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'tkeep_design_1_axis_subset_converter_0_0' (7#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tkeep_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6157] synthesizing module 'tlast_design_1_axis_subset_converter_0_0' [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tlast_design_1_axis_subset_converter_0_0.v:48]
 	Parameter C_S_AXIS_TID_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_TUSER_WIDTH bound to: 1 - type: integer 
 	Parameter C_S_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
-	Parameter C_S_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'tlast_design_1_axis_subset_converter_0_0' (8#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tlast_design_1_axis_subset_converter_0_0.v:48]
-INFO: [Synth 8-6155] done synthesizing module 'top_design_1_axis_subset_converter_0_0' (9#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/top_design_1_axis_subset_converter_0_0.v:60]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_axis_subset_converter_0_0' (10#1) [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/synth/design_1_axis_subset_converter_0_0.v:58]
+	Parameter C_S_AXIS_TDEST_WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tlast_design_1_axis_subset_converter_0_0' (8#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/tlast_design_1_axis_subset_converter_0_0.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'top_design_1_axis_subset_converter_0_0' (9#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/hdl/top_design_1_axis_subset_converter_0_0.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axis_subset_converter_0_0' (10#1) [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/synth/design_1_axis_subset_converter_0_0.v:58]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:11 . Memory (MB): peak = 1081.379 ; gain = 65.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 1081.379 ; gain = 65.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 1081.379 ; gain = 65.676
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 1081.379 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_ooc.xdc] for cell 'inst'
-Finished Parsing XDC File [c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_ooc.xdc] for cell 'inst'
-Parsing XDC File [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/dont_touch.xdc]
+Parsing XDC File [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1100.297 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.660 . Memory (MB): peak = 1103.945 ; gain = 3.648
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1103.945 ; gain = 88.242
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1103.945 ; gain = 88.242
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for inst. (constraint file  C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/dont_touch.xdc, line 9).
+Applied set_property DONT_TOUCH = true for inst. (constraint file  Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1103.945 ; gain = 88.242
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:31 . Memory (MB): peak = 1103.945 ; gain = 88.242
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -217,25 +217,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 1103.945 ; gain = 88.242
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:42 . Memory (MB): peak = 1151.277 ; gain = 135.574
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:42 . Memory (MB): peak = 1151.277 ; gain = 135.574
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:42 . Memory (MB): peak = 1170.383 ; gain = 154.680
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -253,37 +253,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:46 . Memory (MB): peak = 1177.160 ; gain = 161.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:46 . Memory (MB): peak = 1177.160 ; gain = 161.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:46 . Memory (MB): peak = 1177.160 ; gain = 161.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:46 . Memory (MB): peak = 1177.160 ; gain = 161.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:46 . Memory (MB): peak = 1177.160 ; gain = 161.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:46 . Memory (MB): peak = 1177.160 ; gain = 161.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -301,26 +301,26 @@ Report Cell Usage:
 +-+-----+------+
 +-+-----+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:46 . Memory (MB): peak = 1177.160 ; gain = 161.457
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:05 ; elapsed = 00:00:15 . Memory (MB): peak = 1013.047 ; gain = 0.000
-Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:34 . Memory (MB): peak = 1177.160 ; gain = 138.891
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:46 . Memory (MB): peak = 1177.160 ; gain = 161.457
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1177.160 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1013.047 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1194.316 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
 36 Infos, 6 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:22 . Memory (MB): peak = 1013.047 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/design_1_axis_subset_converter_0_0.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:01:00 . Memory (MB): peak = 1199.305 ; gain = 183.602
+INFO: [Common 17-1381] The checkpoint 'Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/design_1_axis_subset_converter_0_0.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_axis_subset_converter_0_0, cache-ID = 1d0f945bdb143bee
-INFO: [Common 17-1381] The checkpoint 'C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/design_1_axis_subset_converter_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_axis_subset_converter_0_0, cache-ID = 599a7904e69860e6
+INFO: [Common 17-1381] The checkpoint 'Z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.runs/design_1_axis_subset_converter_0_0_synth_1/design_1_axis_subset_converter_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_axis_subset_converter_0_0_utilization_synth.rpt -pb design_1_axis_subset_converter_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Mar  8 13:24:44 2025...
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 10 07:02:36 2025...

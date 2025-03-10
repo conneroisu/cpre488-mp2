@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "top_design_1_axis_subset_converter_0_0,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "design_1_axis_subset_converter_0_0,top_design_1_axis_subset_converter_0_0,{}" *)
-(* CORE_GENERATION_INFO = "design_1_axis_subset_converter_0_0,top_design_1_axis_subset_converter_0_0,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axis_subset_converter,x_ipVersion=1.1,x_ipCoreRevision=21,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=zynq,C_S_AXIS_TDATA_WIDTH=24,C_S_AXIS_TID_WIDTH=1,C_S_AXIS_TDEST_WIDTH=1,C_S_AXIS_TUSER_WIDTH=1,C_S_AXIS_SIGNAL_SET=0b00000000000000000000000011111111,C_M_AXIS_TDATA_WIDTH=16,C_M_AXIS_TID_WIDTH=1,C_M_AXIS_TDEST_WIDTH=1,C_M_AXIS_SIGNAL_SET=0b00000\
+(* CORE_GENERATION_INFO = "design_1_axis_subset_converter_0_0,top_design_1_axis_subset_converter_0_0,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axis_subset_converter,x_ipVersion=1.1,x_ipCoreRevision=21,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=zynq,C_S_AXIS_TDATA_WIDTH=24,C_S_AXIS_TID_WIDTH=1,C_S_AXIS_TDEST_WIDTH=4,C_S_AXIS_TUSER_WIDTH=1,C_S_AXIS_SIGNAL_SET=0b00000000000000000000000011111111,C_M_AXIS_TDATA_WIDTH=16,C_M_AXIS_TID_WIDTH=1,C_M_AXIS_TDEST_WIDTH=4,C_M_AXIS_SIGNAL_SET=0b00000\
 000000000000000000011111111,C_M_AXIS_TUSER_WIDTH=1,C_DEFAULT_TLAST=0}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_axis_subset_converter_0_0 (
@@ -99,8 +99,8 @@ input wire s_axis_tlast;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS TID" *)
 input wire [0 : 0] s_axis_tid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS TDEST" *)
-input wire [0 : 0] s_axis_tdest;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXIS, TDATA_NUM_BYTES 3, TDEST_WIDTH 1, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
+input wire [3 : 0] s_axis_tdest;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXIS, TDATA_NUM_BYTES 3, TDEST_WIDTH 4, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS TUSER" *)
 input wire [0 : 0] s_axis_tuser;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TVALID" *)
@@ -118,8 +118,8 @@ output wire m_axis_tlast;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TID" *)
 output wire [0 : 0] m_axis_tid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TDEST" *)
-output wire [0 : 0] m_axis_tdest;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 2, TDEST_WIDTH 1, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
+output wire [3 : 0] m_axis_tdest;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 2, TDEST_WIDTH 4, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TUSER" *)
 output wire [0 : 0] m_axis_tuser;
 
@@ -127,12 +127,12 @@ output wire [0 : 0] m_axis_tuser;
     .C_FAMILY("zynq"),
     .C_S_AXIS_TDATA_WIDTH(24),
     .C_S_AXIS_TID_WIDTH(1),
-    .C_S_AXIS_TDEST_WIDTH(1),
+    .C_S_AXIS_TDEST_WIDTH(4),
     .C_S_AXIS_TUSER_WIDTH(1),
     .C_S_AXIS_SIGNAL_SET('B00000000000000000000000011111111),
     .C_M_AXIS_TDATA_WIDTH(16),
     .C_M_AXIS_TID_WIDTH(1),
-    .C_M_AXIS_TDEST_WIDTH(1),
+    .C_M_AXIS_TDEST_WIDTH(4),
     .C_M_AXIS_SIGNAL_SET('B00000000000000000000000011111111),
     .C_M_AXIS_TUSER_WIDTH(1),
     .C_DEFAULT_TLAST(0)

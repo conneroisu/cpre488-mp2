@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Sat Mar  8 13:24:44 2025
--- Host        : CO2041-04 running 64-bit major release  (build 9200)
+-- Date        : Mon Mar 10 07:02:36 2025
+-- Host        : DESKTOP-V4CC4PR running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_sim_netlist.vhdl
+--               z:/Vivado/CPRE488_git/cpre488-mp2/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_subset_converter_0_0/design_1_axis_subset_converter_0_0_sim_netlist.vhdl
 -- Design      : design_1_axis_subset_converter_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -26,7 +26,7 @@ entity design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0
     s_axis_tkeep : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axis_tlast : in STD_LOGIC;
     s_axis_tid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axis_tdest : in STD_LOGIC_VECTOR ( 0 to 0 );
+    s_axis_tdest : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_axis_tuser : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tvalid : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
@@ -35,7 +35,7 @@ entity design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0
     m_axis_tkeep : out STD_LOGIC_VECTOR ( 1 downto 0 );
     m_axis_tlast : out STD_LOGIC;
     m_axis_tid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    m_axis_tdest : out STD_LOGIC_VECTOR ( 0 to 0 );
+    m_axis_tdest : out STD_LOGIC_VECTOR ( 3 downto 0 );
     m_axis_tuser : out STD_LOGIC_VECTOR ( 0 to 0 );
     transfer_dropped : out STD_LOGIC;
     sparse_tkeep_removed : out STD_LOGIC
@@ -49,7 +49,7 @@ entity design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0
   attribute C_M_AXIS_TDATA_WIDTH : integer;
   attribute C_M_AXIS_TDATA_WIDTH of design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0 : entity is 16;
   attribute C_M_AXIS_TDEST_WIDTH : integer;
-  attribute C_M_AXIS_TDEST_WIDTH of design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0 : entity is 1;
+  attribute C_M_AXIS_TDEST_WIDTH of design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0 : entity is 4;
   attribute C_M_AXIS_TID_WIDTH : integer;
   attribute C_M_AXIS_TID_WIDTH of design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0 : entity is 1;
   attribute C_M_AXIS_TUSER_WIDTH : integer;
@@ -59,7 +59,7 @@ entity design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0
   attribute C_S_AXIS_TDATA_WIDTH : integer;
   attribute C_S_AXIS_TDATA_WIDTH of design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0 : entity is 24;
   attribute C_S_AXIS_TDEST_WIDTH : integer;
-  attribute C_S_AXIS_TDEST_WIDTH of design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0 : entity is 1;
+  attribute C_S_AXIS_TDEST_WIDTH of design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0 : entity is 4;
   attribute C_S_AXIS_TID_WIDTH : integer;
   attribute C_S_AXIS_TID_WIDTH of design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0 : entity is 1;
   attribute C_S_AXIS_TUSER_WIDTH : integer;
@@ -110,7 +110,7 @@ architecture STRUCTURE of design_1_axis_subset_converter_0_0_top_design_1_axis_s
   signal \<const0>\ : STD_LOGIC;
   signal \^m_axis_tready\ : STD_LOGIC;
   signal \^s_axis_tdata\ : STD_LOGIC_VECTOR ( 23 downto 0 );
-  signal \^s_axis_tdest\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal \^s_axis_tdest\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \^s_axis_tid\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \^s_axis_tkeep\ : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal \^s_axis_tlast\ : STD_LOGIC;
@@ -120,7 +120,7 @@ architecture STRUCTURE of design_1_axis_subset_converter_0_0_top_design_1_axis_s
 begin
   \^m_axis_tready\ <= m_axis_tready;
   \^s_axis_tdata\(15 downto 0) <= s_axis_tdata(15 downto 0);
-  \^s_axis_tdest\(0) <= s_axis_tdest(0);
+  \^s_axis_tdest\(3 downto 0) <= s_axis_tdest(3 downto 0);
   \^s_axis_tid\(0) <= s_axis_tid(0);
   \^s_axis_tkeep\(1 downto 0) <= s_axis_tkeep(1 downto 0);
   \^s_axis_tlast\ <= s_axis_tlast;
@@ -128,7 +128,7 @@ begin
   \^s_axis_tuser\(0) <= s_axis_tuser(0);
   \^s_axis_tvalid\ <= s_axis_tvalid;
   m_axis_tdata(15 downto 0) <= \^s_axis_tdata\(15 downto 0);
-  m_axis_tdest(0) <= \^s_axis_tdest\(0);
+  m_axis_tdest(3 downto 0) <= \^s_axis_tdest\(3 downto 0);
   m_axis_tid(0) <= \^s_axis_tid\(0);
   m_axis_tkeep(1 downto 0) <= \^s_axis_tkeep\(1 downto 0);
   m_axis_tlast <= \^s_axis_tlast\;
@@ -158,7 +158,7 @@ entity design_1_axis_subset_converter_0_0 is
     s_axis_tkeep : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axis_tlast : in STD_LOGIC;
     s_axis_tid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axis_tdest : in STD_LOGIC_VECTOR ( 0 to 0 );
+    s_axis_tdest : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_axis_tuser : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tvalid : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
@@ -167,7 +167,7 @@ entity design_1_axis_subset_converter_0_0 is
     m_axis_tkeep : out STD_LOGIC_VECTOR ( 1 downto 0 );
     m_axis_tlast : out STD_LOGIC;
     m_axis_tid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    m_axis_tdest : out STD_LOGIC_VECTOR ( 0 to 0 );
+    m_axis_tdest : out STD_LOGIC_VECTOR ( 3 downto 0 );
     m_axis_tuser : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute NotValidForBitStream : boolean;
@@ -192,7 +192,7 @@ architecture STRUCTURE of design_1_axis_subset_converter_0_0 is
   attribute C_M_AXIS_TDATA_WIDTH : integer;
   attribute C_M_AXIS_TDATA_WIDTH of inst : label is 16;
   attribute C_M_AXIS_TDEST_WIDTH : integer;
-  attribute C_M_AXIS_TDEST_WIDTH of inst : label is 1;
+  attribute C_M_AXIS_TDEST_WIDTH of inst : label is 4;
   attribute C_M_AXIS_TID_WIDTH : integer;
   attribute C_M_AXIS_TID_WIDTH of inst : label is 1;
   attribute C_M_AXIS_TUSER_WIDTH : integer;
@@ -202,7 +202,7 @@ architecture STRUCTURE of design_1_axis_subset_converter_0_0 is
   attribute C_S_AXIS_TDATA_WIDTH : integer;
   attribute C_S_AXIS_TDATA_WIDTH of inst : label is 24;
   attribute C_S_AXIS_TDEST_WIDTH : integer;
-  attribute C_S_AXIS_TDEST_WIDTH of inst : label is 1;
+  attribute C_S_AXIS_TDEST_WIDTH of inst : label is 4;
   attribute C_S_AXIS_TID_WIDTH : integer;
   attribute C_S_AXIS_TID_WIDTH of inst : label is 1;
   attribute C_S_AXIS_TUSER_WIDTH : integer;
@@ -263,14 +263,14 @@ architecture STRUCTURE of design_1_axis_subset_converter_0_0 is
   attribute X_INTERFACE_INFO of m_axis_tkeep : signal is "xilinx.com:interface:axis:1.0 M_AXIS TKEEP";
   attribute X_INTERFACE_INFO of m_axis_tstrb : signal is "xilinx.com:interface:axis:1.0 M_AXIS TSTRB";
   attribute X_INTERFACE_INFO of m_axis_tuser : signal is "xilinx.com:interface:axis:1.0 M_AXIS TUSER";
-  attribute X_INTERFACE_PARAMETER of m_axis_tuser : signal is "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 2, TDEST_WIDTH 1, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of m_axis_tuser : signal is "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 2, TDEST_WIDTH 4, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of s_axis_tdata : signal is "xilinx.com:interface:axis:1.0 S_AXIS TDATA";
   attribute X_INTERFACE_INFO of s_axis_tdest : signal is "xilinx.com:interface:axis:1.0 S_AXIS TDEST";
   attribute X_INTERFACE_INFO of s_axis_tid : signal is "xilinx.com:interface:axis:1.0 S_AXIS TID";
   attribute X_INTERFACE_INFO of s_axis_tkeep : signal is "xilinx.com:interface:axis:1.0 S_AXIS TKEEP";
   attribute X_INTERFACE_INFO of s_axis_tstrb : signal is "xilinx.com:interface:axis:1.0 S_AXIS TSTRB";
   attribute X_INTERFACE_INFO of s_axis_tuser : signal is "xilinx.com:interface:axis:1.0 S_AXIS TUSER";
-  attribute X_INTERFACE_PARAMETER of s_axis_tuser : signal is "XIL_INTERFACENAME S_AXIS, TDATA_NUM_BYTES 3, TDEST_WIDTH 1, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of s_axis_tuser : signal is "XIL_INTERFACENAME S_AXIS, TDATA_NUM_BYTES 3, TDEST_WIDTH 4, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
 begin
 inst: entity work.design_1_axis_subset_converter_0_0_top_design_1_axis_subset_converter_0_0
      port map (
@@ -278,7 +278,7 @@ inst: entity work.design_1_axis_subset_converter_0_0_top_design_1_axis_subset_co
       aclken => '1',
       aresetn => aresetn,
       m_axis_tdata(15 downto 0) => m_axis_tdata(15 downto 0),
-      m_axis_tdest(0) => m_axis_tdest(0),
+      m_axis_tdest(3 downto 0) => m_axis_tdest(3 downto 0),
       m_axis_tid(0) => m_axis_tid(0),
       m_axis_tkeep(1 downto 0) => m_axis_tkeep(1 downto 0),
       m_axis_tlast => m_axis_tlast,
@@ -287,7 +287,7 @@ inst: entity work.design_1_axis_subset_converter_0_0_top_design_1_axis_subset_co
       m_axis_tuser(0) => m_axis_tuser(0),
       m_axis_tvalid => m_axis_tvalid,
       s_axis_tdata(23 downto 0) => s_axis_tdata(23 downto 0),
-      s_axis_tdest(0) => s_axis_tdest(0),
+      s_axis_tdest(3 downto 0) => s_axis_tdest(3 downto 0),
       s_axis_tid(0) => s_axis_tid(0),
       s_axis_tkeep(2 downto 0) => s_axis_tkeep(2 downto 0),
       s_axis_tlast => s_axis_tlast,

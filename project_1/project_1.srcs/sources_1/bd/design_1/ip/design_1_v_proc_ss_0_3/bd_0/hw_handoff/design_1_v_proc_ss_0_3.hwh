@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Mar 10 04:45:42 2025" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Mar 10 07:00:17 2025" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.3" DEVICE="7z020" NAME="bd_d86b" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -150,6 +150,21 @@
         <CONNECTION INSTANCE="smartconnect_0" PORT="S00_AXI_rready"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="O" NAME="m_axis_tvalid" SIGIS="undef" SIGNAME="video_router_m00_couplers_m00_regslice_m_axis_tvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="video_router_m00_couplers_m00_regslice" PORT="m_axis_tvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="m_axis_tready" SIGIS="undef" SIGNAME="video_router_m00_couplers_m00_regslice_m_axis_tready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="video_router_m00_couplers_m00_regslice" PORT="m_axis_tready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="23" NAME="m_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="video_router_m00_couplers_m00_regslice_m_axis_tdata">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="video_router_m00_couplers_m00_regslice" PORT="m_axis_tdata"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="I" LEFT="23" NAME="s_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="input_size_set_s_axis_tdata">
       <CONNECTIONS>
         <CONNECTION INSTANCE="input_size_set" PORT="s_axis_tdata"/>
@@ -193,21 +208,6 @@
     <PORT DIR="I" NAME="s_axis_tvalid" SIGIS="undef" SIGNAME="input_size_set_s_axis_tvalid">
       <CONNECTIONS>
         <CONNECTION INSTANCE="input_size_set" PORT="s_axis_tvalid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="m_axis_tvalid" SIGIS="undef" SIGNAME="video_router_m00_couplers_m00_regslice_m_axis_tvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="video_router_m00_couplers_m00_regslice" PORT="m_axis_tvalid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="m_axis_tready" SIGIS="undef" SIGNAME="video_router_m00_couplers_m00_regslice_m_axis_tready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="video_router_m00_couplers_m00_regslice" PORT="m_axis_tready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="23" NAME="m_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="video_router_m00_couplers_m00_regslice_m_axis_tdata">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="video_router_m00_couplers_m00_regslice" PORT="m_axis_tdata"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="3" NAME="m_axis_tdest" RIGHT="0" SIGIS="undef" SIGNAME="video_router_m00_couplers_m00_regslice_m_axis_tdest">
@@ -1822,6 +1822,26 @@
             <CONNECTION INSTANCE="External_Ports" PORT="aclk_ctrl"/>
           </CONNECTIONS>
         </PORT>
+        <PORT CLKFREQUENCY="148500000" DIR="I" NAME="aclk1" SIGIS="clk" SIGNAME="External_Ports_aclk_axis">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="aclk_axis"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="148500000" DIR="I" NAME="aclk2" SIGIS="clk" SIGNAME="External_Ports_aclk_ctrl">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="aclk_ctrl"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="148500000" DIR="I" NAME="aclk3" SIGIS="clk" SIGNAME="External_Ports_aclk_ctrl">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="aclk_ctrl"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="148500000" DIR="I" NAME="aclk4" SIGIS="clk" SIGNAME="External_Ports_aclk_ctrl">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="aclk_ctrl"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_aresetn_ctrl">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="aresetn_ctrl"/>
@@ -2003,26 +2023,6 @@
         <PORT DIR="O" NAME="M00_AXI_rready" SIGIS="undef" SIGNAME="smartconnect_0_M00_AXI_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="video_router_xbar" PORT="s_axi_ctrl_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="148500000" DIR="I" NAME="aclk1" SIGIS="clk" SIGNAME="External_Ports_aclk_axis">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="aclk_axis"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="148500000" DIR="I" NAME="aclk2" SIGIS="clk" SIGNAME="External_Ports_aclk_ctrl">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="aclk_ctrl"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="148500000" DIR="I" NAME="aclk3" SIGIS="clk" SIGNAME="External_Ports_aclk_ctrl">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="aclk_ctrl"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="148500000" DIR="I" NAME="aclk4" SIGIS="clk" SIGNAME="External_Ports_aclk_ctrl">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="aclk_ctrl"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="8" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="reset_sel_axis_s_axi_awaddr">

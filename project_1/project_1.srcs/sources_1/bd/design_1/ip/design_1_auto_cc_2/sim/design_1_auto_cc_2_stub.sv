@@ -67,7 +67,7 @@ typedef bit bit_as_bool;
 module design_1_auto_cc_2 (
   input bit_as_bool s_axi_aclk,
   input bit_as_bool s_axi_aresetn,
-  input bit [15 : 0] s_axi_awaddr,
+  input bit [18 : 0] s_axi_awaddr,
   input bit [2 : 0] s_axi_awprot,
   input bit_as_bool s_axi_awvalid,
   output bit_as_bool s_axi_awready,
@@ -78,7 +78,7 @@ module design_1_auto_cc_2 (
   output bit [1 : 0] s_axi_bresp,
   output bit_as_bool s_axi_bvalid,
   input bit_as_bool s_axi_bready,
-  input bit [15 : 0] s_axi_araddr,
+  input bit [18 : 0] s_axi_araddr,
   input bit [2 : 0] s_axi_arprot,
   input bit_as_bool s_axi_arvalid,
   output bit_as_bool s_axi_arready,
@@ -88,7 +88,7 @@ module design_1_auto_cc_2 (
   input bit_as_bool s_axi_rready,
   input bit_as_bool m_axi_aclk,
   input bit_as_bool m_axi_aresetn,
-  output bit [15 : 0] m_axi_awaddr,
+  output bit [18 : 0] m_axi_awaddr,
   output bit [2 : 0] m_axi_awprot,
   output bit_as_bool m_axi_awvalid,
   input bit_as_bool m_axi_awready,
@@ -99,7 +99,7 @@ module design_1_auto_cc_2 (
   input bit [1 : 0] m_axi_bresp,
   input bit_as_bool m_axi_bvalid,
   output bit_as_bool m_axi_bready,
-  output bit [15 : 0] m_axi_araddr,
+  output bit [18 : 0] m_axi_araddr,
   output bit [2 : 0] m_axi_arprot,
   output bit_as_bool m_axi_arvalid,
   input bit_as_bool m_axi_arready,
@@ -118,7 +118,7 @@ module design_1_auto_cc_2 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awprot,s_
 *);
   input bit s_axi_aclk;
   input bit s_axi_aresetn;
-  input bit [15 : 0] s_axi_awaddr;
+  input bit [18 : 0] s_axi_awaddr;
   input bit [2 : 0] s_axi_awprot;
   input bit s_axi_awvalid;
   output wire s_axi_awready;
@@ -129,7 +129,7 @@ module design_1_auto_cc_2 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awprot,s_
   output wire [1 : 0] s_axi_bresp;
   output wire s_axi_bvalid;
   input bit s_axi_bready;
-  input bit [15 : 0] s_axi_araddr;
+  input bit [18 : 0] s_axi_araddr;
   input bit [2 : 0] s_axi_arprot;
   input bit s_axi_arvalid;
   output wire s_axi_arready;
@@ -139,7 +139,7 @@ module design_1_auto_cc_2 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awprot,s_
   input bit s_axi_rready;
   input bit m_axi_aclk;
   input bit m_axi_aresetn;
-  output wire [15 : 0] m_axi_awaddr;
+  output wire [18 : 0] m_axi_awaddr;
   output wire [2 : 0] m_axi_awprot;
   output wire m_axi_awvalid;
   input bit m_axi_awready;
@@ -150,7 +150,7 @@ module design_1_auto_cc_2 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awprot,s_
   input bit [1 : 0] m_axi_bresp;
   input bit m_axi_bvalid;
   output wire m_axi_bready;
-  output wire [15 : 0] m_axi_araddr;
+  output wire [18 : 0] m_axi_araddr;
   output wire [2 : 0] m_axi_arprot;
   output wire m_axi_arvalid;
   input bit m_axi_arready;
@@ -166,7 +166,7 @@ endmodule
 module design_1_auto_cc_2 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awprot,s_axi_awvalid,s_axi_awready,s_axi_wdata,s_axi_wstrb,s_axi_wvalid,s_axi_wready,s_axi_bresp,s_axi_bvalid,s_axi_bready,s_axi_araddr,s_axi_arprot,s_axi_arvalid,s_axi_arready,s_axi_rdata,s_axi_rresp,s_axi_rvalid,s_axi_rready,m_axi_aclk,m_axi_aresetn,m_axi_awaddr,m_axi_awprot,m_axi_awvalid,m_axi_awready,m_axi_wdata,m_axi_wstrb,m_axi_wvalid,m_axi_wready,m_axi_bresp,m_axi_bvalid,m_axi_bready,m_axi_araddr,m_axi_arprot,m_axi_arvalid,m_axi_arready,m_axi_rdata,m_axi_rresp,m_axi_rvalid,m_axi_rready)
   input bit s_axi_aclk;
   input bit s_axi_aresetn;
-  input bit [15 : 0] s_axi_awaddr;
+  input bit [18 : 0] s_axi_awaddr;
   input bit [2 : 0] s_axi_awprot;
   input bit s_axi_awvalid;
   output wire s_axi_awready;
@@ -177,7 +177,7 @@ module design_1_auto_cc_2 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awprot,s_
   output wire [1 : 0] s_axi_bresp;
   output wire s_axi_bvalid;
   input bit s_axi_bready;
-  input bit [15 : 0] s_axi_araddr;
+  input bit [18 : 0] s_axi_araddr;
   input bit [2 : 0] s_axi_arprot;
   input bit s_axi_arvalid;
   output wire s_axi_arready;
@@ -187,7 +187,7 @@ module design_1_auto_cc_2 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awprot,s_
   input bit s_axi_rready;
   input bit m_axi_aclk;
   input bit m_axi_aresetn;
-  output wire [15 : 0] m_axi_awaddr;
+  output wire [18 : 0] m_axi_awaddr;
   output wire [2 : 0] m_axi_awprot;
   output wire m_axi_awvalid;
   input bit m_axi_awready;
@@ -198,7 +198,7 @@ module design_1_auto_cc_2 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awprot,s_
   input bit [1 : 0] m_axi_bresp;
   input bit m_axi_bvalid;
   output wire m_axi_bready;
-  output wire [15 : 0] m_axi_araddr;
+  output wire [18 : 0] m_axi_araddr;
   output wire [2 : 0] m_axi_arprot;
   output wire m_axi_arvalid;
   input bit m_axi_arready;

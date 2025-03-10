@@ -1,11 +1,11 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Sat Mar  8 13:24:51 2025
+-- Date        : Mon Mar 10 00:05:23 2025
 -- Host        : CO2041-04 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top design_1_auto_cc_2 -prefix
---               design_1_auto_cc_2_ design_1_auto_cc_2_sim_netlist.vhdl
--- Design      : design_1_auto_cc_2
+--               design_1_auto_cc_2_ design_1_auto_cc_1_sim_netlist.vhdl
+-- Design      : design_1_auto_cc_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7z020clg484-1
@@ -775,11 +775,11 @@ use UNISIM.VCOMPONENTS.ALL;
 entity design_1_auto_cc_2_xpm_cdc_handshake is
   port (
     src_clk : in STD_LOGIC;
-    src_in : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    src_in : in STD_LOGIC_VECTOR ( 21 downto 0 );
     src_send : in STD_LOGIC;
     src_rcv : out STD_LOGIC;
     dest_clk : in STD_LOGIC;
-    dest_out : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    dest_out : out STD_LOGIC_VECTOR ( 21 downto 0 );
     dest_req : out STD_LOGIC;
     dest_ack : in STD_LOGIC
   );
@@ -796,7 +796,7 @@ entity design_1_auto_cc_2_xpm_cdc_handshake is
   attribute VERSION : integer;
   attribute VERSION of design_1_auto_cc_2_xpm_cdc_handshake : entity is 0;
   attribute WIDTH : integer;
-  attribute WIDTH of design_1_auto_cc_2_xpm_cdc_handshake : entity is 19;
+  attribute WIDTH of design_1_auto_cc_2_xpm_cdc_handshake : entity is 22;
   attribute XPM_MODULE : string;
   attribute XPM_MODULE of design_1_auto_cc_2_xpm_cdc_handshake : entity is "TRUE";
   attribute keep_hierarchy : string;
@@ -809,14 +809,14 @@ architecture STRUCTURE of design_1_auto_cc_2_xpm_cdc_handshake is
   signal dest_hsdata_en : STD_LOGIC;
   attribute DIRECT_ENABLE : boolean;
   attribute DIRECT_ENABLE of dest_hsdata_en : signal is std.standard.true;
-  signal dest_hsdata_ff : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal dest_hsdata_ff : STD_LOGIC_VECTOR ( 21 downto 0 );
   attribute RTL_KEEP : string;
   attribute RTL_KEEP of dest_hsdata_ff : signal is "true";
   attribute xpm_cdc of dest_hsdata_ff : signal is "HANDSHAKE";
   signal \^dest_req\ : STD_LOGIC;
   signal dest_req_nxt : STD_LOGIC;
   signal p_0_in : STD_LOGIC;
-  signal src_hsdata_ff : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal src_hsdata_ff : STD_LOGIC_VECTOR ( 21 downto 0 );
   signal src_sendd_ff : STD_LOGIC;
   attribute KEEP : string;
   attribute KEEP of \dest_hsdata_ff_reg[0]\ : label is "true";
@@ -839,8 +839,14 @@ architecture STRUCTURE of design_1_auto_cc_2_xpm_cdc_handshake is
   attribute XPM_CDC of \dest_hsdata_ff_reg[17]\ : label is "HANDSHAKE";
   attribute KEEP of \dest_hsdata_ff_reg[18]\ : label is "true";
   attribute XPM_CDC of \dest_hsdata_ff_reg[18]\ : label is "HANDSHAKE";
+  attribute KEEP of \dest_hsdata_ff_reg[19]\ : label is "true";
+  attribute XPM_CDC of \dest_hsdata_ff_reg[19]\ : label is "HANDSHAKE";
   attribute KEEP of \dest_hsdata_ff_reg[1]\ : label is "true";
   attribute XPM_CDC of \dest_hsdata_ff_reg[1]\ : label is "HANDSHAKE";
+  attribute KEEP of \dest_hsdata_ff_reg[20]\ : label is "true";
+  attribute XPM_CDC of \dest_hsdata_ff_reg[20]\ : label is "HANDSHAKE";
+  attribute KEEP of \dest_hsdata_ff_reg[21]\ : label is "true";
+  attribute XPM_CDC of \dest_hsdata_ff_reg[21]\ : label is "HANDSHAKE";
   attribute KEEP of \dest_hsdata_ff_reg[2]\ : label is "true";
   attribute XPM_CDC of \dest_hsdata_ff_reg[2]\ : label is "HANDSHAKE";
   attribute KEEP of \dest_hsdata_ff_reg[3]\ : label is "true";
@@ -875,7 +881,7 @@ architecture STRUCTURE of design_1_auto_cc_2_xpm_cdc_handshake is
   attribute XPM_CDC of xpm_cdc_single_src2dest_inst : label is "SINGLE";
   attribute XPM_MODULE of xpm_cdc_single_src2dest_inst : label is "TRUE";
 begin
-  dest_out(18 downto 0) <= dest_hsdata_ff(18 downto 0);
+  dest_out(21 downto 0) <= dest_hsdata_ff(21 downto 0);
   dest_req <= \^dest_req\;
 dest_hsdata_en_inferred_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -966,12 +972,36 @@ dest_hsdata_en_inferred_i_1: unisim.vcomponents.LUT2
       Q => dest_hsdata_ff(18),
       R => '0'
     );
+\dest_hsdata_ff_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => dest_clk,
+      CE => dest_hsdata_en,
+      D => src_hsdata_ff(19),
+      Q => dest_hsdata_ff(19),
+      R => '0'
+    );
 \dest_hsdata_ff_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => dest_clk,
       CE => dest_hsdata_en,
       D => src_hsdata_ff(1),
       Q => dest_hsdata_ff(1),
+      R => '0'
+    );
+\dest_hsdata_ff_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => dest_clk,
+      CE => dest_hsdata_en,
+      D => src_hsdata_ff(20),
+      Q => dest_hsdata_ff(20),
+      R => '0'
+    );
+\dest_hsdata_ff_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => dest_clk,
+      CE => dest_hsdata_en,
+      D => src_hsdata_ff(21),
+      Q => dest_hsdata_ff(21),
       R => '0'
     );
 \dest_hsdata_ff_reg[2]\: unisim.vcomponents.FDRE
@@ -1046,7 +1076,7 @@ dest_req_ff_reg: unisim.vcomponents.FDRE
       Q => \^dest_req\,
       R => '0'
     );
-\src_hsdata_ff[18]_i_1\: unisim.vcomponents.LUT1
+\src_hsdata_ff[21]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
@@ -1134,12 +1164,36 @@ dest_req_ff_reg: unisim.vcomponents.FDRE
       Q => src_hsdata_ff(18),
       R => '0'
     );
+\src_hsdata_ff_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => src_clk,
+      CE => p_0_in,
+      D => src_in(19),
+      Q => src_hsdata_ff(19),
+      R => '0'
+    );
 \src_hsdata_ff_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => src_clk,
       CE => p_0_in,
       D => src_in(1),
       Q => src_hsdata_ff(1),
+      R => '0'
+    );
+\src_hsdata_ff_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => src_clk,
+      CE => p_0_in,
+      D => src_in(20),
+      Q => src_hsdata_ff(20),
+      R => '0'
+    );
+\src_hsdata_ff_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => src_clk,
+      CE => p_0_in,
+      D => src_in(21),
+      Q => src_hsdata_ff(21),
       R => '0'
     );
 \src_hsdata_ff_reg[2]\: unisim.vcomponents.FDRE
@@ -2911,11 +2965,11 @@ use UNISIM.VCOMPONENTS.ALL;
 entity \design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\ is
   port (
     src_clk : in STD_LOGIC;
-    src_in : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    src_in : in STD_LOGIC_VECTOR ( 21 downto 0 );
     src_send : in STD_LOGIC;
     src_rcv : out STD_LOGIC;
     dest_clk : in STD_LOGIC;
-    dest_out : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    dest_out : out STD_LOGIC_VECTOR ( 21 downto 0 );
     dest_req : out STD_LOGIC;
     dest_ack : in STD_LOGIC
   );
@@ -2934,7 +2988,7 @@ entity \design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\ is
   attribute VERSION : integer;
   attribute VERSION of \design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\ : entity is 0;
   attribute WIDTH : integer;
-  attribute WIDTH of \design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\ : entity is 19;
+  attribute WIDTH of \design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\ : entity is 22;
   attribute XPM_MODULE : string;
   attribute XPM_MODULE of \design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\ : entity is "TRUE";
   attribute keep_hierarchy : string;
@@ -2947,14 +3001,14 @@ architecture STRUCTURE of \design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\ is
   signal dest_hsdata_en : STD_LOGIC;
   attribute DIRECT_ENABLE : boolean;
   attribute DIRECT_ENABLE of dest_hsdata_en : signal is std.standard.true;
-  signal dest_hsdata_ff : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal dest_hsdata_ff : STD_LOGIC_VECTOR ( 21 downto 0 );
   attribute RTL_KEEP : string;
   attribute RTL_KEEP of dest_hsdata_ff : signal is "true";
   attribute xpm_cdc of dest_hsdata_ff : signal is "HANDSHAKE";
   signal \^dest_req\ : STD_LOGIC;
   signal dest_req_nxt : STD_LOGIC;
   signal p_0_in : STD_LOGIC;
-  signal src_hsdata_ff : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal src_hsdata_ff : STD_LOGIC_VECTOR ( 21 downto 0 );
   signal src_sendd_ff : STD_LOGIC;
   attribute KEEP : string;
   attribute KEEP of \dest_hsdata_ff_reg[0]\ : label is "true";
@@ -2977,8 +3031,14 @@ architecture STRUCTURE of \design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\ is
   attribute XPM_CDC of \dest_hsdata_ff_reg[17]\ : label is "HANDSHAKE";
   attribute KEEP of \dest_hsdata_ff_reg[18]\ : label is "true";
   attribute XPM_CDC of \dest_hsdata_ff_reg[18]\ : label is "HANDSHAKE";
+  attribute KEEP of \dest_hsdata_ff_reg[19]\ : label is "true";
+  attribute XPM_CDC of \dest_hsdata_ff_reg[19]\ : label is "HANDSHAKE";
   attribute KEEP of \dest_hsdata_ff_reg[1]\ : label is "true";
   attribute XPM_CDC of \dest_hsdata_ff_reg[1]\ : label is "HANDSHAKE";
+  attribute KEEP of \dest_hsdata_ff_reg[20]\ : label is "true";
+  attribute XPM_CDC of \dest_hsdata_ff_reg[20]\ : label is "HANDSHAKE";
+  attribute KEEP of \dest_hsdata_ff_reg[21]\ : label is "true";
+  attribute XPM_CDC of \dest_hsdata_ff_reg[21]\ : label is "HANDSHAKE";
   attribute KEEP of \dest_hsdata_ff_reg[2]\ : label is "true";
   attribute XPM_CDC of \dest_hsdata_ff_reg[2]\ : label is "HANDSHAKE";
   attribute KEEP of \dest_hsdata_ff_reg[3]\ : label is "true";
@@ -3013,7 +3073,7 @@ architecture STRUCTURE of \design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\ is
   attribute XPM_CDC of xpm_cdc_single_src2dest_inst : label is "SINGLE";
   attribute XPM_MODULE of xpm_cdc_single_src2dest_inst : label is "TRUE";
 begin
-  dest_out(18 downto 0) <= dest_hsdata_ff(18 downto 0);
+  dest_out(21 downto 0) <= dest_hsdata_ff(21 downto 0);
   dest_req <= \^dest_req\;
 dest_hsdata_en_inferred_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -3104,12 +3164,36 @@ dest_hsdata_en_inferred_i_1: unisim.vcomponents.LUT2
       Q => dest_hsdata_ff(18),
       R => '0'
     );
+\dest_hsdata_ff_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => dest_clk,
+      CE => dest_hsdata_en,
+      D => src_hsdata_ff(19),
+      Q => dest_hsdata_ff(19),
+      R => '0'
+    );
 \dest_hsdata_ff_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => dest_clk,
       CE => dest_hsdata_en,
       D => src_hsdata_ff(1),
       Q => dest_hsdata_ff(1),
+      R => '0'
+    );
+\dest_hsdata_ff_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => dest_clk,
+      CE => dest_hsdata_en,
+      D => src_hsdata_ff(20),
+      Q => dest_hsdata_ff(20),
+      R => '0'
+    );
+\dest_hsdata_ff_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => dest_clk,
+      CE => dest_hsdata_en,
+      D => src_hsdata_ff(21),
+      Q => dest_hsdata_ff(21),
       R => '0'
     );
 \dest_hsdata_ff_reg[2]\: unisim.vcomponents.FDRE
@@ -3184,7 +3268,7 @@ dest_req_ff_reg: unisim.vcomponents.FDRE
       Q => \^dest_req\,
       R => '0'
     );
-\src_hsdata_ff[18]_i_1\: unisim.vcomponents.LUT1
+\src_hsdata_ff[21]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
@@ -3272,12 +3356,36 @@ dest_req_ff_reg: unisim.vcomponents.FDRE
       Q => src_hsdata_ff(18),
       R => '0'
     );
+\src_hsdata_ff_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => src_clk,
+      CE => p_0_in,
+      D => src_in(19),
+      Q => src_hsdata_ff(19),
+      R => '0'
+    );
 \src_hsdata_ff_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => src_clk,
       CE => p_0_in,
       D => src_in(1),
       Q => src_hsdata_ff(1),
+      R => '0'
+    );
+\src_hsdata_ff_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => src_clk,
+      CE => p_0_in,
+      D => src_in(20),
+      Q => src_hsdata_ff(20),
+      R => '0'
+    );
+\src_hsdata_ff_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => src_clk,
+      CE => p_0_in,
+      D => src_in(21),
+      Q => src_hsdata_ff(21),
       R => '0'
     );
 \src_hsdata_ff_reg[2]\: unisim.vcomponents.FDRE
@@ -3373,11 +3481,11 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_lite_async is
   port (
-    dest_out : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    dest_out : out STD_LOGIC_VECTOR ( 21 downto 0 );
     s_axi_arready : out STD_LOGIC;
     m_valid_i_reg_0 : out STD_LOGIC;
     \out\ : in STD_LOGIC;
-    src_in : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    src_in : in STD_LOGIC_VECTOR ( 21 downto 0 );
     m_valid_i_reg_1 : in STD_LOGIC;
     s_areset_dly : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_areset_dly : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -3427,7 +3535,7 @@ architecture STRUCTURE of design_1_auto_cc_2_axi_clock_converter_v2_1_20_lite_as
   attribute VERSION : integer;
   attribute VERSION of handshake : label is 0;
   attribute WIDTH : integer;
-  attribute WIDTH of handshake : label is 19;
+  attribute WIDTH of handshake : label is 22;
   attribute XPM_CDC : string;
   attribute XPM_CDC of handshake : label is "HANDSHAKE";
   attribute XPM_MODULE : string;
@@ -3555,10 +3663,10 @@ handshake: entity work.design_1_auto_cc_2_xpm_cdc_handshake
      port map (
       dest_ack => dest_ack_reg_n_0,
       dest_clk => m_valid_i_reg_1,
-      dest_out(18 downto 0) => dest_out(18 downto 0),
+      dest_out(21 downto 0) => dest_out(21 downto 0),
       dest_req => dest_req,
       src_clk => \out\,
-      src_in(18 downto 0) => src_in(18 downto 0),
+      src_in(21 downto 0) => src_in(21 downto 0),
       src_rcv => src_rcv,
       src_send => src_send_reg_n_0
     );
@@ -4435,13 +4543,13 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity \design_1_auto_cc_2_axi_clock_converter_v2_1_20_lite_async__xdcDup__1\ is
   port (
-    dest_out : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    dest_out : out STD_LOGIC_VECTOR ( 21 downto 0 );
     \m_areset_dly_reg[3]_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
     \s_areset_dly_reg[3]_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_awready : out STD_LOGIC;
     m_valid_i_reg_0 : out STD_LOGIC;
     \out\ : in STD_LOGIC;
-    src_in : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    src_in : in STD_LOGIC_VECTOR ( 21 downto 0 );
     dest_ack_reg_0 : in STD_LOGIC;
     m_axi_awready : in STD_LOGIC;
     s_axi_awvalid : in STD_LOGIC;
@@ -4505,7 +4613,7 @@ architecture STRUCTURE of \design_1_auto_cc_2_axi_clock_converter_v2_1_20_lite_a
   attribute VERSION : integer;
   attribute VERSION of handshake : label is 0;
   attribute WIDTH : integer;
-  attribute WIDTH of handshake : label is 19;
+  attribute WIDTH of handshake : label is 22;
   attribute XPM_CDC : string;
   attribute XPM_CDC of handshake : label is "HANDSHAKE";
   attribute XPM_MODULE : string;
@@ -4643,10 +4751,10 @@ handshake: entity work.\design_1_auto_cc_2_xpm_cdc_handshake__xdcDup__1\
      port map (
       dest_ack => dest_ack_reg_n_0,
       dest_clk => dest_ack_reg_0,
-      dest_out(18 downto 0) => dest_out(18 downto 0),
+      dest_out(21 downto 0) => dest_out(21 downto 0),
       dest_req => dest_req,
       src_clk => \out\,
-      src_in(18 downto 0) => src_in(18 downto 0),
+      src_in(21 downto 0) => src_in(21 downto 0),
       src_rcv => src_rcv,
       src_send => src_send_reg_n_0
     );
@@ -4886,7 +4994,7 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
     s_axi_aclk : in STD_LOGIC;
     s_axi_aresetn : in STD_LOGIC;
     s_axi_awid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axi_awaddr : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    s_axi_awaddr : in STD_LOGIC_VECTOR ( 18 downto 0 );
     s_axi_awlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
     s_axi_awsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axi_awburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -4911,7 +5019,7 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
     s_axi_bvalid : out STD_LOGIC;
     s_axi_bready : in STD_LOGIC;
     s_axi_arid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axi_araddr : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    s_axi_araddr : in STD_LOGIC_VECTOR ( 18 downto 0 );
     s_axi_arlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
     s_axi_arsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axi_arburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -4933,7 +5041,7 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
     m_axi_aclk : in STD_LOGIC;
     m_axi_aresetn : in STD_LOGIC;
     m_axi_awid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    m_axi_awaddr : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axi_awaddr : out STD_LOGIC_VECTOR ( 18 downto 0 );
     m_axi_awlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
     m_axi_awsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axi_awburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -4958,7 +5066,7 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
     m_axi_bvalid : in STD_LOGIC;
     m_axi_bready : out STD_LOGIC;
     m_axi_arid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    m_axi_araddr : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axi_araddr : out STD_LOGIC_VECTOR ( 18 downto 0 );
     m_axi_arlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
     m_axi_arsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axi_arburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -4981,7 +5089,7 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
   attribute C_ARADDR_RIGHT : integer;
   attribute C_ARADDR_RIGHT of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 3;
   attribute C_ARADDR_WIDTH : integer;
-  attribute C_ARADDR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 16;
+  attribute C_ARADDR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 19;
   attribute C_ARBURST_RIGHT : integer;
   attribute C_ARBURST_RIGHT of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 3;
   attribute C_ARBURST_WIDTH : integer;
@@ -4991,7 +5099,7 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
   attribute C_ARCACHE_WIDTH : integer;
   attribute C_ARCACHE_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 0;
   attribute C_ARID_RIGHT : integer;
-  attribute C_ARID_RIGHT of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 19;
+  attribute C_ARID_RIGHT of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 22;
   attribute C_ARID_WIDTH : integer;
   attribute C_ARID_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 0;
   attribute C_ARLEN_RIGHT : integer;
@@ -5023,11 +5131,11 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
   attribute C_ARUSER_WIDTH : integer;
   attribute C_ARUSER_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 0;
   attribute C_AR_WIDTH : integer;
-  attribute C_AR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 19;
+  attribute C_AR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 22;
   attribute C_AWADDR_RIGHT : integer;
   attribute C_AWADDR_RIGHT of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 3;
   attribute C_AWADDR_WIDTH : integer;
-  attribute C_AWADDR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 16;
+  attribute C_AWADDR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 19;
   attribute C_AWBURST_RIGHT : integer;
   attribute C_AWBURST_RIGHT of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 3;
   attribute C_AWBURST_WIDTH : integer;
@@ -5037,7 +5145,7 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
   attribute C_AWCACHE_WIDTH : integer;
   attribute C_AWCACHE_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 0;
   attribute C_AWID_RIGHT : integer;
-  attribute C_AWID_RIGHT of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 19;
+  attribute C_AWID_RIGHT of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 22;
   attribute C_AWID_WIDTH : integer;
   attribute C_AWID_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 0;
   attribute C_AWLEN_RIGHT : integer;
@@ -5069,9 +5177,9 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
   attribute C_AWUSER_WIDTH : integer;
   attribute C_AWUSER_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 0;
   attribute C_AW_WIDTH : integer;
-  attribute C_AW_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 19;
+  attribute C_AW_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 22;
   attribute C_AXI_ADDR_WIDTH : integer;
-  attribute C_AXI_ADDR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 16;
+  attribute C_AXI_ADDR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 19;
   attribute C_AXI_ARUSER_WIDTH : integer;
   attribute C_AXI_ARUSER_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 1;
   attribute C_AXI_AWUSER_WIDTH : integer;
@@ -5113,9 +5221,9 @@ entity design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter is
   attribute C_FAMILY : string;
   attribute C_FAMILY of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is "zynq";
   attribute C_FIFO_AR_WIDTH : integer;
-  attribute C_FIFO_AR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 19;
+  attribute C_FIFO_AR_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 22;
   attribute C_FIFO_AW_WIDTH : integer;
-  attribute C_FIFO_AW_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 19;
+  attribute C_FIFO_AW_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 22;
   attribute C_FIFO_B_WIDTH : integer;
   attribute C_FIFO_B_WIDTH of design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter : entity is 2;
   attribute C_FIFO_R_WIDTH : integer;
@@ -5274,8 +5382,8 @@ GND: unisim.vcomponents.GND
     );
 \gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar\: entity work.design_1_auto_cc_2_axi_clock_converter_v2_1_20_lite_async
      port map (
-      dest_out(18 downto 16) => m_axi_arprot(2 downto 0),
-      dest_out(15 downto 0) => m_axi_araddr(15 downto 0),
+      dest_out(21 downto 19) => m_axi_arprot(2 downto 0),
+      dest_out(18 downto 0) => m_axi_araddr(18 downto 0),
       m_areset_dly(0) => m_areset_dly(3),
       m_axi_arready => m_axi_arready,
       m_valid_i_reg_0 => m_axi_arvalid,
@@ -5284,14 +5392,14 @@ GND: unisim.vcomponents.GND
       s_areset_dly(0) => s_areset_dly(3),
       s_axi_arready => s_axi_arready,
       s_axi_arvalid => s_axi_arvalid,
-      src_in(18 downto 16) => s_axi_arprot(2 downto 0),
-      src_in(15 downto 0) => s_axi_araddr(15 downto 0)
+      src_in(21 downto 19) => s_axi_arprot(2 downto 0),
+      src_in(18 downto 0) => s_axi_araddr(18 downto 0)
     );
 \gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw\: entity work.\design_1_auto_cc_2_axi_clock_converter_v2_1_20_lite_async__xdcDup__1\
      port map (
       dest_ack_reg_0 => m_axi_aclk,
-      dest_out(18 downto 16) => m_axi_awprot(2 downto 0),
-      dest_out(15 downto 0) => m_axi_awaddr(15 downto 0),
+      dest_out(21 downto 19) => m_axi_awprot(2 downto 0),
+      dest_out(18 downto 0) => m_axi_awaddr(18 downto 0),
       \m_areset_dly_reg[0]_0\ => m_axi_aresetn,
       \m_areset_dly_reg[3]_0\(0) => m_areset_dly(3),
       m_axi_awready => m_axi_awready,
@@ -5301,8 +5409,8 @@ GND: unisim.vcomponents.GND
       \s_areset_dly_reg[3]_0\(0) => s_areset_dly(3),
       s_axi_awready => s_axi_awready,
       s_axi_awvalid => s_axi_awvalid,
-      src_in(18 downto 16) => s_axi_awprot(2 downto 0),
-      src_in(15 downto 0) => s_axi_awaddr(15 downto 0)
+      src_in(21 downto 19) => s_axi_awprot(2 downto 0),
+      src_in(18 downto 0) => s_axi_awaddr(18 downto 0)
     );
 \gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_w\: entity work.\design_1_auto_cc_2_axi_clock_converter_v2_1_20_lite_async__parameterized0\
      port map (
@@ -5356,7 +5464,7 @@ entity design_1_auto_cc_2 is
   port (
     s_axi_aclk : in STD_LOGIC;
     s_axi_aresetn : in STD_LOGIC;
-    s_axi_awaddr : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    s_axi_awaddr : in STD_LOGIC_VECTOR ( 18 downto 0 );
     s_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axi_awvalid : in STD_LOGIC;
     s_axi_awready : out STD_LOGIC;
@@ -5367,7 +5475,7 @@ entity design_1_auto_cc_2 is
     s_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_bvalid : out STD_LOGIC;
     s_axi_bready : in STD_LOGIC;
-    s_axi_araddr : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    s_axi_araddr : in STD_LOGIC_VECTOR ( 18 downto 0 );
     s_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axi_arvalid : in STD_LOGIC;
     s_axi_arready : out STD_LOGIC;
@@ -5377,7 +5485,7 @@ entity design_1_auto_cc_2 is
     s_axi_rready : in STD_LOGIC;
     m_axi_aclk : in STD_LOGIC;
     m_axi_aresetn : in STD_LOGIC;
-    m_axi_awaddr : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axi_awaddr : out STD_LOGIC_VECTOR ( 18 downto 0 );
     m_axi_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axi_awvalid : out STD_LOGIC;
     m_axi_awready : in STD_LOGIC;
@@ -5388,7 +5496,7 @@ entity design_1_auto_cc_2 is
     m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     m_axi_bvalid : in STD_LOGIC;
     m_axi_bready : out STD_LOGIC;
-    m_axi_araddr : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axi_araddr : out STD_LOGIC_VECTOR ( 18 downto 0 );
     m_axi_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axi_arvalid : out STD_LOGIC;
     m_axi_arready : in STD_LOGIC;
@@ -5400,7 +5508,7 @@ entity design_1_auto_cc_2 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of design_1_auto_cc_2 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of design_1_auto_cc_2 : entity is "design_1_auto_cc_2,axi_clock_converter_v2_1_20_axi_clock_converter,{}";
+  attribute CHECK_LICENSE_TYPE of design_1_auto_cc_2 : entity is "design_1_auto_cc_1,axi_clock_converter_v2_1_20_axi_clock_converter,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of design_1_auto_cc_2 : entity is "yes";
   attribute X_CORE_INFO : string;
@@ -5437,7 +5545,7 @@ architecture STRUCTURE of design_1_auto_cc_2 is
   attribute C_ARADDR_RIGHT : integer;
   attribute C_ARADDR_RIGHT of inst : label is 3;
   attribute C_ARADDR_WIDTH : integer;
-  attribute C_ARADDR_WIDTH of inst : label is 16;
+  attribute C_ARADDR_WIDTH of inst : label is 19;
   attribute C_ARBURST_RIGHT : integer;
   attribute C_ARBURST_RIGHT of inst : label is 3;
   attribute C_ARBURST_WIDTH : integer;
@@ -5447,7 +5555,7 @@ architecture STRUCTURE of design_1_auto_cc_2 is
   attribute C_ARCACHE_WIDTH : integer;
   attribute C_ARCACHE_WIDTH of inst : label is 0;
   attribute C_ARID_RIGHT : integer;
-  attribute C_ARID_RIGHT of inst : label is 19;
+  attribute C_ARID_RIGHT of inst : label is 22;
   attribute C_ARID_WIDTH : integer;
   attribute C_ARID_WIDTH of inst : label is 0;
   attribute C_ARLEN_RIGHT : integer;
@@ -5479,11 +5587,11 @@ architecture STRUCTURE of design_1_auto_cc_2 is
   attribute C_ARUSER_WIDTH : integer;
   attribute C_ARUSER_WIDTH of inst : label is 0;
   attribute C_AR_WIDTH : integer;
-  attribute C_AR_WIDTH of inst : label is 19;
+  attribute C_AR_WIDTH of inst : label is 22;
   attribute C_AWADDR_RIGHT : integer;
   attribute C_AWADDR_RIGHT of inst : label is 3;
   attribute C_AWADDR_WIDTH : integer;
-  attribute C_AWADDR_WIDTH of inst : label is 16;
+  attribute C_AWADDR_WIDTH of inst : label is 19;
   attribute C_AWBURST_RIGHT : integer;
   attribute C_AWBURST_RIGHT of inst : label is 3;
   attribute C_AWBURST_WIDTH : integer;
@@ -5493,7 +5601,7 @@ architecture STRUCTURE of design_1_auto_cc_2 is
   attribute C_AWCACHE_WIDTH : integer;
   attribute C_AWCACHE_WIDTH of inst : label is 0;
   attribute C_AWID_RIGHT : integer;
-  attribute C_AWID_RIGHT of inst : label is 19;
+  attribute C_AWID_RIGHT of inst : label is 22;
   attribute C_AWID_WIDTH : integer;
   attribute C_AWID_WIDTH of inst : label is 0;
   attribute C_AWLEN_RIGHT : integer;
@@ -5525,9 +5633,9 @@ architecture STRUCTURE of design_1_auto_cc_2 is
   attribute C_AWUSER_WIDTH : integer;
   attribute C_AWUSER_WIDTH of inst : label is 0;
   attribute C_AW_WIDTH : integer;
-  attribute C_AW_WIDTH of inst : label is 19;
+  attribute C_AW_WIDTH of inst : label is 22;
   attribute C_AXI_ADDR_WIDTH : integer;
-  attribute C_AXI_ADDR_WIDTH of inst : label is 16;
+  attribute C_AXI_ADDR_WIDTH of inst : label is 19;
   attribute C_AXI_ARUSER_WIDTH : integer;
   attribute C_AXI_ARUSER_WIDTH of inst : label is 1;
   attribute C_AXI_AWUSER_WIDTH : integer;
@@ -5569,9 +5677,9 @@ architecture STRUCTURE of design_1_auto_cc_2 is
   attribute C_FAMILY : string;
   attribute C_FAMILY of inst : label is "zynq";
   attribute C_FIFO_AR_WIDTH : integer;
-  attribute C_FIFO_AR_WIDTH of inst : label is 19;
+  attribute C_FIFO_AR_WIDTH of inst : label is 22;
   attribute C_FIFO_AW_WIDTH : integer;
-  attribute C_FIFO_AW_WIDTH of inst : label is 19;
+  attribute C_FIFO_AW_WIDTH of inst : label is 22;
   attribute C_FIFO_B_WIDTH : integer;
   attribute C_FIFO_B_WIDTH of inst : label is 2;
   attribute C_FIFO_R_WIDTH : integer;
@@ -5660,7 +5768,7 @@ architecture STRUCTURE of design_1_auto_cc_2 is
   attribute X_INTERFACE_INFO of m_axi_bready : signal is "xilinx.com:interface:aximm:1.0 M_AXI BREADY";
   attribute X_INTERFACE_INFO of m_axi_bvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI BVALID";
   attribute X_INTERFACE_INFO of m_axi_rready : signal is "xilinx.com:interface:aximm:1.0 M_AXI RREADY";
-  attribute X_INTERFACE_PARAMETER of m_axi_rready : signal is "XIL_INTERFACENAME M_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 148500000, ID_WIDTH 0, ADDR_WIDTH 16, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of m_axi_rready : signal is "XIL_INTERFACENAME M_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 148500000, ID_WIDTH 0, ADDR_WIDTH 19, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of m_axi_rvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI RVALID";
   attribute X_INTERFACE_INFO of m_axi_wready : signal is "xilinx.com:interface:aximm:1.0 M_AXI WREADY";
   attribute X_INTERFACE_INFO of m_axi_wvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI WVALID";
@@ -5675,7 +5783,7 @@ architecture STRUCTURE of design_1_auto_cc_2 is
   attribute X_INTERFACE_INFO of s_axi_bready : signal is "xilinx.com:interface:aximm:1.0 S_AXI BREADY";
   attribute X_INTERFACE_INFO of s_axi_bvalid : signal is "xilinx.com:interface:aximm:1.0 S_AXI BVALID";
   attribute X_INTERFACE_INFO of s_axi_rready : signal is "xilinx.com:interface:aximm:1.0 S_AXI RREADY";
-  attribute X_INTERFACE_PARAMETER of s_axi_rready : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 76923080, ID_WIDTH 0, ADDR_WIDTH 16, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of s_axi_rready : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 76923080, ID_WIDTH 0, ADDR_WIDTH 19, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of s_axi_rvalid : signal is "xilinx.com:interface:aximm:1.0 S_AXI RVALID";
   attribute X_INTERFACE_INFO of s_axi_wready : signal is "xilinx.com:interface:aximm:1.0 S_AXI WREADY";
   attribute X_INTERFACE_INFO of s_axi_wvalid : signal is "xilinx.com:interface:aximm:1.0 S_AXI WVALID";
@@ -5701,7 +5809,7 @@ begin
 inst: entity work.design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_converter
      port map (
       m_axi_aclk => m_axi_aclk,
-      m_axi_araddr(15 downto 0) => m_axi_araddr(15 downto 0),
+      m_axi_araddr(18 downto 0) => m_axi_araddr(18 downto 0),
       m_axi_arburst(1 downto 0) => NLW_inst_m_axi_arburst_UNCONNECTED(1 downto 0),
       m_axi_arcache(3 downto 0) => NLW_inst_m_axi_arcache_UNCONNECTED(3 downto 0),
       m_axi_aresetn => m_axi_aresetn,
@@ -5715,7 +5823,7 @@ inst: entity work.design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_conve
       m_axi_arsize(2 downto 0) => NLW_inst_m_axi_arsize_UNCONNECTED(2 downto 0),
       m_axi_aruser(0) => NLW_inst_m_axi_aruser_UNCONNECTED(0),
       m_axi_arvalid => m_axi_arvalid,
-      m_axi_awaddr(15 downto 0) => m_axi_awaddr(15 downto 0),
+      m_axi_awaddr(18 downto 0) => m_axi_awaddr(18 downto 0),
       m_axi_awburst(1 downto 0) => NLW_inst_m_axi_awburst_UNCONNECTED(1 downto 0),
       m_axi_awcache(3 downto 0) => NLW_inst_m_axi_awcache_UNCONNECTED(3 downto 0),
       m_axi_awid(0) => NLW_inst_m_axi_awid_UNCONNECTED(0),
@@ -5748,7 +5856,7 @@ inst: entity work.design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_conve
       m_axi_wuser(0) => NLW_inst_m_axi_wuser_UNCONNECTED(0),
       m_axi_wvalid => m_axi_wvalid,
       s_axi_aclk => s_axi_aclk,
-      s_axi_araddr(15 downto 0) => s_axi_araddr(15 downto 0),
+      s_axi_araddr(18 downto 0) => s_axi_araddr(18 downto 0),
       s_axi_arburst(1 downto 0) => B"01",
       s_axi_arcache(3 downto 0) => B"0000",
       s_axi_aresetn => s_axi_aresetn,
@@ -5762,7 +5870,7 @@ inst: entity work.design_1_auto_cc_2_axi_clock_converter_v2_1_20_axi_clock_conve
       s_axi_arsize(2 downto 0) => B"000",
       s_axi_aruser(0) => '0',
       s_axi_arvalid => s_axi_arvalid,
-      s_axi_awaddr(15 downto 0) => s_axi_awaddr(15 downto 0),
+      s_axi_awaddr(18 downto 0) => s_axi_awaddr(18 downto 0),
       s_axi_awburst(1 downto 0) => B"01",
       s_axi_awcache(3 downto 0) => B"0000",
       s_axi_awid(0) => '0',
