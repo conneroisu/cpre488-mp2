@@ -1,12 +1,75 @@
 #include "camera_app.h"
 #include "xil_types.h"
 #include "xvprocss.h"
+#include "xscugic.h"
 
 camera_config_t camera_config;
+
+void write_isr(void* CallBackRef, u32 InterruptTypes)
+{
+	xil_printf("Got write interrupt!\n\r");
+}
+
+void read_isr(void* CallBackRef, u32 InterruptTypes)
+{
+	xil_printf("Got read interrupt!\n\r");
+}
+
+// Interrupts
+static XScuGic_Config* gic_config;
+XScuGic int_controller;
+
+
 
 // Main function. Initializes the devices and configures VDMA
 int main()
 {
+   int status = 0;
+
+	// Get config
+   gic_config = XScuGic_LookupConfig(XPAR_PS7_SCUGIC_0_DEVICE_ID);
+   if(gic_config == NULL)
+   {
+	   xil_printf("ERROR: Could not get GIC config!\n\r");
+   }
+   // Initialize
+   status = XScuGic_CfgInitialize(&int_controller, gic_config, gic_config->CpuBaseAddress);
+   if(status != XST_SUCCESS)
+   {
+	   xil_printf("ERROR: Could not initialize GIC!\n\r");
+   }
+
+   // Run self test
+   status = XScuGic_SelfTest(&int_controller);
+   if(status != XST_SUCCESS)
+   {
+	   xil_printf("ERROR: GIC self test failed!\n\r");
+   }
+
+	XScuGic_SetPriorityTriggerType(&int_controller, XPAR_FABRIC_AXIVDMA_0_S2MM_INTROUT_VEC_ID, 0xA0, 0x3);
+	XScuGic_SetPriorityTriggerType(&int_controller, XPAR_FABRIC_AXIVDMA_0_MM2S_INTROUT_VEC_ID, 0xA0, 0x3);
+
+   Xil_ExceptionInit();
+   Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT, (Xil_ExceptionHandler) XScuGic_InterruptHandler, &int_controller);
+   Xil_ExceptionEnable();
+
+   // Connect ISR
+   status = XScuGic_Connect(&int_controller, XPAR_FABRIC_AXIVDMA_0_MM2S_INTROUT_VEC_ID, write_isr, &int_controller);
+   if(status != XST_SUCCESS)
+   {
+	   xil_printf("ERROR: GIC could not connect the VDMA write interrupt!\n\r");
+   }
+
+   status = XScuGic_Connect(&int_controller, XPAR_FABRIC_AXIVDMA_0_S2MM_INTROUT_VEC_ID, read_isr, &int_controller);
+   if(status != XST_SUCCESS)
+   {
+	   xil_printf("ERROR: GIC could not connect the VDMA read interrupt!\n\r");
+   }
+
+
+   // Enable interrupt on GIC
+   XScuGic_Enable(&int_controller, XPAR_FABRIC_AXIVDMA_0_MM2S_INTROUT_VEC_ID);
+   XScuGic_Enable(&int_controller, XPAR_FABRIC_AXIVDMA_0_S2MM_INTROUT_VEC_ID);
 
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);

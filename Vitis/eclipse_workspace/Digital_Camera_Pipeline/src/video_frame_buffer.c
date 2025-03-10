@@ -6,9 +6,9 @@
 
 #include "camera_app.h"
 
-
 #define NUMBER_OF_READ_FRAMES    XPAR_AXIVDMA_0_NUM_FSTORES
 #define NUMBER_OF_WRITE_FRAMES   XPAR_AXIVDMA_0_NUM_FSTORES
+
 
 int vfb_common_init( u16 uDeviceId, XAxiVdma *pAxiVdma )
 {
@@ -30,6 +30,20 @@ int vfb_common_init( u16 uDeviceId, XAxiVdma *pAxiVdma )
       return 1;
    }
 
+   int status = 0;
+
+   // Set frame counter
+   XAxiVdma_FrameCounter f;
+   f.ReadDelayTimerCount = 0;
+   f.WriteDelayTimerCount = 0;
+   f.ReadFrameCount = 1;
+   f.WriteFrameCount = 1;
+   status = XAxiVdma_SetFrameCounter(pAxiVdma, &f);
+   if(status != XST_SUCCESS)
+   {
+	   xil_printf("ERROR: Could not set VDMA frame counter!\n\r");
+   }
+
    return 0;
 }
 
@@ -49,6 +63,10 @@ int vfb_rx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg, Xuint32 uVide
            return 1;
    }
 
+   // Configure RX int handler.
+   XAxiVdma_SetCallBack(pAxiVdma, XAXIVDMA_HANDLER_GENERAL, read_isr, (void*) pAxiVdma, XAXIVDMA_READ);
+   XAxiVdma_IntrEnable(pAxiVdma, XAXIVDMA_IXR_ALL_MASK, XAXIVDMA_READ);
+
    /* Start the DMA engine to transfer
 	*/
    Status = vfb_rx_start(pAxiVdma);
@@ -56,7 +74,7 @@ int vfb_rx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg, Xuint32 uVide
 		   return 1;
    }
 
-	XAxiVdma_FsyncSrcSelect(pAxiVdma, XAXIVDMA_S2MM_TUSER_FSYNC, XAXIVDMA_WRITE);
+	XAxiVdma_FsyncSrcSelect(pAxiVdma, XAXIVDMA_S2MM_TUSER_FSYNC, XAXIVDMA_READ);
 
 }
 
@@ -75,6 +93,11 @@ int vfb_tx_init( XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg, Xuint32 uVideo
 
 		   return 1;
    }
+
+   // Configure RX int handler.
+   XAxiVdma_SetCallBack(pAxiVdma, XAXIVDMA_HANDLER_GENERAL, write_isr, (void*) pAxiVdma, XAXIVDMA_WRITE);
+   XAxiVdma_IntrEnable(pAxiVdma, XAXIVDMA_IXR_ALL_MASK, XAXIVDMA_WRITE);
+
 
    /* Start the DMA engine to transfer
 	*/

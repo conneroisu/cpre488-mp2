@@ -4,21 +4,11 @@
 #include "xil_cache.h"
 #include "sleep.h"
 #include "xvprocss.h"
-#include "xscugic.h"
-
 XVprocSs proc_ss_RGB_YCrCb_444;
 XVprocSs proc_ss_444_to_422;
 XVprocSs_Config *Config_ptr;
 XVprocSs_Config *Config_ptr_422;
 
-// Interrupts
-static XScuGic_Config* gic_config;
-XScuGic int_controller;
-
-void write_isr(void* CallBackRef, u32 InterruptTypes)
-{
-	xil_printf("Got write interrupt!\n\r");
-}
 
 int fmc_imageon_enable(
     camera_config_t *config)
@@ -182,44 +172,6 @@ int fmc_imageon_enable(
        config->uNumFrames_HdmiFrameBuffer     // uNumFrames
    );
 
-   // Configure interrupts
-   int status = 0;
-
-   // Get config
-   gic_config = XScuGic_LookupConfig(XPAR_PS7_SCUGIC_0_DEVICE_ID);
-   if(gic_config == NULL)
-   {
-	   xil_printf("ERROR: Could not get GIC config!\n\r");
-   }
-
-   // Initialize
-   status = XScuGic_CfgInitialize(&int_controller, gic_config, gic_config->CpuBaseAddress);
-   if(status != XST_SUCCESS)
-   {
-	   xil_printf("ERROR: Could not initialize GIC!\n\r");
-   }
-
-   // Run self test
-   status = XScuGic_SelfTest(&int_controller);
-   if(status != XST_SUCCESS)
-   {
-	   xil_printf("ERROR: GIC self test failed!\n\r");
-   }
-
-   // Connect ISR
-   status = XScuGic_Connect(&int_controller, 0, (Xil_InterruptHandler)XAxiVdma_WriteIntrHandler, &(config->vdma_hdmi));
-   if(status != XST_SUCCESS)
-   {
-	   xil_printf("ERROR: GIC could not connect the VDMA write interrupt!\n\r");
-   }
-
-   // Enable interrupt on GIC
-   XScuGic_Enable(&int_controller, 0);
-
-   // Configure TX int handler.
-   XAxiVdma_SetCallBack(&(config->vdma_hdmi), XAXIVDMA_HANDLER_GENERAL, write_isr, (void*) &(config->vdma_hdmi), XAXIVDMA_WRITE);
-   XAxiVdma_IntrEnable(&(config->vdma_hdmi), XAXIVDMA_IXR_ALL_MASK, XAXIVDMA_WRITE);
-
    // Output static Frame buffer for 5 seconds
    xil_printf("Output static Frame buffer for 5 seconds\n\r");
    sleep(5);
@@ -251,7 +203,7 @@ int fmc_imageon_enable(
 
    // Uncomment to enable HW Video processing pipeling (last part of lab)
    // You need to complete implmentation of this function before enabling
-   fmc_imageon_enable_ipipe(config);
+   //fmc_imageon_enable_ipipe(config);
 
    // Output Video input source in Hardware mode for 10 seconds
    xil_printf("Output Video input source in Hardware mode for 1 seconds\n\r");
