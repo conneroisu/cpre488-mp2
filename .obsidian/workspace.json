@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "4f638d725f652beb",
+        "id": "af46a72778824916",
         "type": "tabs",
         "children": [
           {
-            "id": "2cc3073ceb21b6b7",
+            "id": "cc9770da9c675f65",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "README"
+              "title": "New tab"
             }
           }
         ]
@@ -155,8 +151,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -173,31 +168,31 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "2cc3073ceb21b6b7",
+  "active": "cc9770da9c675f65",
   "lastOpenFiles": [
-    "README.pdf",
+    "Vivado/TPG/TPG_archive.xpr.zip",
+    "Vivado/TPG/TPG/TPG.cache/compile_simlib/vcs",
+    "Vivado/TPG/TPG/TPG.cache/compile_simlib/riviera",
+    "Vivado/TPG/TPG/TPG.cache/compile_simlib/modelsim",
+    "Vivado/TPG/TPG/TPG.cache/compile_simlib/questa",
+    "Vivado/TPG/TPG/TPG.cache/compile_simlib/ies",
+    "Vivado/TPG/TPG/TPG.cache/compile_simlib/activehdl",
+    "Vivado/TPG/TPG/TPG.cache/compile_simlib",
+    "Vivado/digital_camera/digital_camera/digital_camera.cache/wt/webtalk_pa.xml",
+    "Vivado/digital_camera/digital_camera/digital_camera.cache/wt/gui_handlers.wdf",
+    "Vivado/digital_camera/digital_camera/digital_camera.cache/wt/java_command_handlers.wdf",
+    "assets/IRQ_ILA_VDMA_Read.png",
+    "README.md",
+    "assets.md",
     "rgb_from_yuv_422.png",
     "reconstructed_rgb.png",
-    "README.md",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/design_1.bxml",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/ui",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/ip/design_1_v_vid_in_axi4s_0_0/design_1_v_vid_in_axi4s_0_0.xml",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/ip/design_1_v_vid_in_axi4s_0_0/design_1_v_vid_in_axi4s_0_0.xci",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/ip/design_1_v_vid_in_axi4s_0_0",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/ip/design_1_v_tc_0_0/design_1_v_tc_0_0.xml",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/ip/design_1_v_tc_0_0/design_1_v_tc_0_0.xci",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/ip/design_1_v_tc_0_0",
-    "Vivado/dcp/dcp/dcp.srcs/sources_1/bd/design_1/ip/design_1_v_proc_ss_1_0/bd_0/bd_197a.bxml",
     "assets/sw_demo.png",
-    "assets.md",
     "assets/tpg_change_sw.png",
     "assets/tpg_change.png",
     "write_project_to_tcl_dialog.png",
     "assets/generate_project_tcl_menu_item.png",
     "assets/diagram.png",
     "assets/bd-digram-mask.png",
-    "assets/HW-BD.png",
     "Vitis/eclipse_workspace/Digital_Camera_Pipeline/src/include/menu/README.md",
     "Vitis/eclipse_workspace/DigitalCamera/src/include/menu/README.md"
   ]
