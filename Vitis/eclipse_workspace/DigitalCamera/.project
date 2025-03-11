@@ -3,6 +3,7 @@
 	<name>DigitalCamera</name>
 	<comment>Created by Vitis v2020.1</comment>
 	<projects>
+		<project>Digital_Camera_HW</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="ASCII"?>
-<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="Digital_Camera_Pipeline_system" platform="C:/Users/neastbur/cpre488-mp2/Vitis/eclipse_workspace/Digital_Camera_Pipeline_HW/export/Digital_Camera_Pipeline_HW/Digital_Camera_Pipeline_HW.xpfm" platformUID="xilinx:zed::0.0(custom)" sysConfig="Digital_Camera_Pipeline_HW" runtime="C/C++" rootFSLocation="" linuxImage="" sysroot="">
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="Digital_Camera_Pipeline_system" platform="C:/Users/neastbur/cpre488-mp2/Vitis/eclipse_workspace/Digital_Camera_Pipeline_HW/export/Digital_Camera_Pipeline_HW/Digital_Camera_Pipeline_HW.xpfm" platformUID="xilinx:zed::0.0(custom)" sysConfig="Digital_Camera_Pipeline_HW" runtime="C/C++" dimmRepoPath="" rootFSLocation="" linuxImage="" sysroot="">
   <configuration name="Debug">
     <configBuildOptions xsi:type="systemproject:SystemOptions">
-      <applications name="Digital_Camera_Pipeline" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Debug"/>
+      <applications name="Digital_Camera_Pipeline" domainName="standalone_domain" domainPrettyName="standalone on ps7_cortexa9_0" appBuildConfig="Debug"/>
       <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
     </configBuildOptions>
     <lastBuildOptions xsi:type="systemproject:SystemOptions">
-      <applications name="Digital_Camera_Pipeline" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Debug"/>
+      <applications name="Digital_Camera_Pipeline" domainName="standalone_domain" domainPrettyName="standalone on ps7_cortexa9_0" appBuildConfig="Debug"/>
       <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
     </lastBuildOptions>
   </configuration>
   <configuration name="Release">
     <configBuildOptions xsi:type="systemproject:SystemOptions">
-      <applications name="Digital_Camera_Pipeline" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Release"/>
+      <applications name="Digital_Camera_Pipeline" domainName="standalone_domain" domainPrettyName="standalone on ps7_cortexa9_0" appBuildConfig="Release"/>
       <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
     </configBuildOptions>
   </configuration>

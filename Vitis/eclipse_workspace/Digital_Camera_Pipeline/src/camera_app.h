@@ -147,6 +147,10 @@ int vfb_tx_stop(XAxiVdma *pAxiVdma);
 int vfb_dump_registers(XAxiVdma *pAxiVdma);
 int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors);
 
+void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes);
+void camera_input_isr(void* CallBackRef, u32 InterruptTypes);
+void error_isr(void* CallBackRef, u32 InterruptTypes);
+
 void set_brightness(
 	camera_config_t *config,
 	int brightness);
@@ -156,5 +160,18 @@ void set_contrast(
 void set_saturation(
 	camera_config_t *config,
 	int saturation);
+void increase_brightness(
+	camera_config_t *config);
+void decrease_brightness(
+	camera_config_t *config);
+void increase_contrast(
+	camera_config_t *config);
+void decrease_contrast(
+	camera_config_t *config);
+void increase_saturation(
+	camera_config_t *config);
+void decrease_saturation(
+	camera_config_t *config);
+
 
 #endif // __CAMERA_APP_H__

@@ -4,11 +4,11 @@
 #include "xil_cache.h"
 #include "sleep.h"
 #include "xvprocss.h"
-
 XVprocSs proc_ss_RGB_YCrCb_444;
 XVprocSs proc_ss_444_to_422;
 XVprocSs_Config *Config_ptr;
 XVprocSs_Config *Config_ptr_422;
+
 
 int fmc_imageon_enable(
     camera_config_t *config)
@@ -506,4 +506,59 @@ void set_saturation(
       xil_printf("Setting saturation to %d\n\r", percent);
    }
    XVprocSs_SetPictureSaturation(&proc_ss_RGB_YCrCb_444, (s32)percent);
+}
+
+
+void increase_contrast(
+    camera_config_t *config //
+)
+{
+   int contrast = XVprocSs_GetPictureContrast(&proc_ss_RGB_YCrCb_444);
+   contrast = contrast + 1;
+   set_contrast(config, contrast);
+}
+
+void decrease_contrast(
+    camera_config_t *config //
+)
+{
+   int contrast = XVprocSs_GetPictureContrast(&proc_ss_RGB_YCrCb_444);
+   contrast = contrast - 1;
+   set_contrast(config, contrast);
+}
+
+void increase_brightness(
+    camera_config_t *config //
+)
+{
+   int brightness = XVprocSs_GetPictureBrightness(&proc_ss_RGB_YCrCb_444);
+   brightness = brightness + 1;
+   set_brightness(config, brightness);
+}
+
+void decrease_brightness(
+    camera_config_t *config //
+)
+{
+   int brightness = XVprocSs_GetPictureBrightness(&proc_ss_RGB_YCrCb_444);
+   brightness = brightness - 1;
+   set_brightness(config, brightness);
+}
+
+void increase_saturation(
+    camera_config_t *config //
+)
+{
+   int saturation = XVprocSs_GetPictureSaturation(&proc_ss_RGB_YCrCb_444);
+   saturation = saturation + 1;
+   set_saturation(config, saturation);
+}
+
+void decrease_saturation(
+    camera_config_t *config //
+)
+{
+   int saturation = XVprocSs_GetPictureSaturation(&proc_ss_RGB_YCrCb_444);
+   saturation = saturation - 1;
+   set_saturation(config, saturation);
 }
