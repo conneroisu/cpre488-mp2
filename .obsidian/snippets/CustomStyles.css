@@ -1,0 +1,23 @@
+table
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td, th
+{
+    border-color: black !important;
+}
+
+ol, ul
+{
+    --list-marker-color: black;
+}
+
+ol > li::marker { content: counters(list-item, '.') '. '; font-size: 20px;}
+
+@media print{
+    img {page-break-inside: avoid;}
+    table {page-break-inside: avoid;}
+    h1, h2, h3, h4, h5 {page-break-after: avoid;}
+}
