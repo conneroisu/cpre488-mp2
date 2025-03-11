@@ -4,12 +4,18 @@
 #include "xil_cache.h"
 #include "sleep.h"
 #include "xvprocss.h"
+
 XVprocSs proc_ss_RGB_YCrCb_444;
 XVprocSs proc_ss_444_to_422;
 XVprocSs_Config *Config_ptr;
 XVprocSs_Config *Config_ptr_422;
 
+#define VITA_ENABLE_ATTEMPT_LIMIT 3
+#define INCR_DECR_VALUE 1
 
+/// @brief fmc_imageon_enable Enable the FMC Imageon camera
+/// @param config the camera configuration to enable the camera with.
+/// @return 0 if successful, -1 if not
 int fmc_imageon_enable(
     camera_config_t *config)
 {
@@ -187,18 +193,17 @@ int fmc_imageon_enable(
        config->uNumFrames_HdmiFrameBuffer     // uNumFrames
    );
 
-   // Choose Video Source  ( 1. TPG or 2. onsemi VITA Camera)
-
-   // 1. Uncomment for TPG
-   // fmc_imageon_enable_tpg(config);
-
-   // 2. Uncomment for onsemi VITA Camera
    int vita_enabled_error = 0;
    int vita_enable_attempt = 1;
    do
    {
       xil_printf("\r\n\n\nFMC_IMAGEON_ENABLE_VITA, attempt %d\r\n\n\n", vita_enable_attempt++);
       vita_enabled_error = fmc_imageon_enable_vita(config);
+      if (vita_enable_attempt > VITA_ENABLE_ATTEMPT_LIMIT)
+      {
+         xil_printf("VITA Camera failed to initialize after %d attempts\r\n", VITA_ENABLE_ATTEMPT_LIMIT);
+         return -1;
+      }
    } while (vita_enabled_error != 0);
 
    // Uncomment to enable HW Video processing pipeling (last part of lab)
@@ -333,14 +338,6 @@ int fmc_imageon_enable_ipipe(
    XVprocSs_Start(&proc_ss_444_to_422);
    xil_printf("4:4:4 to 4:2:2 Started ...\n\r");
 
-   // TODO: USE THIS FUNCTION TO SET THE PICTURE SATURATION/BRIGHTNESS/CONTRAST DYMANICALLY with USER INPUT
-   // XVprocSs_SetPictureSaturation(&proc_ss_444_to_422, 0x80); // Set Picture Saturation to 0x80
-   // XVprocSs_SetPictureBrightness(&proc_ss_444_to_422, 0x80); // Set Picture Brightness to 0x80
-   // XVprocSs_SetPictureContrast(&proc_ss_444_to_422, 0x80); // Set Picture Contrast to 0x80
-
-   // # Color Space Conversion (CSC) Subsystem IP Setup (PG231)
-   // RGB => YCrCb 444
-
    Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
 
    xil_printf("RGB to 4:4:4 Conversion IP Initialization ...\n\r");
@@ -424,10 +421,10 @@ int fmc_imageon_enable_ipipe(
    return 0;
 }
 
-// Enables Spread-Spectrum Clocking (SSC)
+/// @brief enable_ssc Enable the spread-spectrum clocking (SSC) on the camera
+/// @param config
 void enable_ssc(camera_config_t *config)
 {
-
    int i;
 
    Xuint8 iic_cdce913_ssc_on[3][2] = {
@@ -436,8 +433,11 @@ void enable_ssc(camera_config_t *config)
        {0x12, 0xDB}  //
    };
 
-   xil_printf("Enabling spread-spectrum clocking (SSC)\n\r");
-   xil_printf("\ttype=down-spread, amount=-0.75%%\n\r");
+   if (config->bVerbose)
+   {
+      xil_printf("Enabling spread-spectrum clocking (SSC)\n\r");
+      xil_printf("\ttype=down-spread, amount=-0.75%%\n\r");
+   }
    fmc_imageon_iic_mux(&(config->fmc_imageon), FMC_IMAGEON_I2C_SELECT_VID_CLK);
 
    for (i = 0; i < 3; i++)
@@ -472,6 +472,9 @@ void reset_dcms(camera_config_t *config)
    usleep(500000);
 }
 
+/// @brief set_brightness Set the brightness of the camera
+/// @param config the camera configuration
+/// @param percent the percentage of the brightness (0-100)
 void set_brightness(
     camera_config_t *config,
     int percent //
@@ -484,6 +487,9 @@ void set_brightness(
    XVprocSs_SetPictureBrightness(&proc_ss_RGB_YCrCb_444, (s32)percent);
 }
 
+/// @brief set_contrast Set the contrast of the camera
+/// @param config the camera configuration
+/// @param percent the percentage of the contrast (0-100)
 void set_contrast(
     camera_config_t *config,
     int percent //
@@ -496,6 +502,9 @@ void set_contrast(
    XVprocSs_SetPictureContrast(&proc_ss_RGB_YCrCb_444, (s32)percent);
 }
 
+/// @brief set_saturation Set the saturation of the camera
+/// @param config
+/// @param percent
 void set_saturation(
     camera_config_t *config,
     int percent //
@@ -508,57 +517,86 @@ void set_saturation(
    XVprocSs_SetPictureSaturation(&proc_ss_RGB_YCrCb_444, (s32)percent);
 }
 
-
+/// @brief increase_contrast increase the contrast of the camera output
+/// @param config the camera configuration
 void increase_contrast(
     camera_config_t *config //
 )
 {
    int contrast = XVprocSs_GetPictureContrast(&proc_ss_RGB_YCrCb_444);
-   contrast = contrast + 1;
+   contrast = clamp(contrast + 1);
    set_contrast(config, contrast);
 }
 
+/// @brief decrease_contrast decrease the contrast of the camera output
+/// @param config the camera configuration
 void decrease_contrast(
     camera_config_t *config //
 )
 {
    int contrast = XVprocSs_GetPictureContrast(&proc_ss_RGB_YCrCb_444);
-   contrast = contrast - 1;
+   contrast = clamp(contrast - INCR_DECR_VALUE);
    set_contrast(config, contrast);
 }
 
+/// @brief increase_brightness increase the brightness of the camera output
+/// @param config the camera configuration
 void increase_brightness(
     camera_config_t *config //
 )
 {
    int brightness = XVprocSs_GetPictureBrightness(&proc_ss_RGB_YCrCb_444);
-   brightness = brightness + 1;
+   brightness = clamp(brightness + INCR_DECR_VALUE);
    set_brightness(config, brightness);
 }
 
+/// @brief decrease_brightness decrease the brightness of the camera output
+/// @param config the camera configuration
 void decrease_brightness(
     camera_config_t *config //
 )
 {
    int brightness = XVprocSs_GetPictureBrightness(&proc_ss_RGB_YCrCb_444);
-   brightness = brightness - 1;
+   brightness = clamp(brightness - INCR_DECR_VALUE);
    set_brightness(config, brightness);
 }
 
+/// @brief increase_saturation increase the saturation of the camera output
+/// @param config the camera configuration
 void increase_saturation(
     camera_config_t *config //
 )
 {
    int saturation = XVprocSs_GetPictureSaturation(&proc_ss_RGB_YCrCb_444);
-   saturation = saturation + 1;
+   saturation = clamp(saturation + INCR_DECR_VALUE);
    set_saturation(config, saturation);
 }
 
+/// @brief decrease_saturation decrease the saturation of the camera output
+/// @param config the camera configuration
 void decrease_saturation(
     camera_config_t *config //
 )
 {
    int saturation = XVprocSs_GetPictureSaturation(&proc_ss_RGB_YCrCb_444);
-   saturation = saturation - 1;
+   saturation = clamp(saturation - INCR_DECR_VALUE);
    set_saturation(config, saturation);
+}
+
+/// @brief clamp Clamps the value between 0 and 100
+/// @param value the value to clamp
+/// @return the clamped value
+int clamp(int value)
+{
+   if (value > 100)
+   {
+      value = 100;
+   }
+
+   if (value < 0)
+   {
+      value = 0;
+   }
+
+   return val
 }
