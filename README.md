@@ -613,5 +613,64 @@ _HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x19000000;
 
 ### A digital zoom mode, which uses the up and down buttons to zoom in and out of the current scene.
 
-<!-- TODO: Add description of digital zoom mode and implementation -->
+The digital zoom was implemented partially through the crop and scale capabilities of the fully fledged Video Processing Subsystem (v2.2) IP core. According to the embedded drivers for the IP, the VPSS has a zoom and scale core that can be used to perform a digital zoom by relaying display information in a user-specified window that can then be scaled to a desired dimension. To do this, I opted to add a separate core in addition to the two used in the original hardware pipeline for colour space conversion and chroma sampling, as I worried the additional operations could cause timing issues during the video processing. The final pipeline was as follows: Demosiac -> Zoom and Scale VPSS -> CSC VPSS -> 444:422 VPSS -> VDMA. Unfortunately, the driver documentation leaves something to be desired and there lacks an accessible example for this design. This resulted in an awfully heuristic design process, which ultimately produced a rather lackluster product. However, a product nonetheless. Although it still suffers from artifacts, a digital zoom of at most 85% of the original resolution was achieved before the video became distorted and corrupted. An example of the corrupted image can be seen below:
+
+![assets/zoom_issue.png](assets/zoom_issue.png)
+
+As the zoom increased past the 85% threshold, only a small segment of the top of the display would repeat. This segment seemed like it would duplicate and shrink as the zoom factor increased. Originally, I had believed that the issue lied in the output resolution of the zoom core being incompatible with the HDMI. For example, when I played around with the picture in picture mode, a similar artifact manifested - as seen below:
+
+![assets/pip_fun.png](assets/pip_fun.png)
+
+For that reason, I figured that using the horizontal and vertical scaler cores could help align the output video resolution. However, I was unsure as to how to properly sequence the core configurations as there was a lack of relative documentation. Looking at the AMD forums, it seemed that many people experiencing similar artifacts blamed unaligned VDMA writes or bandwidth bottlenecks. In an attempt to address the VDMA issues, I tried to dynamically reconfigure the VDMA such that it could scale the non-1080p output of the zoom core to 1080p for the HDMI. I also tried allowing for unaligned VDMA reads and writes. Neither of these worked. I also wanted to try increasing the sample rate of the hardware pipeline to 2 or more pixels per clock, but I ran out of time before I could test this hypothesis. 
+
+In the end, I was able to perform a digital zoom in some way, as seen (barely) in the following image:
+
+![assets/embaressing.png](assets/embaressing.png)
+
+### Sobel Edge Detector
+
+The Sobel edge detector was implemented through software - in a similar manner to the Bayer reconstruction software. This meant the operation could be achieved with the following convolution algorithm:
+
+```
+// Kernels
+uint32_t i, j, gx, gy = 0;
+uint32_t mx[3][3] = {
+	{-1, 0, 1},
+	{-2, 0, 2},
+  {-1, 0, 1}
+};
+  uint32_t my[3][3] = {
+	{-1, -2, -1},
+	{0, 0, 0},
+  {1, 2, 1}
+};
+
+// Convolution
+for (int x = 0; x < 1000; x++) {
+  for (i = 1; i < 1080 - 2; i++) {
+    for (j = 1; j < 1920 - 2; j++) {
+      uint32_t r, t = 0;
+      uint32_t gx = 0, gy = 0;
+        for (r = 0; r < 3; r++) {
+          for (t = 0; t < 3; t++) {
+	 					uint32_t image_index = (i + r - 1) * 1920 + (j + t - 1);
+	 					uint32_t pixel_value = pS2MM_Mem[image_index];
+	 					gx += pixel_value * mx[r][t];
+	 					gy += pixel_value * my[r][t];
+	 				}
+	 			}
+	      uint32_t output = sqrt(gx*gx + gy*gy);
+	      pMM2S_Mem[i * COL_SIZE + j] = output;
+	  }
+  }
+}
+```
+
+The resulting effects can be seen below:
+
+![assets/Sobel_ex.png](assets/Sobel_ex.png)
+
+It should be noted that a better result could have been achieved should only luminance value be used, but I ran out of time before I could implement it. 
+
+### 
 
