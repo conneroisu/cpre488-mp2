@@ -332,6 +332,13 @@ Using the buttons on the board (code resused from mp-1), the user can adjust the
 ### A video mode, which records and can replay up to 5 seconds of 1080p video. 
 
 <!-- TODO: Add description of video mode and implementation -->
+Video mode was about decreasing the delay from image to image in the play mode and increasing the number of images that can be stored in the software. This was done by removing the 2-second delay in image capture and increasing the heap size to correspond with the increased number of stored images.
+
+
+**Code Sample:**
+```c
+_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x19000000;
+```
 
 ### A digital zoom mode, which uses the up and down buttons to zoom in and out of the current scene.
 
