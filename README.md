@@ -279,7 +279,7 @@ For the `camera_loop()` function's conversion pass, this format would need to be
 
 Below is the resulting block diagram after adding the pipeline (we did not have enough time to update our original diagram, we have provided a description of the changes below):
 
-![](HW-BD.png)
+![](assets/HW-BD.png)
 
 The pipeline consists of an IP block that does demosaicing to the incoming video stream and two video processing modules. One of the video processing modules converts the RGB output from the demosaicing module to YUV 444 then the other video processing module converts the YUV 444 data to YUV 422, which is what the FMC IMAGEON module expects. The output from the YUV 444 to YUV 422 is then passed through an AXI Stream Converter and is then passed to the VDMA like before. So in summary, three pipeline stages were added:
 
