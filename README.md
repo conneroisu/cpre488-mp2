@@ -203,17 +203,6 @@ Since the demosaicing software takes a while to run, we take a single snapshot i
 For displaying the image, we decided to treat two different read frame buffers as front and back buffers. The demosaicing code updates the back buffer while the read channel of the VDMA streams the front buffer contents to the HDMI interface. Then once the demosaicing software has ran, the buffers are swapped, which displays the latest processed frame. This worked quite well and removed many artifacts in our images. An example of an image that resulted from the software demosaicing is shown below (image quality is a bit poor due to my phone):
 
 ![SW Demo](assets/sw_demo.png)
-## Pipeline Hardware changes
-
-Below is the resulting block diagram after adding the pipeline (we did not have enough time to update our original diagram, we have provided a description of the changes below):
-
-![](HW-BD.png)
-
-The pipeline consists of an IP block that does demosaicing to the incoming video stream and two video processing modules. One of the video processing modules converts the RGB output from the demosaicing module to YUV 444 then the other video processing module converts the YUV 444 data to YUV 422, which is what the FMC IMAGEON module expects. The output from the YUV 444 to YUV 422 is then passed through an AXI Stream Converter and is then passed to the VDMA like before. So in summary, three pipeline stages were added:
-
-1. Demosaicing
-2. RGB to YUV 444 Conversion
-3. YUV 444 to YUV 422 Conversion 
    
 ## YCbCr 4:2:2 Format Analysis
 
@@ -286,27 +275,161 @@ This format maintains full luminance resolution (the "4" in 4:2:2) while halving
 
 For the `camera_loop()` function's conversion pass, this format would need to be maintained when processing the data, ensuring that each 32-bit word continues to represent two pixels in the YCbCr 4:2:2 format, with the appropriate luminance and chrominance values preserved during the vertical flip operation.
 
-## Hardware Pipeline Diagram
+## Image Processing Pipeline
 
-<!-- TODO: Add hardware pipeline diagram -->
+Below is the resulting block diagram after adding the pipeline (we did not have enough time to update our original diagram, we have provided a description of the changes below):
+
+![](HW-BD.png)
+
+The pipeline consists of an IP block that does demosaicing to the incoming video stream and two video processing modules. One of the video processing modules converts the RGB output from the demosaicing module to YUV 444 then the other video processing module converts the YUV 444 data to YUV 422, which is what the FMC IMAGEON module expects. The output from the YUV 444 to YUV 422 is then passed through an AXI Stream Converter and is then passed to the VDMA like before. So in summary, three pipeline stages were added:
+
+1. Demosaicing
+2. RGB to YUV 444 Conversion
+3. YUV 444 to YUV 422 Conversion 
 
 ## Performance
 
 ### Introduction (how we measured performance)
 
-We measured the performance of the software and hardware pipelines in this design utilizing interrupt-driven time measurements. ...
+We measured the performance of the software and hardware pipelines in this design utilizing interrupt-driven time measurements. Using interrupts allows the software to be aware when a frame is read or written by the VDMA. Then by using timers, we can get extremely accurate frame write times, which can be used to derive the resulting average frames per second (FPS). 
 
 ### Software Pipeline 
 
 #### Performance
+For subgroup B, we determined that the average frame rate is `0.396 FPS`
 
-<!-- TODO: Add performance measurements for software pipeline -->
+This is quite slow, which is due to the software demosaicing algorithm not being optimized well and the fact that over 2 million half-word writes are required to process a single image!
 
 #### Testing Methodology
+As previously stated, we used interrupts and timers to measure the FPS. We setup interrupts for the VDMA read channel frame completion and the write channel frame completion. This allowed us to know when frames were written to the VDMA and read from the VDMA. However, we had to find a solution to isolate the frame that is being processed since we don't shut down the VDMA. 
 
+To do this, we stored a single frame in frame buffer 0, which the demosaicing software ran on. Then, once the demosaicing was finished, we updated the VDMA read channel to read this new frame out. By using the park pointer VDMA registers, we were able to detect when this new frame was written out and start/stop timers accordingly on this event. By comparing the current write time to the previous write time, we can determine how long it took to write out the last frame, which gives us our FPS value! Finally, we averaged 10 FPS values together to produce a final FPS value!
 
-<!-- TODO: Add testing methodology for software pipeline -->
+The interrupt service routines and park pointer register modification code is shown below:
 
+Globals
+```c
+// Timing globals
+static fps_t fps;
+static int sw_mode = 0;
+static int snapshot_saved = 0;
+
+static u8 back_buffer_frame = 2;
+static u8 front_buffer_frame = 3;
+
+// Frame that indicates that the write completed.
+static u8 target_frame = 2;
+
+static XTime tStart, tEnd = 0;
+
+// In seconds
+static float frame_time = 0;
+```
+
+ISRS:
+```c
+void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
+{
+	switch(InterruptTypes)
+	{
+		case XAXIVDMA_IXR_FRMCNT_MASK:
+		{
+			// Once we have read from the back buffer, we know that it is the new front buffer
+			// so we must have just swapped.
+			if(sw_mode && (get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ) == target_frame) && snapshot_saved)
+			{
+				// We start and stop the timer on this ISR.
+				// If this is the first frame, the timer won't be started, so start it up without ending any timer.
+				if(!tStart)
+				{
+					XTime_GetTime(&tStart);
+				}
+				else
+				{
+					XTime_GetTime(&tEnd);
+					snapshot_saved = 0;
+
+					frame_time = (tEnd - tStart) / (float)COUNTS_PER_SECOND;
+
+					fps_time_store(&fps, frame_time);
+
+					sprintf(fps_msg, "Average FPS: %.5f", fps_calculate(&fps));
+
+					xil_printf("%s\n\r", fps_msg);
+
+					// Start the timer back up!
+					XTime_GetTime(&tStart);
+				}
+
+			}
+		}
+
+		default:
+		{
+			break;
+		}
+	}
+}
+void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
+{
+	switch(InterruptTypes)
+	{
+		case XAXIVDMA_IXR_FRMCNT_MASK:
+		{
+			if(sw_mode && get_current_frame_pointer((XAxiVdma*)CallBackRef, XAXIVDMA_WRITE) == 0 && !snapshot_saved)
+			{
+				snapshot_saved = 1;
+				target_frame = back_buffer_frame;
+			}
+		}
+
+		default:
+		{
+			break;
+		}
+	}
+}
+```
+
+Park Pointer Register Modifications
+```c
+		set_park_frame(&(config->vdma_hdmi), 0, XAXIVDMA_WRITE);
+
+		// Wait until frame zero is being written to.
+		while(get_current_frame_pointer(&(config->vdma_hdmi), XAXIVDMA_WRITE))
+		{
+
+		}
+
+		set_park_frame(&(config->vdma_hdmi), 1, XAXIVDMA_WRITE);
+
+		// Wait until frame one is being written to.
+		while(!get_current_frame_pointer(&(config->vdma_hdmi), XAXIVDMA_WRITE))
+		{
+
+		}
+
+		// Apply CFA
+		run_demosaicing((uint16_t*)pS2MM_Mem, (uint16_t*)pMM2S_Mem);
+
+		// Swap back and front buffers
+		u8 temp = back_buffer_frame;
+
+		back_buffer_frame = front_buffer_frame;
+		front_buffer_frame = temp;
+
+		// Have the read side park on the new front buffer
+		set_park_frame(&(config->vdma_hdmi), front_buffer_frame, XAXIVDMA_READ);
+
+		// Wait for park frame to update.
+		while(get_current_frame_pointer(&(config->vdma_hdmi), XAXIVDMA_READ) != front_buffer_frame)
+		{
+
+		}
+
+		// Update pMM2S_Mem to point to back buffer.
+		pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET + (back_buffer_frame * 0x4));
+```
 ### Hardware Pipeline 
 
 #### Performance
