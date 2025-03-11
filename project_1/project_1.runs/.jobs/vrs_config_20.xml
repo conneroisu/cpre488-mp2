@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="design_1_v_demosaic_0_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_v_demosaic_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_v_proc_ss_0_3_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_v_proc_ss_0_3_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="bd_d86b_auto_ss_slid_1_synth_1"/>
+		<Parent Id="bd_d86b_m01_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_m02_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_m05_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slid_2_synth_1"/>
+		<Parent Id="bd_d86b_m06_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slid_3_synth_1"/>
+		<Parent Id="bd_d86b_m07_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slid_4_synth_1"/>
+		<Parent Id="bd_d86b_m08_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slid_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slidr_3_synth_1"/>
+		<Parent Id="bd_d86b_m00_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slidr_0_synth_1"/>
+		<Parent Id="bd_d86b_m04_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slidr_1_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slidr_2_synth_1"/>
+		<Parent Id="bd_d86b_vsc_0_synth_1"/>
+		<Parent Id="bd_d86b_hsc_0_synth_1"/>
+		<Parent Id="bd_d86b_ltr_0_synth_1"/>
+		<Parent Id="bd_d86b_csc_0_synth_1"/>
+		<Parent Id="bd_d86b_input_size_set_0_synth_1"/>
+		<Parent Id="bd_d86b_xbar_0_synth_1"/>
+	</Run>
+	<Run Id="design_1_v_proc_ss_1_1_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_v_proc_ss_1_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="bd_d9bb_hcr_0_synth_1"/>
+	</Run>
+	<Run Id="design_1_v_proc_ss_2_1_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/design_1_v_proc_ss_2_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="bd_d94b_m01_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_m00_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_4_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slidr_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_0_synth_1"/>
+		<Parent Id="bd_d94b_m07_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slidr_2_synth_1"/>
+		<Parent Id="bd_d94b_m06_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_m05_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_3_synth_1"/>
+		<Parent Id="bd_d94b_m02_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slidr_1_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_2_synth_1"/>
+		<Parent Id="bd_d94b_m04_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_m08_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slidr_3_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_1_synth_1"/>
+		<Parent Id="bd_d94b_vsc_0_synth_1"/>
+		<Parent Id="bd_d94b_hsc_0_synth_1"/>
+		<Parent Id="bd_d94b_input_size_set_0_synth_1"/>
+		<Parent Id="bd_d94b_csc_0_synth_1"/>
+		<Parent Id="bd_d94b_ltr_0_synth_1"/>
+		<Parent Id="bd_d94b_xbar_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d86b_auto_ss_slid_1_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_auto_ss_slid_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_m01_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_m01_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_m02_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_m02_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m01_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d86b_m05_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_m05_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_auto_ss_slid_2_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_auto_ss_slid_2_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_m06_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_m06_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m05_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d86b_auto_ss_slid_3_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_auto_ss_slid_3_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_m07_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_m07_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m05_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d86b_auto_ss_slid_4_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_auto_ss_slid_4_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_m08_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_m08_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m01_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d86b_auto_ss_slid_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_auto_ss_slid_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_auto_ss_slidr_3_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_auto_ss_slidr_3_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_m00_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_m00_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m05_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d86b_auto_ss_slidr_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_auto_ss_slidr_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_m04_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_m04_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m01_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d86b_auto_ss_slidr_1_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_auto_ss_slidr_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_auto_ss_slidr_2_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_auto_ss_slidr_2_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_m01_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_m01_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m01_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_m00_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_m00_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m05_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_auto_ss_slid_4_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_auto_ss_slid_4_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_auto_ss_slidr_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_auto_ss_slidr_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_auto_ss_slid_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_auto_ss_slid_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_m07_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_m07_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m05_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_auto_ss_slidr_2_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_auto_ss_slidr_2_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_m06_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_m06_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m05_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_m05_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_m05_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m05_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_auto_ss_slid_3_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_auto_ss_slid_3_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_m02_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_m02_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m01_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_auto_ss_slidr_1_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_auto_ss_slidr_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_auto_ss_slid_2_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_auto_ss_slid_2_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_m04_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_m04_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m01_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_m08_regslice_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_m08_regslice_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_m01_regslice_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_auto_ss_slidr_3_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_auto_ss_slidr_3_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_auto_ss_slid_1_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_auto_ss_slid_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_vsc_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_vsc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_hsc_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_hsc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_ltr_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_ltr_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_csc_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_csc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_input_size_set_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_input_size_set_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d86b_xbar_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d86b_xbar_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_vsc_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_vsc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_vsc_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_hsc_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_hsc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_hsc_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_input_size_set_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_input_size_set_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_csc_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_csc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_csc_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d9bb_hcr_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d9bb_hcr_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_d94b_ltr_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_ltr_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_ltr_0_synth_1"/>
+	</Run>
+	<Run Id="bd_d94b_xbar_0_synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/bd_d94b_xbar_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_d86b_xbar_0_synth_1"/>
+	</Run>
+	<Run Id="synth_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="design_1_v_demosaic_0_0_synth_1"/>
+		<Parent Id="design_1_v_proc_ss_0_3_synth_1"/>
+		<Parent Id="design_1_v_proc_ss_1_1_synth_1"/>
+		<Parent Id="design_1_v_proc_ss_2_1_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="C:/Users/jaxie963/Temp/cpre488-mp2/project_1/project_1.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+		<Parent Id="synth_1"/>
+		<Parent Id="design_1_v_demosaic_0_0_synth_1"/>
+		<Parent Id="design_1_v_proc_ss_0_3_synth_1"/>
+		<Parent Id="design_1_v_proc_ss_1_1_synth_1"/>
+		<Parent Id="design_1_v_proc_ss_2_1_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slid_1_synth_1"/>
+		<Parent Id="bd_d86b_m01_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_m02_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_m05_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slid_2_synth_1"/>
+		<Parent Id="bd_d86b_m06_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slid_3_synth_1"/>
+		<Parent Id="bd_d86b_m07_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slid_4_synth_1"/>
+		<Parent Id="bd_d86b_m08_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slid_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slidr_3_synth_1"/>
+		<Parent Id="bd_d86b_m00_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slidr_0_synth_1"/>
+		<Parent Id="bd_d86b_m04_regslice_0_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slidr_1_synth_1"/>
+		<Parent Id="bd_d86b_auto_ss_slidr_2_synth_1"/>
+		<Parent Id="bd_d94b_m01_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_m00_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_4_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slidr_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_0_synth_1"/>
+		<Parent Id="bd_d94b_m07_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slidr_2_synth_1"/>
+		<Parent Id="bd_d94b_m06_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_m05_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_3_synth_1"/>
+		<Parent Id="bd_d94b_m02_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slidr_1_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_2_synth_1"/>
+		<Parent Id="bd_d94b_m04_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_m08_regslice_0_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slidr_3_synth_1"/>
+		<Parent Id="bd_d94b_auto_ss_slid_1_synth_1"/>
+		<Parent Id="bd_d86b_vsc_0_synth_1"/>
+		<Parent Id="bd_d86b_hsc_0_synth_1"/>
+		<Parent Id="bd_d86b_ltr_0_synth_1"/>
+		<Parent Id="bd_d86b_csc_0_synth_1"/>
+		<Parent Id="bd_d86b_input_size_set_0_synth_1"/>
+		<Parent Id="bd_d86b_xbar_0_synth_1"/>
+		<Parent Id="bd_d94b_vsc_0_synth_1"/>
+		<Parent Id="bd_d94b_hsc_0_synth_1"/>
+		<Parent Id="bd_d94b_input_size_set_0_synth_1"/>
+		<Parent Id="bd_d94b_csc_0_synth_1"/>
+		<Parent Id="bd_d9bb_hcr_0_synth_1"/>
+		<Parent Id="bd_d94b_ltr_0_synth_1"/>
+		<Parent Id="bd_d94b_xbar_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

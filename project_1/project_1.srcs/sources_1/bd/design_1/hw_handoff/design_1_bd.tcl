@@ -697,6 +697,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.ALGORITHM {1} \
    CONFIG.ENABLE_ZIPPER_REMOVAL {false} \
+   CONFIG.SAMPLES_PER_CLOCK {2} \
  ] $v_demosaic_0
 
   # Create instance: v_proc_ss_0, and set properties
@@ -707,7 +708,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ENABLE_DMA {false} \
    CONFIG.C_ENABLE_INTERLACED {false} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
-   CONFIG.C_SAMPLES_PER_CLK {1} \
+   CONFIG.C_SAMPLES_PER_CLK {2} \
  ] $v_proc_ss_0
 
   # Create instance: v_proc_ss_1, and set properties
@@ -717,7 +718,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ENABLE_INTERLACED {false} \
    CONFIG.C_H_CHROMA_ALGORITHM {0} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
-   CONFIG.C_SAMPLES_PER_CLK {1} \
+   CONFIG.C_SAMPLES_PER_CLK {2} \
    CONFIG.C_TOPOLOGY {5} \
  ] $v_proc_ss_1
 
@@ -729,7 +730,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ENABLE_DMA {false} \
    CONFIG.C_ENABLE_INTERLACED {false} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
-   CONFIG.C_SAMPLES_PER_CLK {1} \
+   CONFIG.C_SAMPLES_PER_CLK {2} \
  ] $v_proc_ss_2
 
   # Create instance: v_tc_0, and set properties

@@ -57,13 +57,13 @@ ENTITY design_1_v_proc_ss_1_1 IS
   PORT (
     aclk : IN STD_LOGIC;
     aresetn : IN STD_LOGIC;
-    s_axis_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+    s_axis_tdata : IN STD_LOGIC_VECTOR(47 DOWNTO 0);
     s_axis_tdest : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     s_axis_tid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    s_axis_tkeep : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+    s_axis_tkeep : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
     s_axis_tlast : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     s_axis_tready : OUT STD_LOGIC;
-    s_axis_tstrb : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+    s_axis_tstrb : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
     s_axis_tuser : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     s_axis_tvalid : IN STD_LOGIC;
     s_axi_ctrl_araddr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
@@ -83,13 +83,13 @@ ENTITY design_1_v_proc_ss_1_1 IS
     s_axi_ctrl_wready : OUT STD_LOGIC;
     s_axi_ctrl_wstrb : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
     s_axi_ctrl_wvalid : IN STD_LOGIC;
-    m_axis_tdata : OUT STD_LOGIC_VECTOR(23 DOWNTO 0);
+    m_axis_tdata : OUT STD_LOGIC_VECTOR(47 DOWNTO 0);
     m_axis_tdest : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
     m_axis_tid : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-    m_axis_tkeep : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+    m_axis_tkeep : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
     m_axis_tlast : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
     m_axis_tready : IN STD_LOGIC;
-    m_axis_tstrb : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+    m_axis_tstrb : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
     m_axis_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
     m_axis_tvalid : OUT STD_LOGIC
   );
@@ -102,13 +102,13 @@ ARCHITECTURE design_1_v_proc_ss_1_1_arch OF design_1_v_proc_ss_1_1 IS
     PORT (
       aclk : IN STD_LOGIC;
       aresetn : IN STD_LOGIC;
-      s_axis_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+      s_axis_tdata : IN STD_LOGIC_VECTOR(47 DOWNTO 0);
       s_axis_tdest : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       s_axis_tid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      s_axis_tkeep : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+      s_axis_tkeep : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
       s_axis_tlast : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       s_axis_tready : OUT STD_LOGIC;
-      s_axis_tstrb : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+      s_axis_tstrb : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
       s_axis_tuser : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       s_axis_tvalid : IN STD_LOGIC;
       s_axi_ctrl_araddr : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
@@ -128,13 +128,13 @@ ARCHITECTURE design_1_v_proc_ss_1_1_arch OF design_1_v_proc_ss_1_1 IS
       s_axi_ctrl_wready : OUT STD_LOGIC;
       s_axi_ctrl_wstrb : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
       s_axi_ctrl_wvalid : IN STD_LOGIC;
-      m_axis_tdata : OUT STD_LOGIC_VECTOR(23 DOWNTO 0);
+      m_axis_tdata : OUT STD_LOGIC_VECTOR(47 DOWNTO 0);
       m_axis_tdest : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
       m_axis_tid : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-      m_axis_tkeep : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+      m_axis_tkeep : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
       m_axis_tlast : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
       m_axis_tready : IN STD_LOGIC;
-      m_axis_tstrb : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+      m_axis_tstrb : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
       m_axis_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
       m_axis_tvalid : OUT STD_LOGIC
     );
@@ -144,7 +144,7 @@ ARCHITECTURE design_1_v_proc_ss_1_1_arch OF design_1_v_proc_ss_1_1 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF design_1_v_proc_ss_1_1_arch : ARCHITECTURE IS "design_1_v_proc_ss_1_1,bd_d9bb,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF design_1_v_proc_ss_1_1_arch: ARCHITECTURE IS "design_1_v_proc_ss_1_1,bd_d9bb,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=v_proc_ss,x_ipVersion=2.2,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,Component_Name=design_1_v_proc_ss_1_1,C_SCALER_ALGORITHM=2,C_TOPOLOGY=5,C_SAMPLES_PER_CLK=1,C_MAX_DATA_WIDTH=8,C_NUM_VIDEO_COMPONENTS=3,C_MAX_COLS=3840,C_MAX_ROWS=2160,C_H_SCALER_TAPS=6,C_V_SCALER_TAPS=6,C_H_SCALER_PHASES=64,C_V_SCALER_PHASES=64,C_CHROMA_ALGORITHM=2,C_H_CHROMA_ALGORITHM=0,C_V_CHROMA_ALGORITHM=" & 
+  ATTRIBUTE CORE_GENERATION_INFO OF design_1_v_proc_ss_1_1_arch: ARCHITECTURE IS "design_1_v_proc_ss_1_1,bd_d9bb,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=v_proc_ss,x_ipVersion=2.2,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,Component_Name=design_1_v_proc_ss_1_1,C_SCALER_ALGORITHM=2,C_TOPOLOGY=5,C_SAMPLES_PER_CLK=2,C_MAX_DATA_WIDTH=8,C_NUM_VIDEO_COMPONENTS=3,C_MAX_COLS=3840,C_MAX_ROWS=2160,C_H_SCALER_TAPS=6,C_V_SCALER_TAPS=6,C_H_SCALER_PHASES=64,C_V_SCALER_PHASES=64,C_CHROMA_ALGORITHM=2,C_H_CHROMA_ALGORITHM=0,C_V_CHROMA_ALGORITHM=" & 
 "2,C_H_CHROMA_TAPS=4,C_V_CHROMA_TAPS=4,C_ENABLE_INTERLACED=false,C_ENABLE_DMA=false,C_SCALER_ENABLE_422=true,C_ENABLE_CSC=false,C_CSC_ENABLE_422=true,C_CSC_ENABLE_WINDOW=true,C_DEINT_MOTION_ADAPTIVE=true,C_COLORSPACE_SUPPORT=0,C_USE_URAM=0,C_AXIMM_ADDR_WIDTH=32,C_AXIMM_NUM_OUTSTANDING=16,C_AXIMM_BURST_LENGTH=16}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
@@ -156,7 +156,7 @@ ARCHITECTURE design_1_v_proc_ss_1_1_arch OF design_1_v_proc_ss_1_1 IS
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_tkeep: SIGNAL IS "xilinx.com:interface:axis:1.0 m_axis TKEEP";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_tid: SIGNAL IS "xilinx.com:interface:axis:1.0 m_axis TID";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_tdest: SIGNAL IS "xilinx.com:interface:axis:1.0 m_axis TDEST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_tdata: SIGNAL IS "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 3, TDEST_WIDTH 1, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_tdata: SIGNAL IS "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 6, TDEST_WIDTH 1, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 m_axis TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_ctrl_wvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_ctrl WVALID";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_ctrl_wstrb: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_ctrl WSTRB";
@@ -185,7 +185,7 @@ ARCHITECTURE design_1_v_proc_ss_1_1_arch OF design_1_v_proc_ss_1_1 IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_tkeep: SIGNAL IS "xilinx.com:interface:axis:1.0 s_axis TKEEP";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_tid: SIGNAL IS "xilinx.com:interface:axis:1.0 s_axis TID";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_tdest: SIGNAL IS "xilinx.com:interface:axis:1.0 s_axis TDEST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_tdata: SIGNAL IS "XIL_INTERFACENAME s_axis, TDATA_NUM_BYTES 3, TDEST_WIDTH 1, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_tdata: SIGNAL IS "XIL_INTERFACENAME s_axis, TDATA_NUM_BYTES 6, TDEST_WIDTH 1, TID_WIDTH 1, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 148500000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 s_axis TDATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME RST.aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 RST.aresetn RST";

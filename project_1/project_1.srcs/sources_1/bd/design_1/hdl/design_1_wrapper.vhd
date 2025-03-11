@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Mon Mar 10 14:50:16 2025
---Host        : CO2041-04 running 64-bit major release  (build 9200)
+--Date        : Mon Mar 10 17:56:22 2025
+--Host        : CO2041-14 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
 --Purpose     : IP block netlist
@@ -69,36 +69,6 @@ architecture STRUCTURE of design_1_wrapper is
     fmc_imageon_iic_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     IO_HDMII_spdif : in STD_LOGIC;
     fmc_imageon_vclk : in STD_LOGIC;
-    IO_HDMIO_clk : out STD_LOGIC;
-    IO_HDMIO_data : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    IO_HDMIO_spdif : out STD_LOGIC;
-    DDR_cas_n : inout STD_LOGIC;
-    DDR_cke : inout STD_LOGIC;
-    DDR_ck_n : inout STD_LOGIC;
-    DDR_ck_p : inout STD_LOGIC;
-    DDR_cs_n : inout STD_LOGIC;
-    DDR_reset_n : inout STD_LOGIC;
-    DDR_odt : inout STD_LOGIC;
-    DDR_ras_n : inout STD_LOGIC;
-    DDR_we_n : inout STD_LOGIC;
-    DDR_ba : inout STD_LOGIC_VECTOR ( 2 downto 0 );
-    DDR_addr : inout STD_LOGIC_VECTOR ( 14 downto 0 );
-    DDR_dm : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
-    DDR_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    btns_5bits_tri_i : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    IO_VITA_SPI_spi_sclk : out STD_LOGIC;
-    IO_VITA_SPI_spi_ssel_n : out STD_LOGIC;
-    IO_VITA_SPI_spi_mosi : out STD_LOGIC;
-    IO_VITA_SPI_spi_miso : in STD_LOGIC;
-    sws_8bits_tri_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    fmc_imageon_iic_scl_i : in STD_LOGIC;
-    fmc_imageon_iic_scl_o : out STD_LOGIC;
-    fmc_imageon_iic_scl_t : out STD_LOGIC;
-    fmc_imageon_iic_sda_i : in STD_LOGIC;
-    fmc_imageon_iic_sda_o : out STD_LOGIC;
-    fmc_imageon_iic_sda_t : out STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_i : in STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_o : out STD_LOGIC;
     fmc_ipmi_id_eeprom_scl_t : out STD_LOGIC;
@@ -120,7 +90,37 @@ architecture STRUCTURE of design_1_wrapper is
     IO_VITA_CAM_clk_pll : out STD_LOGIC;
     IO_VITA_CAM_data_n : in STD_LOGIC_VECTOR ( 3 downto 0 );
     IO_VITA_CAM_clk_out_p : in STD_LOGIC;
-    IO_VITA_CAM_clk_out_n : in STD_LOGIC
+    IO_VITA_CAM_clk_out_n : in STD_LOGIC;
+    IO_VITA_SPI_spi_sclk : out STD_LOGIC;
+    IO_VITA_SPI_spi_ssel_n : out STD_LOGIC;
+    IO_VITA_SPI_spi_mosi : out STD_LOGIC;
+    IO_VITA_SPI_spi_miso : in STD_LOGIC;
+    btns_5bits_tri_i : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    fmc_imageon_iic_scl_i : in STD_LOGIC;
+    fmc_imageon_iic_scl_o : out STD_LOGIC;
+    fmc_imageon_iic_scl_t : out STD_LOGIC;
+    fmc_imageon_iic_sda_i : in STD_LOGIC;
+    fmc_imageon_iic_sda_o : out STD_LOGIC;
+    fmc_imageon_iic_sda_t : out STD_LOGIC;
+    sws_8bits_tri_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    IO_HDMIO_clk : out STD_LOGIC;
+    IO_HDMIO_data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IO_HDMIO_spdif : out STD_LOGIC;
+    DDR_cas_n : inout STD_LOGIC;
+    DDR_cke : inout STD_LOGIC;
+    DDR_ck_n : inout STD_LOGIC;
+    DDR_ck_p : inout STD_LOGIC;
+    DDR_cs_n : inout STD_LOGIC;
+    DDR_reset_n : inout STD_LOGIC;
+    DDR_odt : inout STD_LOGIC;
+    DDR_ras_n : inout STD_LOGIC;
+    DDR_we_n : inout STD_LOGIC;
+    DDR_ba : inout STD_LOGIC_VECTOR ( 2 downto 0 );
+    DDR_addr : inout STD_LOGIC_VECTOR ( 14 downto 0 );
+    DDR_dm : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
+    DDR_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   end component design_1;
   component IOBUF is
