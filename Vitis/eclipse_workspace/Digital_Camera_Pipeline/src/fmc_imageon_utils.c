@@ -598,5 +598,5 @@ int clamp(int value)
       value = 0;
    }
 
-   return val
+   return value;
 }

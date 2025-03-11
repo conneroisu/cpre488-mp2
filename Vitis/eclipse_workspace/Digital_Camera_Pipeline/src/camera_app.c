@@ -107,7 +107,7 @@ float fps_calculate(fps_t* f)
 }
 
 // Swaps the memory addresses associated with the frame pointers
-void set_start_address(XAxiVdma* vdma, u16 dir, u8 frame, u32 addr)
+void set_start_address(XAxiVdma* vdma, u16 dir, u8 frame, u16* addr)
 {
 	u32 offset = XAXIVDMA_TX_OFFSET ? dir == XAXIVDMA_WRITE : XAXIVDMA_RX_OFFSET;
 	frame &= 0x1F;
@@ -115,7 +115,7 @@ void set_start_address(XAxiVdma* vdma, u16 dir, u8 frame, u32 addr)
 #define START_ADDR *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_START_ADDR_OFFSET + (frame * 0x4)))
 #define VSIZE *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_VSIZE_OFFSET))
 
-	START_ADDR = addr;
+	START_ADDR = (u32)addr;
 
 	// Apply the change
 	VSIZE = VSIZE;
@@ -124,14 +124,14 @@ void set_start_address(XAxiVdma* vdma, u16 dir, u8 frame, u32 addr)
 #undef VSIZE
 }
 
-u32 get_start_address(XAxiVdma* vdma, u16 dir, u8 frame)
+u16* get_start_address(XAxiVdma* vdma, u16 dir, u8 frame)
 {
 	u32 offset = XAXIVDMA_TX_OFFSET ? dir == XAXIVDMA_WRITE : XAXIVDMA_RX_OFFSET;
 	frame &= 0x1F;
 
 #define START_ADDR *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_START_ADDR_OFFSET + (frame * 0x4)))
 
-	return START_ADDR;
+	return (u16*)START_ADDR;
 
 #undef START_ADDR
 }
@@ -269,9 +269,98 @@ u32 button_state, switch_state = 0;
 u16* pictures[MAX_PICTURE_COUNT];
 int picture_count = 0;
 int next_picture_write = 0;
+int current_picture = 0;
+int gallery_enabled = 0;
+
+void enable_gallery(XAxiVdma* vdma)
+{
+	// Make sure a picture is saved first!
+	if(picture_count)
+	{
+		gallery_enabled = 1;
+
+		set_start_address(vdma, XAXIVDMA_READ, 0, pictures[current_picture]);
+		while(get_start_address(vdma, XAXIVDMA_READ, 0) != pictures[current_picture])
+		{
+
+		}
+
+		// Update the read park to be on 0.
+		set_park_frame(vdma, 0, XAXIVDMA_READ);
+
+		// Wait for the change to go through.
+		while(get_current_frame_pointer(vdma, XAXIVDMA_READ))
+		{
+
+		}
+
+		xil_printf("Gallery Enabled! Viewing picture %d\n\r", current_picture + 1);
+	}
+	else
+	{
+		xil_printf("Can't enable gallery since no pictures have been taken! Please take a picture and try again!\n\r");
+	}
+
+}
+
+void disable_gallery(XAxiVdma* vdma)
+{
+	// Update the read park to be on 1.
+	set_park_frame(vdma, 1, XAXIVDMA_READ);
+
+	// Wait for the change to go through.
+	while(!get_current_frame_pointer(vdma, XAXIVDMA_READ))
+	{
+
+	}
+
+	gallery_enabled = 0;
+
+	xil_printf("Gallery Disabled!\n\r");
+}
+
+void change_picture(XAxiVdma* vdma, int forward)
+{
+	// Only allow in gallery mode
+	if(gallery_enabled)
+	{
+		if(forward)
+		{
+			if(current_picture == (picture_count - 1))
+			{
+				current_picture = 0;
+			}
+			else
+			{
+				current_picture++;
+			}
+		}
+		else
+		{
+			if(current_picture == 0)
+			{
+				current_picture = (picture_count - 1);
+			}
+			else
+			{
+				current_picture--;
+			}
+		}
+
+		set_start_address(vdma, XAXIVDMA_READ, 0, pictures[current_picture]);
+		while(get_start_address(vdma, XAXIVDMA_READ, 0) != pictures[current_picture])
+		{
+
+		}
+
+		xil_printf("Now viewing picture %d\n\r", current_picture + 1);
+	}
+}
 
 void take_picture(XAxiVdma* vdma)
 {
+	xil_printf("Capturing picture %d\n\r", next_picture_write + 1);
+
 	// Update the start address of frame 0 on the WRITE side.
 	set_start_address(vdma, XAXIVDMA_WRITE, 0, pictures[next_picture_write]);
 
@@ -290,7 +379,38 @@ void take_picture(XAxiVdma* vdma)
 
 	}
 
+	// Update the write park to be on 1.
+	set_park_frame(vdma, 1, XAXIVDMA_WRITE);
 
+	// Wait for the change to go through.
+	while(!get_current_frame_pointer(vdma, XAXIVDMA_WRITE))
+	{
+
+	}
+
+	current_picture = next_picture_write;
+
+	enable_gallery(vdma);
+
+	// Leave for 2 seconds.
+	sleep(2);
+
+	disable_gallery(vdma);
+
+	if(picture_count != MAX_PICTURE_COUNT)
+	{
+		picture_count++;
+	}
+
+	// Wrap around if wrote last picture.
+	if(next_picture_write == (MAX_PICTURE_COUNT - 1))
+	{
+		next_picture_write = 0;
+	}
+	else
+	{
+		next_picture_write++;
+	}
 }
 
 // Main function. Initializes the devices and configures VDMA
@@ -314,13 +434,33 @@ int main()
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);
 	//camera_loop(&camera_config);
+
+	// Park both READ and WRITE channels on frame 1.
+	set_park_frame(&(camera_config.vdma_hdmi), 1, XAXIVDMA_WRITE);
+	set_park_frame(&(camera_config.vdma_hdmi), 1, XAXIVDMA_READ);
+
+	// Enable park.
+#define READ_CR *((volatile u32*)(camera_config.vdma_hdmi.BaseAddr + XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET))
+#define WRITE_CR *((volatile u32*)(camera_config.vdma_hdmi.BaseAddr + XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET))
+
+	READ_CR &= ~0x2;
+	WRITE_CR &= ~0x2;
+
+#undef READ_CR
+#undef WRITE_CR
+
 	while (1)
 	{
 		button_state = get_button_states();
 		switch_state = get_switch_states();
 
-		// SW 0 enables picture settings.
-		if(switch_state & 0x1)
+		// SW 0 enables gallery mode.
+		if((switch_state & 0x1) && !gallery_enabled)
+		{
+			enable_gallery(&(camera_config.vdma_hdmi));
+		}
+		// SW 1 enables picture settings.
+		else if(switch_state & 0x2)
 		{
 			if (button_pressed(RIGHT, button_state))
 			{
@@ -363,6 +503,20 @@ int main()
 				}
 			}
 		}
+		// No modes activated, allow user to take a picture.
+		else
+		{
+			if(button_pressed(CENTER, button_state))
+			{
+				take_picture(&(camera_config.vdma_hdmi));
+			}
+		}
+
+		// Disable gallery when SW0 is low.
+		if(!(switch_state & 0x1) && gallery_enabled)
+		{
+			disable_gallery(&(camera_config.vdma_hdmi));
+		}
 
 		usleep(100000);
 	}
@@ -387,109 +541,3 @@ void camera_config_init(camera_config_t *config)
 	return;
 }
 
-// Main (SW) processing loop. Recommended to have an explicit exit condition
- void camera_loop(camera_config_t *config)
- {
- 	Xuint32 parkptr;
- 	Xuint32 vdma_S2MM_DMACR, vdma_MM2S_DMACR;
- 	int i, j;
-
- 	xil_printf("Entering main SW processing loop\r\n");
-
- 	// Grab the DMA parkptr, and update it to ensure that when parked, the S2MM side is on frame 0, and the MM2S side on frame 1
- 	parkptr = XAxiVdma_ReadReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_PARKPTR_OFFSET // Park Pointer Register
- 	);
- 	parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
- 	parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
- 	parkptr |= 0x3;
- 	XAxiVdma_WriteReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_PARKPTR_OFFSET,
- 		parkptr // Park the S2MM channel on frame 0, and the MM2S channel on frame 1
- 	);
-
- 	// Grab the DMA Control Registers, and clear circular park mode.
- 	vdma_MM2S_DMACR = XAxiVdma_ReadReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET //
- 	);
- 	XAxiVdma_WriteReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET,
- 		vdma_MM2S_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK //
- 	);
- 	vdma_S2MM_DMACR = XAxiVdma_ReadReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET //
- 	);
- 	XAxiVdma_WriteReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET,
- 		vdma_S2MM_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK //
- 	);
-
- 	// Pointers to the S2MM memory frame and M2SS memory frame
- 	volatile Xuint16 *pS2MM_Mem = (Xuint16 *)XAxiVdma_ReadReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_S2MM_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET //
- 	);
- 	volatile Xuint16 *pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET + 4 //
- 	);
-
- 	xil_printf("Start processing 1000 frames!\r\n");
- 	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
- 	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
-
- 	// Run for 1000 frames before going back to HW mode
- 	for (j = 0; j < 1000; j++)
- 	{
- 		for (i = 0; i < 1920 * 1080; i += 2)
- 		{
- 			uint8_t u, v = 0;
- 			uint16_t y = 0;
-
- 			u = (pS2MM_Mem[i] & 0xFF00) >> 8;
- 			v = (pS2MM_Mem[i + 1] & 0xFF00) >> 8;
- 			y = (pS2MM_Mem[i] & 0xFF) | ((pS2MM_Mem[i + 1] & 0xFF) << 8);
-
- 			// Half luminance
- 			y /= 2;
-
- 			// Set from YUV values.
- 			pMM2S_Mem[i] = (u << 8) | (y & 0xFF);
- 			pMM2S_Mem[i + 1] = (v << 8) | ((y & 0xFF00) >> 8);
- 		}
- 	}
-
- 	// Grab the DMA Control Registers, and re-enable circular park mode.
- 	vdma_MM2S_DMACR = XAxiVdma_ReadReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET //
- 	);
- 	XAxiVdma_WriteReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_TX_OFFSET + XAXIVDMA_CR_OFFSET,
- 		vdma_MM2S_DMACR | XAXIVDMA_CR_TAIL_EN_MASK //
- 	);
- 	vdma_S2MM_DMACR = XAxiVdma_ReadReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET //
- 	);
- 	XAxiVdma_WriteReg(
- 		config->vdma_hdmi.BaseAddr,
- 		XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET,
- 		vdma_S2MM_DMACR | XAXIVDMA_CR_TAIL_EN_MASK //
- 	);
-
- 	xil_printf("Main SW processing loop complete!\r\n");
-
- 	sleep(5);
-
- 	sleep(1);
-
- 	return;
- }
