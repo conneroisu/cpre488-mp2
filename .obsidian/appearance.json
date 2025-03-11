@@ -1,3 +1,7 @@
 {
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "CustomStyles",
+    "ImageAlign"
+  ]
 }

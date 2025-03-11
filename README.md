@@ -27,7 +27,7 @@ Tasks:
 - [ ] Bonus Credit: Video Mode
 - [ ] Bonus Credit: Digital Zoom Mode
 
-## detailed system diagram 
+## Detailed System Diagram 
 
 The following diagram illustrates the interconnection between the various modules in the
 system, both at the IP core level (i.e. the components in our VIVADO design) as well as the board
@@ -36,52 +36,19 @@ level (i.e. the various chips that work together to connect the output video to 
 ![assets/diagram.png](assets/image-pipeline-diagram.png)
 
 ## Starter Hardware Operation Intentions
+The overall goal of the starter hardware to to provide an interface to FMC device such that a test image sequence can be displayed over the HDMI port on the FMC device. To accomplish this, a Test Pattern Generator IP is instantiated and configured using the AXI bus to produce a video stream that is provided to the VDMA. The VDMA is configured to store this stream to a memory location and forward the stream to an AXI Stream output IP block, which passes the stream to the AVNET HDMI Output IP block. This gives the test pattern stream a direct path to the FMC module so it can be displayed.
 
-The following is a list of the intended operations of the given start mp-2 design hardware.
+However, we also need to incorporate timing information. Similar to the VGA protocol, HDMI requires timing signals to make sure line draws are all synced up. To do this a Video Timing Controller IP block is used. This IP block is configured off of an AXI bus fed to it and it outputs all the timing signals that the HDMI IP block needs. These timing signals are fed into the AXI Stream to Video Out IP block, which then forwards the timing signals to the AVNET HDMI Output.
 
-## Software Processing
+In addition, there are two I2C IP blocks, the FMC IPMI ID EEPROM I2C block and the FMC IMAGEON I2C block. The purpose of the IMAGEON interface is to provide a way for the ZYNQ processor to control the FMC peripheral. Then, the purpose of the EEPROM I2C interface is to provide the ZYNQ processor a way to configure the on-board EEPROM on the FMC, which stores important information.
 
-The software processing loop implements a simple vertical flip operation by reversing the pixel order from the input frame to the output frame. This demonstrates how software can access and modify frame buffer data before display.
+Finally, there are two clock domains defined for this design, a 100MHz clock and a 148Mhz clock. The 100MHz clock is used for all the AXI bus transactions and is considered the primary clock. Then the 148MHz clock is used for the video clock. Looking at the block diagram, all modules that are fed a video stream use this clock and this clock is passed directly to the AVENT HDMI IP block. So, it is safe to say that the purpose of the 148MHz clock is to clock the video streams.
+
+This design only allows for the display of the test pattern, so we need to add more IP cores later to use the camera.
+
 
 ## What are the changes we made to `camera_app.c`?
 
-The following are the changes made to `camera_app.c` in this project during the creation of the software processing phase.
-
-### Software Processing Version:
-
-#### 1. Header and Library Inclusions
-
-- **Original Pipeline:**  
-  - Includes only `"camera_app.h"` and `"xil_types.h"`.  
-  - The processing logic operates directly on the pixel data without invoking any additional image processing functions.
-
-- **New (Demosaicing) Pipeline:**  
-  - Adds `#include <stdlib.h>` and `#include "include/demosaicing.h"`.  
-  - `demosaicing.h` is a header file that contains the function declarations for the demosaicing algorithm. 
-  - RGB to YCbCr conversion is performed in this definition.
-
-#### 2. MDMA Park Pointer and Memory Pointer Adjustments
-
-- **Original Pipeline:**  
-  - Sets the MDMA park pointer to place the S2MM side on frame 0 and the MM2S side on frame 1 by OR-ing with `0x1`.  
-  - The pointer to the MM2S memory frame is obtained with an offset of `+4`.
-
-- **New (Demosaicing) Pipeline:**  
-  - Configures the park pointer differently: it is set to `0x102`, indicating a different frame mapping (S2MM on frame 1 and MM2S on frame 2).  
-  - Allows for switching the park pointer to remove tearing artifacts in the camera output.
-
-#### 3. Frame Processing and Synchronization
-
-- **Original Pipeline Processing Loop:**  
-  - The loop iterates for 1000 frames.  
-  - It applied a simple transformation (previously either a pixel reversal or brightness adjustment) across the entire frame without additional synchronization steps between frames.
-
-- **New (Demosaicing) Pipeline Processing Loop:**  
-  - The loop also processes 1000 frames but with a different focus:
-    - **Demosaicing Step:** Each frame is processed by calling the function `run_demosaicing`, which converts raw sensor data (Bayer pattern) into a full color image.
-    - **MDMA Park Pointer Synchronization:**  
-      - After processing, the code modifies the park pointer (first setting it to `0x2` and later back to `0x102`) and then uses busy-wait loops to ensure that the hardware has switched frames before proceeding.
-      - These extra steps ensure proper synchronization between the software processing and the MDMA hardware’s frame buffering.
       
 ## In the (`.xdc`) constraints file, what does the `_p` and `_n` pairing of signals signify, and what this configuration is typically used for?
 
