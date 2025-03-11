@@ -509,35 +509,42 @@ int main()
 					settings_state = (settings_state - 1) % 4;
 					print_state(settings_state);
 				}
-				else if (button_pressed(UP, button_state))
-				{
-					// Increase the value of the current setting
-					switch (settings_state)
-					{
-					case CONTRAST:
-						increase_contrast(&camera_config);
-					case BRIGHTNESS:
-						increase_brightness(&camera_config);
-					case SATURATION:
-						increase_saturation(&camera_config);
-					default:
-						break;
-					}
-				}
+
 			}
 
-			// Allow continuous set for the picture settings.
-			if (button_pressed(DOWN, button_state))
+			// Allow continous set for picture settings.
+			if (button_pressed(UP, button_state))
+			{
+				// Increase the value of the current setting
+				switch (settings_state)
+				{
+				case CONTRAST:
+					increase_contrast(&camera_config);
+					break;
+				case BRIGHTNESS:
+					increase_brightness(&camera_config);
+					break;
+				case SATURATION:
+					increase_saturation(&camera_config);
+					break;
+				default:
+					break;
+				}
+			}
+			else if (button_pressed(DOWN, button_state))
 			{
 				// Decrease the value of the current setting
 				switch (settings_state)
 				{
 				case CONTRAST:
 					decrease_contrast(&camera_config);
+					break;
 				case BRIGHTNESS:
 					decrease_brightness(&camera_config);
+					break;
 				case SATURATION:
 					decrease_saturation(&camera_config);
+					break;
 				default:
 					break;
 				}
