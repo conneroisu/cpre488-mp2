@@ -107,26 +107,33 @@ float fps_calculate(fps_t* f)
 }
 
 // Swaps the memory addresses associated with the frame pointers
-void swap_frame_pointers(XAxiVdma* vdma, u16 dir, u8 a, u8 b)
+void set_start_address(XAxiVdma* vdma, u16 dir, u8 frame, u32 addr)
 {
 	u32 offset = XAXIVDMA_TX_OFFSET ? dir == XAXIVDMA_WRITE : XAXIVDMA_RX_OFFSET;
+	frame &= 0x1F;
 
-#define START_ADDR(index) *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_START_ADDR_OFFSET + (index * 0x4)))
+#define START_ADDR *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_START_ADDR_OFFSET + (frame * 0x4)))
 #define VSIZE *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_VSIZE_OFFSET))
 
-	a &= 0x1F;
-	b &= 0x1F;
+	START_ADDR = addr;
 
-	u32 start_a = START_ADDR(a);
-	u32 start_b = START_ADDR(b);
-
-	START_ADDR(a) = start_b;
-	START_ADDR(b) = start_a;
-
+	// Apply the change
 	VSIZE = VSIZE;
 
 #undef START_ADDR
 #undef VSIZE
+}
+
+u32 get_start_address(XAxiVdma* vdma, u16 dir, u8 frame)
+{
+	u32 offset = XAXIVDMA_TX_OFFSET ? dir == XAXIVDMA_WRITE : XAXIVDMA_RX_OFFSET;
+	frame &= 0x1F;
+
+#define START_ADDR *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_START_ADDR_OFFSET + (frame * 0x4)))
+
+	return START_ADDR;
+
+#undef START_ADDR
 }
 
 u8 get_current_frame_pointer(XAxiVdma* vdma, u16 dir)
@@ -256,6 +263,35 @@ void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
 
 u32 button_state, switch_state = 0;
 
+// Picture data
+#define MAX_PICTURE_COUNT 32
+#define PIXELS 2073600
+u16* pictures[MAX_PICTURE_COUNT];
+int picture_count = 0;
+int next_picture_write = 0;
+
+void take_picture(XAxiVdma* vdma)
+{
+	// Update the start address of frame 0 on the WRITE side.
+	set_start_address(vdma, XAXIVDMA_WRITE, 0, pictures[next_picture_write]);
+
+	// Wait until the start address has updated.
+	while(get_start_address(vdma, XAXIVDMA_WRITE, 0) != pictures[next_picture_write])
+	{
+
+	}
+
+	// Update the write park to be on 0.
+	set_park_frame(vdma, 0, XAXIVDMA_WRITE);
+
+	// Wait for the change to go through.
+	while(get_current_frame_pointer(vdma, XAXIVDMA_WRITE))
+	{
+
+	}
+
+
+}
 
 // Main function. Initializes the devices and configures VDMA
 int main()
@@ -267,6 +303,12 @@ int main()
 	fps_init(&fps);
 
 	fps_msg = (char*) calloc(64, sizeof(char*));
+
+	// Allocate space for the pictures.
+	for(int i = 0; i < MAX_PICTURE_COUNT; ++i)
+	{
+		pictures[i] = (u16*) calloc(PIXELS, sizeof(u16));
+	}
 
 	// Camera Init
 	camera_config_init(&camera_config);
