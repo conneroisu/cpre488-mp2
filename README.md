@@ -670,7 +670,5 @@ The resulting effects can be seen below:
 
 ![assets/Sobel_ex.png](assets/Sobel_ex.png)
 
-It should be noted that a better result could have been achieved should only luminance value be used, but I ran out of time before I could implement it. 
-
-### 
+It should be noted that a better result could have been achieved should only luminance value be used, but I ran out of time before I could implement it.  
 

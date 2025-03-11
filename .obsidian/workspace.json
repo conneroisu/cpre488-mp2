@@ -11,10 +11,14 @@
             "id": "cc9770da9c675f65",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "README"
             }
           }
         ]
@@ -170,6 +174,11 @@
   },
   "active": "cc9770da9c675f65",
   "lastOpenFiles": [
+    "CPRE488_MP2_SB3_Report_Submission.pdf",
+    "assets/zoom_issue.png",
+    "assets/pip_fun.png",
+    "assets/embaressing.png",
+    "assets/Sobel_ex.png",
     "Vivado/TPG/TPG_archive.xpr.zip",
     "Vivado/TPG/TPG/TPG.cache/compile_simlib/vcs",
     "Vivado/TPG/TPG/TPG.cache/compile_simlib/riviera",
@@ -180,7 +189,6 @@
     "Vivado/TPG/TPG/TPG.cache/compile_simlib",
     "Vivado/digital_camera/digital_camera/digital_camera.cache/wt/webtalk_pa.xml",
     "Vivado/digital_camera/digital_camera/digital_camera.cache/wt/gui_handlers.wdf",
-    "Vivado/digital_camera/digital_camera/digital_camera.cache/wt/java_command_handlers.wdf",
     "assets/IRQ_ILA_VDMA_Read.png",
     "README.md",
     "assets.md",
@@ -189,10 +197,6 @@
     "assets/sw_demo.png",
     "assets/tpg_change_sw.png",
     "assets/tpg_change.png",
-    "write_project_to_tcl_dialog.png",
-    "assets/generate_project_tcl_menu_item.png",
-    "assets/diagram.png",
-    "assets/bd-digram-mask.png",
     "Vitis/eclipse_workspace/Digital_Camera_Pipeline/src/include/menu/README.md",
     "Vitis/eclipse_workspace/DigitalCamera/src/include/menu/README.md"
   ]
