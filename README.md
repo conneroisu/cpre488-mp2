@@ -42,6 +42,8 @@ However, we also need to incorporate timing information. Similar to the VGA prot
 
 In addition, there are two I2C IP blocks, the FMC IPMI ID EEPROM I2C block and the FMC IMAGEON I2C block. The purpose of the IMAGEON interface is to provide a way for the ZYNQ processor to control the FMC peripheral. Then, the purpose of the EEPROM I2C interface is to provide the ZYNQ processor a way to configure the on-board EEPROM on the FMC, which stores important information.
 
+For the VDMA, the primary difference between this setup and the setup from MP-0 is that the VDMA is configured for both reads and writes. There is a stream incoming from the TPG that is written to memory, and then that memory is read out to the HDMI. This requires GenLock synchronization between the reads and writes, which was not needed in MP-0.
+
 Finally, there are two clock domains defined for this design, a 100MHz clock and a 148Mhz clock. The 100MHz clock is used for all the AXI bus transactions and is considered the primary clock. Then the 148MHz clock is used for the video clock. Looking at the block diagram, all modules that are fed a video stream use this clock and this clock is passed directly to the AVENT HDMI IP block. So, it is safe to say that the purpose of the 148MHz clock is to clock the video streams.
 
 This design only allows for the display of the test pattern, so we need to add more IP cores later to use the camera.
@@ -49,7 +51,64 @@ This design only allows for the display of the test pattern, so we need to add m
 
 ## What are the changes we made to `camera_app.c`?
 
-      
+### TPG Change
+For the TPG change, we referenced the provided datasheet to see what we configure via memory mapped registers. We saw that we had the ability to set a foreground and background to be a variety of preset patters. So, we set the background to a colored bars pattern (register value `0x9`) and the foreground to be a colored box that bounces around (register value `0x1`). Since we were enabling a box, we had to specify its dimensions and colors, which was simple to due since there were registers for each. The relevant code for this update is shown below:
+
+```c
+   // Define convenient volatile pointers for accessing TPG registers
+   volatile uint32_t *TPG_CR       = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0);    // TPG Control
+   volatile uint32_t *TPG_Act_H    = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x10); // Active Height
+   volatile uint32_t *TPG_Act_W    = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x18); // Active Width
+   volatile uint32_t *TPG_BGP      = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x20); // Background Pattern
+   volatile uint32_t *TPG_FGP      = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x28); // Foreground Pattern
+   volatile uint32_t *TPG_MS       = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x38); // Motion Speed
+   volatile uint32_t *TPG_CF       = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x40); // TPG Color Format
+   volatile uint32_t *TPG_BOX_SIZE = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x78);
+   volatile uint32_t *TPG_BOX_COLOR_Y = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x80);
+   volatile uint32_t *TPG_BOX_COLOR_U = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x88);
+   volatile uint32_t *TPG_BOX_COLOR_V = (volatile uint32_t*) (config->uBaseAddr_TPG_PatternGenerator + 0x90);
+
+   xil_printf("Test Pattern Generator Initialization ...\n\r");
+
+   // Direct Memory Mapped access of TPG configuration registers
+   // See TPG data sheet for configuring the TPG for other features
+   TPG_Act_H[0]  = 0x438; // Active Height
+   TPG_Act_W[0]  = 0x780; // Active Width
+   TPG_BGP[0]    = 0x09;  // Background Pattern
+   TPG_FGP[0]    = 0x01;  // Foreground Pattern
+   TPG_MS[0]     = 0x04;  // Motion Speed
+   TPG_BOX_SIZE[0] = 100;
+   TPG_BOX_COLOR_Y[0] = 167;
+   TPG_BOX_COLOR_U[0] = 120;
+   TPG_BOX_COLOR_V[0] = 8;
+   TPG_CF[0]     = 0x02;  // TPG Color Format
+   TPG_CR[0]     = 0x81;  // TPG Control
+```
+
+### Software Only Change (TPG Registers not Modified)
+For the software only change, we decided to read out the pixel colors in the YUV format and halve the luminance.  We believed that knowing the YUV format early on in the lab would be beneficial later when we have to implement SW demosaicing. The code that reads the YUV data, halves the luminance, and then writes it back is shown below:
+
+```c
+for (i = 0; i < 1920*1080; i += 2)
+		{
+		   uint8_t u, v = 0;
+		   uint16_t y = 0;
+
+		   u = (pS2MM_Mem[i] & 0xFF00) >> 8;
+		   v = (pS2MM_Mem[i + 1] & 0xFF00) >> 8;
+		   y = (pS2MM_Mem[i] & 0xFF) | ((pS2MM_Mem[i + 1] & 0xFF) << 8);
+
+		   // Half luminance
+		   y /= 2;
+
+		   // Set from YUV values.
+	       pMM2S_Mem[i] = (u << 8) | (y & 0xFF);
+	       pMM2S_Mem[i + 1] = (v << 8) | ((y & 0xFF00) >> 8);
+		}
+```
+
+The YUV 422 format is described later in this report.
+
 ## In the (`.xdc`) constraints file, what does the `_p` and `_n` pairing of signals signify, and what this configuration is typically used for?
 
 In the constraints file, the `_p` and `_n` suffix pairs indicate differential signaling, specifically LVDS (Low-Voltage Differential Signaling). This is confirmed by the IOSTANDARD setting for these signals:
