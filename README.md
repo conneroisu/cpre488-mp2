@@ -2,31 +2,6 @@
 
 # Report 
 
-Completed tasks:
-- [x] [detailed system diagram](#detailed-system-diagram)
-- [x] [changes mande to camera_app.c](#changes-mande-to-camera_app.c)
-- [x] [why at this point, camera had no color](#why-at-this-point-camera-has-no-color)
-- [x]  We convert the 8-bit output of the “Video In to AXI4-Stream” IP core to 16-bits to be given to the VDMA by appending the 8-bit value “10000000” (see step 3.vii),. Explain why this is an appropriate value to append, and why appending “00000000” would not make sense.
-- [x]  Note that several of these ports in the XDC file are paired together, with one port ending in _p and the other ending in _n. In your writeup, briefly describe what this pairing of signals signifies, and what this configuration is typically used for.
-- [x] [starter hardware operation intentions](#starter-hardware-operation-intentions)
-- [x] Bonus Credit: Various Analog and Digital Adjustments
-
-Completed But need checks:
-- [x] The YCbCr 4:2:2 pattern is an example of an encoding scheme referred to as chroma subsampling: http://en.wikipedia.org/wiki/Chroma_subsampling#4:2:2. Because the human visual system is less sensitive to the position and motion of color than it is to luminance, bandwidth can be optimized by storing more luminance detail than color detail. Look at the VDMA initialization code in function fmc_imageon_enable(), and infer from the Red, Green, and Blue examples how the 16-bit 4:2:2 YCbCr format is encoded. Briefly describe this in your writeup, and use this format as the output of your camera_loop() conversion pass.
-
-Tasks:
-
-- [ ] The image pipeline should proceed from vita -> vid_in -> v_demosaic_0 -> v_proc_ss0 (Color Conversion Only) -> v_proc_ss1 (422-444 Chroma Resampling Only) -> axis_subset_converter -> vdma_S2MM -> vdma_MM2S -> vid_out -> hdmi_out. Provide a diagram for this awesome pipeline in your writeup, making sure to label the bit width of the relevant signals.
-- [ ] Describe performance 
-  - [ ] Software Pipeline
-    - [ ] Performance
-    - [ ] Testing Methodology
-  - [ ] Hardware Pipeline
-    - [ ] Performance
-    - [ ] Testing Methodology
-- [ ] Bonus Credit: Video Mode
-- [ ] Bonus Credit: Digital Zoom Mode
-
 ## Detailed System Diagram 
 
 The following diagram illustrates the interconnection between the various modules in the
@@ -425,7 +400,6 @@ Using the buttons on the board (code resused from mp-1), the user can adjust the
 
 ### A video mode, which records and can replay up to 5 seconds of 1080p video. 
 
-<!-- TODO: Add description of video mode and implementation -->
 Video mode was about decreasing the delay from image to image in the play mode and increasing the number of images that can be stored in the software. This was done by removing the 2-second delay in image capture and increasing the heap size to correspond with the increased number of stored images.
 
 
