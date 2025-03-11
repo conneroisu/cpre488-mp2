@@ -433,20 +433,100 @@ Park Pointer Register Modifications
 ### Hardware Pipeline 
 
 #### Performance
+For subgroup B, we determined that the average frame rate is `59.794 FPS`
 
-<!-- TODO: Add performance measurements for hardware pipeline -->
+This is what we expect since the timing was setup for 60Hz writes, which is 60 times a second.
 
 #### Testing Methodology
+The testing methodology used for the hardware pipeline is quite similar to what we used for the software pipeline. We made use of VDMA read and write interrupts and the processing system timers to record the time passed between frame writes. However, since we don't have to wait on C code to run, we did not need to single out a frame and keep track of it. We could simply let the VDMA run with a few conditions to make sure we are recording the times fine:
 
-<!-- TODO: Add testing methodology for hardware pipeline -->
+- A VDMA write must happen before a VDMA read can occur. We need to take into consideration the VDMA write time.
+- Only record times between VDMA reads to two different frame buffers. If multiple reads are done on the same frame buffer, we know that the write channel is lagging behind, so we should wait until the frame buffer counter increments.
+
+The interrupt service routines that implement this are shown below:
+
+```c
+void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes)
+{
+	switch(InterruptTypes)
+	{
+		case XAXIVDMA_IXR_FRMCNT_MASK:
+		{
+			u8 current_frame = get_current_frame_pointer((XAxiVdma*) CallBackRef, XAXIVDMA_READ);
+
+			// Make sure we received something before recording that we wrote it.
+			if(rec_flag && (current_frame != prev_frame))
+			{
+				// If first frame, start only
+				if(!tStart)
+				{
+					XTime_GetTime(&tStart);
+				}
+				else
+				{
+					XTime_GetTime(&tEnd);
+
+					fps_reading = (tEnd - tStart) / (float)COUNTS_PER_SECOND;
+
+					fps_time_store(&fps, fps_reading);
+
+#if OUTPUT_FPS
+					sprintf(fps_msg, "Average FPS: %.5f", fps_calculate(&fps));
+
+					xil_printf("%s\n\r", fps_msg);
+#endif
+
+					// Start the timer back up!
+					XTime_GetTime(&tStart);
+				}
+
+				rec_flag = 0;
+			}
+
+			prev_frame = current_frame;
+		}
+
+		default:
+		{
+			break;
+		}
+	}
+
+}
+
+// Does nothing as of now. All timer operations are done when a frame is drawn to the screen.
+void camera_input_isr(void* CallBackRef, u32 InterruptTypes)
+{
+	switch(InterruptTypes)
+	{
+		case XAXIVDMA_IXR_FRMCNT_MASK:
+		{
+			if(!rec_flag)
+			{
+				rec_flag = 1;
+			}
+			break;
+		}
+
+
+		default:
+		{
+			break;
+		}
+	}
+
+}
+```
+
+Overall, it was quite tedious to get interrupts working, but it definitely paid off!
 
 ## Bonus Credit
 
-The following sections describe the bonus credit tasks that were completed for this project and how they were implemented/acomplished.
+The following sections describe the bonus credit tasks that were completed for this project and how they were implemented/accomplished.
 
 ### Various analog and digital adjustments for the gain, exposure, and other common user-configurable digital camera settings. 
 
-We impelmented the following adjustments:
+We implemented the following adjustments:
 - Contrast
 - Brightness
 - Saturation
