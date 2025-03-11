@@ -85,6 +85,10 @@ For the TPG change, we referenced the provided datasheet to see what we configur
    TPG_CR[0]     = 0x81;  // TPG Control
 ```
 
+
+A picture of the output of this change is shown below:
+
+![TPG Change](assets/tpg_change.png)
 ### Software Only Change (TPG Registers not Modified)
 For the software only change, we decided to read out the pixel colors in the YUV format and halve the luminance.  We believed that knowing the YUV format early on in the lab would be beneficial later when we have to implement SW demosaicing. The code that reads the YUV data, halves the luminance, and then writes it back is shown below:
 
@@ -109,6 +113,11 @@ for (i = 0; i < 1920*1080; i += 2)
 
 The YUV 422 format is described later in this report.
 
+A picture of the output from this change is shown below:
+
+![TPG Change SW](assets/tpg_change_sw.png)
+
+Though it is quite hard to see in this image, the luminance has be halved. My phone camera dod not pick this up well.
 ## In the (`.xdc`) constraints file, what does the `_p` and `_n` pairing of signals signify, and what this configuration is typically used for?
 
 In the constraints file, the `_p` and `_n` suffix pairs indicate differential signaling, specifically LVDS (Low-Voltage Differential Signaling). This is confirmed by the IOSTANDARD setting for these signals:
@@ -168,11 +177,72 @@ The VITA-2000 camera sensor uses a Bayer filter pattern. This means each pixel c
     
 **Direct Raw Data Display**: Without the demosaic and color processing enabled, the system is directly displaying the raw Bayer pattern data, which appears as a grayscale or monochrome image. Each pixel only contains intensity information for a single color, but the display treats it as luminance-only data.
 
-## Hardware changes
+
+## Software Demosaicing Implementation
+
+To implement our software demosaicing C code, we simply ran it in the main `camera_loop` function, making sure to provide pointers to the data coming in and where the demosaiced data should go to. Subgroup B's code for this is shown below:
+
+```c
+		set_park_frame(&(config->vdma_hdmi), 0, XAXIVDMA_WRITE);
+
+		// Wait until frame zero is being written to.
+		while(get_current_frame_pointer(&(config->vdma_hdmi), XAXIVDMA_WRITE))
+		{
+
+		}
+
+		set_park_frame(&(config->vdma_hdmi), 1, XAXIVDMA_WRITE);
+
+		// Wait until frame one is being written to.
+		while(!get_current_frame_pointer(&(config->vdma_hdmi), XAXIVDMA_WRITE))
+		{
+
+		}
+
+		// Apply CFA
+		run_demosaicing((uint16_t*)pS2MM_Mem, (uint16_t*)pMM2S_Mem);
+
+		// Swap back and front buffers
+		u8 temp = back_buffer_frame;
+
+		back_buffer_frame = front_buffer_frame;
+		front_buffer_frame = temp;
+
+		// Have the read side park on the new front buffer
+		set_park_frame(&(config->vdma_hdmi), front_buffer_frame, XAXIVDMA_READ);
+
+		// Wait for park frame to update.
+		while(get_current_frame_pointer(&(config->vdma_hdmi), XAXIVDMA_READ) != front_buffer_frame)
+		{
+
+		}
+
+		// Update pMM2S_Mem to point to back buffer.
+		pMM2S_Mem = (Xuint16 *)XAxiVdma_ReadReg(config->vdma_hdmi.BaseAddr, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET + (back_buffer_frame * 0x4));
+```
+
+The function `run_demosaicing` applies the demosaic operation to the incoming data and the rest of the code shown here is to manage the frame buffers. To allow for an easier time measuring the performance metrics and to remove tearing, we used the frame buffers smartly.
+
+Since the demosaicing software takes a while to run, we take a single snapshot image, store it in frame buffer 0, and then let the VDMA write the incoming stream to frame buffer 1. Then, the deomosaicing software can run on frame buffer 0.
+
+For displaying the image, we decided to treat two different read frame buffers as front and back buffers. The demosaicing code updates the back buffer while the read channel of the VDMA streams the front buffer contents to the HDMI interface. Then once the demosaicing software has ran, the buffers are swapped, which displays the latest processed frame. This worked quite well and removed many artifacts in our images. An example of an image that resulted from the software demosaicing is shown below (image quality is a bit poor due to my phone):
+
+![SW Demo](assets/sw_demo.png)
+## Pipeline Hardware changes
+
+Below is the resulting block diagram after adding the pipeline (we did not have enough time to update our original diagram, we have provided a description of the changes below):
 
 ![](HW-BD.png)
 
+The pipeline consists of an IP block that does demosaicing to the incoming video stream and two video processing modules. One of the video processing modules converts the RGB output from the demosaicing module to YUV 444 then the other video processing module converts the YUV 444 data to YUV 422, which is what the FMC IMAGEON module expects. The output from the YUV 444 to YUV 422 is then passed through an AXI Stream Converter and is then passed to the VDMA like before. So in summary, three pipeline stages were added:
 
+1. Demosaicing
+2. RGB to YUV 444 Conversion
+3. YUV 444 to YUV 422 Conversion 
+   
+## YCbCr 4:2:2 Format Analysis
+
+### Note from the Documentation
 4:4:4 to 4:2:2 Conversion Eq from Subsystem Documentation (PG231):
 
 $$
@@ -184,9 +254,7 @@ Equation 3-11
 
 This conversion is a horizontal 2:1 decimation operation, implemented using a low-pass FIR filter to suppress chroma aliasing. In order to evaluate output pixel $o_x$,$o_y$, the FIR filter in the core convolves COEFk_HPHASE0, where k is the coefficient index, $i_x$,$i_y$ are pixels from the input image, and $[ ]^M_m$ represents rounding with clipping at M, and clamping at m. DW is the Data Width or number of bits per video component. Ntaps is the number of filter taps. The predefined filter coefficients are `[0.25 0.5 0.25]`. 
 
-
-## YCbCr 4:2:2 Format Analysis
-
+### Primary Analysis
 In the YCbCr 4:2:2 format, each 32-bit word (0xF0525A52, 0x36912291, 0x6E29F029) contains data for two adjacent pixels. Breaking down these values:
 
 ```c
