@@ -109,11 +109,12 @@ float fps_calculate(fps_t* f)
 // Swaps the memory addresses associated with the frame pointers
 void set_start_address(XAxiVdma* vdma, u16 dir, u8 frame, u16* addr)
 {
-	u32 offset = XAXIVDMA_TX_OFFSET ? dir == XAXIVDMA_WRITE : XAXIVDMA_RX_OFFSET;
+	u32 start_addr_offset = dir == XAXIVDMA_WRITE ? 0xAC : 0x5C;
+	u32 vsize_offset = dir == XAXIVDMA_WRITE ? 0xA0 : 0x50;
 	frame &= 0x1F;
 
-#define START_ADDR *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_START_ADDR_OFFSET + (frame * 0x4)))
-#define VSIZE *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_VSIZE_OFFSET))
+#define START_ADDR *((volatile u32*) (vdma->BaseAddr + start_addr_offset + (frame * 0x4)))
+#define VSIZE *((volatile u32*) (vdma->BaseAddr + vsize_offset))
 
 	START_ADDR = (u32)addr;
 
@@ -126,10 +127,10 @@ void set_start_address(XAxiVdma* vdma, u16 dir, u8 frame, u16* addr)
 
 u16* get_start_address(XAxiVdma* vdma, u16 dir, u8 frame)
 {
-	u32 offset = XAXIVDMA_TX_OFFSET ? dir == XAXIVDMA_WRITE : XAXIVDMA_RX_OFFSET;
+	u32 start_addr_offset = dir == XAXIVDMA_WRITE ? 0xAC : 0x5C;
 	frame &= 0x1F;
 
-#define START_ADDR *((volatile u32*) (vdma->BaseAddr + offset + XAXIVDMA_START_ADDR_OFFSET + (frame * 0x4)))
+#define START_ADDR *((volatile u32*) (vdma->BaseAddr + start_addr_offset + (frame * 0x4)))
 
 	return (u16*)START_ADDR;
 
@@ -359,6 +360,11 @@ void change_picture(XAxiVdma* vdma, int forward)
 
 void take_picture(XAxiVdma* vdma)
 {
+	if(picture_count != MAX_PICTURE_COUNT)
+	{
+		picture_count++;
+	}
+
 	xil_printf("Capturing picture %d\n\r", next_picture_write + 1);
 
 	// Update the start address of frame 0 on the WRITE side.
@@ -397,11 +403,6 @@ void take_picture(XAxiVdma* vdma)
 
 	disable_gallery(vdma);
 
-	if(picture_count != MAX_PICTURE_COUNT)
-	{
-		picture_count++;
-	}
-
 	// Wrap around if wrote last picture.
 	if(next_picture_write == (MAX_PICTURE_COUNT - 1))
 	{
@@ -416,6 +417,9 @@ void take_picture(XAxiVdma* vdma)
 // Main function. Initializes the devices and configures VDMA
 int main()
 {
+	int left_right_pressed = 0;
+	int left_right_released = 0;
+
     init_platform();
 	init_interface();
 
@@ -454,40 +458,76 @@ int main()
 		button_state = get_button_states();
 		switch_state = get_switch_states();
 
-		// SW 0 enables gallery mode.
-		if((switch_state & 0x1) && !gallery_enabled)
+		// Determine if LEFT or RIGHT is pressed
+		left_right_pressed = button_pressed(LEFT, button_state) || button_pressed(RIGHT, button_state);
+
+		// See if right and left have been released after a press.
+		if(!left_right_pressed)
 		{
-			enable_gallery(&(camera_config.vdma_hdmi));
+			left_right_released = 1;
+		}
+
+		// SW 0 enables gallery mode.
+		if(switch_state & 0x1)
+		{
+			if(!gallery_enabled)
+			{
+				enable_gallery(&(camera_config.vdma_hdmi));
+			}
+
+			if(left_right_pressed && left_right_released)
+			{
+				left_right_released = 0;
+
+				// Previous image
+				if(button_pressed(LEFT, button_state))
+				{
+					change_picture(&(camera_config.vdma_hdmi), 0);
+				}
+				// Next image
+				else if(button_pressed(RIGHT, button_state))
+				{
+					change_picture(&(camera_config.vdma_hdmi), 1);
+				}
+			}
+
 		}
 		// SW 1 enables picture settings.
 		else if(switch_state & 0x2)
 		{
-			if (button_pressed(RIGHT, button_state))
+			// Only adjust when button has been released and then pressed.
+			if(left_right_pressed && left_right_released)
 			{
-				settings_state = (settings_state + 1) % 4;
-				print_state(settings_state);
-			}
-			else if (button_pressed(LEFT, button_state))
-			{
-				settings_state = (settings_state - 1) % 4;
-				print_state(settings_state);
-			}
-			else if (button_pressed(UP, button_state))
-			{
-				// Increase the value of the current setting
-				switch (settings_state)
+				left_right_released = 0;
+				if (button_pressed(RIGHT, button_state))
 				{
-				case CONTRAST:
-					increase_contrast(&camera_config);
-				case BRIGHTNESS:
-					increase_brightness(&camera_config);
-				case SATURATION:
-					increase_saturation(&camera_config);
-				default:
-					break;
+					settings_state = (settings_state + 1) % 4;
+					print_state(settings_state);
+				}
+				else if (button_pressed(LEFT, button_state))
+				{
+					settings_state = (settings_state - 1) % 4;
+					print_state(settings_state);
+				}
+				else if (button_pressed(UP, button_state))
+				{
+					// Increase the value of the current setting
+					switch (settings_state)
+					{
+					case CONTRAST:
+						increase_contrast(&camera_config);
+					case BRIGHTNESS:
+						increase_brightness(&camera_config);
+					case SATURATION:
+						increase_saturation(&camera_config);
+					default:
+						break;
+					}
 				}
 			}
-			else if (button_pressed(DOWN, button_state))
+
+			// Allow continuous set for the picture settings.
+			if (button_pressed(DOWN, button_state))
 			{
 				// Decrease the value of the current setting
 				switch (settings_state)
@@ -518,6 +558,7 @@ int main()
 			disable_gallery(&(camera_config.vdma_hdmi));
 		}
 
+		// Set input polling rate
 		usleep(100000);
 	}
 
