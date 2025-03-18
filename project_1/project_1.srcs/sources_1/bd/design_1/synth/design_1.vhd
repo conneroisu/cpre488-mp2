@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Mon Mar 10 17:56:22 2025
---Host        : CO2041-14 running 64-bit major release  (build 9200)
+--Date        : Mon Mar 17 17:54:47 2025
+--Host        : CO2041-07 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
 --Purpose     : IP block netlist
@@ -4685,18 +4685,18 @@ architecture STRUCTURE of design_1 is
     interrupt : out STD_LOGIC;
     s_axis_video_TVALID : in STD_LOGIC;
     s_axis_video_TREADY : out STD_LOGIC;
-    s_axis_video_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    s_axis_video_TKEEP : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axis_video_TSTRB : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axis_video_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    s_axis_video_TKEEP : in STD_LOGIC_VECTOR ( 0 to 0 );
+    s_axis_video_TSTRB : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_video_TUSER : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_video_TLAST : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_video_TID : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_video_TDEST : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_video_TVALID : out STD_LOGIC;
     m_axis_video_TREADY : in STD_LOGIC;
-    m_axis_video_TDATA : out STD_LOGIC_VECTOR ( 47 downto 0 );
-    m_axis_video_TKEEP : out STD_LOGIC_VECTOR ( 5 downto 0 );
-    m_axis_video_TSTRB : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    m_axis_video_TDATA : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    m_axis_video_TKEEP : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    m_axis_video_TSTRB : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axis_video_TUSER : out STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_video_TLAST : out STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_video_TID : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -4776,23 +4776,23 @@ architecture STRUCTURE of design_1 is
     s_axi_ctrl_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_ctrl_rvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_ctrl_rready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axis_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    s_axis_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
     s_axis_tdest : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_tid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axis_tkeep : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    s_axis_tkeep : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axis_tlast : in STD_LOGIC;
     s_axis_tready : out STD_LOGIC;
-    s_axis_tstrb : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    s_axis_tstrb : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axis_tuser : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_tvalid : in STD_LOGIC;
     m_axis_tvalid : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
-    m_axis_tdata : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    m_axis_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 );
     m_axis_tdest : out STD_LOGIC_VECTOR ( 3 downto 0 );
     m_axis_tid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    m_axis_tkeep : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    m_axis_tkeep : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axis_tlast : out STD_LOGIC;
-    m_axis_tstrb : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    m_axis_tstrb : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axis_tuser : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component design_1_v_proc_ss_0_3;
@@ -4800,13 +4800,13 @@ architecture STRUCTURE of design_1 is
   port (
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
-    s_axis_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    s_axis_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
     s_axis_tdest : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_tid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axis_tkeep : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    s_axis_tkeep : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axis_tlast : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_tready : out STD_LOGIC;
-    s_axis_tstrb : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    s_axis_tstrb : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axis_tuser : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_tvalid : in STD_LOGIC;
     s_axi_ctrl_araddr : in STD_LOGIC_VECTOR ( 10 downto 0 );
@@ -4826,13 +4826,13 @@ architecture STRUCTURE of design_1 is
     s_axi_ctrl_wready : out STD_LOGIC;
     s_axi_ctrl_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_axi_ctrl_wvalid : in STD_LOGIC;
-    m_axis_tdata : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    m_axis_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 );
     m_axis_tdest : out STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    m_axis_tkeep : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    m_axis_tkeep : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axis_tlast : out STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tready : in STD_LOGIC;
-    m_axis_tstrb : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    m_axis_tstrb : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axis_tuser : out STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tvalid : out STD_LOGIC
   );
@@ -4862,23 +4862,23 @@ architecture STRUCTURE of design_1 is
     s_axi_ctrl_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_ctrl_rvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_ctrl_rready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axis_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    s_axis_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
     s_axis_tdest : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_tid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axis_tkeep : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    s_axis_tkeep : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axis_tlast : in STD_LOGIC;
     s_axis_tready : out STD_LOGIC;
-    s_axis_tstrb : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    s_axis_tstrb : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axis_tuser : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axis_tvalid : in STD_LOGIC;
     m_axis_tvalid : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
-    m_axis_tdata : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    m_axis_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 );
     m_axis_tdest : out STD_LOGIC_VECTOR ( 3 downto 0 );
     m_axis_tid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    m_axis_tkeep : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    m_axis_tkeep : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axis_tlast : out STD_LOGIC;
-    m_axis_tstrb : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    m_axis_tstrb : out STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axis_tuser : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component design_1_v_proc_ss_2_1;
@@ -5283,40 +5283,40 @@ architecture STRUCTURE of design_1 is
   signal v_axi4s_vid_out_0_vid_io_out_DATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal v_axi4s_vid_out_0_vid_io_out_HBLANK : STD_LOGIC;
   signal v_axi4s_vid_out_0_vid_io_out_VBLANK : STD_LOGIC;
-  signal v_demosaic_0_m_axis_video_TDATA : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal v_demosaic_0_m_axis_video_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal v_demosaic_0_m_axis_video_TDEST : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_demosaic_0_m_axis_video_TID : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal v_demosaic_0_m_axis_video_TKEEP : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal v_demosaic_0_m_axis_video_TKEEP : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal v_demosaic_0_m_axis_video_TLAST : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_demosaic_0_m_axis_video_TREADY : STD_LOGIC;
-  signal v_demosaic_0_m_axis_video_TSTRB : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal v_demosaic_0_m_axis_video_TSTRB : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal v_demosaic_0_m_axis_video_TUSER : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_demosaic_0_m_axis_video_TVALID : STD_LOGIC;
-  signal v_proc_ss_0_m_axis_TDATA : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal v_proc_ss_0_m_axis_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal v_proc_ss_0_m_axis_TDEST : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal v_proc_ss_0_m_axis_TID : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal v_proc_ss_0_m_axis_TKEEP : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal v_proc_ss_0_m_axis_TKEEP : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal v_proc_ss_0_m_axis_TLAST : STD_LOGIC;
   signal v_proc_ss_0_m_axis_TREADY : STD_LOGIC;
-  signal v_proc_ss_0_m_axis_TSTRB : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal v_proc_ss_0_m_axis_TSTRB : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal v_proc_ss_0_m_axis_TUSER : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_proc_ss_0_m_axis_TVALID : STD_LOGIC;
-  signal v_proc_ss_1_m_axis_TDATA : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal v_proc_ss_1_m_axis_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal v_proc_ss_1_m_axis_TDEST : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_proc_ss_1_m_axis_TID : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal v_proc_ss_1_m_axis_TKEEP : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal v_proc_ss_1_m_axis_TKEEP : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal v_proc_ss_1_m_axis_TLAST : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_proc_ss_1_m_axis_TREADY : STD_LOGIC;
-  signal v_proc_ss_1_m_axis_TSTRB : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal v_proc_ss_1_m_axis_TSTRB : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal v_proc_ss_1_m_axis_TUSER : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_proc_ss_1_m_axis_TVALID : STD_LOGIC;
-  signal v_proc_ss_2_m_axis_TDATA : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal v_proc_ss_2_m_axis_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal v_proc_ss_2_m_axis_TDEST : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal v_proc_ss_2_m_axis_TID : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal v_proc_ss_2_m_axis_TKEEP : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal v_proc_ss_2_m_axis_TKEEP : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal v_proc_ss_2_m_axis_TLAST : STD_LOGIC;
   signal v_proc_ss_2_m_axis_TREADY : STD_LOGIC;
-  signal v_proc_ss_2_m_axis_TSTRB : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal v_proc_ss_2_m_axis_TSTRB : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal v_proc_ss_2_m_axis_TUSER : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_proc_ss_2_m_axis_TVALID : STD_LOGIC;
   signal v_tc_0_vtiming_out_ACTIVE_VIDEO : STD_LOGIC;
@@ -6313,13 +6313,13 @@ v_demosaic_0: component design_1_v_demosaic_0_0
       ap_clk => clk_wiz_0_clk_out1,
       ap_rst_n => rst_clk_wiz_0_148M_peripheral_aresetn(0),
       interrupt => NLW_v_demosaic_0_interrupt_UNCONNECTED,
-      m_axis_video_TDATA(47 downto 0) => v_demosaic_0_m_axis_video_TDATA(47 downto 0),
+      m_axis_video_TDATA(23 downto 0) => v_demosaic_0_m_axis_video_TDATA(23 downto 0),
       m_axis_video_TDEST(0) => v_demosaic_0_m_axis_video_TDEST(0),
       m_axis_video_TID(0) => v_demosaic_0_m_axis_video_TID(0),
-      m_axis_video_TKEEP(5 downto 0) => v_demosaic_0_m_axis_video_TKEEP(5 downto 0),
+      m_axis_video_TKEEP(2 downto 0) => v_demosaic_0_m_axis_video_TKEEP(2 downto 0),
       m_axis_video_TLAST(0) => v_demosaic_0_m_axis_video_TLAST(0),
       m_axis_video_TREADY => v_demosaic_0_m_axis_video_TREADY,
-      m_axis_video_TSTRB(5 downto 0) => v_demosaic_0_m_axis_video_TSTRB(5 downto 0),
+      m_axis_video_TSTRB(2 downto 0) => v_demosaic_0_m_axis_video_TSTRB(2 downto 0),
       m_axis_video_TUSER(0) => v_demosaic_0_m_axis_video_TUSER(0),
       m_axis_video_TVALID => v_demosaic_0_m_axis_video_TVALID,
       s_axi_CTRL_ARADDR(5 downto 0) => ps7_0_axi_periph_M01_AXI_ARADDR(5 downto 0),
@@ -6339,14 +6339,13 @@ v_demosaic_0: component design_1_v_demosaic_0_0
       s_axi_CTRL_WREADY => ps7_0_axi_periph_M01_AXI_WREADY,
       s_axi_CTRL_WSTRB(3 downto 0) => ps7_0_axi_periph_M01_AXI_WSTRB(3 downto 0),
       s_axi_CTRL_WVALID => ps7_0_axi_periph_M01_AXI_WVALID,
-      s_axis_video_TDATA(15 downto 8) => B"00000000",
       s_axis_video_TDATA(7 downto 0) => v_vid_in_axi4s_0_video_out_TDATA(7 downto 0),
       s_axis_video_TDEST(0) => '0',
       s_axis_video_TID(0) => '0',
-      s_axis_video_TKEEP(1 downto 0) => B"11",
+      s_axis_video_TKEEP(0) => '1',
       s_axis_video_TLAST(0) => v_vid_in_axi4s_0_video_out_TLAST,
       s_axis_video_TREADY => v_vid_in_axi4s_0_video_out_TREADY,
-      s_axis_video_TSTRB(1 downto 0) => B"11",
+      s_axis_video_TSTRB(0) => '1',
       s_axis_video_TUSER(0) => v_vid_in_axi4s_0_video_out_TUSER,
       s_axis_video_TVALID => v_vid_in_axi4s_0_video_out_TVALID
     );
@@ -6356,13 +6355,13 @@ v_proc_ss_0: component design_1_v_proc_ss_0_3
       aclk_ctrl => clk_wiz_0_clk_out1,
       aresetn_ctrl => rst_clk_wiz_0_148M_peripheral_aresetn(0),
       aresetn_io_axis(0) => NLW_v_proc_ss_0_aresetn_io_axis_UNCONNECTED(0),
-      m_axis_tdata(47 downto 0) => v_proc_ss_0_m_axis_TDATA(47 downto 0),
+      m_axis_tdata(23 downto 0) => v_proc_ss_0_m_axis_TDATA(23 downto 0),
       m_axis_tdest(3 downto 0) => v_proc_ss_0_m_axis_TDEST(3 downto 0),
       m_axis_tid(0) => v_proc_ss_0_m_axis_TID(0),
-      m_axis_tkeep(5 downto 0) => v_proc_ss_0_m_axis_TKEEP(5 downto 0),
+      m_axis_tkeep(2 downto 0) => v_proc_ss_0_m_axis_TKEEP(2 downto 0),
       m_axis_tlast => v_proc_ss_0_m_axis_TLAST,
       m_axis_tready => v_proc_ss_0_m_axis_TREADY,
-      m_axis_tstrb(5 downto 0) => v_proc_ss_0_m_axis_TSTRB(5 downto 0),
+      m_axis_tstrb(2 downto 0) => v_proc_ss_0_m_axis_TSTRB(2 downto 0),
       m_axis_tuser(0) => v_proc_ss_0_m_axis_TUSER(0),
       m_axis_tvalid => v_proc_ss_0_m_axis_TVALID,
       s_axi_ctrl_araddr(18 downto 0) => ps7_0_axi_periph_M07_AXI_ARADDR(18 downto 0),
@@ -6384,13 +6383,13 @@ v_proc_ss_0: component design_1_v_proc_ss_0_3
       s_axi_ctrl_wready(0) => ps7_0_axi_periph_M07_AXI_WREADY(0),
       s_axi_ctrl_wstrb(3 downto 0) => ps7_0_axi_periph_M07_AXI_WSTRB(3 downto 0),
       s_axi_ctrl_wvalid(0) => ps7_0_axi_periph_M07_AXI_WVALID(0),
-      s_axis_tdata(47 downto 0) => v_proc_ss_2_m_axis_TDATA(47 downto 0),
+      s_axis_tdata(23 downto 0) => v_proc_ss_2_m_axis_TDATA(23 downto 0),
       s_axis_tdest(0) => v_proc_ss_2_m_axis_TDEST(0),
       s_axis_tid(0) => v_proc_ss_2_m_axis_TID(0),
-      s_axis_tkeep(5 downto 0) => v_proc_ss_2_m_axis_TKEEP(5 downto 0),
+      s_axis_tkeep(2 downto 0) => v_proc_ss_2_m_axis_TKEEP(2 downto 0),
       s_axis_tlast => v_proc_ss_2_m_axis_TLAST,
       s_axis_tready => v_proc_ss_2_m_axis_TREADY,
-      s_axis_tstrb(5 downto 0) => v_proc_ss_2_m_axis_TSTRB(5 downto 0),
+      s_axis_tstrb(2 downto 0) => v_proc_ss_2_m_axis_TSTRB(2 downto 0),
       s_axis_tuser(0) => v_proc_ss_2_m_axis_TUSER(0),
       s_axis_tvalid => v_proc_ss_2_m_axis_TVALID
     );
@@ -6398,13 +6397,13 @@ v_proc_ss_1: component design_1_v_proc_ss_1_1
      port map (
       aclk => clk_wiz_0_clk_out1,
       aresetn => rst_clk_wiz_0_148M_peripheral_aresetn(0),
-      m_axis_tdata(47 downto 0) => v_proc_ss_1_m_axis_TDATA(47 downto 0),
+      m_axis_tdata(23 downto 0) => v_proc_ss_1_m_axis_TDATA(23 downto 0),
       m_axis_tdest(0) => v_proc_ss_1_m_axis_TDEST(0),
       m_axis_tid(0) => v_proc_ss_1_m_axis_TID(0),
-      m_axis_tkeep(5 downto 0) => v_proc_ss_1_m_axis_TKEEP(5 downto 0),
+      m_axis_tkeep(2 downto 0) => v_proc_ss_1_m_axis_TKEEP(2 downto 0),
       m_axis_tlast(0) => v_proc_ss_1_m_axis_TLAST(0),
       m_axis_tready => v_proc_ss_1_m_axis_TREADY,
-      m_axis_tstrb(5 downto 0) => v_proc_ss_1_m_axis_TSTRB(5 downto 0),
+      m_axis_tstrb(2 downto 0) => v_proc_ss_1_m_axis_TSTRB(2 downto 0),
       m_axis_tuser(0) => v_proc_ss_1_m_axis_TUSER(0),
       m_axis_tvalid => v_proc_ss_1_m_axis_TVALID,
       s_axi_ctrl_araddr(10 downto 0) => ps7_0_axi_periph_M08_AXI_ARADDR(10 downto 0),
@@ -6424,13 +6423,13 @@ v_proc_ss_1: component design_1_v_proc_ss_1_1
       s_axi_ctrl_wready => ps7_0_axi_periph_M08_AXI_WREADY,
       s_axi_ctrl_wstrb(3 downto 0) => ps7_0_axi_periph_M08_AXI_WSTRB(3 downto 0),
       s_axi_ctrl_wvalid => ps7_0_axi_periph_M08_AXI_WVALID,
-      s_axis_tdata(47 downto 0) => v_proc_ss_0_m_axis_TDATA(47 downto 0),
+      s_axis_tdata(23 downto 0) => v_proc_ss_0_m_axis_TDATA(23 downto 0),
       s_axis_tdest(0) => v_proc_ss_0_m_axis_TDEST(0),
       s_axis_tid(0) => v_proc_ss_0_m_axis_TID(0),
-      s_axis_tkeep(5 downto 0) => v_proc_ss_0_m_axis_TKEEP(5 downto 0),
+      s_axis_tkeep(2 downto 0) => v_proc_ss_0_m_axis_TKEEP(2 downto 0),
       s_axis_tlast(0) => v_proc_ss_0_m_axis_TLAST,
       s_axis_tready => v_proc_ss_0_m_axis_TREADY,
-      s_axis_tstrb(5 downto 0) => v_proc_ss_0_m_axis_TSTRB(5 downto 0),
+      s_axis_tstrb(2 downto 0) => v_proc_ss_0_m_axis_TSTRB(2 downto 0),
       s_axis_tuser(0) => v_proc_ss_0_m_axis_TUSER(0),
       s_axis_tvalid => v_proc_ss_0_m_axis_TVALID
     );
@@ -6440,13 +6439,13 @@ v_proc_ss_2: component design_1_v_proc_ss_2_1
       aclk_ctrl => clk_wiz_0_clk_out1,
       aresetn_ctrl => rst_clk_wiz_0_148M_peripheral_aresetn(0),
       aresetn_io_axis(0) => NLW_v_proc_ss_2_aresetn_io_axis_UNCONNECTED(0),
-      m_axis_tdata(47 downto 0) => v_proc_ss_2_m_axis_TDATA(47 downto 0),
+      m_axis_tdata(23 downto 0) => v_proc_ss_2_m_axis_TDATA(23 downto 0),
       m_axis_tdest(3 downto 0) => v_proc_ss_2_m_axis_TDEST(3 downto 0),
       m_axis_tid(0) => v_proc_ss_2_m_axis_TID(0),
-      m_axis_tkeep(5 downto 0) => v_proc_ss_2_m_axis_TKEEP(5 downto 0),
+      m_axis_tkeep(2 downto 0) => v_proc_ss_2_m_axis_TKEEP(2 downto 0),
       m_axis_tlast => v_proc_ss_2_m_axis_TLAST,
       m_axis_tready => v_proc_ss_2_m_axis_TREADY,
-      m_axis_tstrb(5 downto 0) => v_proc_ss_2_m_axis_TSTRB(5 downto 0),
+      m_axis_tstrb(2 downto 0) => v_proc_ss_2_m_axis_TSTRB(2 downto 0),
       m_axis_tuser(0) => v_proc_ss_2_m_axis_TUSER(0),
       m_axis_tvalid => v_proc_ss_2_m_axis_TVALID,
       s_axi_ctrl_araddr(18 downto 0) => ps7_0_axi_periph_M11_AXI_ARADDR(18 downto 0),
@@ -6468,13 +6467,13 @@ v_proc_ss_2: component design_1_v_proc_ss_2_1
       s_axi_ctrl_wready(0) => ps7_0_axi_periph_M11_AXI_WREADY(0),
       s_axi_ctrl_wstrb(3 downto 0) => ps7_0_axi_periph_M11_AXI_WSTRB(3 downto 0),
       s_axi_ctrl_wvalid(0) => ps7_0_axi_periph_M11_AXI_WVALID(0),
-      s_axis_tdata(47 downto 0) => v_demosaic_0_m_axis_video_TDATA(47 downto 0),
+      s_axis_tdata(23 downto 0) => v_demosaic_0_m_axis_video_TDATA(23 downto 0),
       s_axis_tdest(0) => v_demosaic_0_m_axis_video_TDEST(0),
       s_axis_tid(0) => v_demosaic_0_m_axis_video_TID(0),
-      s_axis_tkeep(5 downto 0) => v_demosaic_0_m_axis_video_TKEEP(5 downto 0),
+      s_axis_tkeep(2 downto 0) => v_demosaic_0_m_axis_video_TKEEP(2 downto 0),
       s_axis_tlast => v_demosaic_0_m_axis_video_TLAST(0),
       s_axis_tready => v_demosaic_0_m_axis_video_TREADY,
-      s_axis_tstrb(5 downto 0) => v_demosaic_0_m_axis_video_TSTRB(5 downto 0),
+      s_axis_tstrb(2 downto 0) => v_demosaic_0_m_axis_video_TSTRB(2 downto 0),
       s_axis_tuser(0) => v_demosaic_0_m_axis_video_TUSER(0),
       s_axis_tvalid => v_demosaic_0_m_axis_video_TVALID
     );

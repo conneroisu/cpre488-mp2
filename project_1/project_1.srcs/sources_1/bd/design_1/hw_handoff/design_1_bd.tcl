@@ -206,8 +206,8 @@ proc create_root_design { parentCell } {
   # Create instance: axi_vdma_0, and set properties
   set axi_vdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vdma:6.3 axi_vdma_0 ]
   set_property -dict [ list \
-   CONFIG.c_include_mm2s_dre {1} \
-   CONFIG.c_include_s2mm_dre {1} \
+   CONFIG.c_include_mm2s_dre {0} \
+   CONFIG.c_include_s2mm_dre {0} \
    CONFIG.c_m_axis_mm2s_tdata_width {16} \
    CONFIG.c_mm2s_linebuffer_depth {8192} \
    CONFIG.c_num_fstores {3} \
@@ -697,7 +697,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.ALGORITHM {1} \
    CONFIG.ENABLE_ZIPPER_REMOVAL {false} \
-   CONFIG.SAMPLES_PER_CLOCK {2} \
+   CONFIG.SAMPLES_PER_CLOCK {1} \
  ] $v_demosaic_0
 
   # Create instance: v_proc_ss_0, and set properties
@@ -708,7 +708,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ENABLE_DMA {false} \
    CONFIG.C_ENABLE_INTERLACED {false} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
-   CONFIG.C_SAMPLES_PER_CLK {2} \
+   CONFIG.C_SAMPLES_PER_CLK {1} \
  ] $v_proc_ss_0
 
   # Create instance: v_proc_ss_1, and set properties
@@ -718,7 +718,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ENABLE_INTERLACED {false} \
    CONFIG.C_H_CHROMA_ALGORITHM {0} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
-   CONFIG.C_SAMPLES_PER_CLK {2} \
+   CONFIG.C_SAMPLES_PER_CLK {1} \
    CONFIG.C_TOPOLOGY {5} \
  ] $v_proc_ss_1
 
@@ -730,7 +730,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ENABLE_DMA {false} \
    CONFIG.C_ENABLE_INTERLACED {false} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
-   CONFIG.C_SAMPLES_PER_CLK {2} \
+   CONFIG.C_SAMPLES_PER_CLK {1} \
  ] $v_proc_ss_2
 
   # Create instance: v_tc_0, and set properties
@@ -762,8 +762,9 @@ proc create_root_design { parentCell } {
   # Create instance: v_vid_in_axi4s_0, and set properties
   set v_vid_in_axi4s_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_vid_in_axi4s:4.0 v_vid_in_axi4s_0 ]
   set_property -dict [ list \
-   CONFIG.C_ADDR_WIDTH {12} \
+   CONFIG.C_ADDR_WIDTH {13} \
    CONFIG.C_M_AXIS_VIDEO_FORMAT {12} \
+   CONFIG.C_PIXELS_PER_CLOCK {1} \
  ] $v_vid_in_axi4s_0
 
   # Create instance: xlconstant_1, and set properties
