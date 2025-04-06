@@ -1,4 +1,16 @@
 #include "camera_app.h"
+#include "xil_types.h"
+#include "xvprocss.h"
+#include "xtime_l.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "xil_io.h"
+
+#include "camera_app.h"
+#include "xil_types.h"
+#include "xil_cache.h"
+#include "sleep.h"
+#include "xvprocss.h"
 
 
 camera_config_t camera_config;
@@ -1026,27 +1038,27 @@ int fmc_imageon_enable_ipipe(camera_config_t *config) {
 	// Active Width Configuration (Number of Active Pixels per Scanline)
 	Xil_Out32(
 			(XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR)
-					+ ( 0x10), (u32) (1920) // Number of Active Pixels per Scanline
+					+ (XV_DEMOSAIC_CTRL_ADDR_HWREG_WIDTH_DATA), (u32) (1920) // Number of Active Pixels per Scanline
 			);
 
 	// Additional Register 2 (Demosaic)
 	// Active Height Configuration (Number of Active Scanlines per Frame)
 	Xil_Out32(
 			(XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR)
-					+ ( 0x18), (u32) (1080) // Number of Active Lines per Frame
+					+ (XV_DEMOSAIC_CTRL_ADDR_HWREG_HEIGHT_DATA), (u32) (1080) // Number of Active Lines per Frame
 			);
 
 	// Additional Register 3 (Demosaic)
 	// Bayer Phase Configuration (Bayer Pattern)
 	Xil_Out32(
 			(XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR)
-					+ (0x28), (u32) (0) // Bayer sampling grid starting postition
+					+ (XV_DEMOSAIC_CTRL_ADDR_HWREG_BAYER_PHASE_DATA), (u32) (0) // Bayer sampling grid starting postition
 			);
 
 	// 0b10000001 means start and freerun mode (page 16 in PG286)
 	Xil_Out32(
 			(XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR)
-					+ (0x00), (u32) (0x81) // start and freerun mode (page 16 in PG286)
+					+ (XV_DEMOSAIC_CTRL_ADDR_AP_CTRL), (u32) (0x81) // start and freerun mode (page 16 in PG286)
 			);
 
 	xil_printf("Demosaic IP Configuring and Enable done\r\n"); // RGRG sensor pattern
@@ -1134,29 +1146,29 @@ u8 get_current_frame_pointer(XAxiVdma* vdma, u16 dir) {
 	u32 mask = 0;
 	u32 shift_amt = 0;
 
-	if (dir == 2) {
+	if (dir == XAXIVDMA_READ) {
 		mask = 0x1F0000;
 		shift_amt = 16;
-	} else if (dir == 1) {
+	} else if (dir == XAXIVDMA_WRITE) {
 		mask = 0x1F00000;
 		shift_amt = 24;
 	}
 
-	result = (*((volatile u32*) (vdma->BaseAddr + 0x00000028))
+	result = (*((volatile u32*) (vdma->BaseAddr + XAXIVDMA_PARKPTR_OFFSET))
 			& mask) >> shift_amt;
 
 	return result;
 }
 
 void set_park_frame(XAxiVdma* vdma, u8 frame, u16 dir) {
-#define	PARK *((volatile u32*) (vdma->BaseAddr + 0x00000028))
+#define	PARK *((volatile u32*) (vdma->BaseAddr + XAXIVDMA_PARKPTR_OFFSET))
 
 	u32 mask = 0;
 	u32 shift_amt = 0;
 
-	if (dir == 2) {
+	if (dir == XAXIVDMA_READ) {
 		mask = ~0x1F;
-	} else if (dir == 1) {
+	} else if (dir == XAXIVDMA_WRITE) {
 		mask = ~0x1F0;
 		shift_amt = 8;
 	}
@@ -1183,8 +1195,7 @@ void camera_config_init(camera_config_t *config) {
 }
 
 // Main function. Initializes the devices and configures VDMA
-int main() {
-	init_platform();
+int camera_main() {
 
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);

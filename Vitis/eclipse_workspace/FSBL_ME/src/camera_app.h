@@ -2,20 +2,15 @@
 #define __CAMERA_APP_H__
 
 #include <xparameters.h>
+#include <xbasic_types.h>
 #include <stdlib.h>
+#include <xil_printf.h>
+#include <sleep.h>
 #include "fmc_iic.h"
 #include "fmc_ipmi.h"
 #include "fmc_imageon.h"
 #include "onsemi_vita_sw.h"
-#include "xil_types.h"
-#include "xvprocss.h"
-#include "xtime_l.h"
-#include <stdlib.h>
-#include "platform.h"
-#include "xil_io.h"
-#include "xil_cache.h"
-#include "sleep.h"
-#include "xvprocss.h"
+
 #include "xvtc.h"
 #include "xaxivdma.h"
 

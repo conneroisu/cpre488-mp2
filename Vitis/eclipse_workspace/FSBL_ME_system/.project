@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Digital_Camera_Pipeline</name>
-	<comment>Created by Vitis v2020.1</comment>
+	<name>FSBL_ME_system</name>
+	<comment></comment>
 	<projects>
-		<project>ME_HW</project>
+		<project>FSBL_ME</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -19,9 +19,11 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.xilinx.sdx.sdk.core.SdkProjectNature</nature>
+		<nature>com.xilinx.sdx.system.systemprojectnature</nature>
+		<nature>com.xilinx.sdx.system.core.embedded</nature>
 		<nature>org.eclipse.cdt.core.cnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
 </projectDescription>

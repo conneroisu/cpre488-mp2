@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Digital_Camera_Pipeline</name>
+	<name>FSBL_ME</name>
 	<comment>Created by Vitis v2020.1</comment>
 	<projects>
 		<project>ME_HW</project>

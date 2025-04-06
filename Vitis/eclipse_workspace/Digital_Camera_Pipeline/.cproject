@@ -59,7 +59,7 @@
                                 								
                                 <option id="xilinx.gnu.compiler.misc.other.259559289" superClass="xilinx.gnu.compiler.misc.other" value="-c -fmessage-length=0 -MT&quot;$@&quot; -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard" valueType="string"/>
                                 								
-                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.1968109601" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="    " valueType="string"/>
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.1968109601" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="     " valueType="string"/>
                                 								
                                 <inputType id="xilinx.gnu.armv7.c.compiler.input.1805050557" name="C source files" superClass="xilinx.gnu.armv7.c.compiler.input"/>
                                 							
@@ -77,7 +77,7 @@
                                     								
                                 </option>
                                 								
-                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.1028530071" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="    " valueType="string"/>
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.1028530071" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="     " valueType="string"/>
                                 							
                             </tool>
                             							
@@ -94,6 +94,8 @@
                                 <option id="xilinx.gnu.linker.inferred.swplatform.flags.541649750" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
                                     									
                                     <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lgcc,-lc,--end-group"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="-Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group"/>
                                     								
                                 </option>
                                 								
@@ -124,6 +126,8 @@
                                 <option id="xilinx.gnu.linker.inferred.swplatform.flags.278106568" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
                                     									
                                     <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lgcc,-lc,--end-group"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="-Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group"/>
                                     								
                                 </option>
                                 								
@@ -207,7 +211,7 @@
                                 								
                                 <option id="xilinx.gnu.compiler.misc.other.244419333" superClass="xilinx.gnu.compiler.misc.other" value="-c -fmessage-length=0 -MT&quot;$@&quot; -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard" valueType="string"/>
                                 								
-                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.719444321" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="    " valueType="string"/>
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.719444321" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="     " valueType="string"/>
                                 								
                                 <inputType id="xilinx.gnu.armv7.c.compiler.input.1982032030" name="C source files" superClass="xilinx.gnu.armv7.c.compiler.input"/>
                                 							
@@ -225,7 +229,7 @@
                                     								
                                 </option>
                                 								
-                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.954544461" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="    " valueType="string"/>
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.954544461" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="     " valueType="string"/>
                                 							
                             </tool>
                             							
@@ -242,6 +246,8 @@
                                 <option id="xilinx.gnu.linker.inferred.swplatform.flags.914332809" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
                                     									
                                     <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lgcc,-lc,--end-group"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="-Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group"/>
                                     								
                                 </option>
                                 								
@@ -272,6 +278,8 @@
                                 <option id="xilinx.gnu.linker.inferred.swplatform.flags.1427502143" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
                                     									
                                     <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lgcc,-lc,--end-group"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="-Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group"/>
                                     								
                                 </option>
                                 								
