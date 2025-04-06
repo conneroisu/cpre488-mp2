@@ -62,8 +62,7 @@ Xint32 vres_detect(Xuint32 width, Xuint32 height) {
 	return resolution;
 }
 
-static void SignalSetup(XVtc *pVtc, Xuint32 ResolutionId,
-		XVtc_Signal *SignalCfgPtr) {
+static void SignalSetup(XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCfgPtr) {
 	vres_timing_t VideoTiming;
 	vres_get_timing(ResolutionId, &VideoTiming);
 	memset((void *) SignalCfgPtr, 0, sizeof(XVtc_Signal));
@@ -317,39 +316,33 @@ int vfb_tx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg,
 
 int vfb_rx_start(XAxiVdma *pAxiVdma) {
 	int Status;
-
 	// S2MM Startup
 	Status = XAxiVdma_DmaStart(pAxiVdma, 1);
 	if (Status != 0L) {
 		return 1L;
 	}
-
 	return 0L;
 }
 
 int vfb_tx_start(XAxiVdma *pAxiVdma) {
 	int Status;
-
 	// MM2S Startup
 	Status = XAxiVdma_DmaStart(pAxiVdma, 2);
 	if (Status != 0L) {
 		return 1L;
 	}
-
 	return 0L;
 }
 
 int vfb_rx_stop(XAxiVdma *pAxiVdma) {
 	// S2MM Stop
 	XAxiVdma_DmaStop(pAxiVdma, 1);
-
 	return 0L;
 }
 
 int vfb_tx_stop(XAxiVdma *pAxiVdma) {
 	// MM2S Stop
 	XAxiVdma_DmaStop(pAxiVdma, 2);
-
 	return 0L;
 }
 
@@ -615,11 +608,8 @@ void set_start_address(XAxiVdma *vdma, u16 dir, u8 frame, u16 *addr) {
 
 #define START_ADDR *((volatile u32 *)(vdma->BaseAddr + start_addr_offset + (frame * 0x4)))
 #define VSIZE *((volatile u32 *)(vdma->BaseAddr + vsize_offset))
-
 	START_ADDR = (u32) addr;
-
 	VSIZE = VSIZE;
-
 #undef START_ADDR
 #undef VSIZE
 }
@@ -671,11 +661,9 @@ void set_park_frame(XAxiVdma *vdma, u8 frame, u16 dir) {
 void camera_config_init(camera_config_t *config) {
 	config->uBaseAddr_IIC_FmcIpmi = 0x41610000;	// Device for reading HDMI board IPMI EEPROM information
 	config->uBaseAddr_IIC_FmcImageon = 0x41600000; // Device for configuring the HDMI board
-
 	config->uBaseAddr_VITA_SPI = 0x43C30000; // Device for configuring the Camera sensor
 	config->uBaseAddr_VITA_CAM = 0x43C20000; // Device for receiving Camera sensor data
-
-	config->uDeviceId_VTC_tpg = XPAR_V_TC_0_DEVICE_ID;// Video Timer Controller (VTC) ID
+	config->uDeviceId_VTC_tpg = 0;// Video Timer Controller (VTC) ID
 	config->uDeviceId_VDMA_HdmiFrameBuffer = 0x0U;		// VDMA ID
 	config->uBaseAddr_MEM_HdmiFrameBuffer = 0x10000000; // VDMA base address for Frame buffers
 	config->uNumFrames_HdmiFrameBuffer = 0x5U;	// NUmber of VDMA Frame buffers
