@@ -1,23 +1,21 @@
 #ifndef __CAMERA_APP_H__
 #define __CAMERA_APP_H__
 
-#include <xparameters.h>
 #include <stdlib.h>
 #include "fmc_iic.h"
 #include "fmc_ipmi.h"
 #include "fmc_imageon.h"
 #include "onsemi_vita_sw.h"
 #include "xil_types.h"
-#include "xvprocss.h"
 #include "xtime_l.h"
 #include <stdlib.h>
 #include "platform.h"
 #include "xil_io.h"
 #include "xil_cache.h"
 #include "sleep.h"
-#include "xvprocss.h"
 #include "xvtc.h"
 #include "xaxivdma.h"
+#include "xvprocss.h"
 
 // Constants for library code
 #define ZED_FMC_IMAGEON_GETTING_STARTED_HW

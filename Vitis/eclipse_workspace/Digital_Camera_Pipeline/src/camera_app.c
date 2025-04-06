@@ -941,16 +941,12 @@ int fmc_imageon_enable_vita(camera_config_t *config) {
 	return 0;
 }
 
+
 int fmc_imageon_enable_ipipe(camera_config_t *config) {
 	int result;
-
-	// # Re-Sampling Subsystem IP Setup (PG231)
-	// 444 => 422
-
 	Config_ptr_422 = XVprocSs_LookupConfig(XPAR_XVPROCSS_1_DEVICE_ID);
 
-	result = XVprocSs_CfgInitialize(&proc_ss_444_to_422, Config_ptr_422,
-	XPAR_XVPROCSS_1_BASEADDR //
+	result = XVprocSs_CfgInitialize(&proc_ss_444_to_422, Config_ptr_422,			0x43C10000
 			);
 	if (result != XST_SUCCESS) {
 		xil_printf("Error initializing 4:4:4 to 4:2:2 conversion\n\r");
@@ -959,95 +955,70 @@ int fmc_imageon_enable_ipipe(camera_config_t *config) {
 
 	// Set Up HW REG Width for SS1
 	Xil_Out16(
-			(XPAR_V_PROC_SS_1_BASEADDR)
-					+ (XV_HCRESAMPLER_CTRL_ADDR_HWREG_WIDTH_DATA), (u16) (1920) // Number of Active Pixels per Scanline
+			(0x43C10010), (u16) (1920) // Number of Active Pixels per Scanline
 			);
 	// Set Up HW REG Height for SS1
 	Xil_Out16(
-			(XPAR_V_PROC_SS_1_BASEADDR)
-					+ (XV_HCRESAMPLER_CTRL_ADDR_HWREG_HEIGHT_DATA), (u16) (1080) // Number of Active Lines per Frame
+			(0x43C10018), (u16) (1080) // Number of Active Lines per Frame
 			);
 	// Set HW REG Input Video Format for SS1
 	Xil_Out8(
-			(XPAR_V_PROC_SS_1_BASEADDR)
-					+ (XV_HCRESAMPLER_CTRL_ADDR_HWREG_INPUT_VIDEO_FORMAT_DATA),
+			0x43C10020,
 			(u8) (0x01));
 	// Set HW REG Output Video Format for SS1
 	Xil_Out8(
-			(XPAR_V_PROC_SS_1_BASEADDR)
-					+ (XV_HCRESAMPLER_CTRL_ADDR_HWREG_OUTPUT_VIDEO_FORMAT_DATA),
+			(0x43C10028),
 			(u8) (0x02));
-	// Set Mode for SS1
-	Xil_Out32((XPAR_V_PROC_SS_1_BASEADDR) + (XV_HCRESAMPLER_CTRL_ADDR_AP_CTRL),
-			(u32) (0x81) // Control 0x10000001 means start and freerun mode (page 16 in PG231)
-			);
+	Xil_Out32((0x43C10000),			(u32) (0x81) 			);
 
 	xil_printf("4:4:4 to 4:2:2 Starting ...\n\r");
 	XVprocSs_Start(&proc_ss_444_to_422);
 	xil_printf("4:4:4 to 4:2:2 Started ...\n\r");
 
-	Config_ptr = XVprocSs_LookupConfig(XPAR_XVPROCSS_0_DEVICE_ID);
+	Config_ptr = XVprocSs_LookupConfig(0);
 
-	result = XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr,
-	XPAR_XVPROCSS_0_BASEADDR //
-			);
-	if (result != XST_SUCCESS) {
+	result = XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr, 0x43C00000);
+	if (result != 0L) {
 		return -1;
 	}
 
 	result = XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, //
-			XVIDC_CSF_YCRCB_444, //
-			XVIDC_BT_709,        //
-			XVIDC_BT_709,        //
-			XVIDC_CR_0_255       //
+			1, //
+			1,        //
+			1,        //
+			2       //
 			);
-	if (result != XST_SUCCESS) {
+	if (result != 0L) {
 		return -1;
 	}
 
 	result = XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
-	if (result != XST_SUCCESS) {
+	if (result != 0L) {
 		return -1;
 	}
 	result = XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, //
-			XVIDC_CSF_YCRCB_444, //
-			XVIDC_BT_709,        //
-			XVIDC_BT_709,        //
-			XVIDC_CR_0_255       //
+			1, //
+			1,        //
+			1,        //
+			2       //
 			);
-	if (result != XST_SUCCESS) {
+	if (result != 0L) {
 		return -1;
 	}
 	XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
 
 	// # Demosaic Bayer Pattern to 24b RGB IP Setup (PG286)
 
-	// Additional Register 1 (Demosaic)
 	// Active Width Configuration (Number of Active Pixels per Scanline)
 	Xil_Out32(
-			(XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR)
-					+ ( 0x10), (u32) (1920) // Number of Active Pixels per Scanline
+			(0x43C40010), (u32) (1920) // Number of Active Pixels per Scanline
 			);
-
-	// Additional Register 2 (Demosaic)
 	// Active Height Configuration (Number of Active Scanlines per Frame)
-	Xil_Out32(
-			(XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR)
-					+ ( 0x18), (u32) (1080) // Number of Active Lines per Frame
-			);
-
-	// Additional Register 3 (Demosaic)
+	Xil_Out32((0x43C40018), (u32) (1080));
 	// Bayer Phase Configuration (Bayer Pattern)
-	Xil_Out32(
-			(XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR)
-					+ (0x28), (u32) (0) // Bayer sampling grid starting postition
-			);
-
+	Xil_Out32((0x43C40028), (u32) (0));
 	// 0b10000001 means start and freerun mode (page 16 in PG286)
-	Xil_Out32(
-			(XPAR_XV_DEMOSAIC_0_S_AXI_CTRL_BASEADDR)
-					+ (0x00), (u32) (0x81) // start and freerun mode (page 16 in PG286)
-			);
+	Xil_Out32((0x43C40000), (u32) (0x81) );
 
 	xil_printf("Demosaic IP Configuring and Enable done\r\n"); // RGRG sensor pattern
 
@@ -1067,11 +1038,11 @@ void enable_ssc(camera_config_t *config) {
 		xil_printf("Enabling spread-spectrum clocking (SSC)\n\r");
 		xil_printf("\ttype=down-spread, amount=-0.75%%\n\r");
 	}
-	fmc_imageon_iic_mux(&(config->fmc_imageon), FMC_IMAGEON_I2C_SELECT_VID_CLK);
+	fmc_imageon_iic_mux(&(config->fmc_imageon), 3);
 
 	for (i = 0; i < 3; i++) {
 		config->fmc_imageon.pIIC->fpIicWrite(config->fmc_imageon.pIIC,
-		FMC_IMAGEON_VID_CLK_ADDR, (0x80 | iic_cdce913_ssc_on[i][0]),
+		0x65, (0x80 | iic_cdce913_ssc_on[i][0]),
 				&(iic_cdce913_ssc_on[i][1]), 1 //
 				);
 	}
@@ -1101,8 +1072,8 @@ camera_config_t camera_config;
 
 // Swaps the memory addresses associated with the frame pointers
 void set_start_address(XAxiVdma* vdma, u16 dir, u8 frame, u16* addr) {
-	u32 start_addr_offset = dir == XAXIVDMA_WRITE ? 0xAC : 0x5C;
-	u32 vsize_offset = dir == XAXIVDMA_WRITE ? 0xA0 : 0x50;
+	u32 start_addr_offset = dir == 1 ? 0xAC : 0x5C;
+	u32 vsize_offset = dir == 1 ? 0xA0 : 0x50;
 	frame &= 0x1F;
 
 #define START_ADDR *((volatile u32*) (vdma->BaseAddr + start_addr_offset + (frame * 0x4)))
@@ -1171,8 +1142,8 @@ void camera_config_init(camera_config_t *config) {
 	config->uBaseAddr_IIC_FmcIpmi = XPAR_FMC_IPMI_ID_EEPROM_0_BASEADDR; // Device for reading HDMI board IPMI EEPROM information
 	config->uBaseAddr_IIC_FmcImageon = XPAR_FMC_IMAGEON_IIC_0_BASEADDR; // Device for configuring the HDMI board
 
-	config->uBaseAddr_VITA_SPI = XPAR_ONSEMI_VITA_SPI_0_S00_AXI_BASEADDR; // Device for configuring the Camera sensor
-	config->uBaseAddr_VITA_CAM = XPAR_ONSEMI_VITA_CAM_0_S00_AXI_BASEADDR; // Device for receiving Camera sensor data
+	config->uBaseAddr_VITA_SPI = 0x43C30000; // Device for configuring the Camera sensor
+	config->uBaseAddr_VITA_CAM = 0x43C20000; // Device for receiving Camera sensor data
 
 	config->uDeviceId_VTC_tpg = XPAR_V_TC_0_DEVICE_ID; // Video Timer Controller (VTC) ID
 	config->uDeviceId_VDMA_HdmiFrameBuffer = XPAR_AXI_VDMA_0_DEVICE_ID;	// VDMA ID
@@ -1189,8 +1160,8 @@ int main() {
 	camera_config_init(&camera_config);
 	fmc_imageon_enable(&camera_config);
 
-	set_park_frame(&(camera_config.vdma_hdmi), 1, XAXIVDMA_WRITE);
-	set_park_frame(&(camera_config.vdma_hdmi), 1, XAXIVDMA_READ);
+	set_park_frame(&(camera_config.vdma_hdmi), 1, 1);
+	set_park_frame(&(camera_config.vdma_hdmi), 1, 2);
 
 	// Enable park.
 #define READ_CR *((volatile u32*)(camera_config.vdma_hdmi.BaseAddr + XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET))
