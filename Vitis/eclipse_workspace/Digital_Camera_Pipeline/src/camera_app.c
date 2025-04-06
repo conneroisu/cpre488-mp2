@@ -142,9 +142,6 @@ int vgen_init(XVtc *pVtc, u16 VtcDeviceID)
  * @param	pVtc is a pointer to an initialized VTC instance
  *           ResolutionId identified a video resolution
  *           vVerbose = 0 no verbose, 1 minimal verbose, 2 most verbose
- *
- * @return	0 if all tests pass, 1 otherwise.
- *
  * @note		None.
  *
  **/
@@ -192,33 +189,26 @@ int vfb_common_init(u16 uDeviceId, XAxiVdma *pAxiVdma)
 {
 	int Status;
 	XAxiVdma_Config *Config;
-
 	Config = XAxiVdma_LookupConfig(uDeviceId);
 	if (!Config)
 	{
 		return 1;
 	}
-
-	/* Initialize DMA engine */
 	Status = XAxiVdma_CfgInitialize(pAxiVdma, Config, Config->BaseAddress);
 	if (Status != 0L)
 	{
 		return 1;
 	}
-
-	int status = 0;
-	// Set frame counter
 	XAxiVdma_FrameCounter f;
 	f.ReadDelayTimerCount = 0;
 	f.WriteDelayTimerCount = 0;
 	f.ReadFrameCount = 1;
 	f.WriteFrameCount = 1;
-	status = XAxiVdma_SetFrameCounter(pAxiVdma, &f);
-	if (status != 0L)
+	Status = XAxiVdma_SetFrameCounter(pAxiVdma, &f);
+	if (Status != 0L)
 	{
 		return 1;
 	}
-
 	return 0;
 }
 
@@ -227,17 +217,12 @@ int vfb_rx_init(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg,
 				Xuint32 uNumFrames)
 {
 	int Status;
-
-	// Setup the write channel
 	Status = vfb_rx_setup(pAxiVdma, pWriteCfg, uVideoResolution,
 						  uStorageResolution, uMemAddr, uNumFrames);
 	if (Status != 0L)
 	{
-
 		return 1;
 	}
-
-	// Start the DMA engine to transfer
 	Status = vfb_rx_start(pAxiVdma);
 	if (Status != 0L)
 	{
@@ -460,8 +445,6 @@ int vfb_tx_stop(XAxiVdma *pAxiVdma)
 
 int vfb_dump_registers(XAxiVdma *pAxiVdma)
 {
-	u32 uBaseAddr = pAxiVdma->BaseAddr;
-
 	return 0;
 }
 
@@ -627,9 +610,8 @@ int fmc_imageon_enable(camera_config_t *config)
 
 	// Clear frame stores
 	Xuint32 i;
-	Xuint32 storage_size = config->uNumFrames_HdmiFrameBuffer * ((1920 * 1080) << 1);
-	volatile Xuint32 *pStorageMem =
-		(Xuint32 *)config->uBaseAddr_MEM_HdmiFrameBuffer;
+	Xuint32 storage_size = config->uNumFrames_HdmiFrameBuffer * 1036800;
+	volatile Xuint32 *pStorageMem = (Xuint32 *)config->uBaseAddr_MEM_HdmiFrameBuffer;
 
 
 	// Frame #1 - Red pixels
@@ -677,26 +659,13 @@ int fmc_imageon_enable(camera_config_t *config)
 	do
 	{
 		vita_enabled_error = fmc_imageon_enable_vita(config);
-		if (vita_enable_attempt > VITA_ENABLE_ATTEMPT_LIMIT)
+		if (vita_enable_attempt > 3)
 		{
 			return -1;
 		}
 	} while (vita_enabled_error != 0);
-
-	// Uncomment to enable HW Video processing pipeling (last part of lab)
-	// You need to complete implmentation of this function before enabling
 	fmc_imageon_enable_ipipe(config);
-
-	// Output Video input source in Hardware mode for 10 seconds
 	sleep(1);
-
-	// Status of AXI VDMA
-	vfb_dump_registers(&(config->vdma_hdmi));
-	if (vfb_check_errors(&(config->vdma_hdmi), 1 /*clear errors, if any*/))
-	{
-		vfb_dump_registers(&(config->vdma_hdmi));
-	}
-
 	return 0;
 }
 
@@ -706,13 +675,13 @@ int fmc_imageon_enable_vita(camera_config_t *config)
 
 	// VITA-2000 Initialization
 	ret = onsemi_vita_sensor_initialize(&(config->onsemi_vita),
-										SENSOR_INIT_ENABLE, config->bVerbose);
+										101, config->bVerbose);
 	if (ret == 0)
 	{
 		return -1;
 	}
 
-	onsemi_vita_sensor_initialize(&(config->onsemi_vita), SENSOR_INIT_STREAMON,
+	onsemi_vita_sensor_initialize(&(config->onsemi_vita), 103,
 								  config->bVerbose);
 	sleep(1);
 
@@ -723,17 +692,14 @@ int fmc_imageon_enable_vita(camera_config_t *config)
 	}
 	sleep(1);
 
-	onsemi_vita_get_status(&(config->onsemi_vita), &(config->vita_status_t1),
-						   0 /*config->bVerbose*/);
+	onsemi_vita_get_status(&(config->onsemi_vita), &(config->vita_status_t1), 0);
 	sleep(1);
-	onsemi_vita_get_status(&(config->onsemi_vita), &(config->vita_status_t2),
-						   0 /*config->bVerbose*/);
+	onsemi_vita_get_status(&(config->onsemi_vita), &(config->vita_status_t2), 0);
 
-	int vita_width, vita_height, vita_rate, vita_crc;
+	int vita_width, vita_height, vita_rate;
 	vita_width = config->vita_status_t1.cntImagePixels * 4;
 	vita_height = config->vita_status_t1.cntImageLines;
 	vita_rate = config->vita_status_t2.cntFrames - config->vita_status_t1.cntFrames;
-	vita_crc = config->vita_status_t2.crcStatus;
 
 	if (config->bVerbose)
 	{
