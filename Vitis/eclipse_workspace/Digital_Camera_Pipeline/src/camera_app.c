@@ -7,9 +7,6 @@ XVprocSs proc_ss_444_to_422;
 XVprocSs_Config *Config_ptr;
 XVprocSs_Config *Config_ptr_422;
 
-#define VITA_ENABLE_ATTEMPT_LIMIT 3
-#define INCR_DECR_VALUE 1
-
 vres_timing_t vres_resolutions[8] = { { "VGA", 480, 10, 2, 33, 0, 640, 16, 96,
 		48, 0 },		// VIDEO_RESOLUTION_VGA
 		{ "NTSC", 480, 9, 6, 30, 1, 720, 16, 62, 60, 1 },// VIDEO_RESOLUTION_NTSC
@@ -56,7 +53,6 @@ Xuint32 vres_get_timing(Xuint32 ResolutionId, vres_timing_t *pTiming) {
 Xint32 vres_detect(Xuint32 width, Xuint32 height) {
 	Xint32 i;
 	Xint32 resolution = -1;
-
 	for (i = 0; i < 8; i++) {
 		if (width == vres_get_width(i) && height == vres_get_height(i)) {
 			resolution = i;
@@ -69,33 +65,17 @@ Xint32 vres_detect(Xuint32 width, Xuint32 height) {
 static void SignalSetup(XVtc *pVtc, Xuint32 ResolutionId,
 		XVtc_Signal *SignalCfgPtr) {
 	vres_timing_t VideoTiming;
-	int HFrontPorch;
-	int HSyncWidth;
-	int HBackPorch;
-	int VFrontPorch;
-	int VSyncWidth;
-	int VBackPorch;
-	int LineWidth;
-	int FrameHeight;
 	vres_get_timing(ResolutionId, &VideoTiming);
-	HFrontPorch = VideoTiming.HFrontPorch;
-	HSyncWidth = VideoTiming.HSyncWidth;
-	HBackPorch = VideoTiming.HBackPorch;
-	VFrontPorch = VideoTiming.VFrontPorch;
-	VSyncWidth = VideoTiming.VSyncWidth;
-	VBackPorch = VideoTiming.VBackPorch;
-	LineWidth = VideoTiming.HActiveVideo;
-	FrameHeight = VideoTiming.VActiveVideo;
 	memset((void *) SignalCfgPtr, 0, sizeof(XVtc_Signal));
-	SignalCfgPtr->HFrontPorchStart = LineWidth;
-	SignalCfgPtr->HTotal = HFrontPorch + HSyncWidth + HBackPorch + LineWidth;
-	SignalCfgPtr->HBackPorchStart = LineWidth + HFrontPorch + HSyncWidth;
-	SignalCfgPtr->HSyncStart = LineWidth + HFrontPorch;
+	SignalCfgPtr->HFrontPorchStart = VideoTiming.HActiveVideo;
+	SignalCfgPtr->HTotal = VideoTiming.HFrontPorch + VideoTiming.HSyncWidth + VideoTiming.HBackPorch + VideoTiming.HActiveVideo;
+	SignalCfgPtr->HBackPorchStart = VideoTiming.HActiveVideo + VideoTiming.HFrontPorch + VideoTiming.HSyncWidth;
+	SignalCfgPtr->HSyncStart = VideoTiming.HActiveVideo + VideoTiming.HFrontPorch;
 	SignalCfgPtr->HActiveStart = 0;
-	SignalCfgPtr->V0FrontPorchStart = FrameHeight;
-	SignalCfgPtr->V0Total = VFrontPorch + VSyncWidth + VBackPorch + FrameHeight;
-	SignalCfgPtr->V0BackPorchStart = FrameHeight + VFrontPorch + VSyncWidth;
-	SignalCfgPtr->V0SyncStart = FrameHeight + VFrontPorch;
+	SignalCfgPtr->V0FrontPorchStart = VideoTiming.VActiveVideo;
+	SignalCfgPtr->V0Total = VideoTiming.VFrontPorch + VideoTiming.VSyncWidth + VideoTiming.VBackPorch + VideoTiming.VActiveVideo;
+	SignalCfgPtr->V0BackPorchStart = VideoTiming.VActiveVideo + VideoTiming.VFrontPorch + VideoTiming.VSyncWidth;
+	SignalCfgPtr->V0SyncStart = VideoTiming.VActiveVideo + VideoTiming.VFrontPorch;
 	SignalCfgPtr->V0ChromaStart = 0;
 	SignalCfgPtr->V0ActiveStart = 0;
 
@@ -109,7 +89,6 @@ int vgen_init(XVtc *pVtc, u16 VtcDeviceID) {
 	if (VtcCfgPtr == NULL) {
 		return 1;
 	}
-	/* Initialize the Video Timing Controller instance */
 	Status = XVtc_CfgInitialize(pVtc, VtcCfgPtr, VtcCfgPtr->BaseAddress);
 	if (Status != 0L) {
 		return 1;
@@ -193,7 +172,7 @@ int vfb_rx_init(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg,
 	if (Status != 0L) {
 		return 1;
 	}
-	XAxiVdma_FsyncSrcSelect(pAxiVdma, XAXIVDMA_S2MM_TUSER_FSYNC, 2);
+	XAxiVdma_FsyncSrcSelect(pAxiVdma, 2, 2);
 	return 0;
 }
 
@@ -399,7 +378,7 @@ int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors) {
 /// @return 0 if successful, -1 if not
 int fmc_imageon_enable(camera_config_t *config) {
 	int ret;
-	config->bVerbose = 1;
+	config->bVerbose = 0;
 	config->vita_aec = 0;		// off
 	config->vita_again = 0;		// 1.0
 	config->vita_dgain = 128;	// 1.0
@@ -469,23 +448,23 @@ int fmc_imageon_enable(camera_config_t *config) {
 	Xil_DCacheFlush(); // Flush Cache
 
 	// Initialize Output Side of AXI VDMA
-	vfb_common_init(config->uDeviceId_VDMA_HdmiFrameBuffer, // uDeviceId
-			&(config->vdma_hdmi)					// pAxiVdma
+	vfb_common_init(config->uDeviceId_VDMA_HdmiFrameBuffer,
+			&(config->vdma_hdmi)
 			);
-	vfb_tx_init(&(config->vdma_hdmi),				   // pAxiVdma
-			&(config->vdmacfg_hdmi_read),		   // pReadCfg
-			config->hdmio_resolution,			   // uVideoResolution
-			config->hdmio_resolution,			   // uStorageResolution
-			config->uBaseAddr_MEM_HdmiFrameBuffer, // uMemAddr
-			config->uNumFrames_HdmiFrameBuffer	   // uNumFrames
+	vfb_tx_init(&(config->vdma_hdmi),
+			&(config->vdmacfg_hdmi_read),
+			config->hdmio_resolution,
+			config->hdmio_resolution,
+			config->uBaseAddr_MEM_HdmiFrameBuffer,
+			config->uNumFrames_HdmiFrameBuffer
 			);
 	sleep(5);
-	vfb_rx_init(&(config->vdma_hdmi),				   // pAxiVdma
-			&(config->vdmacfg_hdmi_write),		   // pWriteCfg
-			config->hdmio_resolution,			   // uVideoResolution
-			config->hdmio_resolution,			   // uStorageResolution
-			config->uBaseAddr_MEM_HdmiFrameBuffer, // uMemAddr
-			config->uNumFrames_HdmiFrameBuffer	   // uNumFrames
+	vfb_rx_init(&(config->vdma_hdmi),
+			&(config->vdmacfg_hdmi_write),
+			config->hdmio_resolution,
+			config->hdmio_resolution,
+			config->uBaseAddr_MEM_HdmiFrameBuffer,
+			config->uNumFrames_HdmiFrameBuffer
 			);
 
 	int vita_enabled_error = 0;
@@ -504,15 +483,13 @@ int fmc_imageon_enable(camera_config_t *config) {
 
 int fmc_imageon_enable_vita(camera_config_t *config) {
 	int ret;
-	ret = onsemi_vita_sensor_initialize(&(config->onsemi_vita), 101,
-			config->bVerbose);
+	ret = onsemi_vita_sensor_initialize(&(config->onsemi_vita), 101,0);
 	if (ret == 0) {
 		return -1;
 	}
-	onsemi_vita_sensor_initialize(&(config->onsemi_vita), 103,
-			config->bVerbose);
+	onsemi_vita_sensor_initialize(&(config->onsemi_vita), 103,0);
 	sleep(1);
-	ret = onsemi_vita_sensor_1080P60(&(config->onsemi_vita), config->bVerbose);
+	ret = onsemi_vita_sensor_1080P60(&(config->onsemi_vita), 0);
 	if (ret == 0) {
 		return -1;
 	}
@@ -530,8 +507,7 @@ int fmc_imageon_enable_vita(camera_config_t *config) {
 			- config->vita_status_t1.cntFrames;
 
 	if (config->bVerbose) {
-		onsemi_vita_get_status(&(config->onsemi_vita),
-				&(config->vita_status_t2), 1);
+		onsemi_vita_get_status(&(config->onsemi_vita), &(config->vita_status_t2), 0);
 	}
 	if ((vita_width != 1920) || (vita_height != 1080) || (vita_rate == 0)) {
 		return 1;
@@ -541,7 +517,7 @@ int fmc_imageon_enable_vita(camera_config_t *config) {
 
 int fmc_imageon_enable_ipipe(camera_config_t *config) {
 	int result;
-	Config_ptr_422 = XVprocSs_LookupConfig(XPAR_XVPROCSS_1_DEVICE_ID);
+	Config_ptr_422 = XVprocSs_LookupConfig(1);
 
 	result = XVprocSs_CfgInitialize(&proc_ss_444_to_422, Config_ptr_422,
 			0x43C10000);

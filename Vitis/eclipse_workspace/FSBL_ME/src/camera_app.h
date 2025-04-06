@@ -10,6 +10,7 @@
 #include "fmc_ipmi.h"
 #include "fmc_imageon.h"
 #include "onsemi_vita_sw.h"
+#include "xvprocss.h"
 
 #include "xvtc.h"
 #include "xaxivdma.h"
