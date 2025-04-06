@@ -259,7 +259,7 @@ int vfb_tx_init(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg,
 
 #if 0
 	// This function returns prematurely due to (!Channel->GenLock) evaluating to false
-	XAxiVdma_GenLockSourceSelect(pAxiVdma, XAXIVDMA_INTERNAL_GENLOCK, 2);
+	XAxiVdma_GenLockSourceSelect(pAxiVdma, 1, 2);
 #else
 	uBaseAddr = pAxiVdma->BaseAddr;
 	uDMACR = *((volatile int *)(uBaseAddr));
@@ -312,11 +312,6 @@ int vfb_rx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg,
 	{
 		return 1L;
 	}
-
-	/* Initialize buffer addresses
-	 *
-	 * Use physical addresses
-	 */
 	Addr = uMemAddr + storage_offset;
 	for (i = 0; i < uNumFrames; i++)
 	{
@@ -324,11 +319,7 @@ int vfb_rx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg,
 
 		Addr += storage_size;
 	}
-
-	/* Set the buffer addresses for transfer in the DMA engine
-	 */
-	Status = XAxiVdma_DmaSetBufferAddr(pAxiVdma, 1,
-									   pWriteCfg->FrameStoreStartAddr);
+	Status = XAxiVdma_DmaSetBufferAddr(pAxiVdma, 1, pWriteCfg->FrameStoreStartAddr);
 	if (Status != 0L)
 	{
 		return 1L;
@@ -532,20 +523,16 @@ int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors)
 int fmc_imageon_enable(camera_config_t *config)
 {
 	int ret;
-
 	config->bVerbose = 1;
 	config->vita_aec = 0;		// off
 	config->vita_again = 0;		// 1.0
 	config->vita_dgain = 128;	// 1.0
 	config->vita_exposure = 90; // 90% of frame period
-
-	ret = fmc_iic_axi_init(&(config->fmc_ipmi_iic), "FMC-IPMI I2C Controller",
-						   config->uBaseAddr_IIC_FmcIpmi);
+	ret = fmc_iic_axi_init(&(config->fmc_ipmi_iic), "FMC-IPMI I2C Controller", config->uBaseAddr_IIC_FmcIpmi);
 	if (!ret)
 	{
 		exit(1);
 	}
-
 	// FMC Module Validation
 	if (fmc_ipmi_detect(&(config->fmc_ipmi_iic), "FMC-IMAGEON", 0))
 	{
@@ -556,8 +543,7 @@ int fmc_imageon_enable(camera_config_t *config)
 		exit(1);
 	}
 
-	ret = fmc_iic_axi_init(&(config->fmc_imageon_iic),
-						   "FMC-IMAGEON I2C Controller", config->uBaseAddr_IIC_FmcImageon);
+	ret = fmc_iic_axi_init(&(config->fmc_imageon_iic), "FMC-IMAGEON I2C Controller", config->uBaseAddr_IIC_FmcImageon);
 	if (!ret)
 	{
 		exit(1);
@@ -568,9 +554,6 @@ int fmc_imageon_enable(camera_config_t *config)
 	fmc_imageon_vclk_config(&(config->fmc_imageon), 6);
 
 	reset_dcms(config);
-
-	// Initialize Video Output Timing
-
 	config->hdmio_width = 1920;
 	config->hdmio_height = 1080;
 	config->hdmio_timing.IsHDMI = 0; // DVI Mode
@@ -607,29 +590,6 @@ int fmc_imageon_enable(camera_config_t *config)
 
 	// Enable spread-spectrum clocking (SSC)
 	enable_ssc(config);
-
-	// Clear frame stores
-	Xuint32 i;
-	Xuint32 storage_size = config->uNumFrames_HdmiFrameBuffer * 1036800;
-	volatile Xuint32 *pStorageMem = (Xuint32 *)config->uBaseAddr_MEM_HdmiFrameBuffer;
-
-
-	// Frame #1 - Red pixels
-	for (i = 0; i < storage_size / config->uNumFrames_HdmiFrameBuffer; i += 4)
-	{
-		*pStorageMem++ = 0xF0525A52; // Red
-	}
-	// Frame #2 - Green pixels
-	for (i = 0; i < storage_size / config->uNumFrames_HdmiFrameBuffer; i += 4)
-	{
-		*pStorageMem++ = 0x36912291; // Green
-	}
-	// Frame #3 - Blue pixels
-	for (i = 0; i < storage_size / config->uNumFrames_HdmiFrameBuffer; i += 4)
-	{
-		*pStorageMem++ = 0x6E29F029; // Blue
-	}
-
 	Xil_DCacheFlush(); // Flush Cache
 
 	// Initialize Output Side of AXI VDMA
@@ -643,9 +603,7 @@ int fmc_imageon_enable(camera_config_t *config)
 				config->uBaseAddr_MEM_HdmiFrameBuffer, // uMemAddr
 				config->uNumFrames_HdmiFrameBuffer	   // uNumFrames
 	);
-
 	sleep(5);
-
 	vfb_rx_init(&(config->vdma_hdmi),				   // pAxiVdma
 				&(config->vdmacfg_hdmi_write),		   // pWriteCfg
 				config->hdmio_resolution,			   // uVideoResolution
@@ -672,26 +630,21 @@ int fmc_imageon_enable(camera_config_t *config)
 int fmc_imageon_enable_vita(camera_config_t *config)
 {
 	int ret;
-
-	// VITA-2000 Initialization
 	ret = onsemi_vita_sensor_initialize(&(config->onsemi_vita),
 										101, config->bVerbose);
 	if (ret == 0)
 	{
 		return -1;
 	}
-
 	onsemi_vita_sensor_initialize(&(config->onsemi_vita), 103,
 								  config->bVerbose);
 	sleep(1);
-
 	ret = onsemi_vita_sensor_1080P60(&(config->onsemi_vita), config->bVerbose);
 	if (ret == 0)
 	{
 		return -1;
 	}
 	sleep(1);
-
 	onsemi_vita_get_status(&(config->onsemi_vita), &(config->vita_status_t1), 0);
 	sleep(1);
 	onsemi_vita_get_status(&(config->onsemi_vita), &(config->vita_status_t2), 0);
@@ -706,12 +659,10 @@ int fmc_imageon_enable_vita(camera_config_t *config)
 		onsemi_vita_get_status(&(config->onsemi_vita),
 							   &(config->vita_status_t2), 1);
 	}
-
 	if ((vita_width != 1920) || (vita_height != 1080) || (vita_rate == 0))
 	{
 		return 1;
 	}
-
 	return 0;
 }
 
@@ -777,18 +728,9 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
 		return -1;
 	}
 	XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
-
-	// # Demosaic Bayer Pattern to 24b RGB IP Setup (PG286)
-
-	// Active Width Configuration (Number of Active Pixels per Scanline)
-	Xil_Out32(
-		(0x43C40010), (u32)(1920) // Number of Active Pixels per Scanline
-	);
-	// Active Height Configuration (Number of Active Scanlines per Frame)
+	Xil_Out32((0x43C40010), (u32)(1920));
 	Xil_Out32((0x43C40018), (u32)(1080));
-	// Bayer Phase Configuration (Bayer Pattern)
 	Xil_Out32((0x43C40028), (u32)(0));
-	// 0b10000001 means start and freerun mode (page 16 in PG286)
 	Xil_Out32((0x43C40000), (u32)(0x81));
 
 	return 0;
@@ -797,7 +739,6 @@ int fmc_imageon_enable_ipipe(camera_config_t *config)
 void enable_ssc(camera_config_t *config)
 {
 	int i;
-
 	Xuint8 iic_cdce913_ssc_on[3][2] = {
 		{0x10, 0x6D}, // SSC = 011 (0.75%)
 		{0x11, 0xB6}, //
@@ -813,7 +754,6 @@ void enable_ssc(camera_config_t *config)
 											 &(iic_cdce913_ssc_on[i][1]), 1 //
 		);
 	}
-
 	return;
 }
 
@@ -872,10 +812,7 @@ u16 *get_start_address(XAxiVdma *vdma, u16 dir, u8 frame)
 u8 get_current_frame_pointer(XAxiVdma *vdma, u16 dir)
 {
 	u8 result = 0;
-
-	u32 mask = 0;
-	u32 shift_amt = 0;
-
+	u32 mask,shift_amt = 0;
 	if (dir == 2)
 	{
 		mask = 0x1F0000;
@@ -886,9 +823,7 @@ u8 get_current_frame_pointer(XAxiVdma *vdma, u16 dir)
 		mask = 0x1F00000;
 		shift_amt = 24;
 	}
-
 	result = (*((volatile u32 *)(vdma->BaseAddr + 0x00000028)) & mask) >> shift_amt;
-
 	return result;
 }
 
@@ -896,8 +831,7 @@ void set_park_frame(XAxiVdma *vdma, u8 frame, u16 dir)
 {
 #define PARK *((volatile u32 *)(vdma->BaseAddr + 0x00000028))
 
-	u32 mask = 0;
-	u32 shift_amt = 0;
+	u32 mask,shift_amt = 0;
 
 	if (dir == 2)
 	{
