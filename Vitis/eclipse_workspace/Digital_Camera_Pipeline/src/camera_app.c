@@ -103,7 +103,6 @@ static void SignalSetup(XVtc *pVtc, Xuint32 ResolutionId,
 	SignalCfgPtr->HBackPorchStart = LineWidth + HFrontPorch + HSyncWidth;
 	SignalCfgPtr->HSyncStart = LineWidth + HFrontPorch;
 	SignalCfgPtr->HActiveStart = 0;
-
 	SignalCfgPtr->V0FrontPorchStart = FrameHeight;
 	SignalCfgPtr->V0Total = VFrontPorch + VSyncWidth + VBackPorch + FrameHeight;
 	SignalCfgPtr->V0BackPorchStart = FrameHeight + VFrontPorch + VSyncWidth;
@@ -396,10 +395,7 @@ int vfb_tx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg,
 		return 1L;
 	}
 
-	/* Initialize buffer addresses
-	 *
-	 * These addresses are physical addresses
-	 */
+	// Initialize buffer addresses
 	Addr = uMemAddr + storage_offset;
 	for (i = 0; i < uNumFrames; i++)
 	{
@@ -408,11 +404,8 @@ int vfb_tx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg,
 		Addr += storage_size;
 	}
 
-	/* Set the buffer addresses for transfer in the DMA engine
-	 * The buffer addresses are physical addresses
-	 */
-	Status = XAxiVdma_DmaSetBufferAddr(pAxiVdma, 2,
-									   pReadCfg->FrameStoreStartAddr);
+	// Set the buffer addresses for transfer in the DMA engine
+	Status = XAxiVdma_DmaSetBufferAddr(pAxiVdma, 2, pReadCfg->FrameStoreStartAddr);
 	if (Status != 0L)
 	{
 		return 1L;
@@ -571,9 +564,9 @@ int fmc_imageon_enable(camera_config_t *config)
 	}
 
 	// FMC Module Validation
-	if (fmc_ipmi_detect(&(config->fmc_ipmi_iic), "FMC-IMAGEON", FMC_ID_ALL))
+	if (fmc_ipmi_detect(&(config->fmc_ipmi_iic), "FMC-IMAGEON", 0))
 	{
-		fmc_ipmi_enable(&(config->fmc_ipmi_iic), FMC_ID_SLOT1);
+		fmc_ipmi_enable(&(config->fmc_ipmi_iic), 1);
 	}
 	else
 	{
@@ -587,11 +580,9 @@ int fmc_imageon_enable(camera_config_t *config)
 		exit(1);
 	}
 
-	fmc_imageon_init(&(config->fmc_imageon), "FMC-IMAGEON",
-					 &(config->fmc_imageon_iic));
+	fmc_imageon_init(&(config->fmc_imageon), "FMC-IMAGEON", &(config->fmc_imageon_iic));
 	fmc_imageon_vclk_init(&(config->fmc_imageon));
-	fmc_imageon_vclk_config(&(config->fmc_imageon),
-							FMC_IMAGEON_VCLK_FREQ_148_500_000);
+	fmc_imageon_vclk_config(&(config->fmc_imageon), 6);
 
 	reset_dcms(config);
 
@@ -614,26 +605,22 @@ int fmc_imageon_enable(camera_config_t *config)
 	config->hdmio_timing.VSyncPolarity = 1;
 	config->hdmio_timing.VBackPorch = 36;
 
-	config->hdmio_resolution = vres_detect(config->hdmio_width,
-										   config->hdmio_height);
+	config->hdmio_resolution = vres_detect(config->hdmio_width, config->hdmio_height);
 	vgen_init(&(config->vtc_tpg), config->uDeviceId_VTC_tpg);
 	vgen_config(&(config->vtc_tpg), config->hdmio_resolution, 1);
 
 	// FMC-IMAGEON HDMI Output Initialization
-	ret = fmc_imageon_hdmio_init(&(config->fmc_imageon), 1,
-								 &(config->hdmio_timing), 0);
+	ret = fmc_imageon_hdmio_init(&(config->fmc_imageon), 1, &(config->hdmio_timing), 0);
 	if (!ret)
 	{
 		exit(0);
 	}
 
 	// FMC-IMAGEON VITA Camera Receiver Initialization
-	onsemi_vita_init(&(config->onsemi_vita), "VITA-2000",
-					 config->uBaseAddr_VITA_SPI, config->uBaseAddr_VITA_CAM // Base Address of VITA CAM
-	);
+	onsemi_vita_init(&(config->onsemi_vita), "VITA-2000", config->uBaseAddr_VITA_SPI, config->uBaseAddr_VITA_CAM );
 	config->onsemi_vita.uManualTap = 25;
 	// Assuming a 75 MHz AXI-Lite SPI bus
-	onsemi_vita_spi_config(&(config->onsemi_vita), (75000000 / 10000000));
+	onsemi_vita_spi_config(&(config->onsemi_vita), 7);
 
 	// Enable spread-spectrum clocking (SSC)
 	enable_ssc(config);
