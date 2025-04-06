@@ -119,18 +119,6 @@ int vgen_init(XVtc *pVtc, u16 VtcDeviceID) {
 	XVtc_EnableGenerator(pVtc);
 	return 0;
 }
-
-/**
- *
- * vgen_config
- * - configures the generator to generate missing syncs
- *
- * @param	pVtc is a pointer to an initialized VTC instance
- *           ResolutionId identified a video resolution
- *           vVerbose = 0 no verbose, 1 minimal verbose, 2 most verbose
- * @note		None.
- *
- **/
 int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose) {
 	XVtc_Signal Signal; /* VTC Signal configuration */
 	XVtc_Polarity Polarity; /* Polarity configuration */
@@ -169,7 +157,6 @@ int vgen_config(XVtc *pVtc, int ResolutionId, int bVerbose) {
 	XVtc_SetSource(pVtc, &SourceSelect);
 	return 0;
 }
-
 int vfb_common_init(u16 uDeviceId, XAxiVdma *pAxiVdma) {
 	int Status;
 	XAxiVdma_Config *Config;
@@ -206,7 +193,6 @@ int vfb_rx_init(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg,
 	if (Status != 0L) {
 		return 1;
 	}
-
 	XAxiVdma_FsyncSrcSelect(pAxiVdma, XAXIVDMA_S2MM_TUSER_FSYNC, 2);
 	return 0;
 }
@@ -388,65 +374,20 @@ int vfb_tx_stop(XAxiVdma *pAxiVdma) {
 	return 0L;
 }
 
-int vfb_dump_registers(XAxiVdma *pAxiVdma) {
-	return 0;
-}
 
 int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors) {
 	u32 uBaseAddr = pAxiVdma->BaseAddr;
 	Xuint32 inErrors;
 	Xuint32 outErrors;
 	Xuint32 Errors;
-
-	// Get Status of Error Flags
-	inErrors = *((volatile int *) (uBaseAddr + XAXIVDMA_RX_OFFSET
-			+ XAXIVDMA_SR_OFFSET)) & 0x0000CFF0;
-	outErrors = *((volatile int *) (uBaseAddr + XAXIVDMA_TX_OFFSET
-			+ XAXIVDMA_SR_OFFSET)) & 0x000046F0;
-
+	inErrors = *((volatile int *) (uBaseAddr + 0x00000034)) & 0x0000CFF0;
+	outErrors = *((volatile int *) (uBaseAddr + 0x00000004)) & 0x000046F0;
 	Errors = (inErrors << 16) | (outErrors);
-
 	if (Errors) {
-		if (inErrors & 0x00004000) {
-		}
-		if (inErrors & 0x00008000) {
-		}
-		if (inErrors & 0x00000800) {
-		}
-		if (inErrors & 0x00000400) {
-		}
-		if (inErrors & 0x00000200) {
-		}
-		if (inErrors & 0x00000100) {
-		}
-		if (inErrors & 0x00000080) {
-		}
-		if (inErrors & 0x00000040) {
-		}
-		if (inErrors & 0x00000020) {
-		}
-		if (inErrors & 0x00000010) {
-		}
-
-		if (outErrors & 0x00004000) {
-		}
-		if (outErrors & 0x00000400) {
-		}
-		if (outErrors & 0x00000200) {
-		}
-		if (outErrors & 0x00000080) {
-		}
-		if (outErrors & 0x00000040) {
-		}
-		if (outErrors & 0x00000020) {
-		}
-		if (outErrors & 0x00000010) {
-		}
-
 		// Clear error flags
-		*((volatile int *) (uBaseAddr + XAXIVDMA_RX_OFFSET + XAXIVDMA_SR_OFFSET)) =
+		*((volatile int *) (uBaseAddr + 0x00000034))=
 				0x0000CFF0; // XAXIVDMA_SR_ERR_ALL_MASK;
-		*((volatile int *) (uBaseAddr + XAXIVDMA_TX_OFFSET + XAXIVDMA_SR_OFFSET)) =
+		*((volatile int *) (uBaseAddr + 0x00000004)) =
 				0x000046F0; // XAXIVDMA_SR_ERR_ALL_MASK;
 	}
 
@@ -556,6 +497,7 @@ int fmc_imageon_enable(camera_config_t *config) {
 		}
 	} while (vita_enabled_error != 0);
 	fmc_imageon_enable_ipipe(config);
+	vfb_check_errors(&(config->vdma_hdmi), 1);
 	sleep(1);
 	return 0;
 }
