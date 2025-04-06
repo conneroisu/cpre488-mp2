@@ -1,19 +1,3 @@
-/*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
- * camera_app.h - header file for the main camera application code.
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
- *****************************************************************************/
-
-
 
 #ifndef __CAMERA_APP_H__
 #define __CAMERA_APP_H__

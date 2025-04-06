@@ -1,19 +1,3 @@
-/*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
- * fmc_imageon_utils.c - main initialization and configuration routines
- * for the Avnet FMC-IMAGEON board. Most of the bugs are their fault.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
- *****************************************************************************/
 
 #include "camera_app.h"
 #include "xil_types.h"

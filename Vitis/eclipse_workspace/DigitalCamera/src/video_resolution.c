@@ -1,19 +1,3 @@
-/*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
- * video_resolution.c - Video resolution lookup functions. Contains information
- * that would have been nice to know in MP-0.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
- *****************************************************************************/
 
 #include "camera_app.h"
 

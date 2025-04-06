@@ -1,20 +1,3 @@
-/*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
- * video_generator.c - configuration functions for the VTC video timing
- * controller. Configures a VTC to generate timing at the specified frequency.
- * Mostly redundant functionality with video_detector.c
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
- *****************************************************************************/
 
 #include "camera_app.h"
 

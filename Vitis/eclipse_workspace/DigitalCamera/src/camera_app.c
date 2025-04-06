@@ -1,20 +1,3 @@
-/*****************************************************************************
- * Joseph Zambreno
- * Phillip Jones
- *
- * Department of Electrical and Computer Engineering
- * Iowa State University
- *****************************************************************************/
-
-/*****************************************************************************
- * camera_app.c - main camera application code. The camera configures the various
- * video in and video out peripherals, and (optionally) performs some
- * image processing on data coming in from the vdma.
- *
- *
- * NOTES:
- * 02/04/14 by JAZ::Design created.
- *****************************************************************************/
 
 #include <stdlib.h>
 #include "camera_app.h"
