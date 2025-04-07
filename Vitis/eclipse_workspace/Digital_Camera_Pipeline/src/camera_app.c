@@ -453,15 +453,6 @@ int fmc_imageon_enable_vita(camera_config_t *config) {
 }
 
 int fmc_imageon_enable_ipipe(camera_config_t *config) {
-	int result;
-	Config_ptr_422 = XVprocSs_LookupConfig(1);
-
-	result = XVprocSs_CfgInitialize(&proc_ss_444_to_422, Config_ptr_422,
-			0x43C10000);
-	if (result != 0L) {
-		return -1;
-	}
-
 	// Set Up HW REG Width for SS1
 	Xil_Out16((0x43C10010), (u16) (1920));
 	// Set Up HW REG Height for SS1
@@ -470,38 +461,106 @@ int fmc_imageon_enable_ipipe(camera_config_t *config) {
 	Xil_Out8(0x43C10020, (u8) (0x01));
 	// Set HW REG Output Video Format for SS1
 	Xil_Out8((0x43C10028), (u8) (0x02));
-	Xil_Out32((0x43C10000), (u32) (0x81));
 
-	XVprocSs_Start(&proc_ss_444_to_422);
-
-	Config_ptr = XVprocSs_LookupConfig(0);
-
-	result = XVprocSs_CfgInitialize(&proc_ss_RGB_YCrCb_444, Config_ptr,
-			0x43C00000);
-	if (result != 0L) {
-		return -1;
-	}
-
-	result = XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, 1,
-			1, 1, 2);
-	if (result != 0L) {
-		return -1;
-	}
-
-	result = XVprocSs_SetSubsystemConfig(&proc_ss_RGB_YCrCb_444);
-	if (result != 0L) {
-		return -1;
-	}
-	result = XV_CscSetColorspace(proc_ss_RGB_YCrCb_444.CscPtr, XVIDC_CSF_RGB, 1,
-			1, 1, 2);
-	if (result != 0L) {
-		return -1;
-	}
-	XVprocSs_Start(&proc_ss_RGB_YCrCb_444);
-	Xil_Out32((0x43C40010), (u32) (1920));
-	Xil_Out32((0x43C40018), (u32) (1080));
-	Xil_Out32((0x43C40028), (u32) (0));
-	Xil_Out32((0x43C40000), (u32) (0x81));
+	*(volatile u32 *)0x43C10000 = 0x81;
+	*(volatile u32 *)0x43C00010 = 0x0;
+	*(volatile u32 *)0x43C00018 = 0x1;
+	*(volatile u32 *)0x43C00050 = 0x2EB;
+	*(volatile u32 *)0x43C00058 = 0x9D3;
+	*(volatile u32 *)0x43C00060 = 0xFD;
+	*(volatile u32 *)0x43C00068 = 0xFFFFFE64;
+	*(volatile u32 *)0x43C00070 = 0xFFFFFA96;
+	*(volatile u32 *)0x43C00078 = 0x706;
+	*(volatile u32 *)0x43C00080 = 0x706;
+	*(volatile u32 *)0x43C00088 = 0xFFFFF99F;
+	*(volatile u32 *)0x43C00090 = 0xFFFFFF5B;
+	*(volatile u32 *)0x43C00098 = 0x0;
+	*(volatile u32 *)0x43C000A0 = 0x0;
+	*(volatile u32 *)0x43C000A8 = 0x0;
+	*(volatile u32 *)0x43C000B0 = 0x0;
+	*(volatile u32 *)0x43C000B8 = 0x0;
+	*(volatile u32 *)0x43C00050 = 0x0;
+	*(volatile u32 *)0x43C00058 = 0x0;
+	*(volatile u32 *)0x43C00060 = 0x0;
+	*(volatile u32 *)0x43C00068 = 0x0;
+	*(volatile u32 *)0x43C00070 = 0x0;
+	*(volatile u32 *)0x43C00078 = 0x0;
+	*(volatile u32 *)0x43C00080 = 0x0;
+	*(volatile u32 *)0x43C00088 = 0x0;
+	*(volatile u32 *)0x43C00090 = 0x0;
+	*(volatile u32 *)0x43C00098 = 0x0;
+	*(volatile u32 *)0x43C000A0 = 0x0;
+	*(volatile u32 *)0x43C000A8 = 0x0;
+	*(volatile u32 *)0x43C000B0 = 0x0;
+	*(volatile u32 *)0x43C000B8 = 0x0;
+	*(volatile u32 *)0x43C00010 = 0x0;
+	*(volatile u32 *)0x43C00018 = 0x0;
+	*(volatile u32 *)0x43C00050 = 0x1000;
+	*(volatile u32 *)0x43C00058 = 0x0;
+	*(volatile u32 *)0x43C00060 = 0x0;
+	*(volatile u32 *)0x43C00068 = 0x0;
+	*(volatile u32 *)0x43C00070 = 0x1000;
+	*(volatile u32 *)0x43C00078 = 0x0;
+	*(volatile u32 *)0x43C00080 = 0x0;
+	*(volatile u32 *)0x43C00088 = 0x0;
+	*(volatile u32 *)0x43C00090 = 0x1000;
+	*(volatile u32 *)0x43C00098 = 0x0;
+	*(volatile u32 *)0x43C000A0 = 0x0;
+	*(volatile u32 *)0x43C000A8 = 0x0;
+	*(volatile u32 *)0x43C000B0 = 0x0;
+	*(volatile u32 *)0x43C000B8 = 0xFF;
+	*(volatile u32 *)0x43C00050 = 0x1000;
+	*(volatile u32 *)0x43C00058 = 0x0;
+	*(volatile u32 *)0x43C00060 = 0x0;
+	*(volatile u32 *)0x43C00068 = 0x0;
+	*(volatile u32 *)0x43C00070 = 0x1000;
+	*(volatile u32 *)0x43C00078 = 0x0;
+	*(volatile u32 *)0x43C00080 = 0x0;
+	*(volatile u32 *)0x43C00088 = 0x0;
+	*(volatile u32 *)0x43C00090 = 0x1000;
+	*(volatile u32 *)0x43C00098 = 0x0;
+	*(volatile u32 *)0x43C000A0 = 0x0;
+	*(volatile u32 *)0x43C000A8 = 0x0;
+	*(volatile u32 *)0x43C000B0 = 0x0;
+	*(volatile u32 *)0x43C000B8 = 0xFF;
+	*(volatile u32 *)0x43C00020 = 0x780;
+	*(volatile u32 *)0x43C00028 = 0x438;
+	*(volatile u32 *)0x43C00000 = 0x80;
+	*(volatile u32 *)0x43C00000 = 0x81;
+	*(volatile u32 *)0x43C00010 = 0x0;
+	*(volatile u32 *)0x43C00018 = 0x1;
+	*(volatile u32 *)0x43C00050 = 0x2EB;
+	*(volatile u32 *)0x43C00058 = 0x9D3;
+	*(volatile u32 *)0x43C00060 = 0xFD;
+	*(volatile u32 *)0x43C00068 = 0xFFFFFE64;
+	*(volatile u32 *)0x43C00070 = 0xFFFFFA96;
+	*(volatile u32 *)0x43C00078 = 0x706;
+	*(volatile u32 *)0x43C00080 = 0x706;
+	*(volatile u32 *)0x43C00088 = 0xFFFFF99F;
+	*(volatile u32 *)0x43C00090 = 0xFFFFFF5B;
+	*(volatile u32 *)0x43C00098 = 0x10;
+	*(volatile u32 *)0x43C000A0 = 0x80;
+	*(volatile u32 *)0x43C000A8 = 0x80;
+	*(volatile u32 *)0x43C000B0 = 0x0;
+	*(volatile u32 *)0x43C000B8 = 0xFF;
+	*(volatile u32 *)0x43C00050 = 0x2EB;
+	*(volatile u32 *)0x43C00058 = 0x9D3;
+	*(volatile u32 *)0x43C00060 = 0xFD;
+	*(volatile u32 *)0x43C00068 = 0xFFFFFE64;
+	*(volatile u32 *)0x43C00070 = 0xFFFFFA96;
+	*(volatile u32 *)0x43C00078 = 0x706;
+	*(volatile u32 *)0x43C00080 = 0x706;
+	*(volatile u32 *)0x43C00088 = 0xFFFFF99F;
+	*(volatile u32 *)0x43C00090 = 0xFFFFFF5B;
+	*(volatile u32 *)0x43C00098 = 0x10;
+	*(volatile u32 *)0x43C000A0 = 0x80;
+	*(volatile u32 *)0x43C000A8 = 0x80;
+	*(volatile u32 *)0x43C000B0 = 0x0;
+	*(volatile u32 *)0x43C000B8 = 0xFF;
+	*(volatile u32 *)0x43C40010 = 0x780;
+	*(volatile u32 *)0x43C40018 = 0x438;
+	*(volatile u32 *)0x43C40028 = 0x0;
+	*(volatile u32 *)0x43C40000 = 0x81;
 
 	return 0;
 }
@@ -521,6 +580,7 @@ void enable_ssc(camera_config_t *config) {
 				1 //
 				);
 	}
+
 	return;
 }
 
