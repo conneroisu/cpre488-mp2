@@ -212,23 +212,11 @@ int vfb_rx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg,
 		Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr,
 		Xuint32 uNumFrames) {
 	int i;
-	u32 Addr;
 	int Status;
 
-	Xuint32 video_width, video_height;
-	Xuint32 storage_width, storage_height, storage_stride, storage_size,
-			storage_offset;
-	video_height = vres_get_height(uVideoResolution);	 // in lines
-	video_width = vres_get_width(uVideoResolution) << 1; // in bytes
-	storage_height = vres_get_height(uStorageResolution);	 // in lines
-	storage_width = vres_get_width(uStorageResolution) << 1; // in bytes
-	storage_stride = storage_width;
-	storage_size = storage_width * storage_height;
-	storage_offset = ((storage_height - video_height) >> 1) * storage_width
-			+ ((storage_width - video_width) >> 1);
-	pWriteCfg->VertSizeInput = video_height;
-	pWriteCfg->HoriSizeInput = video_width;
-	pWriteCfg->Stride = storage_stride;
+		pWriteCfg->VertSizeInput = 1080;
+	pWriteCfg->HoriSizeInput = 3840;
+	pWriteCfg->Stride = 3840;
 	pWriteCfg->FrameDelay = 0; /* This example does not test frame delay */
 	pWriteCfg->EnableCircularBuf = 1;
 	pWriteCfg->EnableSync = 1;
@@ -239,11 +227,10 @@ int vfb_rx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg,
 	if (Status != 0L) {
 		return 1L;
 	}
-	Addr = uMemAddr + storage_offset;
 	for (i = 0; i < uNumFrames; i++) {
-		pWriteCfg->FrameStoreStartAddr[i] = Addr;
+		pWriteCfg->FrameStoreStartAddr[i] = uMemAddr;
 
-		Addr += storage_size;
+		uMemAddr += 4147200;
 	}
 	Status = XAxiVdma_DmaSetBufferAddr(pAxiVdma, 1,
 			pWriteCfg->FrameStoreStartAddr);
