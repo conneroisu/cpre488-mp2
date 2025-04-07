@@ -2,10 +2,7 @@
 
 camera_config_t camera_config;
 u32 button_state, switch_state = 0;
-XVprocSs proc_ss_RGB_YCrCb_444;
-XVprocSs proc_ss_444_to_422;
-XVprocSs_Config *Config_ptr;
-XVprocSs_Config *Config_ptr_422;
+
 
 vres_timing_t vres_resolutions[8] = { { "VGA", 480, 10, 2, 33, 0, 640, 16, 96,
 		48, 0 },		// VIDEO_RESOLUTION_VGA
@@ -34,32 +31,14 @@ Xuint32 vres_get_height(Xuint32 resolutionId) {
 	return vres_resolutions[resolutionId].VActiveVideo; // vertical active
 }
 
-Xuint32 vres_get_timing(Xuint32 ResolutionId, vres_timing_t *pTiming) {
-	pTiming->pName = vres_resolutions[ResolutionId].pName;
-	pTiming->HActiveVideo = vres_resolutions[ResolutionId].HActiveVideo;
-	pTiming->HFrontPorch = vres_resolutions[ResolutionId].HFrontPorch;
-	pTiming->HSyncWidth = vres_resolutions[ResolutionId].HSyncWidth;
-	pTiming->HBackPorch = vres_resolutions[ResolutionId].HBackPorch;
-	pTiming->HSyncPolarity = vres_resolutions[ResolutionId].HSyncPolarity;
-	pTiming->VActiveVideo = vres_resolutions[ResolutionId].VActiveVideo;
-	pTiming->VFrontPorch = vres_resolutions[ResolutionId].VFrontPorch;
-	pTiming->VSyncWidth = vres_resolutions[ResolutionId].VSyncWidth;
-	pTiming->VBackPorch = vres_resolutions[ResolutionId].VBackPorch;
-	pTiming->VSyncPolarity = vres_resolutions[ResolutionId].VSyncPolarity;
-
-	return 0;
-}
-
 static void SignalSetup(XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCfgPtr) {
-	vres_timing_t VideoTiming;
-	vres_get_timing(ResolutionId, &VideoTiming);
 	memset((void *) SignalCfgPtr, 0, sizeof(XVtc_Signal));
-	SignalCfgPtr->HFrontPorchStart = VideoTiming.HActiveVideo;
+	SignalCfgPtr->HFrontPorchStart = 1920;
 	SignalCfgPtr->HTotal = 2200;
 	SignalCfgPtr->HBackPorchStart = 2052;
 	SignalCfgPtr->HSyncStart = 2008;
 	SignalCfgPtr->HActiveStart = 0;
-	SignalCfgPtr->V0FrontPorchStart = VideoTiming.VActiveVideo;
+	SignalCfgPtr->V0FrontPorchStart = 1080;
 	SignalCfgPtr->V0Total =1125;
 	SignalCfgPtr->V0BackPorchStart =1089;
 	SignalCfgPtr->V0SyncStart =1084;
