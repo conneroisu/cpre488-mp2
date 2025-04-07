@@ -1,19 +1,21 @@
 #ifndef __CAMERA_APP_H__
 #define __CAMERA_APP_H__
 
-#include <xparameters.h>
-#include <xbasic_types.h>
 #include <stdlib.h>
-#include <xil_printf.h>
-#include <sleep.h>
 #include "fmc_iic.h"
 #include "fmc_ipmi.h"
 #include "fmc_imageon.h"
 #include "onsemi_vita_sw.h"
-#include "xvprocss.h"
-
+#include "xil_types.h"
+#include "xtime_l.h"
+#include <stdlib.h>
+#include "platform.h"
+#include "xil_io.h"
+#include "xil_cache.h"
+#include "sleep.h"
 #include "xvtc.h"
 #include "xaxivdma.h"
+#include "xvprocss.h"
 
 // Constants for library code
 #define ZED_FMC_IMAGEON_GETTING_STARTED_HW
@@ -106,7 +108,6 @@ typedef struct struct_vres_timing_t vres_timing_t;
 
 // Function prototypes (camera_app.c)
 void camera_config_init(camera_config_t *config);
-void camera_loop(camera_config_t *config);
 
 // Function prototypes (fmc_imageon_utils.c)
 int fmc_imageon_enable(camera_config_t *config);
@@ -116,7 +117,7 @@ int fmc_imageon_enable_vita(camera_config_t *config);
 int fmc_imageon_enable_ipipe(camera_config_t *config);
 void reset_dcms(camera_config_t *config);
 void enable_ssc(camera_config_t *config);
-
+int camera_main();
 // Function prototypes (video_resolution.c)
 char *vres_get_name(Xuint32 resolutionId);
 Xuint32 vres_get_width(Xuint32 resolutionId);
@@ -149,28 +150,6 @@ int vfb_check_errors(XAxiVdma *pAxiVdma, u8 bClearErrors);
 void video_frame_output_isr(void* CallBackRef, u32 InterruptTypes);
 void camera_input_isr(void* CallBackRef, u32 InterruptTypes);
 void error_isr(void* CallBackRef, u32 InterruptTypes);
-
-void set_brightness(
-	camera_config_t *config,
-	int brightness);
-void set_contrast(
-	camera_config_t *config,
-	int contrast);
-void set_saturation(
-	camera_config_t *config,
-	int saturation);
-void increase_brightness(
-	camera_config_t *config);
-void decrease_brightness(
-	camera_config_t *config);
-void increase_contrast(
-	camera_config_t *config);
-void decrease_contrast(
-	camera_config_t *config);
-void increase_saturation(
-	camera_config_t *config);
-void decrease_saturation(
-	camera_config_t *config);
 
 
 #endif // __CAMERA_APP_H__
