@@ -50,31 +50,19 @@ Xuint32 vres_get_timing(Xuint32 ResolutionId, vres_timing_t *pTiming) {
 	return 0;
 }
 
-Xint32 vres_detect(Xuint32 width, Xuint32 height) {
-	Xint32 i;
-	Xint32 resolution = -1;
-	for (i = 0; i < 8; i++) {
-		if (width == vres_get_width(i) && height == vres_get_height(i)) {
-			resolution = i;
-			break;
-		}
-	}
-	return resolution;
-}
-
 static void SignalSetup(XVtc *pVtc, Xuint32 ResolutionId, XVtc_Signal *SignalCfgPtr) {
 	vres_timing_t VideoTiming;
 	vres_get_timing(ResolutionId, &VideoTiming);
 	memset((void *) SignalCfgPtr, 0, sizeof(XVtc_Signal));
 	SignalCfgPtr->HFrontPorchStart = VideoTiming.HActiveVideo;
-	SignalCfgPtr->HTotal = VideoTiming.HFrontPorch + VideoTiming.HSyncWidth + VideoTiming.HBackPorch + VideoTiming.HActiveVideo;
-	SignalCfgPtr->HBackPorchStart = VideoTiming.HActiveVideo + VideoTiming.HFrontPorch + VideoTiming.HSyncWidth;
-	SignalCfgPtr->HSyncStart = VideoTiming.HActiveVideo + VideoTiming.HFrontPorch;
+	SignalCfgPtr->HTotal = 2200;
+	SignalCfgPtr->HBackPorchStart = 2052;
+	SignalCfgPtr->HSyncStart = 2008;
 	SignalCfgPtr->HActiveStart = 0;
 	SignalCfgPtr->V0FrontPorchStart = VideoTiming.VActiveVideo;
-	SignalCfgPtr->V0Total = VideoTiming.VFrontPorch + VideoTiming.VSyncWidth + VideoTiming.VBackPorch + VideoTiming.VActiveVideo;
-	SignalCfgPtr->V0BackPorchStart = VideoTiming.VActiveVideo + VideoTiming.VFrontPorch + VideoTiming.VSyncWidth;
-	SignalCfgPtr->V0SyncStart = VideoTiming.VActiveVideo + VideoTiming.VFrontPorch;
+	SignalCfgPtr->V0Total =1125;
+	SignalCfgPtr->V0BackPorchStart =1089;
+	SignalCfgPtr->V0SyncStart =1084;
 	SignalCfgPtr->V0ChromaStart = 0;
 	SignalCfgPtr->V0ActiveStart = 0;
 
@@ -213,8 +201,7 @@ int vfb_rx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pWriteCfg,
 		Xuint32 uNumFrames) {
 	int i;
 	int Status;
-
-		pWriteCfg->VertSizeInput = 1080;
+	pWriteCfg->VertSizeInput = 1080;
 	pWriteCfg->HoriSizeInput = 3840;
 	pWriteCfg->Stride = 3840;
 	pWriteCfg->FrameDelay = 0; /* This example does not test frame delay */
@@ -245,59 +232,30 @@ int vfb_tx_setup(XAxiVdma *pAxiVdma, XAxiVdma_DmaSetup *pReadCfg,
 		Xuint32 uVideoResolution, Xuint32 uStorageResolution, Xuint32 uMemAddr,
 		Xuint32 uNumFrames) {
 	int i;
-	u32 Addr;
 	int Status;
-
-	Xuint32 video_width, video_height;
-	Xuint32 storage_width, storage_height, storage_stride, storage_size,
-			storage_offset;
-
-	// Get Video dimensions
-	video_height = vres_get_height(uVideoResolution);	 // in lines
-	video_width = vres_get_width(uVideoResolution) << 1; // in bytes
-
-	// Get Storage dimensions
-	storage_height = vres_get_height(uStorageResolution);	 // in lines
-	storage_width = vres_get_width(uStorageResolution) << 1; // in bytes
-	storage_stride = storage_width;
-	storage_size = storage_width * storage_height;
-	storage_offset = ((storage_height - video_height) >> 1) * storage_width
-			+ ((storage_width - video_width) >> 1);
-
-	pReadCfg->VertSizeInput = video_height;
-	pReadCfg->HoriSizeInput = video_width;
-	pReadCfg->Stride = storage_stride;
-
-	pReadCfg->FrameDelay = 0; /* This example does not test frame delay */
-
+	pReadCfg->VertSizeInput = 1080;
+	pReadCfg->HoriSizeInput = 3840;
+	pReadCfg->Stride = 3840;
+	pReadCfg->FrameDelay = 0;
 	pReadCfg->EnableCircularBuf = 1;
 	pReadCfg->EnableSync = 1;
-
 	pReadCfg->PointNum = 1;
-	pReadCfg->EnableFrameCounter = 0; /* Endless transfers */
-
-	pReadCfg->FixedFrameStoreAddr = 0; /* We are not doing parking */
-
+	pReadCfg->EnableFrameCounter = 0;
+	pReadCfg->FixedFrameStoreAddr = 0;
 	Status = XAxiVdma_DmaConfig(pAxiVdma, 2, pReadCfg);
 	if (Status != 0L) {
 		return 1L;
 	}
-
-	// Initialize buffer addresses
-	Addr = uMemAddr + storage_offset;
 	for (i = 0; i < uNumFrames; i++) {
-		pReadCfg->FrameStoreStartAddr[i] = Addr;
-
-		Addr += storage_size;
+		pReadCfg->FrameStoreStartAddr[i] = uMemAddr;
+		uMemAddr += 4147200;
 	}
-
 	// Set the buffer addresses for transfer in the DMA engine
 	Status = XAxiVdma_DmaSetBufferAddr(pAxiVdma, 2,
 			pReadCfg->FrameStoreStartAddr);
 	if (Status != 0L) {
 		return 1L;
 	}
-
 	return 0L;
 }
 
@@ -404,8 +362,7 @@ int fmc_imageon_enable(camera_config_t *config) {
 	config->hdmio_timing.VSyncPolarity = 1;
 	config->hdmio_timing.VBackPorch = 36;
 
-	config->hdmio_resolution = vres_detect(config->hdmio_width,
-			config->hdmio_height);
+	config->hdmio_resolution = 6;
 	vgen_init(&(config->vtc_tpg), config->uDeviceId_VTC_tpg);
 	vgen_config(&(config->vtc_tpg), config->hdmio_resolution, 1);
 
@@ -425,7 +382,7 @@ int fmc_imageon_enable(camera_config_t *config) {
 
 	// Enable spread-spectrum clocking (SSC)
 	enable_ssc(config);
-	Xil_DCacheFlush(); // Flush Cache
+	Xil_DCacheFlush();
 
 	// Initialize Output Side of AXI VDMA
 	vfb_common_init(config->uDeviceId_VDMA_HdmiFrameBuffer,
@@ -654,7 +611,6 @@ void camera_config_init(camera_config_t *config) {
 	config->uDeviceId_VDMA_HdmiFrameBuffer = 0x0U;		// VDMA ID
 	config->uBaseAddr_MEM_HdmiFrameBuffer = 0x10000000; // VDMA base address for Frame buffers
 	config->uNumFrames_HdmiFrameBuffer = 0x5U;	// NUmber of VDMA Frame buffers
-
 	return;
 }
 
