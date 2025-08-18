@@ -1,5 +1,5 @@
 # cpre488-mp2
-
+This repo contains my CPRE 488 MP-2 design: a Zynq-based 1080p video path that drives HDMI from a Test Pattern Generator through a read/write VDMA (with GenLock) and a Video Timing Controller to the Avnet HDMI output. It includes MMIO configuration of the TPG (moving box over color bars), a software pass that halves YUV 4:2:2 luminance in the frame buffers, notes on FMC I²C (Imageon/EEPROM), and LVDS differential-pair signaling for the VITA camera. Diagrams and a written report document the architecture, timing (100 MHz AXI, ~148 MHz pixel), and implementation details. 
 # Report 
 
 ## Detailed System Diagram 
